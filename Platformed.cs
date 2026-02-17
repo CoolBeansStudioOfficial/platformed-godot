@@ -2,6 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Xml.Linq;
 using HttpClient = System.Net.Http.HttpClient;
 
 public class Level
@@ -136,38 +137,37 @@ public partial class Platformed : Node2D
         //parse json
         var level = await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
 
-        var tiles = DecodeRLE(level.Data.Layers[0].Data);
+        var map = DecodeRLE(level.Data.Layers[0].Data, level.Width);
 
-        GD.Print("");
+        GD.Print("width is " + level.Width);
 
-        int tileCount = 0;
-        
-        for (int i = 0; i < level.Height; i++)
+        int rowCount = 0;
+        foreach (var row in map)
         {
-            string row = "";
-            for (int j = 0; j < level.Width; j++)
+            int i = 0;
+            foreach (var tile in row)
             {
-                if (tiles[tileCount] == 0)
+                if (tile == 0)
                 {
-
-
-                    row += "■";
+                    //empty tile
+                    GD.Print("empty tile");
                 }
                 else
                 {
+                    GD.Print("should be spawning tile");
+
                     Node2D block = (Node2D)groundBlock.Instantiate();
                     AddChild(block);
-                    block.Position = new(j * 16, i * 16);
-
-                    row += "□";
+                    block.Position = new(i * 16, rowCount * 16);
                 }
 
-                tileCount++;
+                i++;
             }
 
-            GD.Print(row);
+            rowCount++;
         }
 
+        //spawn player
         Node2D player = (Node2D)playerScene.Instantiate();
         AddChild(player);
         player.Position = new(level.Data.Spawn.X * 16, level.Data.Spawn.Y * 16);
@@ -175,23 +175,47 @@ public partial class Platformed : Node2D
 
     }
 
-    List<int> DecodeRLE(List<JsonElement> rle)
+    List<List<int>> DecodeRLE(List<JsonElement> rle, int width)
     {
-        List<int> tiles = [];
+        List<List<int>> map = [];
 
+        List<int> currentRow = [];
         foreach (var element in rle)
         {
+            //element represents multiple of the same tile
             if (element.ValueKind == JsonValueKind.Array)
             {
                 var tile = element[0].GetInt32();
                 var count = element[1].GetInt32();
 
-                for (int i = 0; i < count; i++) tiles.Add(tile);
+                for (int i = 0; i < count; i++)
+                {
+                    currentRow.Add(tile);
+
+                    if (currentRow.Count == width)
+                    {
+                        GD.Print($"adding row of length {currentRow.Count}");
+                        List<int> toAdd = [];
+                        toAdd.AddRange(currentRow);
+                        map.Add(toAdd);
+                        currentRow.Clear();
+                    }
+                }
             }
-            else tiles.Add(element.GetInt32());
+            //element represents single tile
+            else
+            {
+                currentRow.Add(element.GetInt32());
+
+                if (currentRow.Count == width)
+                {
+                    map.Add(currentRow);
+                    currentRow.Clear();
+                }
+            }
         }
 
-        return tiles;
+        return map;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
