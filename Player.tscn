@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://ba5nuckj2wiby"]
 
-[ext_resource type="Script" uid="uid://btpgfmvpamy2w" path="res://Scripts/CharacterBody2d.cs" id="1_kpjcp"]
+[ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/PlayerMovement.cs" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/player.png" id="2_kne1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(15, 15)
 
-[node name="Player" type="CharacterBody2D" unique_id=864739331]
+[node name="Player" type="CharacterBody2D" unique_id=864739331 node_paths=PackedStringArray("wallCastLeft", "wallCastRight")]
 script = ExtResource("1_kpjcp")
-Speed = 150.0
-JumpVelocity = -550.0
+wallCastLeft = NodePath("Wall Cast Left")
+wallCastRight = NodePath("Wall Cast Right")
+speed = 150.0
+jumpVelocity = -250.0
+coyoteTime = 0.1
+walljumpVelocity = 150.0
+walljumpMoveLock = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=562314510]
 texture_filter = 1
@@ -19,5 +24,11 @@ texture = ExtResource("2_kne1u")
 shape = SubResource("RectangleShape2D_e80uo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=822380968]
-zoom = Vector2(6.7, 6.7)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="Wall Cast Left" type="RayCast2D" parent="." unique_id=507050879]
+target_position = Vector2(-15, 0)
+
+[node name="Wall Cast Right" type="RayCast2D" parent="." unique_id=1665025282]
+target_position = Vector2(15, 0)
