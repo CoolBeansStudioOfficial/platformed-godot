@@ -28,7 +28,7 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="Wall Cast Left" type="RayCast2D" parent="." unique_id=507050879]
-target_position = Vector2(-15, 0)
+target_position = Vector2(-10, 0)
 
 [node name="Wall Cast Right" type="RayCast2D" parent="." unique_id=1665025282]
-target_position = Vector2(15, 0)
+target_position = Vector2(10, 0)
