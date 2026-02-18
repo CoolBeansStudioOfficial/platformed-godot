@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqbd5tyspf2rv"]
 
-[ext_resource type="Texture2D" uid="uid://dl0hb4bevmy6v" path="res://ground.png" id="1_im0tn"]
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/ground.png" id="1_im0tn"]
+[ext_resource type="Script" uid="uid://b04hp6w0botuw" path="res://Scripts/Tile.cs" id="2_xfwl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im0tn"]
 size = Vector2(16, 16)
@@ -8,6 +9,9 @@ size = Vector2(16, 16)
 [node name="Block" type="Sprite2D" unique_id=1346281759]
 texture_filter = 1
 texture = ExtResource("1_im0tn")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_xfwl5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
 

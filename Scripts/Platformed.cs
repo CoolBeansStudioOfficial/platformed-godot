@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
+using System.Threading.Tasks;
 using HttpClient = System.Net.Http.HttpClient;
 
 public class Level
@@ -113,31 +113,33 @@ public class Spawn
     public int Y { get; set; }
 }
 
-
 public partial class Platformed : Node2D
 {
     [Export] PackedScene playerScene;
     [Export] PackedScene groundBlock;
 
     HttpClient client;
+    Level currentLevel;
 
 	public override void _Ready()
 	{
 		client = new();
-		GetLevel();
-	
-	}
+		currentLevel = GetLevelFromAPI(22).Result;
 
-	async void GetLevel()
+        GenerateLevel(currentLevel);
+
+    }
+
+	async Task<Level> GetLevelFromAPI(int id)
 	{
 		//request level json
-		var response = await client.GetAsync("https://platformed.jmeow.net/api/level?levelId=1");
+		var response = await client.GetAsync($"https://platformed.jmeow.net/api/level?levelId={id}");
 		GD.Print(await response.Content.ReadAsStringAsync());
 
         //parse json
-        var level = await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
+        return await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
 
-        var map = DecodeRLE(level.Data.Layers[0].Data, level.Width);
+        
 
         GD.Print("width is " + level.Width);
 
@@ -171,10 +173,24 @@ public partial class Platformed : Node2D
         Node2D player = (Node2D)playerScene.Instantiate();
         AddChild(player);
         player.Position = new(level.Data.Spawn.X * 16, level.Data.Spawn.Y * 16);
-
-
     }
 
+    void GenerateLevel(Level level)
+    {
+        var tiles = DecodeRLE(level.Data.Layers[0].Data, level.Width);
+    }
+
+    //takes list of rows of tiles and returns same list but with info about each tile
+    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles)
+    {
+        List<List<TileInfo>> tilemap = [];
+        foreach (var row in tiles)
+        {
+
+        }
+    }
+
+    //takes encoded map data and converts it to a list of rows of tiles
     List<List<int>> DecodeRLE(List<JsonElement> rle, int width)
     {
         List<List<int>> map = [];
@@ -209,7 +225,9 @@ public partial class Platformed : Node2D
 
                 if (currentRow.Count == width)
                 {
-                    map.Add(currentRow);
+                    List<int> toAdd = [];
+                    toAdd.AddRange(currentRow);
+                    map.Add(toAdd);
                     currentRow.Clear();
                 }
             }
@@ -218,8 +236,5 @@ public partial class Platformed : Node2D
         return map;
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+
 }

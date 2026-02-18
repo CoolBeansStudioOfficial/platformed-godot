@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3t6ekv0q1grn"]
 
-[ext_resource type="Script" uid="uid://xq3tfay4w77i" path="res://Platformed.cs" id="1_u2mnv"]
+[ext_resource type="Script" uid="uid://xq3tfay4w77i" path="res://Scripts/Platformed.cs" id="1_u2mnv"]
 [ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://block.tscn" id="2_dksu4"]
 [ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Player.tscn" id="3_qwt8e"]
 
