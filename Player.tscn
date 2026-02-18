@@ -11,7 +11,7 @@ script = ExtResource("1_kpjcp")
 wallCastLeft = NodePath("Wall Cast Left")
 wallCastRight = NodePath("Wall Cast Right")
 speed = 150.0
-jumpVelocity = -250.0
+jumpVelocity = -300.0
 coyoteTime = 0.1
 walljumpVelocity = 150.0
 walljumpMoveLock = 0.25
@@ -27,8 +27,16 @@ shape = SubResource("RectangleShape2D_e80uo")
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
+[node name="Background Color" type="ColorRect" parent="Camera2D" unique_id=401047062]
+z_index = -1
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+
 [node name="Wall Cast Left" type="RayCast2D" parent="." unique_id=507050879]
-target_position = Vector2(-10, 0)
+target_position = Vector2(-12, 0)
 
 [node name="Wall Cast Right" type="RayCast2D" parent="." unique_id=1665025282]
-target_position = Vector2(10, 0)
+target_position = Vector2(12, 0)

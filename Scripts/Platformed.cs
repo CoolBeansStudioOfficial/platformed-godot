@@ -116,7 +116,7 @@ public class Spawn
 public partial class Platformed : Node2D
 {
     [Export] PackedScene playerScene;
-    [Export] PackedScene groundBlock;
+    [Export] PackedScene tileScene;
 
     HttpClient client;
     Level currentLevel;
@@ -129,7 +129,7 @@ public partial class Platformed : Node2D
     async void Test()
     {
         client = new();
-        currentLevel = await GetLevelFromAPI(14);
+        currentLevel = await GetLevelFromAPI(23);
 
         GenerateLevel(currentLevel);
 
@@ -162,7 +162,7 @@ public partial class Platformed : Node2D
             int i = 0;
             foreach (var tile in row)
             {
-                if (tile.tileType == 0)
+                if (tile.id == 0)
                 {
                     //empty tile
                 }
@@ -180,11 +180,10 @@ public partial class Platformed : Node2D
 
     void SpawnBlock(TileInfo info)
     {
-        Node2D block = (Node2D)groundBlock.Instantiate();
+        Node2D block = (Node2D)tileScene.Instantiate();
         AddChild(block);
         var tile = block as Tile;
-        tile.info = info;
-        tile.UpdateTexture();
+        tile.UpdateTile(info);
         block.Position = tile.info.position * 16;
     }
 
@@ -224,7 +223,7 @@ public partial class Platformed : Node2D
                 TileInfo info = new()
                 {
                     position = new(x, y),
-                    tileType = tile,
+                    id = (TileId)tile,
 
                     tileAbove = above,
                     tileBelow = below,
