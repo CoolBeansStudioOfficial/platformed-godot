@@ -123,11 +123,20 @@ public partial class Platformed : Node2D
 
 	public override void _Ready()
 	{
-		client = new();
-		currentLevel = GetLevelFromAPI(22).Result;
+        Test();
+    }
+
+    async void Test()
+    {
+        client = new();
+        currentLevel = await GetLevelFromAPI(1);
 
         GenerateLevel(currentLevel);
 
+        //spawn player
+        Node2D player = (Node2D)playerScene.Instantiate();
+        AddChild(player);
+        player.Position = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
     }
 
 	async Task<Level> GetLevelFromAPI(int id)
@@ -138,29 +147,28 @@ public partial class Platformed : Node2D
 
         //parse json
         return await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
+    }
 
-        
+    void GenerateLevel(Level level)
+    {
+        //get tilemap from compressed level data
+        var tilemap = CreateTilemap(DecodeRLE(level.Data.Layers[0].Data, level.Width));
 
-        GD.Print("width is " + level.Width);
+        //create actual blocks from tilemap
 
         int rowCount = 0;
-        foreach (var row in map)
+        foreach (var row in tilemap)
         {
             int i = 0;
             foreach (var tile in row)
             {
-                if (tile == 0)
+                if (tile.tileType == 0)
                 {
                     //empty tile
-                    GD.Print("empty tile");
                 }
                 else
                 {
-                    GD.Print("should be spawning tile");
-
-                    Node2D block = (Node2D)groundBlock.Instantiate();
-                    AddChild(block);
-                    block.Position = new(i * 16, rowCount * 16);
+                    SpawnBlock(tile);
                 }
 
                 i++;
@@ -168,26 +176,77 @@ public partial class Platformed : Node2D
 
             rowCount++;
         }
-
-        //spawn player
-        Node2D player = (Node2D)playerScene.Instantiate();
-        AddChild(player);
-        player.Position = new(level.Data.Spawn.X * 16, level.Data.Spawn.Y * 16);
     }
 
-    void GenerateLevel(Level level)
+    void SpawnBlock(TileInfo info)
     {
-        var tiles = DecodeRLE(level.Data.Layers[0].Data, level.Width);
+        Node2D block = (Node2D)groundBlock.Instantiate();
+        AddChild(block);
+        var tile = block as Tile;
+        tile.info = info;
+        tile.UpdateTexture();
+        block.Position = tile.info.position * 16;
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
     List<List<TileInfo>> CreateTilemap(List<List<int>> tiles)
     {
         List<List<TileInfo>> tilemap = [];
+
+        int y = 0;
         foreach (var row in tiles)
         {
+            List<TileInfo> currentRow = [];
+            
+            int x = 0;
+            foreach (var tile in row)
+            {
+                //check adjacencies
+                bool above = false;
+                bool below = false;
+                bool left = false; 
+                bool right = false;
 
+                //check above, skip check if this is top row
+                if (y != 0) if (tiles[y - 1][x] == tile) above = true;
+
+                //check below, skip check if this is bottom row
+                if (y != tiles.Count - 1) if (tiles[y + 1][x] == tile) below = true;
+
+                //check left, skip if this tile is leftmost tile
+                if (x != 0) if (tiles[y][x - 1] == tile) left = true;
+
+                //check right, skip if this tile is rightmost tile
+                if (x != tiles[y].Count - 1) if (tiles[y][x + 1] == tile) right = true;
+
+
+                //construct tile info
+                TileInfo info = new()
+                {
+                    position = new(x, y),
+                    tileType = tile,
+
+                    tileAbove = above,
+                    tileBelow = below,
+                    tileLeft = left,
+                    tileRight = right,
+                };
+
+                currentRow.Add(info);
+
+                x++;
+            }
+
+            //add new row to tilemap
+            List<TileInfo> toAdd = [];
+            toAdd.AddRange(currentRow);
+            tilemap.Add(toAdd);
+            currentRow.Clear();
+
+            y++;
         }
+
+        return tilemap;
     }
 
     //takes encoded map data and converts it to a list of rows of tiles
