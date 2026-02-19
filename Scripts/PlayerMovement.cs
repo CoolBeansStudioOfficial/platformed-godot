@@ -5,7 +5,10 @@ public partial class PlayerMovement : CharacterBody2D
 {
     [Export] ShapeCast2D wallCastLeft;
     [Export] ShapeCast2D wallCastRight;
-    [Export] float speed;
+    [Export] float acceleration;
+    [Export] float deceleration;
+    [Export] float airMultiplier;
+    [Export] float maxSpeed;
     [Export] float jumpVelocity;
     [Export] float coyoteTime;
     [Export] float walljumpVelocity;
@@ -68,11 +71,21 @@ public partial class PlayerMovement : CharacterBody2D
 		{
             if (direction != Vector2.Zero)
             {
-                velocity.X = direction.X * speed;
+				//accelerate in the direction the player pressed
+                velocity.X += direction.X * acceleration * (float)delta;
             }
             else
             {
-                velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
+				//decelerate
+				if (IsOnFloor())
+				{
+                    velocity.X = Mathf.MoveToward(velocity.X, 0f, deceleration * (float)delta);
+                }
+				else
+				{
+                    velocity.X = Mathf.MoveToward(velocity.X, 0f, deceleration * (float)delta * airMultiplier);
+                }
+					
             }
         }
 		else
@@ -80,9 +93,10 @@ public partial class PlayerMovement : CharacterBody2D
             if (moveLock > 0f) moveLock -= (float)delta;
         }
 
+		//speed cap
+		velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
 
-
-			Velocity = velocity;
+		Velocity = velocity;
 		MoveAndSlide();
 	}
 }
