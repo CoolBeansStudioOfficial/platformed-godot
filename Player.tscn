@@ -6,10 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(15, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
+size = Vector2(1, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=864739331 node_paths=PackedStringArray("wallCastLeft", "wallCastRight")]
 script = ExtResource("1_kpjcp")
-wallCastLeft = NodePath("Wall Cast Left")
-wallCastRight = NodePath("Wall Cast Right")
+wallCastLeft = NodePath("Walljump Cast Left")
+wallCastRight = NodePath("Walljump Cast Right")
 speed = 150.0
 jumpVelocity = -300.0
 coyoteTime = 0.1
@@ -21,6 +24,7 @@ texture_filter = 1
 texture = ExtResource("2_kne1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1428167100]
+visible = false
 shape = SubResource("RectangleShape2D_e80uo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=822380968]
@@ -35,8 +39,10 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.7607843, 0.6039216, 0.38431373, 1)
 
-[node name="Wall Cast Left" type="RayCast2D" parent="." unique_id=507050879]
-target_position = Vector2(-12, 0)
+[node name="Walljump Cast Left" type="ShapeCast2D" parent="." unique_id=953680652]
+shape = SubResource("RectangleShape2D_kpjcp")
+target_position = Vector2(-10, 0)
 
-[node name="Wall Cast Right" type="RayCast2D" parent="." unique_id=1665025282]
-target_position = Vector2(12, 0)
+[node name="Walljump Cast Right" type="ShapeCast2D" parent="." unique_id=1576325826]
+shape = SubResource("RectangleShape2D_kpjcp")
+target_position = Vector2(10, 0)

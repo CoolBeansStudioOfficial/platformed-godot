@@ -69,7 +69,7 @@ public partial class Tile : Sprite2D
     void UpdateCollisions()
     {
         //tile should be a trigger
-        if (info.id == TileId.Spikes || info.id == TileId.SpikesDouble || info.id == TileId.Checkpoint || info.id == TileId.Cactus || info.id == TileId.BouncePad || info.id == TileId.Coin)
+        if (info.id == TileId.Spikes || info.id == TileId.SpikesDouble || info.id == TileId.Checkpoint || info.id == TileId.End || info.id == TileId.Cactus || info.id == TileId.BouncePad || info.id == TileId.Coin)
         {
             SetTrigger(true);
         }

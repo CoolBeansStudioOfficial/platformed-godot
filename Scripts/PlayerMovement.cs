@@ -3,8 +3,8 @@ using System;
 
 public partial class PlayerMovement : CharacterBody2D
 {
-    [Export] RayCast2D wallCastLeft;
-    [Export] RayCast2D wallCastRight;
+    [Export] ShapeCast2D wallCastLeft;
+    [Export] ShapeCast2D wallCastRight;
     [Export] float speed;
     [Export] float jumpVelocity;
     [Export] float coyoteTime;
@@ -36,20 +36,18 @@ public partial class PlayerMovement : CharacterBody2D
 		{
 			if (!IsOnFloor())
 			{
-				wallCastLeft.ForceRaycastUpdate();
-				wallCastRight.ForceRaycastUpdate();
+				wallCastLeft.ForceShapecastUpdate();
+				wallCastRight.ForceShapecastUpdate();
 
-                if (wallCastLeft.GetCollider() is not null)
+                if (wallCastLeft.IsColliding())
 				{
-					GD.Print("walljumped off a left wall");
                     velocity.Y = jumpVelocity;
 					velocity.X = walljumpVelocity;
 					moveLock = walljumpMoveLock;
                 }
 
-                if (wallCastRight.GetCollider() is not null)
+                if (wallCastRight.IsColliding())
                 {
-                    GD.Print("walljumped off a right wall");
                     velocity.Y = jumpVelocity;
                     velocity.X = -walljumpVelocity;
                     moveLock = walljumpMoveLock;
