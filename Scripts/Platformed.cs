@@ -10,6 +10,9 @@ public class Level
     [JsonPropertyName("id")]
     public int Id { get; set; }
 
+    [JsonPropertyName("public")]
+    public bool Public { get; set; }
+
     [JsonPropertyName("data")]
     public Data Data { get; set; }
 
@@ -51,6 +54,9 @@ public class Level
 
     [JsonPropertyName("level_style")]
     public string LevelStyle { get; set; }
+
+    [JsonPropertyName("owned")]
+    public bool Owned { get; set; }
 }
 
 public class Data
@@ -77,10 +83,10 @@ public class Data
     public double XInertia { get; set; }
 
     [JsonPropertyName("yInertia")]
-    public int YInertia { get; set; }
+    public double YInertia { get; set; }
 
     [JsonPropertyName("jumpWidth")]
-    public int JumpWidth { get; set; }
+    public double JumpWidth { get; set; }
 
     [JsonPropertyName("jumpHeight")]
     public double JumpHeight { get; set; }
@@ -89,7 +95,7 @@ public class Data
     public string TilesetPath { get; set; }
 
     [JsonPropertyName("bouncePadHeight")]
-    public int BouncePadHeight { get; set; }
+    public double BouncePadHeight { get; set; }
 }
 
 public class Layer
@@ -129,7 +135,7 @@ public partial class Platformed : Node2D
     async void Test()
     {
         client = new();
-        currentLevel = await GetLevelFromAPI(23);
+        currentLevel = await GetLevelFromAPI(25);
 
         GenerateLevel(currentLevel);
 
