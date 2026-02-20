@@ -41,13 +41,13 @@ public enum TileRotation
 
 public partial class Tile : Sprite2D
 {
+    [Export] float bouncePadHeight;
+
     [Export] CollisionShape2D staticBodyShape;
     [Export] CollisionShape2D areaShape;
     [Export] Area2D area;
 
     [Export] Shape2D[] hitboxShapes;
-
-
     [Export] Texture2D[] textures;
 
 	public TileInfo info;
@@ -74,7 +74,19 @@ public partial class Tile : Sprite2D
 
             if (info.id == TileId.BouncePad)
             {
-                player.Velocity = new(player.Velocity.X, -800);
+                if (info.rotation == TileRotation.Up) player.Velocity = new(player.Velocity.X, -bouncePadHeight);
+                else if (info.rotation == TileRotation.Left)
+                {
+                    player.moveLock = 0.25f;
+                    player.Velocity = new(-bouncePadHeight, player.Velocity.Y);
+                }
+                else if (info.rotation == TileRotation.Down) player.Velocity = new(player.Velocity.X, bouncePadHeight);
+                else
+                {
+                    player.moveLock = 0.25f;
+                    player.Velocity = new(bouncePadHeight, player.Velocity.Y);
+                }
+
             }
 
             if (info.id == TileId.Coin)

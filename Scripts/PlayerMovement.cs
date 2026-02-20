@@ -17,7 +17,7 @@ public partial class PlayerMovement : CharacterBody2D
     
 
 	float coyoteTimeRemaining = 0f;
-	float moveLock = 0f;
+	public float moveLock = 0f;
 
 	public override void _Process(double delta)
 	{
@@ -107,14 +107,16 @@ public partial class PlayerMovement : CharacterBody2D
                 }
 					
             }
+
+            //speed cap
+            velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
         }
 		else
 		{
             if (moveLock > 0f) moveLock -= (float)delta;
         }
 
-		//speed cap
-		velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
+		
 
 		Velocity = velocity;
 		MoveAndSlide();

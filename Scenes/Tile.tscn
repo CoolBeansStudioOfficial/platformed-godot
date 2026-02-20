@@ -48,6 +48,7 @@ texture = ExtResource("1_je3b2")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("2_au6lh")
+bouncePadHeight = 525.0
 staticBodyShape = NodePath("StaticBody2D/CollisionShape2D")
 areaShape = NodePath("Area2D/CollisionShape2D")
 area = NodePath("Area2D")
