@@ -32,6 +32,7 @@ public partial class PlayerMovement : CharacterBody2D
 		else
 		{
 			coyoteTimeRemaining = coyoteTime;
+			moveLock = 0f;
 		}
 
 		// Handle Jump.
@@ -42,14 +43,33 @@ public partial class PlayerMovement : CharacterBody2D
 				wallCastLeft.ForceShapecastUpdate();
 				wallCastRight.ForceShapecastUpdate();
 
-                if (wallCastLeft.IsColliding())
+				//if player is close enough to wall jump off of either wall, pick the closest wall
+				if (wallCastLeft.IsColliding() && wallCastRight.IsColliding())
+				{
+					float leftWallDistance = Mathf.Abs(Position.X - wallCastLeft.GetCollisionPoint(0).X);
+                    float rightWallDistance = Mathf.Abs(Position.X - wallCastRight.GetCollisionPoint(0).X);
+
+                    if (leftWallDistance < rightWallDistance)
+					{
+                        velocity.Y = jumpVelocity;
+                        velocity.X = walljumpVelocity;
+                        moveLock = walljumpMoveLock;
+                    }
+					else
+					{
+                        velocity.Y = jumpVelocity;
+                        velocity.X = -walljumpVelocity;
+                        moveLock = walljumpMoveLock;
+                    }
+				}
+				//otherwise, jump off of whichever wall is elligible
+				else if (wallCastLeft.IsColliding())
 				{
                     velocity.Y = jumpVelocity;
 					velocity.X = walljumpVelocity;
 					moveLock = walljumpMoveLock;
                 }
-
-                if (wallCastRight.IsColliding())
+				else if (wallCastRight.IsColliding())
                 {
                     velocity.Y = jumpVelocity;
                     velocity.X = -walljumpVelocity;

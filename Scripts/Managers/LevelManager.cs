@@ -9,18 +9,41 @@ public partial class LevelManager : Node
 
     Level currentLevel;
     List<Tile> tiles = [];
-    Node2D player;
 
+    Node2D player;
+    public Vector2 spawnPoint;
+
+    //singleton pringleton
     public static LevelManager Instance { get; private set; }
     public override void _Ready()
     {
         Instance = this;
     }
 
+    
+    public void SpawnPlayer()
+    {
+        player = (Node2D)playerScene.Instantiate();
+        player.Position = spawnPoint;
+        AddChild(player);
+    }
+
+    public void KillPlayer()
+    {
+        //play death sound effect
+
+        player.Position = spawnPoint;
+
+        //reset any enemies or other dynamic entities
+    }
+
     public void GenerateLevel(Level level)
     {
         currentLevel = level;
         tiles.Clear();
+
+        //set player spawn point
+        spawnPoint = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
 
         //get tilemap from compressed level data
         var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));

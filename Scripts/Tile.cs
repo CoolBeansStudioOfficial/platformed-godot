@@ -46,9 +46,19 @@ public partial class Tile : Sprite2D
         //do different things based on what type of tile this
         if (body is PlayerMovement player)
         {
-            if (info.id == TileId.Spikes || info.id == TileId.SpikesDouble)
+            if (info.id == TileId.Spikes || info.id == TileId.SpikesDouble || info.id == TileId.Cactus)
             {
-                GameManager.Instance.ResetLevel(true);
+                LevelManager.Instance.KillPlayer();
+            }
+
+            if (info.id == TileId.Checkpoint)
+            {
+                LevelManager.Instance.spawnPoint = Position;
+            }
+
+            if (info.id == TileId.End)
+            {
+                //show victory screen
             }
 
             if (info.id == TileId.BouncePad)
@@ -56,9 +66,9 @@ public partial class Tile : Sprite2D
                 player.Velocity = new(player.Velocity.X, -800);
             }
 
-            if (info.id == TileId.BouncePad)
+            if (info.id == TileId.Coin)
             {
-                player.Velocity = new(player.Velocity.X, -800);
+                //collect coin
             }
         }
         

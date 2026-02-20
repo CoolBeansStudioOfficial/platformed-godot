@@ -1,8 +1,5 @@
 using Godot;
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using HttpClient = System.Net.Http.HttpClient;
 
@@ -28,26 +25,10 @@ public partial class GameManager : Node
         if (level == null) return false;
 
         LevelManager.Instance.GenerateLevel(level);
-
-        //spawn player
-        player = (Node2D)playerScene.Instantiate();
-        AddChild(player);
-        player.Position = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
+        LevelManager.Instance.SpawnPlayer();
 
         return true;
     }
-
-    public void ResetLevel(bool playerDied)
-    {
-        if (playerDied)
-        {
-            //play death sound effect
-        }
-
-        player.Position = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
-    }
-
-
 
 
     async Task<Level> GetLevelFromAPI(int id)
@@ -66,6 +47,4 @@ public partial class GameManager : Node
             return null;
         }
     }
-
-    
 }
