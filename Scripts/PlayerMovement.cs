@@ -12,7 +12,7 @@ public partial class PlayerMovement : CharacterBody2D
     [Export] float jumpVelocity;
     [Export] float coyoteTime;
     [Export] float walljumpVelocity;
-    [Export] float walljumpMoveLock;
+    [Export] public float walljumpMoveLock;
 
     
 

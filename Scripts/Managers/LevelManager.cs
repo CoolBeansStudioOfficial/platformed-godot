@@ -35,6 +35,16 @@ public partial class LevelManager : Node
         player = playerScene.Instantiate() as PlayerMovement;
         player.Position = spawnPoint;
         AddChild(player);
+
+        //configure player physics
+        if (currentLevel.Data.WallJump == "off")
+        {
+            player.walljumpMoveLock = 0.25f;
+        }
+        else if (currentLevel.Data.WallJump == "up")
+        {
+            player.walljumpMoveLock = 0.05f;
+        }
     }
 
     public void KillPlayer()

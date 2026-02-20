@@ -16,7 +16,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rjt4h"]
-points = PackedVector2Array(-8, 8, 8, 8, 0, -8)
+points = PackedVector2Array(-7, 8, 7, 8, 0, -8)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u3p4p"]
 points = PackedVector2Array(-8, 8, 7, 8, 4, 1, -5, 1)
@@ -44,7 +44,7 @@ size = Vector2(16, 8)
 
 [node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("staticBodyShape", "areaShape", "area")]
 texture_filter = 1
-texture = ExtResource("4_iryga")
+texture = ExtResource("1_je3b2")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("2_au6lh")
