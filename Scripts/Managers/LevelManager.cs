@@ -20,6 +20,15 @@ public partial class LevelManager : Node
         Instance = this;
     }
 
+    public override void _Process(double delta)
+    {
+        if (currentLevel != null && player != null)
+        {
+            //kill player if they fall off the map
+            if (player.Position.Y > currentLevel.Height * 16) KillPlayer();
+        }
+    }
+
     
     public void SpawnPlayer()
     {
