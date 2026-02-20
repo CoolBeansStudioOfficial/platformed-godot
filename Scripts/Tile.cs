@@ -44,7 +44,24 @@ public partial class Tile : Sprite2D
     private void OnBodyEntered(Node2D body)
     {
         //do different things based on what type of tile this
-        GD.Print($"touched {info.id}");
+        if (body is PlayerMovement player)
+        {
+            if (info.id == TileId.Spikes || info.id == TileId.SpikesDouble)
+            {
+                GameManager.Instance.ResetLevel(true);
+            }
+
+            if (info.id == TileId.BouncePad)
+            {
+                player.Velocity = new(player.Velocity.X, -800);
+            }
+
+            if (info.id == TileId.BouncePad)
+            {
+                player.Velocity = new(player.Velocity.X, -800);
+            }
+        }
+        
     }
 
     public void UpdateTile(TileInfo newInfo)
