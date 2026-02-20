@@ -32,7 +32,6 @@ public partial class PlayerMovement : CharacterBody2D
 		else
 		{
 			coyoteTimeRemaining = coyoteTime;
-			moveLock = 0f;
 		}
 
 		// Handle Jump.
