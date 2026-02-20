@@ -19,7 +19,7 @@ size = Vector2(16, 16)
 points = PackedVector2Array(-8, 8, 8, 8, 0, -8)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u3p4p"]
-points = PackedVector2Array(-8, 8, 8, 8, 8, 1, -8, 1)
+points = PackedVector2Array(-8, 8, 7, 8, 4, 1, -5, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dl2d"]
 size = Vector2(16, 16)
