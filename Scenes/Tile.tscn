@@ -12,8 +12,35 @@
 [ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/coin.png" id="9_j45r5"]
 [ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/dissipation-block.png" id="10_qw5uh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_je3b2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvq4k"]
 size = Vector2(16, 16)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rjt4h"]
+points = PackedVector2Array(-8, 8, 8, 8, 0, -8)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u3p4p"]
+points = PackedVector2Array(-8, 8, 8, 8, 8, 0, -8, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dl2d"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ogq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neton"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaw6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vimel"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afp4t"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imfh6"]
+size = Vector2(16, 8)
 
 [node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("staticBodyShape", "areaShape", "area")]
 texture_filter = 1
@@ -24,14 +51,13 @@ script = ExtResource("2_au6lh")
 staticBodyShape = NodePath("StaticBody2D/CollisionShape2D")
 areaShape = NodePath("Area2D/CollisionShape2D")
 area = NodePath("Area2D")
+hitboxShapes = Array[Shape2D]([null, SubResource("RectangleShape2D_dvq4k"), SubResource("ConvexPolygonShape2D_rjt4h"), SubResource("ConvexPolygonShape2D_u3p4p"), SubResource("RectangleShape2D_7dl2d"), null, SubResource("RectangleShape2D_y2ogq"), SubResource("RectangleShape2D_neton"), SubResource("RectangleShape2D_vtaw6"), SubResource("RectangleShape2D_vimel"), SubResource("RectangleShape2D_afp4t"), SubResource("RectangleShape2D_imfh6"), null])
 textures = Array[Texture2D]([null, ExtResource("1_je3b2"), ExtResource("3_x2otp"), ExtResource("4_iryga"), ExtResource("4_dk0q1"), null, ExtResource("5_iryga"), ExtResource("6_kqnxd"), ExtResource("7_fvkts"), ExtResource("8_exmik"), ExtResource("9_j45r5"), ExtResource("10_qw5uh"), null])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=810442276]
-shape = SubResource("RectangleShape2D_je3b2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1331226292]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=140874343]
-shape = SubResource("RectangleShape2D_je3b2")

@@ -37,6 +37,9 @@ public partial class Tile : Sprite2D
     [Export] CollisionShape2D areaShape;
     [Export] Area2D area;
 
+    [Export] Shape2D[] hitboxShapes;
+
+
     [Export] Texture2D[] textures;
 
 	public TileInfo info;
@@ -89,8 +92,6 @@ public partial class Tile : Sprite2D
 
         //enable/disable collisions based on tile type
         UpdateCollisions();
-
-        
     }
 
     void UpdateCollisions()
@@ -105,6 +106,17 @@ public partial class Tile : Sprite2D
             SetTrigger(false);
         }
 
+        SetCollisionShape();
+    }
+
+    void SetCollisionShape()
+    {
+        if (hitboxShapes[(int)info.id] is not null)
+        {
+            staticBodyShape.Shape = hitboxShapes[(int)info.id];
+            areaShape.Shape = hitboxShapes[(int)info.id];
+        }
+        
     }
 
     //if set trigger is true, tile becomes a trigger. otherwise, it becomes a solid block
