@@ -4,7 +4,7 @@ using System;
 public struct TileInfo
 {
 	public Vector2 position;
-	public int rotation;
+	public TileRotation rotation;
     public TileId id;
 
     public bool tileAbove;
@@ -29,6 +29,14 @@ public enum TileId
     DissipationBlock,
     Enemy
 
+}
+
+public enum TileRotation
+{
+    Up,
+    Left,
+    Down,
+    Right
 }
 
 public partial class Tile : Sprite2D
@@ -72,15 +80,23 @@ public partial class Tile : Sprite2D
             if (info.id == TileId.Coin)
             {
                 //collect coin
+
+                //delete self
+                QueueFree();
             }
         }
-        
     }
 
     public void UpdateTile(TileInfo newInfo)
     {
         //set this tile's info
         info = newInfo;
+
+        //set rotation from info
+        if (info.rotation == TileRotation.Up) RotationDegrees = 0;
+        else if (info.rotation == TileRotation.Left) RotationDegrees = -90;
+        else if (info.rotation == TileRotation.Down) RotationDegrees = 180;
+        else RotationDegrees = 90;
 
         //set tile texture to match tile info
         if (textures[(int)info.id] is not null)
@@ -101,22 +117,15 @@ public partial class Tile : Sprite2D
         {
             SetTrigger(true);
         }
-        else
-        {
-            SetTrigger(false);
-        }
+        //tile should be solid block
+        else SetTrigger(false);
 
-        SetCollisionShape();
-    }
-
-    void SetCollisionShape()
-    {
+        //update collision shape
         if (hitboxShapes[(int)info.id] is not null)
         {
             staticBodyShape.Shape = hitboxShapes[(int)info.id];
             areaShape.Shape = hitboxShapes[(int)info.id];
         }
-        
     }
 
     //if set trigger is true, tile becomes a trigger. otherwise, it becomes a solid block

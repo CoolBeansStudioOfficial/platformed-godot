@@ -10,7 +10,7 @@ public partial class LevelManager : Node
     Level currentLevel;
     List<Tile> tiles = [];
 
-    Node2D player;
+    PlayerMovement player;
     public Vector2 spawnPoint;
 
     //singleton pringleton
@@ -23,7 +23,7 @@ public partial class LevelManager : Node
     
     public void SpawnPlayer()
     {
-        player = (Node2D)playerScene.Instantiate();
+        player = playerScene.Instantiate() as PlayerMovement;
         player.Position = spawnPoint;
         AddChild(player);
     }
@@ -32,6 +32,7 @@ public partial class LevelManager : Node
     {
         //play death sound effect
 
+        player.Velocity = Vector2.Zero;
         player.Position = spawnPoint;
 
         //reset any enemies or other dynamic entities
@@ -47,14 +48,15 @@ public partial class LevelManager : Node
 
         //get tilemap from compressed level data
         var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));
+        //get each tile's rotation from compressed level data
+        var rotationMap = DecodeRLE(currentLevel.Data.Layers[1].Data, currentLevel.Width);
 
         //create actual blocks from tilemap
-
-        int rowCount = 0;
+        int y = 0;
         foreach (var row in tilemap)
         {
-            int i = 0;
-            foreach (var tile in row)
+            int x = 0;
+            foreach (TileInfo tile in row)
             {
                 if (tile.id == TileId.Air || tile.id == TileId.Spawn)
                 {
@@ -62,22 +64,26 @@ public partial class LevelManager : Node
                 }
                 else
                 {
-                    SpawnBlock(tile);
+                    //spawn tile and pass in rotation from map
+                    SpawnBlock(tile, (TileRotation)rotationMap[y][x]);
                 }
 
-                i++;
+                x++;
             }
 
-            rowCount++;
+            y++;
         }
     }
 
-    void SpawnBlock(TileInfo info)
+    void SpawnBlock(TileInfo info, TileRotation rotation)
     {
         Node2D block = (Node2D)tileScene.Instantiate();
         AddChild(block);
         var tile = block as Tile;
         tiles.Add(tile);
+
+        //apply rotation and set tile's info and position
+        info.rotation = rotation;
         tile.UpdateTile(info);
         block.Position = tile.info.position * 16;
     }
@@ -163,7 +169,6 @@ public partial class LevelManager : Node
 
                     if (currentRow.Count == width)
                     {
-                        GD.Print($"adding row of length {currentRow.Count}");
                         List<int> toAdd = [];
                         toAdd.AddRange(currentRow);
                         map.Add(toAdd);
