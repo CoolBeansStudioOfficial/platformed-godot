@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -119,23 +120,31 @@ public class Spawn
     public int Y { get; set; }
 }
 
-public partial class Platformed : Node2D
+public partial class GameManager : Node
 {
     [Export] PackedScene playerScene;
     [Export] PackedScene tileScene;
 
     HttpClient client;
     Level currentLevel;
-
-	public override void _Ready()
-	{
-        Test();
-    }
-
-    async void Test()
+    
+    public static GameManager Instance { get; private set; }
+    public override void _Ready()
     {
+        //singleton
+        Instance = this;
+
+        //initialize http client
         client = new();
-        currentLevel = await GetLevelFromAPI(25);
+    }
+    
+    public async Task<bool> PlayLevel(int id)
+    {
+        
+        currentLevel = await GetLevelFromAPI(id);
+
+        //if level fetch failed, bail out
+        if (currentLevel == null) return false;
 
         GenerateLevel(currentLevel);
 
@@ -143,16 +152,25 @@ public partial class Platformed : Node2D
         Node2D player = (Node2D)playerScene.Instantiate();
         AddChild(player);
         player.Position = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
+
+        return true;
     }
 
-	async Task<Level> GetLevelFromAPI(int id)
-	{
-		//request level json
-		var response = await client.GetAsync($"https://platformed.jmeow.net/api/level?levelId={id}");
-		GD.Print(await response.Content.ReadAsStringAsync());
-
-        //parse json
-        return await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
+    async Task<Level> GetLevelFromAPI(int id)
+    {
+        //request level json
+        try
+        {
+            //send request to server for level data
+            var response = await client.GetAsync($"https://platformed.jmeow.net/api/level?levelId={id}");
+            if (!response.IsSuccessStatusCode) return null;
+            //parse json
+            return await JsonSerializer.DeserializeAsync<Level>(await response.Content.ReadAsStreamAsync());
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     void GenerateLevel(Level level)
@@ -202,14 +220,14 @@ public partial class Platformed : Node2D
         foreach (var row in tiles)
         {
             List<TileInfo> currentRow = [];
-            
+
             int x = 0;
             foreach (var tile in row)
             {
                 //check adjacencies
                 bool above = false;
                 bool below = false;
-                bool left = false; 
+                bool left = false;
                 bool right = false;
 
                 //check above, skip check if this is top row
@@ -299,6 +317,4 @@ public partial class Platformed : Node2D
 
         return map;
     }
-
-
 }

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ba5nuckj2wiby"]
 
-[ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/PlayerMovement.cs" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/player.png" id="2_kne1u"]
+[ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/PlayerMovement.cs" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/player.png" id="2_gntrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(15, 15)
@@ -10,7 +10,7 @@ size = Vector2(15, 15)
 size = Vector2(1, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=864739331 node_paths=PackedStringArray("wallCastLeft", "wallCastRight")]
-script = ExtResource("1_kpjcp")
+script = ExtResource("1_kyqiw")
 wallCastLeft = NodePath("Walljump Cast Left")
 wallCastRight = NodePath("Walljump Cast Right")
 acceleration = 2000.0
@@ -24,7 +24,7 @@ walljumpMoveLock = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=562314510]
 texture_filter = 1
-texture = ExtResource("2_kne1u")
+texture = ExtResource("2_gntrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1428167100]
 visible = false
@@ -34,12 +34,12 @@ shape = SubResource("RectangleShape2D_e80uo")
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
-[node name="Background Color" type="ColorRect" parent="Camera2D" unique_id=401047062]
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=748346715]
 z_index = -1
-offset_left = -1920.0
-offset_top = -1080.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -2022.0
+offset_top = -1078.0
+offset_right = 1878.0
+offset_bottom = 1061.0
 color = Color(0.7607843, 0.6039216, 0.38431373, 1)
 
 [node name="Walljump Cast Left" type="ShapeCast2D" parent="." unique_id=953680652]
