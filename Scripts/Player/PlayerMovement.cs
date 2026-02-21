@@ -54,6 +54,8 @@ public partial class PlayerMovement : CharacterBody2D
 
 		if (jumpBufferTimeRemaining > 0f)
 		{
+            bool didJump = false;
+
             if (!IsOnFloor())
             {
                 wallCastLeft.ForceShapecastUpdate();
@@ -79,6 +81,7 @@ public partial class PlayerMovement : CharacterBody2D
                     }
 
                     jumpBufferTimeRemaining = 0f;
+                    didJump = true;
                     AudioManager.Instance.PlayStream(jumpSound);
                 }
                 //otherwise, jump off of whichever wall is elligible
@@ -89,6 +92,7 @@ public partial class PlayerMovement : CharacterBody2D
                     moveLock = walljumpMoveLock;
 
                     jumpBufferTimeRemaining = 0f;
+                    didJump = true;
                     AudioManager.Instance.PlayStream(jumpSound);
                 }
                 else if (wallCastRight.IsColliding())
@@ -98,14 +102,17 @@ public partial class PlayerMovement : CharacterBody2D
                     moveLock = walljumpMoveLock;
 
                     jumpBufferTimeRemaining = 0f;
+                    didJump = true;
                     AudioManager.Instance.PlayStream(jumpSound);
                 }
             }
-            else if (coyoteTimeRemaining > 0f)
+
+            if (coyoteTimeRemaining > 0f && !didJump)
             {
                 velocity.Y = jumpVelocity;
 
                 jumpBufferTimeRemaining = 0f;
+                didJump = true;
                 AudioManager.Instance.PlayStream(jumpSound);
             }
         }
