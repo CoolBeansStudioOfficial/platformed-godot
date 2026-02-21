@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://csvyj43s0u7mu"]
 
 [ext_resource type="Script" uid="uid://l7nnkf7yc5ya" path="res://Scripts/UI/MainMenu.cs" id="1_ur25d"]
-[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_eotax"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_eotax"]
 [ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Elements/Level Preview.tscn" id="2_o2yn0"]
-[ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka-Medium.ttf" id="3_udm2q"]
-[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka-Bold.ttf" id="4_eotax"]
+[ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="3_udm2q"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b7ti"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ur25d")
 levelPreview = ExtResource("2_o2yn0")
-levelsContainer = NodePath("Main Content/Levels/FlowContainer")
+levelsContainer = NodePath("Main Content/Levels/Level List")
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=1839296656]
 layout_mode = 1
@@ -298,6 +298,7 @@ anchor_bottom = 1.0
 offset_left = 206.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_eotax")
 placeholder_text = "Search name, ID, creator..."
 
 [node name="Levels" type="ScrollContainer" parent="Main Content" unique_id=350309315]
@@ -309,7 +310,7 @@ offset_top = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FlowContainer" type="FlowContainer" parent="Main Content/Levels" unique_id=715961879]
+[node name="Level List" type="FlowContainer" parent="Main Content/Levels" unique_id=715961879]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 50

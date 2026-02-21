@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ba5nuckj2wiby"]
 
 [ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/Player/PlayerMovement.cs" id="1_kyqiw"]
+[ext_resource type="AudioStream" uid="uid://rbncvfmpr4ee" path="res://Audio/Jump.tres" id="2_2ortc"]
 [ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/Raster/player.png" id="2_gntrk"]
 [ext_resource type="Script" uid="uid://c1340uxm4mlnc" path="res://Scripts/Player/PlayerAnimation.cs" id="3_gntrk"]
 
@@ -24,6 +25,7 @@ coyoteTime = 0.1
 jumpBufferTime = 0.2
 walljumpVelocity = 150.0
 walljumpMoveLock = 0.25
+jumpSound = ExtResource("2_2ortc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=562314510]
 texture_filter = 1

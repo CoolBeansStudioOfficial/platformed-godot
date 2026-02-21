@@ -2,9 +2,21 @@
 
 [ext_resource type="Script" uid="uid://tjfpig7g5xlk" path="res://Scripts/Managers/LevelManager.cs" id="1_wtinm"]
 [ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Prefabs/Player.tscn" id="2_mb033"]
-[ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://Scenes/Prefabs/Tile.tscn" id="3_c8sqs"]
+[ext_resource type="PackedScene" uid="uid://dxshi157wcmis" path="res://Scenes/Prefabs/Tiles/Ground.tscn" id="3_h7jeu"]
+[ext_resource type="PackedScene" uid="uid://bmlcmo8joijo" path="res://Scenes/Prefabs/Tiles/Spikes.tscn" id="4_c8sqs"]
+[ext_resource type="PackedScene" uid="uid://r3mdgu523qyu" path="res://Scenes/Prefabs/Tiles/SpikesDouble.tscn" id="5_kmvov"]
+[ext_resource type="PackedScene" uid="uid://bsydybqamwolx" path="res://Scenes/Prefabs/Tiles/Checkpoint.tscn" id="6_f1h14"]
+[ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/End.tscn" id="7_cbfru"]
+[ext_resource type="PackedScene" uid="uid://volxjoy02g4v" path="res://Scenes/Prefabs/Tiles/Cactus.tscn" id="8_cbfru"]
+[ext_resource type="PackedScene" uid="uid://dhn2fh676k2hq" path="res://Scenes/Prefabs/Tiles/Crate.tscn" id="9_pfu4q"]
+[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/BouncePad.tscn" id="10_6tnmi"]
+[ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="11_okbly"]
+[ext_resource type="PackedScene" uid="uid://dd7s6fvhrw1mm" path="res://Scenes/Prefabs/Tiles/DissipationBlock.tscn" id="12_m7skp"]
+[ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/ToggleBlockBlue.tscn" id="13_ipdva"]
+[ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="14_vfj3y"]
+[ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/TriggerOne.tscn" id="15_tm3jg"]
 
 [node name="Level Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_wtinm")
 playerScene = ExtResource("2_mb033")
-tileScene = ExtResource("3_c8sqs")
+tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg")])

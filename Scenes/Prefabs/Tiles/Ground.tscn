@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dxshi157wcmis"]
+
+[ext_resource type="Script" uid="uid://ca5u08heyenef" path="res://Scripts/Tiles/Ground.cs" id="2_032lv"]
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="3_ya0jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]
+size = Vector2(16, 16)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject")]
+texture_filter = 1
+texture = ExtResource("3_ya0jl")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_032lv")
+usesAdjacency = true
+collisionObject = NodePath("StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=810442276]
+shape = SubResource("RectangleShape2D_032lv")

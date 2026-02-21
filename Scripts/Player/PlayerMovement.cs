@@ -17,9 +17,10 @@ public partial class PlayerMovement : CharacterBody2D
     [Export] float walljumpVelocity;
     [Export] public float walljumpMoveLock;
 
-    
+    [Export] AudioStream jumpSound;
 
-	float coyoteTimeRemaining = 0f;
+
+    float coyoteTimeRemaining = 0f;
     float jumpBufferTimeRemaining = 0f;
     public float moveLock = 0f;
 	public bool bouncedSidewaysBySpring = false;
@@ -78,6 +79,7 @@ public partial class PlayerMovement : CharacterBody2D
                     }
 
                     jumpBufferTimeRemaining = 0f;
+                    AudioManager.Instance.PlayStream(jumpSound);
                 }
                 //otherwise, jump off of whichever wall is elligible
                 else if (wallCastLeft.IsColliding())
@@ -87,6 +89,7 @@ public partial class PlayerMovement : CharacterBody2D
                     moveLock = walljumpMoveLock;
 
                     jumpBufferTimeRemaining = 0f;
+                    AudioManager.Instance.PlayStream(jumpSound);
                 }
                 else if (wallCastRight.IsColliding())
                 {
@@ -95,14 +98,15 @@ public partial class PlayerMovement : CharacterBody2D
                     moveLock = walljumpMoveLock;
 
                     jumpBufferTimeRemaining = 0f;
+                    AudioManager.Instance.PlayStream(jumpSound);
                 }
             }
-
-            if (coyoteTimeRemaining > 0f)
+            else if (coyoteTimeRemaining > 0f)
             {
                 velocity.Y = jumpVelocity;
 
                 jumpBufferTimeRemaining = 0f;
+                AudioManager.Instance.PlayStream(jumpSound);
             }
         }
 

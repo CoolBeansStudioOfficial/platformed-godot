@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dlsslbkftga4b"]
+
+[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="1_k5o75"]
+[ext_resource type="Script" uid="uid://e65eqheugpyj" path="res://Scripts/Tiles/Coin.cs" id="2_k5o75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f73p2"]
+size = Vector2(10, 12)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject")]
+texture_filter = 1
+texture = ExtResource("1_k5o75")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_k5o75")
+collisionObject = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=275231629]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810442276]
+shape = SubResource("RectangleShape2D_f73p2")

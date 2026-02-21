@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://47rpoyyyv7jd"]
 
 [ext_resource type="Script" uid="uid://cjv3ihrwh6quh" path="res://Scripts/UI/PauseMenu.cs" id="1_2glbi"]
-[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="1_ory21"]
-[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka-Bold.ttf" id="2_2glbi"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_ory21"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_2glbi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
 bg_color = Color(0, 0, 0, 0.5019608)

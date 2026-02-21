@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bi30d3nn22xfj"
+path="res://.godot/imported/deathmusic.wav-c9bf233b9b4cd441b136f3c74112cecd.sample"
+
+[deps]
+
+source_file="res://Audio/Raw Files/deathmusic.wav"
+dest_files=["res://.godot/imported/deathmusic.wav-c9bf233b9b4cd441b136f3c74112cecd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

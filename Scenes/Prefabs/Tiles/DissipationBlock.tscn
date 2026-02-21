@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dd7s6fvhrw1mm"]
+
+[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="1_btm6v"]
+[ext_resource type="Script" uid="uid://ca5u08heyenef" path="res://Scripts/Tiles/Ground.cs" id="2_55itc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]
+size = Vector2(16, 8)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject")]
+texture_filter = 1
+texture = ExtResource("1_btm6v")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_55itc")
+collisionObject = NodePath("StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=810442276]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_032lv")

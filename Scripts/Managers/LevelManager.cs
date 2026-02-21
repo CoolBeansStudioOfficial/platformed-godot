@@ -5,7 +5,7 @@ using System.Text.Json;
 public partial class LevelManager : Node
 {
     [Export] PackedScene playerScene;
-    [Export] PackedScene tileScene;
+    [Export] PackedScene[] tileScenes;
 
     Level currentLevel;
     List<Tile> tiles = [];
@@ -113,15 +113,16 @@ public partial class LevelManager : Node
 
     void SpawnBlock(TileInfo info, TileRotation rotation)
     {
-        Node2D block = (Node2D)tileScene.Instantiate();
-        AddChild(block);
-        var tile = block as Tile;
+        if (tileScenes[(int)info.id] is null) return;
+
+        var tile = (Node2D)tileScenes[(int)info.id].Instantiate() as Tile;
+        AddChild(tile);
         tiles.Add(tile);
 
         //apply rotation and set tile's info and position
         info.rotation = rotation;
         tile.UpdateTile(info);
-        block.Position = tile.info.position * 16;
+        tile.Position = tile.info.position * 16;
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile

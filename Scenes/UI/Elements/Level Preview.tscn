@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cv2q226lq4h1r"]
 
 [ext_resource type="Script" uid="uid://0pyaa7hy0ysh" path="res://Scripts/UI/LevelPreview.cs" id="1_3f0yt"]
-[ext_resource type="FontFile" uid="uid://gujnyrnnpfrh" path="res://Fonts/Fredoka-SemiBold.ttf" id="1_rpuu6"]
-[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_3f0yt"]
+[ext_resource type="FontFile" uid="uid://gujnyrnnpfrh" path="res://Fonts/Fredoka/Fredoka-SemiBold.ttf" id="1_rpuu6"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_3f0yt"]
 [ext_resource type="Texture2D" uid="uid://64dx5l7x1wsy" path="res://Images/Vector/thumbs up.svg" id="3_k66nv"]
 [ext_resource type="Texture2D" uid="uid://dp8h5j7pvxiph" path="res://Images/Vector/flag.svg" id="4_xjleh"]
 

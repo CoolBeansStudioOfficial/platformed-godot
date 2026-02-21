@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://crf5amk1gs6bs"]
+
+[ext_resource type="AudioStream" uid="uid://bn7lpteu6vkje" path="res://Audio/Raw Files/jump.wav" id="1_my1gc"]
+
+[resource]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("1_my1gc")

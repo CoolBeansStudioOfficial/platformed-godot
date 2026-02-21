@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://r3mdgu523qyu"]
+
+[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="1_h1hhy"]
+[ext_resource type="Script" uid="uid://j2558hc85oa7" path="res://Scripts/Tiles/Spikes.cs" id="2_h1hhy"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xr76h"]
+points = PackedVector2Array(-8, 8, 7, 8, 4, 1, -5, 1)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject")]
+texture_filter = 1
+texture = ExtResource("1_h1hhy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_h1hhy")
+collisionObject = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=996814083]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810442276]
+shape = SubResource("ConvexPolygonShape2D_xr76h")
