@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://47rpoyyyv7jd"]
+
+[ext_resource type="Script" uid="uid://cjv3ihrwh6quh" path="res://Scripts/UI/PauseMenu.cs" id="1_2glbi"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="1_ory21"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka-Bold.ttf" id="2_2glbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[node name="Pause Menu" type="Control" unique_id=1982985672 node_paths=PackedStringArray("continueButton", "quitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2glbi")
+continueButton = NodePath("VBoxContainer/Continue")
+quitButton = NodePath("VBoxContainer/Quit Level")
+
+[node name="Panel" type="Panel" parent="." unique_id=787302695]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg67f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1814437099]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -423.0
+offset_right = 423.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_ory21")
+theme_override_fonts/bold_font = ExtResource("2_2glbi")
+bbcode_enabled = true
+text = "[b][font_size=100][rainbow speed=2 freq=0.1]Paused"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1233433045]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -249.0
+offset_right = 180.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer" unique_id=1977310617]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ory21")
+theme_override_font_sizes/font_size = 40
+text = "Continue"
+
+[node name="Quit Level" type="Button" parent="VBoxContainer" unique_id=169130998]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ory21")
+theme_override_font_sizes/font_size = 40
+text = "Quit Level"

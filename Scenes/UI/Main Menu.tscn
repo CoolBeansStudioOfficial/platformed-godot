@@ -170,7 +170,7 @@ offset_left = 20.0
 offset_right = 249.0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_eotax")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 36
 text = "Platformed"
 vertical_alignment = 1
 
@@ -292,12 +292,11 @@ vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Main Content/Info Bar/Search Box" unique_id=1997814481]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -592.0
-grow_horizontal = 0
+offset_left = 206.0
+grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "Search name, ID, creator..."
 
@@ -313,7 +312,7 @@ grow_vertical = 2
 [node name="FlowContainer" type="FlowContainer" parent="Main Content/Levels" unique_id=715961879]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 30
+theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 30
 alignment = 1
 last_wrap_alignment = 1
