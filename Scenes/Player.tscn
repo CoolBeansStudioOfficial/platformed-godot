@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://ba5nuckj2wiby"]
 
-[ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/PlayerMovement.cs" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://fjtpk4gl771x" path="res://Scripts/Player/PlayerMovement.cs" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/player.png" id="2_gntrk"]
+[ext_resource type="Script" uid="uid://c1340uxm4mlnc" path="res://Scripts/Player/PlayerAnimation.cs" id="3_gntrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(10, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
-size = Vector2(1, 16)
+size = Vector2(1, 12)
 
-[node name="Player" type="CharacterBody2D" unique_id=864739331 node_paths=PackedStringArray("wallCastLeft", "wallCastRight")]
+[node name="Player" type="CharacterBody2D" unique_id=864739331 node_paths=PackedStringArray("animation", "wallCastLeft", "wallCastRight")]
 script = ExtResource("1_kyqiw")
+animation = NodePath("Sprite2D")
 wallCastLeft = NodePath("Walljump Cast Left")
 wallCastRight = NodePath("Walljump Cast Right")
 acceleration = 2000.0
@@ -25,6 +27,10 @@ walljumpMoveLock = 0.25
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=562314510]
 texture_filter = 1
 texture = ExtResource("2_gntrk")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("3_gntrk")
+stepTime = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1428167100]
 position = Vector2(0, 2)
@@ -44,9 +50,11 @@ offset_bottom = 1061.0
 color = Color(0.7607843, 0.6039216, 0.38431373, 1)
 
 [node name="Walljump Cast Left" type="ShapeCast2D" parent="." unique_id=953680652]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_kpjcp")
 target_position = Vector2(-10, 0)
 
 [node name="Walljump Cast Right" type="ShapeCast2D" parent="." unique_id=1576325826]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_kpjcp")
 target_position = Vector2(10, 0)

@@ -3,9 +3,22 @@
 [ext_resource type="Script" uid="uid://l7nnkf7yc5ya" path="res://Scripts/UI/MainMenu.cs" id="1_ur25d"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_eotax"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka-Medium.ttf" id="3_udm2q"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka-Bold.ttf" id="4_eotax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b7ti"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur25d"]
+bg_color = Color(0.13333334, 0.17254902, 0.09803922, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7176471, 1, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Main Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("levelIdInput", "playButton")]
 layout_mode = 3
@@ -18,14 +31,14 @@ script = ExtResource("1_ur25d")
 levelIdInput = NodePath("Options/Level ID")
 playButton = NodePath("Options/Play")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1839296656]
+[node name="Background Color" type="ColorRect" parent="." unique_id=1839296656]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 
 [node name="Options" type="Panel" parent="." unique_id=2031524842]
 layout_mode = 1
@@ -45,9 +58,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -81.5
+offset_right = 81.5
+offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_eotax")
@@ -103,3 +116,53 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_udm2q")
 text = "v0.1.5-hotfix"
 vertical_alignment = 2
+
+[node name="Top Bar" type="Panel" parent="." unique_id=172328380]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Top Bar" unique_id=1257986036]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 239.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 40
+text = "Platformed"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Top Bar" unique_id=707796904]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 258.0
+offset_top = 12.0
+offset_right = 995.0
+offset_bottom = -12.0
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Top Bar/HBoxContainer" unique_id=313866113]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur25d")
+alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Top Bar/HBoxContainer/Button" unique_id=2061310006]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_right = 67.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7176471, 1, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+text = "Create"
+vertical_alignment = 1

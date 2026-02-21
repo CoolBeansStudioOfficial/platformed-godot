@@ -3,6 +3,8 @@ using System;
 
 public partial class PlayerMovement : CharacterBody2D
 {
+    [Export] PlayerAnimation animation;
+
     [Export] ShapeCast2D wallCastLeft;
     [Export] ShapeCast2D wallCastRight;
     [Export] float acceleration;
@@ -115,9 +117,9 @@ public partial class PlayerMovement : CharacterBody2D
             if (moveLock > 0f) moveLock -= (float)delta;
         }
 
-		
-
 		Velocity = velocity;
 		MoveAndSlide();
+
+		animation.UpdateAnimation(velocity, IsOnFloor(), delta);
 	}
 }
