@@ -70,6 +70,10 @@ public partial class Tile : Sprite2D
             if (info.id == TileId.End)
             {
                 //show victory screen
+
+                //return to main menu
+                UIManager.Instance.mainMenu.Visible = true;
+                LevelManager.Instance.DestroyLevel();
             }
 
             if (info.id == TileId.BouncePad)
@@ -93,8 +97,8 @@ public partial class Tile : Sprite2D
             {
                 //collect coin
 
-                //delete self
-                QueueFree();
+                //hide self
+                Visible = false;
             }
         }
     }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tshpqdylk7p"
-path="res://.godot/imported/bounce-pad.png-76205d2925a37e8b19834280f4bcbcec.ctex"
+uid="uid://cisqatxwyl1aj"
+path="res://.godot/imported/end.png-5656f744e3dda1a3ba5b4a1f0bd92865.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/bounce-pad.png"
-dest_files=["res://.godot/imported/bounce-pad.png-76205d2925a37e8b19834280f4bcbcec.ctex"]
+source_file="res://Images/Raster/end.png"
+dest_files=["res://.godot/imported/end.png-5656f744e3dda1a3ba5b4a1f0bd92865.ctex"]
 
 [params]
 

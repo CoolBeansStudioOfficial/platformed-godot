@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg8tt0xu1nktw"
-path="res://.godot/imported/double-spikes.png-cf48babc56e9868f36fc53d35c0f251d.ctex"
+uid="uid://cxkiwjslxab1q"
+path="res://.godot/imported/coin.png-9950e3695f095d2598c8d9ec37b3e6a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/double-spikes.png"
-dest_files=["res://.godot/imported/double-spikes.png-cf48babc56e9868f36fc53d35c0f251d.ctex"]
+source_file="res://Images/Raster/coin.png"
+dest_files=["res://.godot/imported/coin.png-9950e3695f095d2598c8d9ec37b3e6a3.ctex"]
 
 [params]
 

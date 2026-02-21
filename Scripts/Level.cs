@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -7,14 +8,14 @@ public class Level
     [JsonPropertyName("id")]
     public int Id { get; set; }
 
-    [JsonPropertyName("public")]
-    public bool Public { get; set; }
-
     [JsonPropertyName("data")]
     public Data Data { get; set; }
 
     [JsonPropertyName("name")]
     public string Name { get; set; }
+
+    [JsonPropertyName("created_at")]
+    public DateTime CreatedAt { get; set; }
 
     [JsonPropertyName("width")]
     public int Width { get; set; }
@@ -51,9 +52,6 @@ public class Level
 
     [JsonPropertyName("level_style")]
     public string LevelStyle { get; set; }
-
-    [JsonPropertyName("owned")]
-    public bool Owned { get; set; }
 }
 
 public class Data

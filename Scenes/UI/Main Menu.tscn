@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://l7nnkf7yc5ya" path="res://Scripts/UI/MainMenu.cs" id="1_ur25d"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_eotax"]
+[ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Elements/Level Preview.tscn" id="2_o2yn0"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka-Medium.ttf" id="3_udm2q"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka-Bold.ttf" id="4_eotax"]
-[ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Level Preview.tscn" id="5_o2yn0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b7ti"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -57,7 +57,7 @@ border_width_bottom = 100
 border_color = Color(0, 0.4, 1, 1)
 border_blend = true
 
-[node name="Main Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("levelIdInput", "playButton")]
+[node name="Main Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("levelsContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,8 +65,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ur25d")
-levelIdInput = NodePath("Options/Level ID")
-playButton = NodePath("Options/Play")
+levelPreview = ExtResource("2_o2yn0")
+levelsContainer = NodePath("Main Content/Levels/FlowContainer")
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=1839296656]
 layout_mode = 1
@@ -317,6 +317,3 @@ theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 alignment = 1
 last_wrap_alignment = 1
-
-[node name="Level Preview" parent="Main Content/Levels/FlowContainer" unique_id=647445914 instance=ExtResource("5_o2yn0")]
-layout_mode = 2

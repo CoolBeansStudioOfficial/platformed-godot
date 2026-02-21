@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cv2q226lq4h1r"]
 
+[ext_resource type="Script" uid="uid://0pyaa7hy0ysh" path="res://Scripts/UI/LevelPreview.cs" id="1_3f0yt"]
 [ext_resource type="FontFile" uid="uid://gujnyrnnpfrh" path="res://Fonts/Fredoka-SemiBold.ttf" id="1_rpuu6"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_3f0yt"]
 [ext_resource type="Texture2D" uid="uid://64dx5l7x1wsy" path="res://Images/Vector/thumbs up.svg" id="3_k66nv"]
@@ -38,9 +39,15 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Level Preview" type="Panel" unique_id=647445914]
+[node name="Level Preview" type="Panel" unique_id=647445914 node_paths=PackedStringArray("playButton", "levelName", "creator", "likePercentage", "completionPercentage")]
 custom_minimum_size = Vector2(400, 250)
 theme_override_styles/panel = SubResource("StyleBoxFlat_o2yn0")
+script = ExtResource("1_3f0yt")
+playButton = NodePath("Button")
+levelName = NodePath("Info/Level Name")
+creator = NodePath("Info/Creator")
+likePercentage = NodePath("Info/Like Percentage")
+completionPercentage = NodePath("Info/Completion Percentage")
 
 [node name="Info" type="Panel" parent="." unique_id=1919460031]
 layout_mode = 1
@@ -117,7 +124,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_3f0yt")
 theme_override_font_sizes/font_size = 12
-text = "%100"
+text = "100%"
 vertical_alignment = 1
 
 [node name="Completion Icon" type="TextureRect" parent="Info" unique_id=333097218]
@@ -150,7 +157,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_3f0yt")
 theme_override_font_sizes/font_size = 12
-text = "%100"
+text = "100%"
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=837702454]

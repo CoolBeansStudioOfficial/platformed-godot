@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsl1x4lu63rdr"
-path="res://.godot/imported/dissipation-block.png-d33f997db6fcd90f6c9f94c0ce6d605f.ctex"
+uid="uid://dby4cqdt6vom6"
+path="res://.godot/imported/crate.png-c4352aca1e6042d833b30afc1065c020.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/dissipation-block.png"
-dest_files=["res://.godot/imported/dissipation-block.png-d33f997db6fcd90f6c9f94c0ce6d605f.ctex"]
+source_file="res://Images/Raster/crate.png"
+dest_files=["res://.godot/imported/crate.png-c4352aca1e6042d833b30afc1065c020.ctex"]
 
 [params]
 

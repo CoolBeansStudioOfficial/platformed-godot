@@ -29,23 +29,7 @@ public partial class LevelManager : Node
         }
     }
 
-    
-    public void SpawnPlayer()
-    {
-        player = playerScene.Instantiate() as PlayerMovement;
-        player.Position = spawnPoint;
-        AddChild(player);
 
-        //configure player physics
-        if (currentLevel.Data.WallJump == "off")
-        {
-            player.walljumpMoveLock = 0.25f;
-        }
-        else if (currentLevel.Data.WallJump == "up")
-        {
-            player.walljumpMoveLock = 0.05f;
-        }
-    }
 
     public void KillPlayer()
     {
@@ -57,10 +41,22 @@ public partial class LevelManager : Node
         //reset any enemies or other dynamic entities
     }
 
+    public void DestroyLevel()
+    {
+        //clear out previous tiles
+        foreach (Tile tile in tiles) tile.QueueFree();
+        tiles.Clear();
+
+        GD.Print("level destroyed");
+    }
+
     public void GenerateLevel(Level level)
     {
+        //set current level
         currentLevel = level;
-        tiles.Clear();
+
+        //clear out previous tiles
+        DestroyLevel();
 
         //set player spawn point
         spawnPoint = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
@@ -91,6 +87,27 @@ public partial class LevelManager : Node
             }
 
             y++;
+        }
+
+        //spawn player
+        SpawnPlayer();
+    }
+
+    void SpawnPlayer()
+    {
+        player?.Free();
+        player = playerScene.Instantiate() as PlayerMovement;
+        player.Position = spawnPoint;
+        AddChild(player);
+
+        //configure player physics
+        if (currentLevel.Data.WallJump == "off")
+        {
+            player.walljumpMoveLock = 0.25f;
+        }
+        else if (currentLevel.Data.WallJump == "up")
+        {
+            player.walljumpMoveLock = 0.05f;
         }
     }
 
