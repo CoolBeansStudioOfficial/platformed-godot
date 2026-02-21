@@ -21,6 +21,7 @@ airMultiplier = 0.5
 maxSpeed = 150.0
 jumpVelocity = -300.0
 coyoteTime = 0.1
+jumpBufferTime = 0.2
 walljumpVelocity = 150.0
 walljumpMoveLock = 0.25
 

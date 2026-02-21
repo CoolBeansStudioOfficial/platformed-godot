@@ -13,13 +13,15 @@ public partial class PlayerMovement : CharacterBody2D
     [Export] float maxSpeed;
     [Export] float jumpVelocity;
     [Export] float coyoteTime;
+    [Export] float jumpBufferTime;
     [Export] float walljumpVelocity;
     [Export] public float walljumpMoveLock;
 
     
 
 	float coyoteTimeRemaining = 0f;
-	public float moveLock = 0f;
+    float jumpBufferTimeRemaining = 0f;
+    public float moveLock = 0f;
 	public bool bouncedSidewaysBySpring = false;
 
 	public override void _Process(double delta)
@@ -42,53 +44,68 @@ public partial class PlayerMovement : CharacterBody2D
 			if (moveLock <= 0f) bouncedSidewaysBySpring = false;
 		}
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("jump"))
-		{
-			if (!IsOnFloor())
-			{
-				wallCastLeft.ForceShapecastUpdate();
-				wallCastRight.ForceShapecastUpdate();
+        // Handle Jump.
+        if (Input.IsActionJustPressed("jump"))
+        {
+            jumpBufferTimeRemaining = jumpBufferTime;
+        }
+        else jumpBufferTimeRemaining -= (float)delta;
 
-				//if player is close enough to wall jump off of either wall, pick the closest wall
-				if (wallCastLeft.IsColliding() && wallCastRight.IsColliding())
-				{
-					float leftWallDistance = Mathf.Abs(Position.X - wallCastLeft.GetCollisionPoint(0).X);
+		if (jumpBufferTimeRemaining > 0f)
+		{
+            if (!IsOnFloor())
+            {
+                wallCastLeft.ForceShapecastUpdate();
+                wallCastRight.ForceShapecastUpdate();
+
+                //if player is close enough to wall jump off of either wall, pick the closest wall
+                if (wallCastLeft.IsColliding() && wallCastRight.IsColliding())
+                {
+                    float leftWallDistance = Mathf.Abs(Position.X - wallCastLeft.GetCollisionPoint(0).X);
                     float rightWallDistance = Mathf.Abs(Position.X - wallCastRight.GetCollisionPoint(0).X);
 
                     if (leftWallDistance < rightWallDistance)
-					{
+                    {
                         velocity.Y = jumpVelocity;
                         velocity.X = walljumpVelocity;
                         moveLock = walljumpMoveLock;
                     }
-					else
-					{
+                    else
+                    {
                         velocity.Y = jumpVelocity;
                         velocity.X = -walljumpVelocity;
                         moveLock = walljumpMoveLock;
                     }
-				}
-				//otherwise, jump off of whichever wall is elligible
-				else if (wallCastLeft.IsColliding())
-				{
-                    velocity.Y = jumpVelocity;
-					velocity.X = walljumpVelocity;
-					moveLock = walljumpMoveLock;
+
+                    jumpBufferTimeRemaining = 0f;
                 }
-				else if (wallCastRight.IsColliding())
+                //otherwise, jump off of whichever wall is elligible
+                else if (wallCastLeft.IsColliding())
+                {
+                    velocity.Y = jumpVelocity;
+                    velocity.X = walljumpVelocity;
+                    moveLock = walljumpMoveLock;
+
+                    jumpBufferTimeRemaining = 0f;
+                }
+                else if (wallCastRight.IsColliding())
                 {
                     velocity.Y = jumpVelocity;
                     velocity.X = -walljumpVelocity;
                     moveLock = walljumpMoveLock;
+
+                    jumpBufferTimeRemaining = 0f;
                 }
             }
 
-			if (coyoteTimeRemaining > 0f)
-			{
+            if (coyoteTimeRemaining > 0f)
+            {
                 velocity.Y = jumpVelocity;
+
+                jumpBufferTimeRemaining = 0f;
             }
-		}
+        }
+
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
