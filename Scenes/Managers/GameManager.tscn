@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cas2vmmt4ladm"]
 
 [ext_resource type="Script" uid="uid://chpbx16hmoo5a" path="res://Scripts/Managers/GameManager.cs" id="1_7cxpe"]
-[ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Player.tscn" id="2_b7dir"]
-[ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://Scenes/Tile.tscn" id="3_mmuqr"]
+[ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Prefabs/Player.tscn" id="2_b7dir"]
+[ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://Scenes/Prefabs/Tile.tscn" id="3_mmuqr"]
 
 [node name="Game Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_7cxpe")

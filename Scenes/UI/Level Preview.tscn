@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://cv2q226lq4h1r"]
+
+[ext_resource type="FontFile" uid="uid://gujnyrnnpfrh" path="res://Fonts/Fredoka-SemiBold.ttf" id="1_rpuu6"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka-Regular.ttf" id="2_3f0yt"]
+[ext_resource type="Texture2D" uid="uid://64dx5l7x1wsy" path="res://Images/Vector/thumbs up.svg" id="3_k66nv"]
+[ext_resource type="Texture2D" uid="uid://dp8h5j7pvxiph" path="res://Images/Vector/flag.svg" id="4_xjleh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2yn0"]
+bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkryc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpuu6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpuu6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f0yt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Level Preview" type="Panel" unique_id=647445914]
+custom_minimum_size = Vector2(400, 250)
+theme_override_styles/panel = SubResource("StyleBoxFlat_o2yn0")
+
+[node name="Info" type="Panel" parent="." unique_id=1919460031]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nkryc")
+
+[node name="Level Name" type="Label" parent="Info" unique_id=84825280]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -64.0
+offset_right = 137.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.30980393)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_rpuu6")
+theme_override_font_sizes/font_size = 24
+text = "Level Name"
+
+[node name="Creator" type="Label" parent="Info" unique_id=1035352494]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -30.0
+offset_right = 137.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3f0yt")
+theme_override_font_sizes/font_size = 14
+text = "Creator"
+
+[node name="Like Icon" type="TextureRect" parent="Info" unique_id=1479650879]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_k66nv")
+expand_mode = 1
+
+[node name="Like Percentage" type="Label" parent="Info" unique_id=777785062]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -61.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3f0yt")
+theme_override_font_sizes/font_size = 12
+text = "%100"
+vertical_alignment = 1
+
+[node name="Completion Icon" type="TextureRect" parent="Info" unique_id=333097218]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -30.0
+offset_right = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_xjleh")
+expand_mode = 1
+
+[node name="Completion Percentage" type="Label" parent="Info" unique_id=1281144639]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -29.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3f0yt")
+theme_override_font_sizes/font_size = 12
+text = "%100"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=837702454]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rpuu6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rpuu6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3f0yt")

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bhudgrxxl6gqw"]
 
 [ext_resource type="Script" uid="uid://tjfpig7g5xlk" path="res://Scripts/Managers/LevelManager.cs" id="1_wtinm"]
-[ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Player.tscn" id="2_mb033"]
-[ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://Scenes/Tile.tscn" id="3_c8sqs"]
+[ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Prefabs/Player.tscn" id="2_mb033"]
+[ext_resource type="PackedScene" uid="uid://dqbd5tyspf2rv" path="res://Scenes/Prefabs/Tile.tscn" id="3_c8sqs"]
 
 [node name="Level Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_wtinm")

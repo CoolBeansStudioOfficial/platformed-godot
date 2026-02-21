@@ -1,0 +1,34 @@
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_208_2560)">
+<path d="M7.95876 3H11.9175V20.0718L7.95876 18.175V3Z" fill="#00AAFF"/>
+<path d="M7.95876 3H11.9175V20.0718L7.95876 18.175V3Z" fill="url(#paint0_radial_208_2560)"/>
+<path d="M4 10.5875H7.95876V18.175H4V10.5875Z" fill="#00AAFF"/>
+<path d="M4 10.5875H7.95876V18.175H4V10.5875Z" fill="url(#paint1_radial_208_2560)"/>
+<path d="M11.9175 8.69061H21.8144V20.0718H11.9175V8.69061Z" fill="#00AAFF"/>
+<path d="M11.9175 8.69061H21.8144V20.0718H11.9175V8.69061Z" fill="url(#paint2_radial_208_2560)"/>
+</g>
+<defs>
+<filter id="filter0_d_208_2560" x="0" y="0" width="25.8145" height="25.0718" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_208_2560"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_208_2560" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_208_2560" cx="0" cy="0" r="1" gradientTransform="matrix(8.90722 11.3812 -11.8763 8.53591 9.93814 8.69061)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00C4FF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+<radialGradient id="paint1_radial_208_2560" cx="0" cy="0" r="1" gradientTransform="matrix(8.90722 11.3812 -11.8763 8.53591 9.93814 8.69061)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00C4FF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+<radialGradient id="paint2_radial_208_2560" cx="0" cy="0" r="1" gradientTransform="matrix(8.90722 11.3812 -11.8763 8.53591 9.93814 8.69061)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00C4FF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
