@@ -20,6 +20,7 @@ public partial class PlayerMovement : CharacterBody2D
 
 	float coyoteTimeRemaining = 0f;
 	public float moveLock = 0f;
+	public bool bouncedSidewaysBySpring = false;
 
 	public override void _Process(double delta)
 	{
@@ -37,6 +38,8 @@ public partial class PlayerMovement : CharacterBody2D
 		else
 		{
 			coyoteTimeRemaining = coyoteTime;
+
+			if (moveLock <= 0f) bouncedSidewaysBySpring = false;
 		}
 
 		// Handle Jump.
@@ -113,7 +116,11 @@ public partial class PlayerMovement : CharacterBody2D
             }
 
             //speed cap
-            velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
+			if (!bouncedSidewaysBySpring)
+			{
+                velocity.X = Mathf.Clamp(velocity.X, -maxSpeed, maxSpeed);
+            }
+            
         }
 		else
 		{

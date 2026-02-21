@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="8_exmik"]
 [ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="9_j45r5"]
 [ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="10_qw5uh"]
+[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="12_vgq2o"]
+[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="13_xj7yb"]
+[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="14_60jhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvq4k"]
 size = Vector2(16, 16)
@@ -42,6 +45,12 @@ size = Vector2(16, 16)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xg5ov"]
 points = PackedVector2Array(-8, 8, 8, 8, 8, 0, -8, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgq2o"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj7yb"]
+size = Vector2(16, 16)
+
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_61x38"]
 points = PackedVector2Array(-8, 8, 8, 8, 8, 0, -8, 0)
 
@@ -55,8 +64,8 @@ bouncePadHeight = 525.0
 staticBodyShape = NodePath("StaticBody2D/CollisionShape2D")
 areaShape = NodePath("Area2D/CollisionShape2D")
 area = NodePath("Area2D")
-hitboxShapes = Array[Shape2D]([null, SubResource("RectangleShape2D_dvq4k"), SubResource("ConvexPolygonShape2D_rjt4h"), SubResource("ConvexPolygonShape2D_u3p4p"), SubResource("RectangleShape2D_7dl2d"), null, SubResource("RectangleShape2D_y2ogq"), SubResource("RectangleShape2D_neton"), SubResource("RectangleShape2D_vtaw6"), SubResource("RectangleShape2D_rjt4h"), SubResource("RectangleShape2D_afp4t"), SubResource("ConvexPolygonShape2D_xg5ov"), null])
-textures = Array[Texture2D]([null, ExtResource("1_je3b2"), ExtResource("3_x2otp"), ExtResource("4_iryga"), ExtResource("4_dk0q1"), null, ExtResource("5_iryga"), ExtResource("6_kqnxd"), ExtResource("7_fvkts"), ExtResource("8_exmik"), ExtResource("9_j45r5"), ExtResource("10_qw5uh"), null])
+hitboxShapes = Array[Shape2D]([null, SubResource("RectangleShape2D_dvq4k"), SubResource("ConvexPolygonShape2D_rjt4h"), SubResource("ConvexPolygonShape2D_u3p4p"), SubResource("RectangleShape2D_7dl2d"), null, SubResource("RectangleShape2D_y2ogq"), SubResource("RectangleShape2D_neton"), SubResource("RectangleShape2D_vtaw6"), SubResource("RectangleShape2D_rjt4h"), SubResource("RectangleShape2D_afp4t"), SubResource("ConvexPolygonShape2D_xg5ov"), SubResource("RectangleShape2D_vgq2o"), SubResource("RectangleShape2D_xj7yb"), SubResource("ConvexPolygonShape2D_xg5ov")])
+textures = Array[Texture2D]([null, ExtResource("1_je3b2"), ExtResource("3_x2otp"), ExtResource("4_iryga"), ExtResource("4_dk0q1"), null, ExtResource("5_iryga"), ExtResource("6_kqnxd"), ExtResource("7_fvkts"), ExtResource("8_exmik"), ExtResource("9_j45r5"), ExtResource("10_qw5uh"), ExtResource("12_vgq2o"), ExtResource("13_xj7yb"), ExtResource("14_60jhg")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
 

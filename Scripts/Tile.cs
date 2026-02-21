@@ -27,7 +27,10 @@ public enum TileId
     BouncePad,
     Coin,
     DissipationBlock,
-    Enemy
+    Enemy,
+    ToggleBlockBlue,
+    ToggleBlockRed,
+    TriggerOne,
 
 }
 
@@ -82,12 +85,14 @@ public partial class Tile : Sprite2D
                 else if (info.rotation == TileRotation.Left)
                 {
                     player.moveLock = 0.25f;
+                    player.bouncedSidewaysBySpring = true;
                     player.Velocity = new(-bouncePadHeight, player.Velocity.Y);
                 }
                 else if (info.rotation == TileRotation.Down) player.Velocity = new(player.Velocity.X, bouncePadHeight);
                 else
                 {
                     player.moveLock = 0.25f;
+                    player.bouncedSidewaysBySpring = true;
                     player.Velocity = new(bouncePadHeight, player.Velocity.Y);
                 }
 
