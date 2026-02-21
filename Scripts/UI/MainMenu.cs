@@ -21,11 +21,4 @@ public partial class MainMenu : Control
 			levelsContainer.AddChild(preview);
 		}
 	}
-
-	async void OnButtonPressed()
-	{
-        //levelIdInput.Editable = false;
-        //playButton.Disabled = true;
-        //Visible = false;
-    }
 }

@@ -23,6 +23,9 @@ public partial class PlayerMovement : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
+		//return if game is paused
+		if (UIManager.Instance.pauseMenu.Visible) return; 
+
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.
