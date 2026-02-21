@@ -7,6 +7,18 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
 bg_color = Color(0, 0, 0, 0.5019608)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2glbi"]
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 28
+shadow_offset = Vector2(0, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3kos"]
+
 [node name="Pause Menu" type="Control" unique_id=1982985672 node_paths=PackedStringArray("continueButton", "quitButton")]
 layout_mode = 3
 anchors_preset = 15
@@ -15,8 +27,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2glbi")
-continueButton = NodePath("VBoxContainer/Continue")
-quitButton = NodePath("VBoxContainer/Quit Level")
+continueButton = NodePath("Options/VBoxContainer/Continue")
+quitButton = NodePath("Options/VBoxContainer/Quit Level")
 
 [node name="Panel" type="Panel" parent="." unique_id=787302695]
 layout_mode = 1
@@ -27,50 +39,61 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dg67f")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1814437099]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -423.0
-offset_right = 423.0
-offset_bottom = 130.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("1_ory21")
-theme_override_fonts/bold_font = ExtResource("2_2glbi")
-bbcode_enabled = true
-text = "[b][font_size=100][rainbow speed=2 freq=0.1]Paused"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1233433045]
+[node name="Options" type="Panel" parent="." unique_id=1001000819]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -249.0
-offset_right = 180.0
-offset_bottom = 249.0
+offset_left = -354.0
+offset_top = -213.0
+offset_right = 354.0
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_styles/panel = SubResource("StyleBoxFlat_2glbi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options" unique_id=1233433045]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Continue" type="Button" parent="VBoxContainer" unique_id=1977310617]
-custom_minimum_size = Vector2(0, 100)
+[node name="Continue" type="Button" parent="Options/VBoxContainer" unique_id=1977310617]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ory21")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j3kos")
 text = "Continue"
 
-[node name="Quit Level" type="Button" parent="VBoxContainer" unique_id=169130998]
-custom_minimum_size = Vector2(0, 100)
+[node name="Quit Level" type="Button" parent="Options/VBoxContainer" unique_id=169130998]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_ory21")
 theme_override_font_sizes/font_size = 40
-text = "Quit Level"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j3kos")
+text = "Exit Level"
+
+[node name="Label" type="Label" parent="Options" unique_id=434842857]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = 40.0
+offset_right = 157.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+theme_override_fonts/font = ExtResource("2_2glbi")
+theme_override_font_sizes/font_size = 60
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
