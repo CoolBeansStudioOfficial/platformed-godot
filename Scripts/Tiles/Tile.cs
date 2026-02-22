@@ -57,12 +57,14 @@ public abstract partial class Tile : Sprite2D
         info = newInfo;
 
         //set rotation from info
-        if (info.rotation == TileRotation.Up) RotationDegrees = 0;
-        else if (info.rotation == TileRotation.Left) RotationDegrees = -90;
-        else if (info.rotation == TileRotation.Down) RotationDegrees = 180;
-        else RotationDegrees = 90;
-
         if (usesAdjacency) SetFacingTexture();
+        else
+        {
+            if (info.rotation == TileRotation.Up) RotationDegrees = 0;
+            else if (info.rotation == TileRotation.Left) RotationDegrees = -90;
+            else if (info.rotation == TileRotation.Down) RotationDegrees = 180;
+            else RotationDegrees = 90;
+        }
 
         //subscribe to onbodyentered if applicable
         if (collisionObject is Area2D area) area.BodyEntered += OnBodyEntered;

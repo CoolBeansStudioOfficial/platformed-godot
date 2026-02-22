@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="1_k5o75"]
 [ext_resource type="Script" uid="uid://e65eqheugpyj" path="res://Scripts/Tiles/Coin.cs" id="2_k5o75"]
+[ext_resource type="AudioStream" uid="uid://crf5amk1gs6bs" path="res://Audio/Randomizers/Coin.tres" id="3_rcbvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73p2"]
 size = Vector2(10, 12)
@@ -12,6 +13,7 @@ texture = ExtResource("1_k5o75")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("2_k5o75")
+coinSound = ExtResource("3_rcbvg")
 collisionObject = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=275231629]

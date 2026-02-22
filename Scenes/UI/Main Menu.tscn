@@ -21,6 +21,30 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2yn0"]
+bg_color = Color(0.025834013, 0.040672574, 0.015699763, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2698581, 0.38857287, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrx0y"]
+bg_color = Color(0.08609058, 0.11546916, 0.059649874, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5238313, 0.735357, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eotax"]
 bg_color = Color(0.09803922, 0.14509805, 0.17254902, 1)
 border_width_left = 3
@@ -33,6 +57,30 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1x40"]
+bg_color = Color(0.015699763, 0.029877853, 0.040672574, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.24842346, 0.38857287, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkryc"]
+bg_color = Color(0.059649874, 0.094904155, 0.11546916, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.48563913, 0.735357, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udm2q"]
 bg_color = Color(0.17254902, 0.09803922, 0.15294118, 1)
 border_width_left = 3
@@ -40,6 +88,30 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 0, 0.33333334, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr8ud"]
+bg_color = Color(0.040672574, 0.015699763, 0.03276602, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.38857287, 0, 0.108274065, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1y0k"]
+bg_color = Color(0.11546916, 0.059649874, 0.100779854, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.735357, 0, 0.2359213, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -159,7 +231,7 @@ text = "Play"
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 70.0
+offset_bottom = 59.0
 grow_horizontal = 2
 
 [node name="Title" type="Label" parent="Top Bar" unique_id=1257986036]
@@ -179,9 +251,9 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 258.0
-offset_top = 12.0
-offset_right = 995.0
-offset_bottom = -12.0
+offset_top = 9.0
+offset_right = 864.0
+offset_bottom = -9.0
 grow_vertical = 2
 theme_override_constants/separation = 15
 
@@ -189,6 +261,8 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur25d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o2yn0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrx0y")
 alignment = 0
 expand_icon = true
 
@@ -209,6 +283,8 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_eotax")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n1x40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nkryc")
 alignment = 0
 expand_icon = true
 
@@ -229,6 +305,8 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_udm2q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fr8ud")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h1y0k")
 alignment = 0
 expand_icon = true
 
@@ -250,7 +328,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 70.0
+offset_top = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ko0jy")
@@ -259,20 +337,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ko0jy")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 88.0
+offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0kyo8")
 
 [node name="Search Box" type="Panel" parent="Main Content/Info Bar" unique_id=1879435141]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 561.0
-offset_top = -32.0
-offset_right = -561.0
-offset_bottom = 32.0
+anchor_bottom = 1.0
+offset_left = 479.0
+offset_top = 7.0
+offset_right = -479.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 

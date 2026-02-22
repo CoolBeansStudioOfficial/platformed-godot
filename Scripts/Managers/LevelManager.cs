@@ -7,10 +7,13 @@ public partial class LevelManager : Node
     [Export] PackedScene playerScene;
     [Export] PackedScene[] tileScenes;
 
+    [Export] AudioStream deathSound;
+
     Level currentLevel;
     List<Tile> tiles = [];
 
     PlayerMovement player;
+    bool isPlayerSpawned = false;
     public Vector2 spawnPoint;
 
     //singleton pringleton
@@ -22,11 +25,10 @@ public partial class LevelManager : Node
 
     public override void _Process(double delta)
     {
-        if (currentLevel != null && player != null)
-        {
-            //kill player if they fall off the map
-            if (player.Position.Y > currentLevel.Height * 16) KillPlayer();
-        }
+        if (currentLevel == null || !isPlayerSpawned) return;
+
+        //kill player if they fall off the map
+        if (player.Position.Y > currentLevel.Height * 16) KillPlayer();
     }
 
 
@@ -34,6 +36,7 @@ public partial class LevelManager : Node
     public void KillPlayer()
     {
         //play death sound effect
+        AudioManager.Instance.PlayStream(deathSound);
 
         player.Velocity = Vector2.Zero;
         player.Position = spawnPoint;
@@ -47,11 +50,18 @@ public partial class LevelManager : Node
         foreach (Tile tile in tiles) tile.QueueFree();
         tiles.Clear();
 
+        //destroy player
+        if (isPlayerSpawned) player.QueueFree();
+        isPlayerSpawned= false;
+
         GD.Print("level destroyed");
+
     }
 
     public void GenerateLevel(Level level)
     {
+        if (level == null) return;
+
         //set current level
         currentLevel = level;
 
@@ -59,6 +69,7 @@ public partial class LevelManager : Node
         DestroyLevel();
 
         //set player spawn point
+        if (level is null) GD.Print("wtf");
         spawnPoint = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
 
         //get tilemap from compressed level data
@@ -95,7 +106,6 @@ public partial class LevelManager : Node
 
     void SpawnPlayer()
     {
-        player?.Free();
         player = playerScene.Instantiate() as PlayerMovement;
         player.Position = spawnPoint;
         AddChild(player);
@@ -109,6 +119,8 @@ public partial class LevelManager : Node
         {
             player.walljumpMoveLock = 0.05f;
         }
+
+        isPlayerSpawned = true;
     }
 
     void SpawnBlock(TileInfo info, TileRotation rotation)

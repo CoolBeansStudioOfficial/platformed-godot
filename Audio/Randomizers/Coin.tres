@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamRandomizer" format=3 uid="uid://crf5amk1gs6bs"]
 
-[ext_resource type="AudioStream" uid="uid://bn7lpteu6vkje" path="res://Audio/Raw Files/jump.wav" id="1_my1gc"]
+[ext_resource type="AudioStream" uid="uid://c6jvup44ywsve" path="res://Audio/Raw Files/coin.wav" id="1_my1gc"]
 
 [resource]
 random_pitch = 1.122462

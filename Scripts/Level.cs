@@ -52,6 +52,9 @@ public class Level
 
     [JsonPropertyName("level_style")]
     public string LevelStyle { get; set; }
+
+    [JsonPropertyName("owned")]
+    public bool Owned { get; set; }
 }
 
 public class Data
@@ -70,6 +73,9 @@ public class Data
 
     [JsonPropertyName("layers")]
     public List<Layer> Layers { get; set; }
+
+    [JsonPropertyName("triggers")]
+    public List<TriggerParams> Triggers { get; set; }
 
     [JsonPropertyName("wallJump")]
     public string WallJump { get; set; }
@@ -112,4 +118,28 @@ public class Spawn
 
     [JsonPropertyName("y")]
     public int Y { get; set; }
+}
+
+public class TriggerParams
+{
+    [JsonPropertyName("x")]
+    public int X { get; set; }
+
+    [JsonPropertyName("y")]
+    public int Y { get; set; }
+
+    [JsonPropertyName("execute")]
+    public List<Execute> Execute { get; set; }
+}
+
+public class Execute
+{
+    [JsonPropertyName("type")]
+    public string Type { get; set; }
+
+    [JsonPropertyName("x")]
+    public int? X { get; set; }
+
+    [JsonPropertyName("y")]
+    public int? Y { get; set; }
 }
