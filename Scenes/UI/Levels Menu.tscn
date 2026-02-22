@@ -3,19 +3,14 @@
 [ext_resource type="Script" uid="uid://csayj7hje60ul" path="res://Scripts/UI/LevelsMenu.cs" id="1_u0pm4"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_eotax"]
 [ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Elements/Level Preview.tscn" id="2_o2yn0"]
+[ext_resource type="Texture2D" uid="uid://0ig0aixq8bto" path="res://Images/Vector/bluebanner.svg" id="3_j1ss6"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="3_udm2q"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
 [ext_resource type="Script" uid="uid://d4vgewlv3nlb" path="res://Scripts/UI/Elements/LevelsList.cs" id="5_0kyo8"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="7_nrx0y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kyo8"]
-bg_color = Color(0, 0.6666667, 1, 1)
-border_width_left = 100
-border_width_top = 100
-border_width_right = 100
-border_width_bottom = 100
-border_color = Color(0, 0.4, 1, 1)
-border_blend = true
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ytik"]
+texture = ExtResource("3_j1ss6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1x40"]
 
@@ -102,9 +97,9 @@ levelsList = NodePath("VBoxContainer/Levels List")
 levelView = NodePath("VBoxContainer/Level View")
 searchBox = NodePath("VBoxContainer/Search Bar/Search Box/LineEdit")
 backButton = NodePath("VBoxContainer/Level View/Back")
-playButton = NodePath("VBoxContainer/Level View/Panel/HBoxContainer/Play")
-levelName = NodePath("VBoxContainer/Level View/Panel/Level Name")
-levelCreator = NodePath("VBoxContainer/Level View/Panel/Level Creator")
+playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
+levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
+levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=388710297]
 layout_mode = 1
@@ -143,7 +138,7 @@ theme_override_constants/separation = 25
 [node name="Search Bar" type="Panel" parent="VBoxContainer" unique_id=565823182]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0kyo8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6ytik")
 
 [node name="Search Box" type="Panel" parent="VBoxContainer/Search Bar" unique_id=1879435141]
 layout_mode = 1
@@ -217,7 +212,7 @@ icon = ExtResource("7_nrx0y")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Panel" type="Panel" parent="VBoxContainer/Level View" unique_id=2009143670]
+[node name="Level Image" type="Panel" parent="VBoxContainer/Level View" unique_id=2009143670]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -229,7 +224,7 @@ offset_bottom = 80.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qh20v")
 
-[node name="Level Name" type="Label" parent="VBoxContainer/Level View/Panel" unique_id=1642413006]
+[node name="Level Name" type="Label" parent="VBoxContainer/Level View/Level Image" unique_id=1642413006]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -248,7 +243,7 @@ text = "Level name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level Creator" type="Label" parent="VBoxContainer/Level View/Panel" unique_id=117515245]
+[node name="Level Creator" type="Label" parent="VBoxContainer/Level View/Level Image" unique_id=117515245]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -267,7 +262,7 @@ text = "Creator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Panel" unique_id=1930980704]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1930980704]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -279,7 +274,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="Play" type="Button" parent="VBoxContainer/Level View/Panel/HBoxContainer" unique_id=1463225008]
+[node name="Play" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer" unique_id=1463225008]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -291,7 +286,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6ytik")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wb41a")
 text = "Play"
 
-[node name="Remix" type="Button" parent="VBoxContainer/Level View/Panel/HBoxContainer" unique_id=1225201191]
+[node name="Remix" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer" unique_id=1225201191]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -301,3 +296,29 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l0v1i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
 text = "Remix"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1146.0
+offset_top = 270.0
+offset_right = -192.0
+offset_bottom = -251.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Description Label" type="Label" parent="VBoxContainer/Level View/VBoxContainer" unique_id=81762521]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 24
+text = "Description"
+
+[node name="Description Text" type="Label" parent="VBoxContainer/Level View/VBoxContainer" unique_id=1477074046]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 20
+text = "This is the description of the level written by its creator."
+autowrap_mode = 3

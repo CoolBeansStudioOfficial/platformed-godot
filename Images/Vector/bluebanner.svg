@@ -1,0 +1,10 @@
+<svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="76" height="76" fill="#00AAFF"/>
+<rect width="76" height="76" fill="url(#paint0_radial_318_4924)"/>
+<defs>
+<radialGradient id="paint0_radial_318_4924" cx="0" cy="0" r="1" gradientTransform="matrix(25.0852 448.988 -25.921 434.512 25.3333 25.3334)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00C4FF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
