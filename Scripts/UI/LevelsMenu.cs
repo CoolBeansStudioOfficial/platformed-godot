@@ -13,7 +13,7 @@ public partial class LevelsMenu : Control
     [Export] Button playButton;
     [Export] Label levelName;
     [Export] Label levelCreator;
-    [Export] Label levelDescription;
+    [Export] RichTextLabel levelDescription;
 
     [Export] Label ratingCount;
     [Export] Label ratingPercentagePositive;
