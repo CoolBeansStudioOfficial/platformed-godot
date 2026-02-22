@@ -8,6 +8,10 @@
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
 [ext_resource type="Script" uid="uid://d4vgewlv3nlb" path="res://Scripts/UI/Elements/LevelsList.cs" id="5_0kyo8"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="7_nrx0y"]
+[ext_resource type="Texture2D" uid="uid://bswijcxctt03b" path="res://Images/Vector/dislike.svg" id="9_wb41a"]
+[ext_resource type="Texture2D" uid="uid://cgv1ujj0w020h" path="res://Images/Vector/like.svg" id="10_l0v1i"]
+[ext_resource type="Texture2D" uid="uid://b0jq6bxbm5kk2" path="res://Images/Vector/DNF.svg" id="11_ghl26"]
+[ext_resource type="Texture2D" uid="uid://c3rg6s8sfvyxu" path="res://Images/Vector/flaglightgreen.svg" id="12_ki7ki"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ytik"]
 texture = ExtResource("3_j1ss6")
@@ -84,7 +88,30 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "searchBox", "backButton", "playButton", "levelName", "levelCreator")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghl26"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n1uh"]
+bg_color = Color(0.7764706, 0.12156863, 0.27450982, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krmfw"]
+bg_color = Color(0, 1, 0.43529412, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sich"]
+bg_color = Color(0.27450982, 0.40784314, 0.45882353, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "searchBox", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +127,15 @@ backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
 levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
+levelDescription = NodePath("VBoxContainer/Level View/Details/Description Text")
+ratingCount = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer/Rating Text")
+ratingPercentagePositive = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Dislike Percentage")
+ratingPercentageNegative = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage")
+ratingBar = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage Bar")
+playCount = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer/Plays Text")
+playDNFPercentage = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2/DNF Percentage")
+playFinishPercentage = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2/Finish Percentage")
+playBar = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2/Finish Percentage Bar")
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=388710297]
 layout_mode = 1
@@ -136,6 +172,7 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 
 [node name="Search Bar" type="Panel" parent="VBoxContainer" unique_id=565823182]
+visible = false
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6ytik")
@@ -178,6 +215,7 @@ theme_override_fonts/font = ExtResource("2_eotax")
 placeholder_text = "Search name, ID, creator..."
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_0kyo8")
@@ -193,7 +231,6 @@ alignment = 1
 last_wrap_alignment = 1
 
 [node name="Level View" type="Panel" parent="VBoxContainer" unique_id=2005307311]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n1x40")
@@ -297,28 +334,193 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
 text = "Remix"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]
+[node name="Details" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1146.0
-offset_top = 270.0
-offset_right = -192.0
-offset_bottom = -251.0
+anchor_bottom = 0.5
+offset_left = -1140.0
+offset_top = -270.0
+offset_right = -181.0
+offset_bottom = 289.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Description Label" type="Label" parent="VBoxContainer/Level View/VBoxContainer" unique_id=81762521]
+[node name="Description Label" type="Label" parent="VBoxContainer/Level View/Details" unique_id=81762521]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 24
 text = "Description"
 
-[node name="Description Text" type="Label" parent="VBoxContainer/Level View/VBoxContainer" unique_id=1477074046]
+[node name="Description Text" type="Label" parent="VBoxContainer/Level View/Details" unique_id=1477074046]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_eotax")
 theme_override_font_sizes/font_size = 20
 text = "This is the description of the level written by its creator."
 autowrap_mode = 3
+
+[node name="Rating" type="Panel" parent="VBoxContainer/Level View/Details" unique_id=1396048154]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ghl26")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Details/Rating" unique_id=1847319231]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+
+[node name="Rating Label" type="Label" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer" unique_id=1150628463]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 24
+text = "Rating"
+
+[node name="Rating Text" type="Label" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer" unique_id=674732981]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 20
+text = "67 ratings"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Level View/Details/Rating" unique_id=1285048604]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Dislike Percentage" type="Label" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer2" unique_id=779663601]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 24
+text = "7%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dislike Icon" type="TextureRect" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer2" unique_id=100910771]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("9_wb41a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Like Percentage Bar" type="ProgressBar" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer2" unique_id=646272196]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 9.53
+theme_override_styles/background = SubResource("StyleBoxFlat_1n1uh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_krmfw")
+fill_mode = 1
+show_percentage = false
+
+[node name="Like Icon" type="TextureRect" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer2" unique_id=999395017]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("10_l0v1i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Like Percentage" type="Label" parent="VBoxContainer/Level View/Details/Rating/HBoxContainer2" unique_id=322153954]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 24
+text = "7%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play Statistics" type="Panel" parent="VBoxContainer/Level View/Details" unique_id=1116919767]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ghl26")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Details/Play Statistics" unique_id=667362428]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+
+[node name="Plays Label" type="Label" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer" unique_id=1083735668]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 24
+text = "Play Statistics"
+
+[node name="Plays Text" type="Label" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer" unique_id=1791313245]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 20
+text = "67 plays"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Level View/Details/Play Statistics" unique_id=1896745806]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="DNF Percentage" type="Label" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2" unique_id=1200986844]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 24
+text = "7%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DNF Icon" type="TextureRect" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2" unique_id=1378466600]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("11_ghl26")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Finish Percentage Bar" type="ProgressBar" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2" unique_id=1426925318]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 9.53
+theme_override_styles/background = SubResource("StyleBoxFlat_8sich")
+theme_override_styles/fill = SubResource("StyleBoxFlat_krmfw")
+fill_mode = 1
+show_percentage = false
+
+[node name="Finish Icon" type="TextureRect" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2" unique_id=75693182]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("12_ki7ki")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Finish Percentage" type="Label" parent="VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2" unique_id=1097550233]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 24
+text = "7%"
+horizontal_alignment = 1
+vertical_alignment = 1

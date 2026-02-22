@@ -13,6 +13,17 @@ public partial class LevelsMenu : Control
     [Export] Button playButton;
     [Export] Label levelName;
     [Export] Label levelCreator;
+    [Export] Label levelDescription;
+
+    [Export] Label ratingCount;
+    [Export] Label ratingPercentagePositive;
+    [Export] Label ratingPercentageNegative;
+    [Export] ProgressBar ratingBar;
+    [Export] Label playCount;
+    [Export] Label playDNFPercentage;
+    [Export] Label playFinishPercentage;
+    [Export] ProgressBar playBar;
+
 
     Level selectedLevel;
 
@@ -37,6 +48,29 @@ public partial class LevelsMenu : Control
 
         levelName.Text = level.Name;
         levelCreator.Text = level.Owner.ToString();
+        levelDescription.Text = level.Description;
+
+        ratingCount.Text = $"{level.Approvals + level.Disapprovals} ratings";
+        ratingPercentageNegative.Text = $"{100 - level.ApprovalPercentage}%";
+        ratingPercentagePositive.Text = $"{level.ApprovalPercentage}%";
+        ratingBar.Value = level.ApprovalPercentage;
+
+        playCount.Text = $"{level.TotalPlays.ToString()} plays";
+        if (level.FinishedPlays == 0)
+        {
+            playDNFPercentage.Text = "100%";
+            playFinishPercentage.Text = "0%";
+        }
+        else
+        {
+            //subtract finished plays from total plays
+            playDNFPercentage.Text = $"{100 - Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100)}%";
+
+            playFinishPercentage.Text = $"{Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100).ToString()}%";
+            playBar.Value = Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100);
+        }
+
+        
 
         ShowLevelsList(false);
     }
