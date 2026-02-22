@@ -67,7 +67,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = -64.0
-offset_right = 137.0
+offset_right = 330.0
 offset_bottom = -34.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -78,6 +78,7 @@ theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = ExtResource("1_rpuu6")
 theme_override_font_sizes/font_size = 24
 text = "Level Name"
+text_overrun_behavior = 3
 
 [node name="Creator" type="Label" parent="Info" unique_id=1035352494]
 layout_mode = 1
