@@ -31,6 +31,6 @@ public partial class LevelPreview : Panel
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	void OnPlayButtonPressed()
     {
-        GameManager.Instance.PlayLevel(level);
+        UIManager.Instance.levelsMenu.ViewLevel(level);
     }
 }

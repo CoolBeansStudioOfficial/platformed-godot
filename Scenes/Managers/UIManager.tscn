@@ -42,14 +42,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_klcet")
 
 [node name="Levels Menu" parent="UI/Window/Layout/Content" unique_id=555989692 instance=ExtResource("2_vhtc3")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1920.0
-offset_bottom = 1020.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 size_flags_vertical = 3
 
 [node name="Pause Menu" parent="UI/Window/Layout/Content" unique_id=1982985672 instance=ExtResource("3_p08o3")]

@@ -3,7 +3,7 @@ using System;
 
 public partial class UIManager : Node
 {
-	[Export] public Control levelsMenu;
+	[Export] public LevelsMenu levelsMenu;
     [Export] public Control pauseMenu;
 
     //singleton pringleton

@@ -40,7 +40,56 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("list", "searchBox")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh20v"]
+bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ss6"]
+bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ytik"]
+bg_color = Color(0.28799507, 0.22204241, 0.12970868, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb41a"]
+bg_color = Color(0.5561477, 0.43863347, 0.27411345, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0v1i"]
+bg_color = Color(0.23921569, 0.3529412, 0.8117647, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghl26"]
+bg_color = Color(0.06870247, 0.11651814, 0.30942968, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki7ki"]
+bg_color = Color(0.16541272, 0.2506106, 0.59433985, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "searchBox", "backButton", "playButton", "levelName", "levelCreator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,8 +97,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0pm4")
-list = NodePath("VBoxContainer/Levels List")
+searchBar = NodePath("VBoxContainer/Search Bar")
+levelsList = NodePath("VBoxContainer/Levels List")
+levelView = NodePath("VBoxContainer/Level View")
 searchBox = NodePath("VBoxContainer/Search Bar/Search Box/LineEdit")
+backButton = NodePath("VBoxContainer/Level View/Back")
+playButton = NodePath("VBoxContainer/Level View/Panel/HBoxContainer/Play")
+levelName = NodePath("VBoxContainer/Level View/Panel/Level Name")
+levelCreator = NodePath("VBoxContainer/Level View/Panel/Level Creator")
 
 [node name="Background Color" type="ColorRect" parent="." unique_id=388710297]
 layout_mode = 1
@@ -86,6 +141,7 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 
 [node name="Search Bar" type="Panel" parent="VBoxContainer" unique_id=565823182]
+visible = false
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0kyo8")
@@ -128,6 +184,7 @@ theme_override_fonts/font = ExtResource("2_eotax")
 placeholder_text = "Search name, ID, creator..."
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_0kyo8")
@@ -142,12 +199,12 @@ theme_override_constants/v_separation = 30
 alignment = 1
 last_wrap_alignment = 1
 
-[node name="Level Page" type="Panel" parent="VBoxContainer" unique_id=2005307311]
-visible = false
+[node name="Level View" type="Panel" parent="VBoxContainer" unique_id=2005307311]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n1x40")
 
-[node name="Button" type="Button" parent="VBoxContainer/Level Page" unique_id=1211657031]
+[node name="Back" type="Button" parent="VBoxContainer/Level View" unique_id=1211657031]
 layout_mode = 1
 offset_left = 50.0
 offset_top = 25.0
@@ -160,3 +217,88 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fn5vy")
 icon = ExtResource("7_nrx0y")
 icon_alignment = 1
 expand_icon = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Level View" unique_id=2009143670]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 290.0
+offset_top = -270.0
+offset_right = 640.0
+offset_bottom = 80.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qh20v")
+
+[node name="Level Name" type="Label" parent="VBoxContainer/Level View/Panel" unique_id=1642413006]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.5
+offset_top = 20.0
+offset_right = 123.5
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 48
+text = "Level name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level Creator" type="Label" parent="VBoxContainer/Level View/Panel" unique_id=117515245]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.5
+offset_top = 70.0
+offset_right = 123.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_font_sizes/font_size = 24
+text = "Creator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Panel" unique_id=1930980704]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 159.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="VBoxContainer/Level View/Panel/HBoxContainer" unique_id=1463225008]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_j1ss6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ytik")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wb41a")
+text = "Play"
+
+[node name="Remix" type="Button" parent="VBoxContainer/Level View/Panel/HBoxContainer" unique_id=1225201191]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_l0v1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
+text = "Remix"
