@@ -22,6 +22,7 @@ public partial class PlayerMovement : CharacterBody2D
 
     float coyoteTimeRemaining = 0f;
     float jumpBufferTimeRemaining = 0f;
+    bool usedJump = true;
     public float moveLock = 0f;
 	public bool bouncedSidewaysBySpring = false;
 
@@ -41,6 +42,7 @@ public partial class PlayerMovement : CharacterBody2D
 		else
 		{
 			coyoteTimeRemaining = coyoteTime;
+            usedJump = false;
 
 			if (moveLock <= 0f) bouncedSidewaysBySpring = false;
 		}
@@ -107,12 +109,13 @@ public partial class PlayerMovement : CharacterBody2D
                 }
             }
 
-            if (coyoteTimeRemaining > 0f && !didJump)
+            if (coyoteTimeRemaining > 0f && !didJump && !usedJump)
             {
                 velocity.Y = jumpVelocity;
 
                 jumpBufferTimeRemaining = 0f;
                 didJump = true;
+                usedJump = true;
                 AudioManager.Instance.PlayStream(jumpSound);
             }
         }
