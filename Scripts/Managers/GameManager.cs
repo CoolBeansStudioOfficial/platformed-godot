@@ -42,6 +42,13 @@ public partial class GameManager : Node
         UIManager.Instance.levelsMenu.Visible = false;
     }
 
+    public void ReturnToLevelView(bool explore = false)
+    {
+        if (explore) UIManager.Instance.levelsMenu.ViewExplore();
+        UIManager.Instance.levelsMenu.Visible = true;
+        LevelManager.Instance.DestroyLevel();
+    }
+
 
 
     async Task<Level> GetLevelFromAPI(int id)

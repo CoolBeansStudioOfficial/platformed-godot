@@ -26,9 +26,9 @@ public partial class LevelsMenu : Control
 
 	public async void ViewExplore()
 	{
-		levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
-
         ShowLevelsList(true);
+
+		levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
     }
 
     public void ViewLevel(Level level)

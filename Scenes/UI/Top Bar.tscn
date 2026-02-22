@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7ivncp6f38v"]
 
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_4vp1j"]
+[ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
@@ -114,7 +115,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Top Bar" type="Panel" unique_id=1523222259]
+[node name="Top Bar" type="Panel" unique_id=1523222259 node_paths=PackedStringArray("createButton", "exploreButton", "myLevelsButton")]
 custom_minimum_size = Vector2(0, 60)
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,6 +123,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dg67f")
+script = ExtResource("1_swqkx")
+createButton = NodePath("HBoxContainer/Create")
+exploreButton = NodePath("HBoxContainer/Explore")
+myLevelsButton = NodePath("HBoxContainer/My Levels")
 
 [node name="Title" type="Label" parent="." unique_id=420061]
 layout_mode = 1
