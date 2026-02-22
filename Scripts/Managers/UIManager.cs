@@ -3,7 +3,7 @@ using System;
 
 public partial class UIManager : Node
 {
-	[Export] public Control mainMenu;
+	[Export] public Control levelsMenu;
     [Export] public Control pauseMenu;
 
     //singleton pringleton
@@ -19,12 +19,12 @@ public partial class UIManager : Node
 		if (Input.IsActionJustPressed("pause"))
 		{
 			//only show pause menu if in game
-			if (mainMenu.Visible == false)
+			if (levelsMenu.Visible == false)
 			{
 				pauseMenu.Visible = !pauseMenu.Visible;
 			}
 		}
 
-		if (mainMenu.Visible == true) pauseMenu.Visible = false;
+		if (levelsMenu.Visible == true) pauseMenu.Visible = false;
 	}
 }

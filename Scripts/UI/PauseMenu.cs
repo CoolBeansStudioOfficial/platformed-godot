@@ -19,7 +19,7 @@ public partial class PauseMenu : Control
 
     void OnQuitButtonPressed()
     {
-        UIManager.Instance.mainMenu.Visible = true;
+        UIManager.Instance.levelsMenu.Visible = true;
         LevelManager.Instance.DestroyLevel();
 
         Visible = false;

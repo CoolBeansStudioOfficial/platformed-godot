@@ -25,7 +25,7 @@ public partial class GameManager : Node
     {
         LevelManager.Instance.GenerateLevel(level);
 
-        UIManager.Instance.mainMenu.Visible = false;
+        UIManager.Instance.levelsMenu.Visible = false;
     }
 
     //play level from the web using its level id
@@ -39,7 +39,7 @@ public partial class GameManager : Node
 
         LevelManager.Instance.GenerateLevel(level);
 
-        UIManager.Instance.mainMenu.Visible = false;
+        UIManager.Instance.levelsMenu.Visible = false;
     }
 
 

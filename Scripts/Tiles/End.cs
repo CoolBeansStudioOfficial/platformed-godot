@@ -10,7 +10,7 @@ public partial class End : Tile
         if (body is PlayerMovement player)
         {
             AudioManager.Instance.PlayStream(victorySound);
-            UIManager.Instance.mainMenu.Visible = true;
+            UIManager.Instance.levelsMenu.Visible = true;
             LevelManager.Instance.DestroyLevel();
         }
     }
