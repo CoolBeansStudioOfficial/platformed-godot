@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73p2"]
 size = Vector2(16, 16)
 
-[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject")]
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
 texture_filter = 1
 texture = ExtResource("1_6lq0d")
 region_enabled = true
@@ -14,6 +14,7 @@ region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("2_6lq0d")
 bouncePadHeight = 525.0
 collisionObject = NodePath("Area2D")
+collisionShape = NodePath("Area2D/CollisionShape2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=275231629]
 

@@ -16,6 +16,8 @@ public partial class LevelManager : Node
     bool isPlayerSpawned = false;
     public Vector2 spawnPoint;
 
+    public bool redBlocksActive = true;
+
     //singleton pringleton
     public static LevelManager Instance { get; private set; }
     public override void _Ready()
@@ -73,7 +75,7 @@ public partial class LevelManager : Node
 
 
         //get tilemap from compressed level data
-        var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));
+        var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width), level.Data.Triggers);
         //get each tile's rotation from compressed level data
         var rotationMap = DecodeRLE(currentLevel.Data.Layers[1].Data, currentLevel.Width);
 
@@ -103,6 +105,8 @@ public partial class LevelManager : Node
         //spawn player
         SpawnPlayer();
     }
+
+
 
     void SpawnPlayer()
     {
@@ -138,7 +142,7 @@ public partial class LevelManager : Node
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
-    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles)
+    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles, List<TriggerParams> triggers)
     {
         List<List<TileInfo>> tilemap = [];
 
@@ -168,6 +172,21 @@ public partial class LevelManager : Node
                 //check right, skip if this tile is rightmost tile
                 if (x != tiles[y].Count - 1) if (tiles[y][x + 1] == tile) right = true;
 
+                //check for trigger params
+                TriggerParams triggerParams = null;
+                
+                if (triggers is not null)
+                {
+                    foreach (var trigger in triggers)
+                    {
+                        if (trigger.X == x && trigger.Y == y)
+                        {
+                            triggerParams = trigger;
+
+                            break;
+                        }
+                    }
+                }
 
                 //construct tile info
                 TileInfo info = new()
@@ -179,6 +198,8 @@ public partial class LevelManager : Node
                     tileBelow = below,
                     tileLeft = left,
                     tileRight = right,
+
+                    triggerParams = triggerParams
                 };
 
                 currentRow.Add(info);

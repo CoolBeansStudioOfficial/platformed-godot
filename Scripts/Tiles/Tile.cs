@@ -49,8 +49,9 @@ public abstract partial class Tile : Sprite2D
 {
     [Export] bool usesAdjacency;
     [Export] CollisionObject2D collisionObject;
+    [Export] public CollisionShape2D collisionShape;
 
-	public TileInfo info;
+    public TileInfo info;
 
     public abstract void OnBodyEntered(Node2D body);
 
