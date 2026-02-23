@@ -63,11 +63,17 @@ public partial class LevelsMenu : Control
         }
         else
         {
-            //subtract finished plays from total plays
-            playDNFPercentage.Text = $"{100 - Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100)}%";
+            int percentage = 0;
+            if (level.TotalPlays != 0)
+            {
+                percentage = Convert.ToInt32(Mathf.Clamp((float)level.FinishedPlays / (float)level.TotalPlays * 100f, 0f, 100f));
+            }
 
-            playFinishPercentage.Text = $"{Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100).ToString()}%";
-            playBar.Value = Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100);
+            //subtract finished plays from total plays
+            playDNFPercentage.Text = $"{100 - percentage}%";
+
+            playFinishPercentage.Text = $"{percentage}%";
+            playBar.Value = percentage;
         }
 
         

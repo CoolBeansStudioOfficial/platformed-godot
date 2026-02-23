@@ -60,7 +60,7 @@ public partial class LevelManager : Node
 
     public void GenerateLevel(Level level)
     {
-        if (level == null) return;
+        if (level is null) return;
 
         //set current level
         currentLevel = level;

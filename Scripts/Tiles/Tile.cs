@@ -11,6 +11,9 @@ public struct TileInfo
     public bool tileBelow;
     public bool tileLeft;
     public bool tileRight;
+
+    public bool isTrigger;
+    public TriggerParams triggerParams;
 }
 
 public enum TileId
