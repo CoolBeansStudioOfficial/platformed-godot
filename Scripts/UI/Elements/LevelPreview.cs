@@ -24,7 +24,12 @@ public partial class LevelPreview : Panel
         levelName.Text = level.Name;
         creator.Text = level.Owner.ToString();
         likePercentage.Text = $"{level.ApprovalPercentage}%";
-        int percentage = Mathf.Clamp(Convert.ToInt32(((float)level.FinishedPlays / (float)level.TotalPlays) * 100f), 0, 100);
+        int percentage = 0;
+        if (level.TotalPlays != 0)
+        {
+            percentage = Convert.ToInt32(Mathf.Clamp((float)level.FinishedPlays / (float)level.TotalPlays * 100f, 0f, 100f));
+        }
+        
         completionPercentage.Text = $"{percentage}%";
     }
 
