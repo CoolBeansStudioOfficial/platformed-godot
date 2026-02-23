@@ -69,8 +69,8 @@ public partial class LevelManager : Node
         DestroyLevel();
 
         //set player spawn point
-        if (level is null) GD.Print("wtf");
         spawnPoint = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
+
 
         //get tilemap from compressed level data
         var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));
