@@ -129,8 +129,12 @@ public partial class PlayerMovement : CharacterBody2D
 		{
             if (direction != Vector2.Zero)
             {
-				//accelerate in the direction the player pressed
-                velocity.X += direction.X * acceleration * (float)delta;
+				//accelerate in the direction the player pressed if they haven't reached the speed cap yet
+                if (Mathf.Abs(velocity.X + (direction.X * acceleration * (float)delta)) <= maxSpeed)
+                {
+                    velocity.X += direction.X * acceleration * (float)delta;
+                }
+                
             }
             else
             {
