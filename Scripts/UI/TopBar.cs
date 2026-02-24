@@ -21,11 +21,13 @@ public partial class TopBar : Panel
 
     void OnExploreButtonPressed()
     {
-        GameManager.Instance.ReturnToLevelView(true);
+        GameManager.Instance.ReturnToLevelsMenu(true);
+        UIManager.Instance.levelsMenu.Explore();
     }
 
     void OnMyLevelsButtonPressed()
     {
-
+        GameManager.Instance.ReturnToLevelsMenu(true);
+        UIManager.Instance.levelsMenu.MyLevels();
     }
 }

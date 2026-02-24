@@ -42,9 +42,9 @@ public partial class GameManager : Node
         UIManager.Instance.levelsMenu.Visible = false;
     }
 
-    public void ReturnToLevelView(bool explore = false)
+    public void ReturnToLevelsMenu(bool topMenu = false)
     {
-        if (explore) UIManager.Instance.levelsMenu.ViewExplore();
+        if (topMenu) UIManager.Instance.levelsMenu.ShowLevelsList(true);
         UIManager.Instance.levelsMenu.Visible = true;
         LevelManager.Instance.DestroyLevel();
     }

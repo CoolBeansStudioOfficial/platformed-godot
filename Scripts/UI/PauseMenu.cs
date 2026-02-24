@@ -19,7 +19,7 @@ public partial class PauseMenu : Control
 
     void OnQuitButtonPressed()
     {
-        GameManager.Instance.ReturnToLevelView();
+        GameManager.Instance.ReturnToLevelsMenu();
 
         Visible = false;
     }

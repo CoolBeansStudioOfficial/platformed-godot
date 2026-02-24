@@ -283,6 +283,20 @@ icon = ExtResource("6_ki7ki")
 icon_alignment = 1
 expand_icon = true
 
+[node name="Add Levels Folder" type="Button" parent="VBoxContainer/Search Bar" unique_id=2028403837]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Add Levels Folder"
+
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "searchBox", "searchButton")]
 layout_mode = 2
 size_flags_vertical = 3

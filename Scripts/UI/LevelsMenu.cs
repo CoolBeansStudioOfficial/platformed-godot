@@ -22,22 +22,37 @@ public partial class LevelsMenu : Control
     [Export] Label playFinishPercentage;
     [Export] ProgressBar playBar;
 
-
+    public bool explore = true;
     Level selectedLevel;
 
     public override void _Ready()
 	{
         backButton.Pressed += OnBackButtonPressed;
         playButton.Pressed += OnPlayButtonPressed;
+        Explore();
+    }
 
-		ViewExplore();
-	}
+    public async void Explore()
+    {
+        //set ui to explore menu
 
-	public async void ViewExplore()
-	{
-        ShowLevelsList(true);
+        //load explore levels
+        levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
+    }
 
-		levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
+    public async void MyLevels()
+    {
+        //set ui to my levels menu
+
+        //load explore levels
+        levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
+    }
+
+    public void ShowLevelsList(bool doShow)
+    {
+        searchBar.Visible = doShow;
+        levelsList.Visible = doShow;
+        levelView.Visible = !doShow;
     }
 
     public void ViewLevel(Level level)
@@ -91,12 +106,5 @@ public partial class LevelsMenu : Control
     void OnBackButtonPressed()
     {
         ShowLevelsList(true);
-    }
-
-    void ShowLevelsList(bool doShow)
-    {
-        searchBar.Visible = doShow;
-        levelsList.Visible = doShow;
-        levelView.Visible = !doShow;
     }
 }
