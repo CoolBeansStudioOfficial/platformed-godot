@@ -160,7 +160,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "searchBox", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,7 +171,6 @@ script = ExtResource("1_u0pm4")
 searchBar = NodePath("VBoxContainer/Search Bar")
 levelsList = NodePath("VBoxContainer/Levels List")
 levelView = NodePath("VBoxContainer/Level View")
-searchBox = NodePath("VBoxContainer/Search Bar/Search Box/LineEdit")
 backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
 levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
@@ -284,12 +283,14 @@ icon = ExtResource("6_ki7ki")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer")]
+[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "searchBox", "searchButton")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_0kyo8")
 levelPreview = ExtResource("2_o2yn0")
 levelsContainer = NodePath("Levels Container")
+searchBox = NodePath("../Search Bar/Search Box/LineEdit")
+searchButton = NodePath("../Search Bar/Search Box/LineEdit/Button")
 
 [node name="Levels Container" type="FlowContainer" parent="VBoxContainer/Levels List" unique_id=715961879]
 layout_mode = 2

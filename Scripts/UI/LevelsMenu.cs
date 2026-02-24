@@ -7,8 +7,6 @@ public partial class LevelsMenu : Control
     [Export] LevelsList levelsList;
     [Export] Control levelView;
 
-    [Export] LineEdit searchBox;
-
     [Export] Button backButton;
     [Export] Button playButton;
     [Export] Label levelName;

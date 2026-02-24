@@ -10,7 +10,7 @@ public partial class LevelPreview : Panel
     [Export] Label likePercentage;
     [Export] Label completionPercentage;
 
-    Level level;
+    public Level level;
 
     public override void _Ready()
 	{
