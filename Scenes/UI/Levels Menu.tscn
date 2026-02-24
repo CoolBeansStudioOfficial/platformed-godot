@@ -31,10 +31,10 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3sav"]
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
@@ -43,10 +43,10 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5atu"]
 bg_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 border_color = Color(0.38868985, 0.38868985, 0.38868985, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
@@ -55,10 +55,10 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hd02"]
 bg_color = Color(0.735357, 0.735357, 0.735357, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 border_color = Color(0.735357, 0.735357, 0.735357, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
