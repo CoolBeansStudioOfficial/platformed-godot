@@ -34,7 +34,8 @@ public enum TileId
     ToggleBlockBlue,
     ToggleBlockRed,
     TriggerOne,
-
+    InvisibleTrigger,
+    TriggerThree,
 }
 
 public enum TileRotation

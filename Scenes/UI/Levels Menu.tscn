@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="3_udm2q"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
 [ext_resource type="Script" uid="uid://d4vgewlv3nlb" path="res://Scripts/UI/Elements/LevelsList.cs" id="5_0kyo8"]
+[ext_resource type="Texture2D" uid="uid://b41k6wgpfrvpj" path="res://Images/Vector/search.svg" id="6_ki7ki"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="7_nrx0y"]
 [ext_resource type="Texture2D" uid="uid://bswijcxctt03b" path="res://Images/Vector/dislike.svg" id="9_wb41a"]
 [ext_resource type="Texture2D" uid="uid://cgv1ujj0w020h" path="res://Images/Vector/like.svg" id="10_l0v1i"]
@@ -15,6 +16,54 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ytik"]
 texture = ExtResource("3_j1ss6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ki7ki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk5jw"]
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+border_width_left = 20
+border_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3sav"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5atu"]
+bg_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.38868985, 0.38868985, 0.38868985, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hd02"]
+bg_color = Color(0.735357, 0.735357, 0.735357, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.735357, 0.735357, 0.735357, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1x40"]
 
@@ -181,12 +230,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 479.0
+offset_left = 525.0
 offset_top = 7.0
-offset_right = -479.0
+offset_right = -525.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ki7ki")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Search Bar/Search Box" unique_id=479198643]
 layout_mode = 1
@@ -210,8 +260,29 @@ anchor_bottom = 1.0
 offset_left = 206.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_placeholder_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tk5jw")
 placeholder_text = "Search name, ID, creator..."
+
+[node name="Button" type="Button" parent="VBoxContainer/Search Bar/Search Box/LineEdit" unique_id=202321067]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u3sav")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b5atu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8hd02")
+icon = ExtResource("6_ki7ki")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer")]
 layout_mode = 2

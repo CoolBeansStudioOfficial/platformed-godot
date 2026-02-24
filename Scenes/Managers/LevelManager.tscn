@@ -16,9 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="14_vfj3y"]
 [ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/TriggerOne.tscn" id="15_tm3jg"]
 [ext_resource type="AudioStream" uid="uid://cwshvr88xgklg" path="res://Audio/Raw Files/death.wav" id="16_3076r"]
+[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/InvisibleTrigger.tscn" id="16_gb28x"]
+[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/TriggerThree.tscn" id="17_a8feg"]
 
 [node name="Level Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_wtinm")
 playerScene = ExtResource("2_mb033")
-tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg")])
+tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg"), ExtResource("16_gb28x"), ExtResource("17_a8feg")])
 deathSound = ExtResource("16_3076r")
