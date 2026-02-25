@@ -36,6 +36,10 @@ public enum TileId
     TriggerOne,
     InvisibleTrigger,
     TriggerThree,
+    SignRight,
+    SignLeft,
+    SignUp,
+    SignDown,
 }
 
 public enum TileRotation
