@@ -19,6 +19,10 @@ public partial class Trigger : Tile
             {
                 LevelManager.Instance.redBlocksActive = !LevelManager.Instance.redBlocksActive;
             }
+            else if (command.Type == "teleport")
+            {
+                LevelManager.Instance.TeleportPlayer(new(command.X.Value, command.Y.Value));
+            }
         }
     }
 }

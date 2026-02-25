@@ -34,6 +34,10 @@ public partial class LevelManager : Node
     }
 
 
+    public void TeleportPlayer(Vector2 position)
+    {
+        player.Position = position * 16;
+    }
 
     public void KillPlayer()
     {
