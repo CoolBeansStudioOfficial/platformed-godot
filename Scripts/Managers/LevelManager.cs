@@ -10,7 +10,7 @@ public partial class LevelManager : Node
     [Export] AudioStream deathSound;
 
     Level currentLevel;
-    List<Tile> tiles = [];
+    public List<Tile> tiles = [];
 
     PlayerMovement player;
     bool isPlayerSpawned = false;

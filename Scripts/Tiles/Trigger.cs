@@ -40,6 +40,22 @@ public partial class Trigger : Tile
                 }, 
                 TileRotation.Up, true);
             }
+            else if (command.Type == "rotate")
+            {
+                Vector2 targetPosition = new(command.X.Value, command.Y.Value);
+                foreach (var tile in LevelManager.Instance.tiles)
+                {
+                    if (tile.info.position == targetPosition)
+                    {
+                        TileInfo newInfo = tile.info;
+                        newInfo.rotation = (TileRotation)command.Rotation.Value;
+
+                        tile.SetRotation(newInfo);
+
+                        break;
+                    }
+                }
+            }
         }
     }
 }

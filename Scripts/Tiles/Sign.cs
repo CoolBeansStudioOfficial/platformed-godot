@@ -10,24 +10,24 @@ public partial class Sign : Tile
 
     public override void OnTileCreated()
     {
-        RotationDegrees = 0;
-
-        if (info.id == TileId.SignRight) Texture = rightTexture;
-        else if (info.id == TileId.SignLeft) Texture = leftTexture;
-        else if (info.id == TileId.SignUp) Texture = upTexture;
-        else if (info.id == TileId.SignDown) Texture = downTexture;
-
-        SetSignRotation();
+        //just be a chill guy
     }
 
-	public override void OnBodyEntered(Node2D body)
+    public override void OnBodyEntered(Node2D body)
     {
         //just be a chill guy
     }
 
-    void SetSignRotation()
+    public override void SetRotation(TileInfo rotationInfo)
     {
-        if (info.rotation == TileRotation.Up)
+        RotationDegrees = 0;
+
+        if (rotationInfo.id == TileId.SignRight) Texture = rightTexture;
+        else if (rotationInfo.id == TileId.SignLeft) Texture = leftTexture;
+        else if (rotationInfo.id == TileId.SignUp) Texture = upTexture;
+        else if (rotationInfo.id == TileId.SignDown) Texture = downTexture;
+
+        if (rotationInfo.rotation == TileRotation.Up)
         {
             RegionRect = new()
             {
@@ -35,7 +35,7 @@ public partial class Sign : Tile
                 Size = new(16, 16)
             };
         }
-        else if (info.rotation == TileRotation.Left)
+        else if (rotationInfo.rotation == TileRotation.Left)
         {
             RegionRect = new()
             {
@@ -43,7 +43,7 @@ public partial class Sign : Tile
                 Size = new(16, 16)
             };
         }
-        else if (info.rotation == TileRotation.Down)
+        else if (rotationInfo.rotation == TileRotation.Down)
         {
             RegionRect = new()
             {

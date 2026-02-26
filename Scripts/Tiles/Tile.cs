@@ -66,16 +66,7 @@ public abstract partial class Tile : Sprite2D
         //set this tile's info
         info = newInfo;
 
-        //set rotation from info
-        if (usesAdjacency) SetFacingTexture();
-        else
-        {
-            //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
-            if (info.rotation == TileRotation.Up) RotationDegrees = 0;
-            else if (info.rotation == TileRotation.Left) RotationDegrees = -90;
-            else if (info.rotation == TileRotation.Down) RotationDegrees = 180;
-            else RotationDegrees = 90;
-        }
+        SetRotation(info);
 
         OnTileCreated();
 
@@ -83,11 +74,25 @@ public abstract partial class Tile : Sprite2D
         if (collisionObject is Area2D area) area.BodyEntered += OnBodyEntered;
     }
 
-    void SetFacingTexture()
+    public virtual void SetRotation(TileInfo rotationInfo)
     {
-        if (!info.tileAbove && !info.tileBelow && !info.tileLeft && !info.tileRight) return;
+        //set rotation from info
+        if (usesAdjacency) SetFacingTexture(rotationInfo);
+        else
+        {
+            //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
+            if (rotationInfo.rotation == TileRotation.Up) RotationDegrees = 0;
+            else if (rotationInfo.rotation == TileRotation.Left) RotationDegrees = -90;
+            else if (rotationInfo.rotation == TileRotation.Down) RotationDegrees = 180;
+            else RotationDegrees = 90;
+        }
+    }
 
-        if (info.tileAbove && !info.tileBelow && !info.tileLeft && !info.tileRight)
+    void SetFacingTexture(TileInfo rotationInfo)
+    {
+        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight) return;
+
+        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -96,7 +101,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && !info.tileBelow && !info.tileLeft && info.tileRight)
+        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -105,7 +110,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && !info.tileBelow && !info.tileLeft && info.tileRight)
+        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -114,7 +119,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && info.tileBelow && !info.tileLeft && !info.tileRight)
+        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -123,7 +128,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && info.tileBelow && !info.tileLeft && !info.tileRight)
+        if (rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -132,7 +137,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && info.tileBelow && !info.tileLeft && info.tileRight)
+        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -141,7 +146,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && info.tileBelow && !info.tileLeft && info.tileRight)
+        if (rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -150,7 +155,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && !info.tileBelow && info.tileLeft && !info.tileRight)
+        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -159,7 +164,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && !info.tileBelow && info.tileLeft && !info.tileRight)
+        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -168,7 +173,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && !info.tileBelow && info.tileLeft && info.tileRight)
+        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -177,7 +182,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && !info.tileBelow && info.tileLeft && info.tileRight)
+        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -186,7 +191,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && info.tileBelow && info.tileLeft && !info.tileRight)
+        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -195,7 +200,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && info.tileBelow && info.tileLeft && !info.tileRight)
+        if (rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -204,7 +209,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (!info.tileAbove && info.tileBelow && info.tileLeft && info.tileRight)
+        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
@@ -213,7 +218,7 @@ public abstract partial class Tile : Sprite2D
             };
         }
 
-        if (info.tileAbove && info.tileBelow && info.tileLeft && info.tileRight)
+        if (rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
         {
             RegionRect = new()
             {
