@@ -58,6 +58,8 @@ public abstract partial class Tile : Sprite2D
 
     public TileInfo info;
 
+    public abstract void OnTileCreated();
+
     public abstract void OnBodyEntered(Node2D body);
 
     public void UpdateTile(TileInfo newInfo)
@@ -69,11 +71,14 @@ public abstract partial class Tile : Sprite2D
         if (usesAdjacency) SetFacingTexture();
         else
         {
+            //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
             if (info.rotation == TileRotation.Up) RotationDegrees = 0;
             else if (info.rotation == TileRotation.Left) RotationDegrees = -90;
             else if (info.rotation == TileRotation.Down) RotationDegrees = 180;
             else RotationDegrees = 90;
         }
+
+        OnTileCreated();
 
         //subscribe to onbodyentered if applicable
         if (collisionObject is Area2D area) area.BodyEntered += OnBodyEntered;

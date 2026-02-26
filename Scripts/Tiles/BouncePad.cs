@@ -5,6 +5,11 @@ public partial class BouncePad : Tile
 {
     [Export] float bouncePadHeight;
 
+    public override void OnTileCreated()
+    {
+        //just be a chill guy
+    }
+
     public override void OnBodyEntered(Node2D body)
     {
         if (body is PlayerMovement player)

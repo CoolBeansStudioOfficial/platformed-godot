@@ -3,6 +3,11 @@ using System;
 
 public partial class Trigger : Tile
 {
+    public override void OnTileCreated()
+    {
+        //chill guy
+    }
+
     public override void OnBodyEntered(Node2D body)
     {
         if (body is PlayerMovement player)
@@ -10,6 +15,7 @@ public partial class Trigger : Tile
             if (info.triggerParams is not null) RunTrigger(info.triggerParams);
         }
     }
+
 
     void RunTrigger(TriggerParams triggerParams)
     {
