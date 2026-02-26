@@ -131,12 +131,26 @@ public partial class LevelManager : Node
         isPlayerSpawned = true;
     }
 
-    void SpawnBlock(TileInfo info, TileRotation rotation)
+    public void SpawnBlock(TileInfo info, TileRotation rotation, bool deferred = false)
     {
+        //delete existing tile if this tile is going to spawn in its place
+        foreach (var existingTile in tiles)
+        {
+            if (existingTile.info.position == info.position)
+            {
+                tiles.Remove(existingTile);
+                existingTile.Free();
+                
+                break;
+            }
+        }
+
+        //don't spawn a tile if no scene exists for it
         if (tileScenes[(int)info.id] is null) return;
 
         var tile = (Node2D)tileScenes[(int)info.id].Instantiate() as Tile;
-        AddChild(tile);
+        if (deferred) CallDeferred("add_child", tile);
+        else AddChild(tile);
         tiles.Add(tile);
 
         //apply rotation and set tile's info and position

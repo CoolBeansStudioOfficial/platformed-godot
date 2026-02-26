@@ -142,4 +142,7 @@ public class Execute
 
     [JsonPropertyName("y")]
     public int? Y { get; set; }
+
+    [JsonPropertyName("block")]
+    public int? Block { get; set; }
 }

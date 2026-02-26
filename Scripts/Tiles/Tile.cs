@@ -12,7 +12,6 @@ public struct TileInfo
     public bool tileLeft;
     public bool tileRight;
 
-    public bool isTrigger;
     public TriggerParams triggerParams;
 }
 

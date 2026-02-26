@@ -29,6 +29,17 @@ public partial class Trigger : Tile
             {
                 LevelManager.Instance.TeleportPlayer(new(command.X.Value, command.Y.Value));
             }
+            else if (command.Type == "updateBlock")
+            {
+                //spawn block deferred
+                LevelManager.Instance.SpawnBlock(new()
+                {
+                    position = new(command.X.Value, command.Y.Value),
+                    rotation = TileRotation.Up,
+                    id = (TileId)command.Block.Value,
+                }, 
+                TileRotation.Up, true);
+            }
         }
     }
 }
