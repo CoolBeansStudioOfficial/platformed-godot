@@ -3,6 +3,9 @@ using System;
 
 public partial class LevelsMenu : Control
 {
+    [Export] FileDialog fileDialog;
+    [Export] Button addLevelsFolderButton;
+
     [Export] Panel searchBar;
     [Export] RichTextLabel searchBarText;
     [Export] StyleBoxTexture exploreStyle;
@@ -31,6 +34,9 @@ public partial class LevelsMenu : Control
 
     public override void _Ready()
 	{
+        fileDialog.DirSelected += OnLevelsFolderSelected;
+
+        addLevelsFolderButton.Pressed += OnAddLevelsFolderButtonPressed;
         backButton.Pressed += OnBackButtonPressed;
         playButton.Pressed += OnPlayButtonPressed;
         Explore();
@@ -41,6 +47,7 @@ public partial class LevelsMenu : Control
         //set ui to explore menu
         searchBar.AddThemeStyleboxOverride("panel", exploreStyle);
         searchBarText.Text = "[b][font_size=29][wave freq=2]Explore[/wave][/font_size][/b]";
+        addLevelsFolderButton.Visible = false;
 
         //load explore levels
         levelsList.ClearLevels();
@@ -52,10 +59,11 @@ public partial class LevelsMenu : Control
         //set ui to my levels menu
         searchBar.AddThemeStyleboxOverride("panel", myLevelsStyle);
         searchBarText.Text = "[b][font_size=29][wave freq=2]My Levels[/wave][/font_size][/b]";
+        addLevelsFolderButton.Visible = true;
 
         //load my levels
         levelsList.ClearLevels();
-        
+        levelsList.SetLevels(await GameManager.Instance.GetLevelsFromFolder());
     }
 
     public void ShowLevelsList(bool doShow)
@@ -116,5 +124,16 @@ public partial class LevelsMenu : Control
     void OnBackButtonPressed()
     {
         ShowLevelsList(true);
+    }
+
+    void OnAddLevelsFolderButtonPressed()
+    {
+        if (!fileDialog.Visible) fileDialog.PopupCentered();
+    }
+
+    void OnLevelsFolderSelected(string directory)
+    {
+        GameManager.Instance.SetLevelsFolder(directory);
+        MyLevels();
     }
 }

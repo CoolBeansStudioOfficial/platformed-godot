@@ -86,11 +86,55 @@ public partial class GameManager : Node
         }
     }
 
-    public async Task<List<Level>> GetLevelsFromFolder(string folder)
+    public bool IsLevelsFolderSet()
     {
+        if (GetLevelsFolder() is null) return false;
+        else return true;
+    }
+
+    public void SetLevelsFolder(string folder)
+    {
+        ConfigFile config = new();
+
+        config.SetValue("Preferences", "levels_folder", folder);
+
+        config.Save("user://config.cfg");
+    }
+
+    public string GetLevelsFolder()
+    {
+        ConfigFile config = new();
+
+        Error error = config.Load("user://config.cfg");
+
+        //catch if the config file didn't get fetched
+        if (error != Error.Ok) return null;
+
+        string folder = (string)config.GetValue("Preferences", "levels_folder");
+
+        //catch if folder is an empty string
+        if (folder is null) return null;
+
+        //catch if folder is not a valid path to a real folder
+        try
+        {
+            Path.GetDirectoryName(folder);
+        }
+        catch
+        {
+            return null;
+        }
+
+        return folder;
+    }
+
+    public async Task<List<Level>> GetLevelsFromFolder()
+    {
+        if (!IsLevelsFolderSet()) return null;
+
         List<Level> levels = [];
 
-        foreach (string path in Directory.GetFiles(folder))
+        foreach (string path in Directory.GetFiles(GetLevelsFolder()))
         {
             if (Path.GetExtension(path) != ".json") continue;
 

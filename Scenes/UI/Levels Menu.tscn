@@ -167,7 +167,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -175,6 +175,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0pm4")
+fileDialog = NodePath("FileDialog")
+addLevelsFolderButton = NodePath("VBoxContainer/Search Bar/Set Levels Folder")
 searchBar = NodePath("VBoxContainer/Search Bar")
 searchBarText = NodePath("VBoxContainer/Search Bar/Search Box/RichTextLabel")
 exploreStyle = SubResource("StyleBoxTexture_krmfw")
@@ -293,7 +295,8 @@ icon = ExtResource("6_ki7ki")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Add Levels Folder" type="Button" parent="VBoxContainer/Search Bar" unique_id=2028403837]
+[node name="Set Levels Folder" type="Button" parent="VBoxContainer/Search Bar" unique_id=2028403837]
+visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -305,7 +308,8 @@ offset_right = -9.0
 offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Add Levels Folder"
+theme_override_fonts/font = ExtResource("2_eotax")
+text = "Set Levels Folder"
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "searchBox", "searchButton")]
 layout_mode = 2
@@ -633,3 +637,12 @@ theme_override_font_sizes/font_size = 24
 text = "7%"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=681396235]
+oversampling_override = 1.0
+title = "Choose Levels Folder"
+position = Vector2i(0, 36)
+size = Vector2i(1280, 720)
+file_mode = 2
+access = 2
+use_native_dialog = true

@@ -59,6 +59,7 @@ public partial class LevelsList : ScrollContainer
         ClearLevels();
 
         //add new levels
+        if (levels is null) return;
         foreach (Level level in levels)
         {
             if (level == null) return;
