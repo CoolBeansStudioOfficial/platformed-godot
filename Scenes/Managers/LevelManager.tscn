@@ -3,25 +3,27 @@
 [ext_resource type="Script" uid="uid://tjfpig7g5xlk" path="res://Scripts/Managers/LevelManager.cs" id="1_wtinm"]
 [ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Prefabs/Player.tscn" id="2_mb033"]
 [ext_resource type="PackedScene" uid="uid://dxshi157wcmis" path="res://Scenes/Prefabs/Tiles/Ground.tscn" id="3_h7jeu"]
-[ext_resource type="PackedScene" uid="uid://bmlcmo8joijo" path="res://Scenes/Prefabs/Tiles/Spikes.tscn" id="4_c8sqs"]
-[ext_resource type="PackedScene" uid="uid://r3mdgu523qyu" path="res://Scenes/Prefabs/Tiles/SpikesDouble.tscn" id="5_kmvov"]
+[ext_resource type="PackedScene" uid="uid://bmlcmo8joijo" path="res://Scenes/Prefabs/Tiles/Hazards/Spikes.tscn" id="4_c8sqs"]
+[ext_resource type="PackedScene" uid="uid://r3mdgu523qyu" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesDouble.tscn" id="5_kmvov"]
 [ext_resource type="PackedScene" uid="uid://bsydybqamwolx" path="res://Scenes/Prefabs/Tiles/Checkpoint.tscn" id="6_f1h14"]
 [ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/End.tscn" id="7_cbfru"]
-[ext_resource type="PackedScene" uid="uid://volxjoy02g4v" path="res://Scenes/Prefabs/Tiles/Cactus.tscn" id="8_cbfru"]
+[ext_resource type="PackedScene" uid="uid://volxjoy02g4v" path="res://Scenes/Prefabs/Tiles/Hazards/Cactus.tscn" id="8_cbfru"]
 [ext_resource type="PackedScene" uid="uid://dhn2fh676k2hq" path="res://Scenes/Prefabs/Tiles/Crate.tscn" id="9_pfu4q"]
 [ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/BouncePad.tscn" id="10_6tnmi"]
 [ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="11_okbly"]
 [ext_resource type="PackedScene" uid="uid://dd7s6fvhrw1mm" path="res://Scenes/Prefabs/Tiles/DissipationBlock.tscn" id="12_m7skp"]
 [ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/ToggleBlockBlue.tscn" id="13_ipdva"]
 [ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="14_vfj3y"]
-[ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/TriggerOne.tscn" id="15_tm3jg"]
+[ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/Triggers/TriggerOne.tscn" id="15_tm3jg"]
 [ext_resource type="AudioStream" uid="uid://cwshvr88xgklg" path="res://Audio/Raw Files/death.wav" id="16_3076r"]
-[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/InvisibleTrigger.tscn" id="16_gb28x"]
-[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/TriggerThree.tscn" id="17_a8feg"]
+[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/Triggers/InvisibleTrigger.tscn" id="16_gb28x"]
+[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/Triggers/TriggerThree.tscn" id="17_a8feg"]
 [ext_resource type="PackedScene" uid="uid://bw80bmjeb68gc" path="res://Scenes/Prefabs/Tiles/Sign.tscn" id="18_hdqqp"]
+[ext_resource type="PackedScene" uid="uid://bv7gnjl1ryhtl" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesHalfRight.tscn" id="19_3c1a4"]
+[ext_resource type="PackedScene" uid="uid://bpbv4weyylpe7" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesHalfLeft.tscn" id="20_4m38i"]
 
 [node name="Level Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_wtinm")
 playerScene = ExtResource("2_mb033")
-tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg"), ExtResource("16_gb28x"), ExtResource("17_a8feg"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp")])
+tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg"), ExtResource("16_gb28x"), ExtResource("17_a8feg"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("19_3c1a4"), ExtResource("20_4m38i")])
 deathSound = ExtResource("16_3076r")

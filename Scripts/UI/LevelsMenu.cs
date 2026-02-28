@@ -3,7 +3,11 @@ using System;
 
 public partial class LevelsMenu : Control
 {
-    [Export] Control searchBar;
+    [Export] Panel searchBar;
+    [Export] RichTextLabel searchBarText;
+    [Export] StyleBoxTexture exploreStyle;
+    [Export] StyleBoxTexture myLevelsStyle;
+
     [Export] LevelsList levelsList;
     [Export] Control levelView;
 
@@ -35,17 +39,23 @@ public partial class LevelsMenu : Control
     public async void Explore()
     {
         //set ui to explore menu
+        searchBar.AddThemeStyleboxOverride("panel", exploreStyle);
+        searchBarText.Text = "[b][font_size=29][wave freq=2]Explore[/wave][/font_size][/b]";
 
         //load explore levels
+        levelsList.ClearLevels();
         levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
     }
 
     public async void MyLevels()
     {
         //set ui to my levels menu
+        searchBar.AddThemeStyleboxOverride("panel", myLevelsStyle);
+        searchBarText.Text = "[b][font_size=29][wave freq=2]My Levels[/wave][/font_size][/b]";
 
-        //load explore levels
-        levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
+        //load my levels
+        levelsList.ClearLevels();
+        
     }
 
     public void ShowLevelsList(bool doShow)

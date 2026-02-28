@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bv7gnjl1ryhtl"]
+
+[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="1_h3yde"]
+[ext_resource type="Script" uid="uid://j2558hc85oa7" path="res://Scripts/Tiles/Spikes.cs" id="2_lxn6v"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xr76h"]
+points = PackedVector2Array(0, 8, 7, 8, 4, 1, 3, 1)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
+texture_filter = 1
+texture = ExtResource("1_h3yde")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_lxn6v")
+collisionObject = NodePath("Area2D")
+collisionShape = NodePath("Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=996814083]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810442276]
+shape = SubResource("ConvexPolygonShape2D_xr76h")

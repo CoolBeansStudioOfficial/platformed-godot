@@ -39,6 +39,8 @@ public enum TileId
     SignLeft,
     SignUp,
     SignDown,
+    HalfSpikesRight,
+    HalfSpikesLeft,
 }
 
 public enum TileRotation

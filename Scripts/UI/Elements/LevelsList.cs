@@ -56,8 +56,7 @@ public partial class LevelsList : ScrollContainer
     public void SetLevels(List<Level> levels)
     {
         //clear out previous levels
-        foreach (LevelPreview preview in previews) preview.QueueFree();
-        previews.Clear();
+        ClearLevels();
 
         //add new levels
         foreach (Level level in levels)
@@ -68,5 +67,11 @@ public partial class LevelsList : ScrollContainer
             levelsContainer.AddChild(newPreview);
             previews.Add(newPreview);
         }
+    }
+
+    public void ClearLevels()
+    {
+        foreach (LevelPreview preview in previews) preview.QueueFree();
+        previews.Clear();
     }
 }

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://csayj7hje60ul" path="res://Scripts/UI/LevelsMenu.cs" id="1_u0pm4"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_eotax"]
 [ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Elements/Level Preview.tscn" id="2_o2yn0"]
+[ext_resource type="Texture2D" uid="uid://bv4x75nrmly7t" path="res://Images/Vector/redbanner.svg" id="3_1n1uh"]
 [ext_resource type="Texture2D" uid="uid://0ig0aixq8bto" path="res://Images/Vector/bluebanner.svg" id="3_j1ss6"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="3_udm2q"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
@@ -13,6 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://cgv1ujj0w020h" path="res://Images/Vector/like.svg" id="10_l0v1i"]
 [ext_resource type="Texture2D" uid="uid://b0jq6bxbm5kk2" path="res://Images/Vector/DNF.svg" id="11_ghl26"]
 [ext_resource type="Texture2D" uid="uid://c3rg6s8sfvyxu" path="res://Images/Vector/flaglightgreen.svg" id="12_ki7ki"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_krmfw"]
+texture = ExtResource("3_j1ss6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sich"]
+texture = ExtResource("3_1n1uh")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ytik"]
 texture = ExtResource("3_j1ss6")
@@ -160,7 +167,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,16 +176,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0pm4")
 searchBar = NodePath("VBoxContainer/Search Bar")
+searchBarText = NodePath("VBoxContainer/Search Bar/Search Box/RichTextLabel")
+exploreStyle = SubResource("StyleBoxTexture_krmfw")
+myLevelsStyle = SubResource("StyleBoxTexture_8sich")
 levelsList = NodePath("VBoxContainer/Levels List")
 levelView = NodePath("VBoxContainer/Level View")
 backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
 levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
-levelDescription = NodePath("VBoxContainer/Level View/Details/Description Text")
+levelDescription = NodePath("VBoxContainer/Level View/Details/ScrollContainer/Description Text")
 ratingCount = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer/Rating Text")
-ratingPercentagePositive = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Dislike Percentage")
-ratingPercentageNegative = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage")
+ratingPercentagePositive = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage")
+ratingPercentageNegative = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Dislike Percentage")
 ratingBar = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage Bar")
 playCount = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer/Plays Text")
 playDNFPercentage = NodePath("VBoxContainer/Level View/Details/Play Statistics/HBoxContainer2/DNF Percentage")
@@ -353,17 +363,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -123.5
+offset_left = -270.0
 offset_top = 20.0
-offset_right = 123.5
+offset_right = 270.0
 offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 48
-text = "Level name"
+text = "Level Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 3
 
 [node name="Level Creator" type="Label" parent="VBoxContainer/Level View/Level Image" unique_id=117515245]
 layout_mode = 1
@@ -440,8 +451,13 @@ theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 24
 text = "Description"
 
-[node name="Description Text" type="RichTextLabel" parent="VBoxContainer/Level View/Details" unique_id=2014452105]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Level View/Details" unique_id=1585240261]
+custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
+
+[node name="Description Text" type="RichTextLabel" parent="VBoxContainer/Level View/Details/ScrollContainer" unique_id=2014452105]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_eotax")
 theme_override_fonts/bold_font = ExtResource("4_eotax")
 theme_override_fonts/bold_italics_font = ExtResource("4_eotax")
@@ -452,15 +468,9 @@ theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "This is the description of the level written by its creator."
+text = "This is the description of the level written by its creator.
+"
 fit_content = true
-
-[node name="Spacer" type="Label" parent="VBoxContainer/Level View/Details" unique_id=1477074046]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_eotax")
-theme_override_font_sizes/font_size = 20
-autowrap_mode = 3
 
 [node name="Rating" type="Panel" parent="VBoxContainer/Level View/Details" unique_id=1396048154]
 custom_minimum_size = Vector2(0, 125)
@@ -504,7 +514,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_eotax")
 theme_override_font_sizes/font_size = 24
-text = "7%"
+text = "6%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -585,7 +595,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_eotax")
 theme_override_font_sizes/font_size = 24
-text = "7%"
+text = "6%"
 horizontal_alignment = 1
 vertical_alignment = 1
 

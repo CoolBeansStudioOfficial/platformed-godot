@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using HttpClient = System.Net.Http.HttpClient;
@@ -83,5 +84,27 @@ public partial class GameManager : Node
         {
             return null;
         }
+    }
+
+    public async Task<List<Level>> GetLevelsFromFolder(string folder)
+    {
+        List<Level> levels = [];
+
+        foreach (string path in Directory.GetFiles(folder))
+        {
+            if (Path.GetExtension(path) != ".json") continue;
+
+            GD.Print($"found level {path}");
+
+            //read and deserialize the level json
+            Level level = await JsonSerializer.DeserializeAsync<Level>(File.OpenRead(path));
+
+
+            GD.Print($"level name is {level.Name}");
+
+            levels.Add(level);
+        }
+
+        return levels;
     }
 }
