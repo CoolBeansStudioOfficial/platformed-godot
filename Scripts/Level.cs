@@ -26,6 +26,9 @@ public class Level
     [JsonPropertyName("owner")]
     public int Owner { get; set; }
 
+    [JsonPropertyName("username")]
+    public string Username { get; set; }
+
     [JsonPropertyName("tags")]
     public List<object> Tags { get; set; }
 

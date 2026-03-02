@@ -138,13 +138,8 @@ public partial class GameManager : Node
         {
             if (Path.GetExtension(path) != ".json") continue;
 
-            GD.Print($"found level {path}");
-
             //read and deserialize the level json
             Level level = await JsonSerializer.DeserializeAsync<Level>(File.OpenRead(path));
-
-
-            GD.Print($"level name is {level.Name}");
 
             levels.Add(level);
         }

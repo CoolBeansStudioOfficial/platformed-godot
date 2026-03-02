@@ -78,7 +78,7 @@ public partial class LevelsMenu : Control
         selectedLevel = level;
 
         levelName.Text = level.Name;
-        levelCreator.Text = level.Owner.ToString();
+        levelCreator.Text = level.Username;
         levelDescription.Text = level.Description;
 
         ratingCount.Text = $"{level.Approvals + level.Disapprovals} ratings";
