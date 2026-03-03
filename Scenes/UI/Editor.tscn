@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dcl66mwjo2ld8"]
+
+[ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scenes/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
+[ext_resource type="Texture2D" uid="uid://bqf8xjnbt64lf" path="res://Images/Raster/tiled background.png" id="1_mpjp0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
+bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
+texture = ExtResource("1_mpjp0")
+
+[node name="Editor" type="Control" unique_id=1330040267]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1498817097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Top Bar" type="Panel" parent="VBoxContainer" unique_id=1548784277]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c2eik")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=655443654]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_behavior_recursive = 2
+script = ExtResource("1_fvgsq")
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
+custom_minimum_size = Vector2(3000, 3000)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
+
+[node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2

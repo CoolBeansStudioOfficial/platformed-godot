@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dywacavmg5ktu" path="res://Scripts/Managers/UIManager.cs" id="1_x176k"]
 [ext_resource type="PackedScene" uid="uid://b7ivncp6f38v" path="res://Scenes/UI/Top Bar.tscn" id="2_klcet"]
 [ext_resource type="PackedScene" uid="uid://csvyj43s0u7mu" path="res://Scenes/UI/Levels Menu.tscn" id="2_vhtc3"]
+[ext_resource type="PackedScene" uid="uid://dcl66mwjo2ld8" path="res://Scenes/UI/Editor.tscn" id="3_6wurl"]
 [ext_resource type="PackedScene" uid="uid://47rpoyyyv7jd" path="res://Scenes/UI/Pause Menu.tscn" id="3_p08o3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wurl"]
@@ -41,7 +42,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_klcet")
 
+[node name="Editor" parent="UI/Window/Layout/Content" unique_id=1330040267 instance=ExtResource("3_6wurl")]
+layout_mode = 1
+
 [node name="Levels Menu" parent="UI/Window/Layout/Content" unique_id=555989692 instance=ExtResource("2_vhtc3")]
+visible = false
 layout_mode = 1
 size_flags_vertical = 3
 
