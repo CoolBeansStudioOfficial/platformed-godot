@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scenes/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="4_vbuae"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -12,6 +13,11 @@ texture = ExtResource("2_fvgsq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbuae"]
 texture = ExtResource("3_38yy1")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eiun3"]
+texture = ExtResource("4_vbuae")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
@@ -42,18 +48,24 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721]
+[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("content", "grid")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
+gridSize = Vector2(3000, 3000)
+minZoom = 1.0
+maxZoom = 4.0
+zoomSpeed = 0.04
+content = NodePath("Content")
+grid = NodePath("Content/Grid")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
+[node name="Content" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(3000, 3000)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
-[node name="Grid" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Background" unique_id=1057792182]
+[node name="Grid" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
@@ -63,6 +75,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
+
+[node name="Tile Rows" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid" unique_id=1570195613]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Tile Row" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Tile Rows" unique_id=598229370]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Tile" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Tile Rows/Tile Row" unique_id=210626596]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eiun3")
 
 [node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
 custom_minimum_size = Vector2(64, 0)

@@ -1,8 +1,18 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class TilesViewport : ScrollContainer
 {
+    [Export] Vector2 gridSize;
+
+    [Export] float minZoom;
+    [Export] float maxZoom;
+    [Export] float zoomSpeed;
+    [Export] Control content;
+    [Export] Control grid;
+
+    float zoom = 1f;
     bool dragging = false;
     Vector2 lastMousePosition = Vector2.Zero;
 
@@ -28,6 +38,18 @@ public partial class TilesViewport : ScrollContainer
                     GD.Print("middle mouse button released in viewport");
                 }
             }
+            else if (mb.ButtonIndex == MouseButton.WheelUp && mb.AltPressed)
+            {
+                Zoom(zoomSpeed);
+
+                AcceptEvent();
+            }
+            else if (mb.ButtonIndex == MouseButton.WheelDown && mb.AltPressed)
+            {
+                Zoom(-zoomSpeed);
+
+                AcceptEvent();
+            }
         }
         else if (@event is InputEventMouseMotion m)
         {
@@ -41,8 +63,18 @@ public partial class TilesViewport : ScrollContainer
         }
     }
 
+    public void Zoom(float amount)
+    {
+        zoom += amount;
+
+        if (zoom < minZoom) zoom = minZoom;
+        else if (zoom > maxZoom) zoom = maxZoom;
+    }
+
     public override void _Process(double delta)
     {
-        
+        Vector2 newZoom = new(zoom, zoom);
+        content.CustomMinimumSize = gridSize * zoom;
+        grid.Scale = newZoom;
     }
 }
