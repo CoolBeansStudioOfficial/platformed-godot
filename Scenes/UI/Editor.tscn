@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dcl66mwjo2ld8"]
 
-[ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scenes/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
+[ext_resource type="Script" uid="uid://cwxdsr6ws288l" path="res://Scripts/UI/Editor.cs" id="1_eiun3"]
+[ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
-[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="4_vbuae"]
+[ext_resource type="PackedScene" uid="uid://dm7o2sov5gbem" path="res://Scenes/UI/Elements/Editor Tile.tscn" id="3_cfu02"]
+[ext_resource type="PackedScene" uid="uid://btwpeudsqc3pq" path="res://Scenes/UI/Elements/Tile Row.tscn" id="5_cfu02"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -16,18 +18,18 @@ texture = ExtResource("3_38yy1")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eiun3"]
-texture = ExtResource("4_vbuae")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="Editor" type="Control" unique_id=1330040267]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "rowsContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_eiun3")
+viewport = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport")
+rowsContainer = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Rows Container")
+rowScene = ExtResource("5_cfu02")
+tileScene = ExtResource("3_cfu02")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -76,7 +78,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="Tile Rows" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid" unique_id=1570195613]
+[node name="Rows Container" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid" unique_id=1570195613]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,16 +87,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Tile Row" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Tile Rows" unique_id=598229370]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Tile" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Tile Rows/Tile Row" unique_id=210626596]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_eiun3")
-
 [node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
+oversampling_override = 1.0

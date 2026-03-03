@@ -4,7 +4,7 @@ using System.Threading;
 
 public partial class TilesViewport : ScrollContainer
 {
-    [Export] Vector2 gridSize;
+    [Export] public Vector2 gridSize;
 
     [Export] float minZoom;
     [Export] float maxZoom;
