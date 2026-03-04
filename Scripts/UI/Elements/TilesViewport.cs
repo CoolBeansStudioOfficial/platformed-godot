@@ -4,13 +4,13 @@ using System.Threading;
 
 public partial class TilesViewport : ScrollContainer
 {
-    [Export] public Vector2 gridSize;
-
     [Export] float minZoom;
     [Export] float maxZoom;
     [Export] float zoomSpeed;
     [Export] Control content;
     [Export] Control grid;
+
+    public Vector2 viewportSize;
 
     float zoom = 1f;
     bool dragging = false;
@@ -38,13 +38,13 @@ public partial class TilesViewport : ScrollContainer
                     GD.Print("middle mouse button released in viewport");
                 }
             }
-            else if (mb.ButtonIndex == MouseButton.WheelUp && mb.AltPressed)
+            else if (mb.ButtonIndex == MouseButton.WheelUp && mb.IsCommandOrControlPressed())
             {
                 Zoom(zoomSpeed);
 
                 AcceptEvent();
             }
-            else if (mb.ButtonIndex == MouseButton.WheelDown && mb.AltPressed)
+            else if (mb.ButtonIndex == MouseButton.WheelDown && mb.IsCommandOrControlPressed())
             {
                 Zoom(-zoomSpeed);
 
@@ -74,7 +74,7 @@ public partial class TilesViewport : ScrollContainer
     public override void _Process(double delta)
     {
         Vector2 newZoom = new(zoom, zoom);
-        content.CustomMinimumSize = gridSize * zoom;
+        content.CustomMinimumSize = viewportSize * zoom;
         grid.Scale = newZoom;
     }
 }

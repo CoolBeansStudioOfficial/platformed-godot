@@ -11,5 +11,6 @@ axis_stretch_vertical = 1
 [node name="Tile" type="Panel" unique_id=748944793]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_eiun3")
 script = ExtResource("2_klsym")
