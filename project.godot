@@ -33,10 +33,6 @@ window/stretch/aspect="expand"
 
 project/assembly_name="platformed"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
-
 [input]
 
 jump={
