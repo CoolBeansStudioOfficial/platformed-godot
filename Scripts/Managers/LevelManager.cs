@@ -5,7 +5,8 @@ using System.Text.Json;
 public partial class LevelManager : Node
 {
     [Export] PackedScene playerScene;
-    [Export] PackedScene[] tileScenes;
+    [Export] TileMapLayer tilemap;
+    [Export] Godot.Collections.Array<bool> useAdjacency;
 
     [Export] AudioStream deathSound;
 
@@ -53,8 +54,7 @@ public partial class LevelManager : Node
     public void DestroyLevel()
     {
         //clear out previous tiles
-        foreach (Tile tile in tiles) tile.QueueFree();
-        tiles.Clear();
+        tilemap.Clear();
 
         //destroy player
         if (isPlayerSpawned) player.QueueFree();
@@ -133,30 +133,13 @@ public partial class LevelManager : Node
 
     public void SpawnBlock(TileInfo info, TileRotation rotation, bool deferred = false)
     {
-        //delete existing tile if this tile is going to spawn in its place
-        foreach (var existingTile in tiles)
-        {
-            if (existingTile.info.position == info.position)
-            {
-                tiles.Remove(existingTile);
-                existingTile.Free();
-                
-                break;
-            }
-        }
+        //determine whether to use adjacency or plain old rotation
+        Vector2I atlasCoords;
+        if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
+        else atlasCoords = new((int)info.rotation, 0);
 
-        //don't spawn a tile if no scene exists for it
-        if (tileScenes[(int)info.id] is null) return;
-
-        var tile = (Node2D)tileScenes[(int)info.id].Instantiate() as Tile;
-        if (deferred) CallDeferred("add_child", tile);
-        else AddChild(tile);
-        tiles.Add(tile);
-
-        //apply rotation and set tile's info and position
-        info.rotation = rotation;
-        tile.UpdateTile(info);
-        tile.Position = tile.info.position * 16;
+        //set tilemap cell to new tile
+        tilemap.SetCell(info.position, (int)info.id, atlasCoords);
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile

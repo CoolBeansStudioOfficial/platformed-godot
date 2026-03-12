@@ -3,7 +3,7 @@ using System;
 
 public struct TileInfo
 {
-	public Vector2 position;
+	public Vector2I position;
 	public TileRotation rotation;
     public TileId id;
 
@@ -13,6 +13,44 @@ public struct TileInfo
     public bool tileRight;
 
     public TriggerParams triggerParams;
+
+    public int GetAdjacency()
+    {
+        //codeslop
+        if (!tileAbove && !tileBelow && !tileLeft && !tileRight) return 0;
+
+        if (tileAbove && !tileBelow && !tileLeft && !tileRight) return 1;
+
+        if (!tileAbove && !tileBelow && !tileLeft && tileRight) return 2;
+
+        if (tileAbove && !tileBelow && !tileLeft && tileRight) return 3;
+
+        if (!tileAbove && tileBelow && !tileLeft && !tileRight) return 4;
+
+        if (tileAbove && tileBelow && !tileLeft && !tileRight) return 5;
+
+        if (!tileAbove && tileBelow && !tileLeft && tileRight) return 6;
+
+        if (tileAbove && tileBelow && !tileLeft && tileRight) return 7;
+
+        if (!tileAbove && !tileBelow && tileLeft && !tileRight) return 8;
+
+        if (tileAbove && !tileBelow && tileLeft && !tileRight) return 9;
+
+        if (!tileAbove && !tileBelow && tileLeft && tileRight) return 10;
+
+        if (tileAbove && !tileBelow && tileLeft && tileRight) return 11;
+
+        if (!tileAbove && tileBelow && tileLeft && !tileRight) return 12;
+
+        if (tileAbove && tileBelow && tileLeft && !tileRight) return 13;
+
+        if (!tileAbove && tileBelow && tileLeft && tileRight) return 14;
+
+        if (tileAbove && tileBelow && tileLeft && tileRight) return 15;
+
+        else return 0;
+    }
 }
 
 public enum TileId
@@ -79,154 +117,12 @@ public abstract partial class Tile : Sprite2D
     public virtual void SetRotation(TileInfo rotationInfo)
     {
         //set rotation from info
-        if (usesAdjacency) SetFacingTexture(rotationInfo);
-        else
-        {
-            //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
-            if (rotationInfo.rotation == TileRotation.Up) RotationDegrees = 0;
-            else if (rotationInfo.rotation == TileRotation.Left) RotationDegrees = -90;
-            else if (rotationInfo.rotation == TileRotation.Down) RotationDegrees = 180;
-            else RotationDegrees = 90;
-        }
+        //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
+        if (rotationInfo.rotation == TileRotation.Up) RotationDegrees = 0;
+        else if (rotationInfo.rotation == TileRotation.Left) RotationDegrees = -90;
+        else if (rotationInfo.rotation == TileRotation.Down) RotationDegrees = 180;
+        else RotationDegrees = 90;
     }
 
-    void SetFacingTexture(TileInfo rotationInfo)
-    {
-        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight) return;
-
-        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(16, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(32, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(48, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(64, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(80, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(96, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && rotationInfo.tileBelow && !rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(112, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(128, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(144, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(160, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && !rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(176, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(192, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && !rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(208, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (!rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(224, 0),
-                Size = new(16, 16)
-            };
-        }
-
-        if (rotationInfo.tileAbove && rotationInfo.tileBelow && rotationInfo.tileLeft && rotationInfo.tileRight)
-        {
-            RegionRect = new()
-            {
-                Position = new Vector2(240, 0),
-                Size = new(16, 16)
-            };
-        }
-    }
+    
 }
