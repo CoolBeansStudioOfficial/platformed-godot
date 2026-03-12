@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://ba5nuckj2wiby" path="res://Scenes/Prefabs/Player.tscn" id="2_mb033"]
 [ext_resource type="AudioStream" uid="uid://cwshvr88xgklg" path="res://Audio/Raw Files/death.wav" id="16_3076r"]
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/Triggers/InvisibleTrigger.tscn" id="16_gb28x"]
 [ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/Triggers/TriggerThree.tscn" id="17_a8feg"]
 [ext_resource type="PackedScene" uid="uid://bw80bmjeb68gc" path="res://Scenes/Prefabs/Tiles/Sign.tscn" id="18_hdqqp"]
@@ -12,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bpbv4weyylpe7" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesHalfLeft.tscn" id="20_4m38i"]
 [ext_resource type="TileSet" uid="uid://dqyfl2sip1wfs" path="res://Tilesets/platformed.tres" id="22_4m38i"]
 [ext_resource type="Script" uid="uid://dp1mklukbrsow" path="res://Scripts/TilemapTest.cs" id="23_mx32o"]
-=======
-[ext_resource type="TileSet" uid="uid://b7so3n1o1vgd1" path="res://Tilesets/16Bit.tres" id="22_4m38i"]
->>>>>>> Stashed changes
 =======
 [ext_resource type="TileSet" uid="uid://b7so3n1o1vgd1" path="res://Tilesets/16Bit.tres" id="22_4m38i"]
 >>>>>>> Stashed changes
@@ -27,16 +23,10 @@ useAdjacency = Array[bool]([true, true, false, false, false, false, false, false
 deathSound = ExtResource("16_3076r")
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=493944075]
 texture_filter = 1
 tile_set = ExtResource("22_4m38i")
 script = ExtResource("23_mx32o")
-=======
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2026880248]
-texture_filter = 1
-tile_set = ExtResource("22_4m38i")
->>>>>>> Stashed changes
 =======
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2026880248]
 texture_filter = 1
