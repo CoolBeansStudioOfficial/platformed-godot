@@ -21,9 +21,16 @@
 [ext_resource type="PackedScene" uid="uid://bw80bmjeb68gc" path="res://Scenes/Prefabs/Tiles/Sign.tscn" id="18_hdqqp"]
 [ext_resource type="PackedScene" uid="uid://bv7gnjl1ryhtl" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesHalfRight.tscn" id="19_3c1a4"]
 [ext_resource type="PackedScene" uid="uid://bpbv4weyylpe7" path="res://Scenes/Prefabs/Tiles/Hazards/SpikesHalfLeft.tscn" id="20_4m38i"]
+[ext_resource type="TileSet" uid="uid://dqyfl2sip1wfs" path="res://Tilesets/platformed.tres" id="22_4m38i"]
+[ext_resource type="Script" uid="uid://dp1mklukbrsow" path="res://Scripts/TilemapTest.cs" id="23_mx32o"]
 
 [node name="Level Manager" type="Node" unique_id=1493430733]
 script = ExtResource("1_wtinm")
 playerScene = ExtResource("2_mb033")
 tileScenes = Array[PackedScene]([null, ExtResource("3_h7jeu"), ExtResource("4_c8sqs"), ExtResource("5_kmvov"), ExtResource("6_f1h14"), null, ExtResource("7_cbfru"), ExtResource("8_cbfru"), ExtResource("9_pfu4q"), ExtResource("10_6tnmi"), ExtResource("11_okbly"), ExtResource("12_m7skp"), null, ExtResource("13_ipdva"), ExtResource("14_vfj3y"), ExtResource("15_tm3jg"), ExtResource("16_gb28x"), ExtResource("17_a8feg"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("18_hdqqp"), ExtResource("19_3c1a4"), ExtResource("20_4m38i")])
 deathSound = ExtResource("16_3076r")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=493944075]
+texture_filter = 1
+tile_set = ExtResource("22_4m38i")
+script = ExtResource("23_mx32o")
