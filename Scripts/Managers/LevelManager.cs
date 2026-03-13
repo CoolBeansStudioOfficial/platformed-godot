@@ -54,8 +54,7 @@ public partial class LevelManager : Node
     public void DestroyLevel()
     {
         //clear out previous tiles
-        foreach (Tile tile in tiles) tile.QueueFree();
-        tiles.Clear();
+        tileMapLayer.Clear();
 
         //destroy player
         if (isPlayerSpawned) player.QueueFree();
@@ -134,9 +133,13 @@ public partial class LevelManager : Node
 
     public void SpawnBlock(TileInfo info, TileRotation rotation, bool deferred = false)
     {
+        //get atlas coords for tile
+        Vector2I atlasCoords;
+        if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
+        else atlasCoords = new((int)rotation, 0);
+
         //set grid cell
-        tileMapLayer.SetCell(info.position, (int)info.id, Vector2I.Zero);
-        
+        tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords);
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
