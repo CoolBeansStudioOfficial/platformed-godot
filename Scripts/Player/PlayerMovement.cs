@@ -168,5 +168,12 @@ public partial class PlayerMovement : CharacterBody2D
 		MoveAndSlide();
 
 		animation.UpdateAnimation(velocity, IsOnFloor(), delta);
+
+        KinematicCollision2D collision = GetLastSlideCollision();
+
+        if (collision.GetCollider() is not null)
+        {
+            GD.Print(collision.GetCollider());
+        }
 	}
 }
