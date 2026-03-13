@@ -63,8 +63,56 @@ public partial class PlayerMovement : CharacterBody2D
                 wallCastLeft.ForceShapecastUpdate();
                 wallCastRight.ForceShapecastUpdate();
 
+                //determine whether player should be able to jump from each side
+                bool canJumpFromLeft = false;
+                bool canJumpFromRight = false;
+
+                if (wallCastLeft.IsColliding())
+                {
+                    //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
+                    for (int i = 0; i < wallCastLeft.GetCollisionCount(); i++)
+                    {
+                        //don't ask me why this works. i think it's something to do with float accuracy or smth
+                        Vector2 newPos = wallCastLeft.GetCollisionPoint(i) + new Vector2(-0.1f, 0f);
+
+                        var tile = LevelManager.Instance.GetTileFromPosition(newPos);
+                        if (tile is not null)
+                        {
+                            if (!(bool)tile.GetCustomData("Kill On Touch"))
+                            {
+                                canJumpFromLeft = true;
+                                GD.Print("found valid left jump object");
+                                break;
+                            }
+                            else
+                            {
+                                GD.Print("found INvalid left jump object");
+                            }
+                        }
+                    }
+                }
+
+                if (wallCastRight.IsColliding())
+                {
+                    //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
+                    for (int i = 0; i < wallCastRight.GetCollisionCount(); i++)
+                    {
+                        var tile = LevelManager.Instance.GetTileFromPosition(wallCastRight.GetCollisionPoint(i));
+                        if (tile is not null)
+                        {
+                            if (!(bool)tile.GetCustomData("Kill On Touch"))
+                            {
+                                canJumpFromRight = true;
+                                GD.Print("found valid right jump object");
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
                 //if player is close enough to wall jump off of either wall, pick the closest wall
-                if (wallCastLeft.IsColliding() && wallCastRight.IsColliding())
+                if (canJumpFromLeft && canJumpFromRight)
                 {
                     float leftWallDistance = Mathf.Abs(Position.X - wallCastLeft.GetCollisionPoint(0).X);
                     float rightWallDistance = Mathf.Abs(Position.X - wallCastRight.GetCollisionPoint(0).X);
@@ -87,7 +135,7 @@ public partial class PlayerMovement : CharacterBody2D
                     AudioManager.Instance.PlayStream(jumpSound);
                 }
                 //otherwise, jump off of whichever wall is elligible
-                else if (wallCastLeft.IsColliding())
+                else if (canJumpFromLeft)
                 {
                     velocity.Y = jumpVelocity;
                     velocity.X = walljumpVelocity;
@@ -97,7 +145,7 @@ public partial class PlayerMovement : CharacterBody2D
                     didJump = true;
                     AudioManager.Instance.PlayStream(jumpSound);
                 }
-                else if (wallCastRight.IsColliding())
+                else if (canJumpFromRight)
                 {
                     velocity.Y = jumpVelocity;
                     velocity.X = -walljumpVelocity;
@@ -177,7 +225,10 @@ public partial class PlayerMovement : CharacterBody2D
 
             if (tile is not null)
             {
-                GD.Print(tile);
+                if ((bool)tile.GetCustomData("Kill On Touch"))
+                {
+                    LevelManager.Instance.KillPlayer();
+                }
             }
         }
 
