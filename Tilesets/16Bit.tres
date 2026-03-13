@@ -115,12 +115,16 @@ texture = ExtResource("9_upe0s")
 resource_name = "Spikes"
 texture = ExtResource("2_2tsvu")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, 8, 6.936698, 8, 0, -7.1348906)
 0:0/0/custom_data_0 = true
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -7.1348906, 8, 6.936699, -7.1348906, 0)
 1:0/0/custom_data_0 = true
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.9367, -8, 6.936698, -8, -0.0990963, 6.738508)
 2:0/0/custom_data_0 = true
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.936699, 6.936698, -0.19819069, -8, 6.8376045)
 3:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsv4i"]
@@ -143,28 +147,40 @@ texture = ExtResource("12_12fwq")
 resource_name = "HalfSpikesRight"
 texture = ExtResource("13_trg7l")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.19819164, 8, 6.8376036, 8, 3.4683485, 0.7927656)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.19819069, 8, -7.1348906, 0.8918619, -3.4683495)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -8, -0.0990963, -8, -3.5674458, -1.189148)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.0990963, -8, 6.639412, -1.1891489, 3.1710625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
 resource_name = "HalfSpikesLeft"
 texture = ExtResource("14_rfy21")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.6574984, 0.7927656)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0.99095726, 0.8918619, 4.0629234)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0.6936693, -8, 4.3602114, -1.0900526)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -1.2882442, -1.3873405, -4.6574974)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
 resource_name = "SpikesDouble"
 texture = ExtResource("3_w2f5o")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 6.936698, 8, 3.4683485, 0.8918619, -4.7565937, 0.99095726)
 0:0/0/custom_data_0 = true
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 0.8918619, 4.558403, 0.9909563, -3.666541, 8, -7.0357947)
 1:0/0/custom_data_0 = true
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.8376036, -8, -3.666541, -1.189148, 4.3602114, -1.0900526, 8, -8)
 2:0/0/custom_data_0 = true
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.0900526, -4.6574974, -1.0900526, 3.2701588, -8, 6.738508)
 3:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nhcus"]
@@ -181,12 +197,16 @@ texture = ExtResource("5_3afvo")
 resource_name = "Cactus"
 texture = ExtResource("6_q2l7b")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:0/0/custom_data_0 = true
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0/custom_data_0 = true
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0/custom_data_0 = true
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnubn"]

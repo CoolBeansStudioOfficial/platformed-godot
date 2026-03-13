@@ -142,6 +142,11 @@ public partial class LevelManager : Node
         tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords);
     }
 
+    public TileData GetTileFromPosition(Vector2 position)
+    {
+        return tileMapLayer.GetCellTileData(tileMapLayer.LocalToMap(position));
+    }
+
     //takes list of rows of tiles and returns same list but with info about each tile
     List<List<TileInfo>> CreateTilemap(List<List<int>> tiles, List<TriggerParams> triggers)
     {

@@ -171,9 +171,16 @@ public partial class PlayerMovement : CharacterBody2D
 
         KinematicCollision2D collision = GetLastSlideCollision();
 
-        if (collision.GetCollider() is not null)
+        if (collision is not null)
         {
-            GD.Print(collision.GetCollider());
+            TileData tile = LevelManager.Instance.GetTileFromPosition(collision.GetPosition());
+
+            if (tile is not null)
+            {
+                GD.Print(tile);
+            }
         }
-	}
+
+
+    }
 }
