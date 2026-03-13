@@ -229,6 +229,27 @@ public partial class PlayerMovement : CharacterBody2D
                 {
                     LevelManager.Instance.KillPlayer();
                 }
+
+                if ((int)tile.GetCustomData("Bounce Pad Height") > 0)
+                {
+                    int rotation = (int)tile.GetCustomData("Rotation");
+                    int bouncePadHeight = (int)tile.GetCustomData("Bounce Pad Height");
+
+                    if (rotation == (int)TileRotation.Up) Velocity = new(Velocity.X, -bouncePadHeight);
+                    else if (rotation == (int)TileRotation.Left)
+                    {
+                        moveLock = 0.25f;
+                        bouncedSidewaysBySpring = true;
+                        Velocity = new(-bouncePadHeight, Velocity.Y);
+                    }
+                    else if (rotation == (int)TileRotation.Down) Velocity = new(Velocity.X, bouncePadHeight);
+                    else
+                    {
+                        moveLock = 0.25f;
+                        bouncedSidewaysBySpring = true;
+                        Velocity = new(bouncePadHeight, Velocity.Y);
+                    }
+                }
             }
         }
 
