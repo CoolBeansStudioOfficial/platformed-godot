@@ -5,7 +5,8 @@ using System.Text.Json;
 public partial class LevelManager : Node
 {
     [Export] PackedScene playerScene;
-    [Export] PackedScene[] tileScenes;
+    [Export] TileMapLayer tileMapLayer;
+    [Export] Godot.Collections.Array<bool> useAdjacency;
 
     [Export] AudioStream deathSound;
 
@@ -133,30 +134,9 @@ public partial class LevelManager : Node
 
     public void SpawnBlock(TileInfo info, TileRotation rotation, bool deferred = false)
     {
-        //delete existing tile if this tile is going to spawn in its place
-        foreach (var existingTile in tiles)
-        {
-            if (existingTile.info.position == info.position)
-            {
-                tiles.Remove(existingTile);
-                existingTile.Free();
-                
-                break;
-            }
-        }
-
-        //don't spawn a tile if no scene exists for it
-        if (tileScenes[(int)info.id] is null) return;
-
-        var tile = (Node2D)tileScenes[(int)info.id].Instantiate() as Tile;
-        if (deferred) CallDeferred("add_child", tile);
-        else AddChild(tile);
-        tiles.Add(tile);
-
-        //apply rotation and set tile's info and position
-        info.rotation = rotation;
-        tile.UpdateTile(info);
-        tile.Position = tile.info.position * 16;
+        //set grid cell
+        tileMapLayer.SetCell(info.position, (int)info.id, Vector2I.Zero);
+        
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
