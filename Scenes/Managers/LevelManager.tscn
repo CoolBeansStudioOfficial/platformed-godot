@@ -11,9 +11,11 @@ script = ExtResource("1_wtinm")
 playerScene = ExtResource("2_mb033")
 tileMapLayer = NodePath("TileMapLayer")
 useAdjacency = Array[bool]([false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+sceneTile = Array[bool]([false, false, false, false, false, false, false, false, false, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false])
 deathSound = ExtResource("16_3076r")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=493944075]
 texture_filter = 1
 tile_set = ExtResource("4_c8sqs")
+physics_quadrant_size = 1
 script = ExtResource("23_mx32o")

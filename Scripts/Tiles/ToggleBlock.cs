@@ -18,10 +18,6 @@ public partial class ToggleBlock : Tile
             collisionShape.Disabled = LevelManager.Instance.redBlocksActive;
         }
     }
-    public override void OnTileCreated()
-    {
-        //just be a chill guy
-    }
 
     public override void OnBodyEntered(Node2D body)
     {

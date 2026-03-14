@@ -72,21 +72,16 @@ public partial class PlayerMovement : CharacterBody2D
                     //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
                     for (int i = 0; i < wallCastLeft.GetCollisionCount(); i++)
                     {
-                        //don't ask me why this works. i think it's something to do with float accuracy or smth
-                        Vector2 newPos = wallCastLeft.GetCollisionPoint(i) + new Vector2(-0.1f, 0f);
-
-                        var tile = LevelManager.Instance.GetTileFromPosition(newPos);
+                        var tile = LevelManager.Instance.GetTileFromCollision(wallCastLeft.GetColliderRid(i));
                         if (tile is not null)
                         {
                             if (!(bool)tile.GetCustomData("Kill On Touch"))
                             {
                                 canJumpFromLeft = true;
-                                GD.Print("found valid left jump object");
                                 break;
                             }
                             else
                             {
-                                GD.Print("found INvalid left jump object");
                             }
                         }
                     }
@@ -97,13 +92,12 @@ public partial class PlayerMovement : CharacterBody2D
                     //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
                     for (int i = 0; i < wallCastRight.GetCollisionCount(); i++)
                     {
-                        var tile = LevelManager.Instance.GetTileFromPosition(wallCastRight.GetCollisionPoint(i));
+                        var tile = LevelManager.Instance.GetTileFromCollision(wallCastRight.GetColliderRid(i));
                         if (tile is not null)
                         {
                             if (!(bool)tile.GetCustomData("Kill On Touch"))
                             {
                                 canJumpFromRight = true;
-                                GD.Print("found valid right jump object");
                                 break;
                             }
                         }
@@ -217,11 +211,21 @@ public partial class PlayerMovement : CharacterBody2D
 
 		animation.UpdateAnimation(velocity, IsOnFloor(), delta);
 
-        KinematicCollision2D collision = GetLastSlideCollision();
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            HandleCollision(GetSlideCollision(i));
+        }
 
+        
+
+
+    }
+
+    void HandleCollision(KinematicCollision2D collision)
+    {
         if (collision is not null)
         {
-            TileData tile = LevelManager.Instance.GetTileFromPosition(collision.GetPosition());
+            TileData tile = LevelManager.Instance.GetTileFromCollision(collision.GetColliderRid());
 
             if (tile is not null)
             {
@@ -252,7 +256,5 @@ public partial class PlayerMovement : CharacterBody2D
                 }
             }
         }
-
-
     }
 }

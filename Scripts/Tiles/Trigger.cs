@@ -3,11 +3,6 @@ using System;
 
 public partial class Trigger : Tile
 {
-    public override void OnTileCreated()
-    {
-        //chill guy
-    }
-
     public override void OnBodyEntered(Node2D body)
     {
         if (body is PlayerMovement player)
@@ -50,7 +45,7 @@ public partial class Trigger : Tile
                         TileInfo newInfo = tile.info;
                         newInfo.rotation = (TileRotation)command.Rotation.Value;
 
-                        tile.SetRotation(newInfo);
+                        tile.SetRotation();
 
                         break;
                     }

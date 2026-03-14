@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="1_lawiu"]
 [ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/spikes.png" id="2_2tsvu"]
-[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="2_3afvo"]
+[ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="2_7ehpm"]
 [ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="3_q2l7b"]
 [ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="3_w2f5o"]
 [ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/checkpoint.png" id="4_3jijm"]
@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/sign-right.png" id="8_w03wh"]
 [ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/crate.png" id="9_7sgf7"]
 [ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/sign-left.png" id="9_upe0s"]
-[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="10_nb4lf"]
 [ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/sign-up.png" id="11_uu4np"]
 [ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="12_12fwq"]
 [ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="13_trg7l"]
 [ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="14_rfy21"]
+[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/BouncePad.tscn" id="17_7ehpm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
 resource_name = "Ground"
@@ -57,10 +57,9 @@ texture = ExtResource("1_lawiu")
 15:0/0 = 0
 15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjfwl"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2j2uc"]
 resource_name = "Coin"
-texture = ExtResource("2_3afvo")
-0:0/0 = 0
+scenes/0/scene = ExtResource("2_7ehpm")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dr4my"]
 resource_name = "DissipationBlock"
@@ -111,20 +110,23 @@ texture = ExtResource("9_upe0s")
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2a6n"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehpm"]
 resource_name = "Spikes"
 texture = ExtResource("2_2tsvu")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.2430296, 8, 6.342124, 8, 0, -5.152976)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.0123396, 8, 7.0123386, 8, 0.01006031, -6.031417)
 0:0/0/custom_data_1 = true
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -6.342125, 8, 6.044838, -5.152977, 0)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -7.0073094, 8, 6.9469433, -6.0766907, -0.03521347)
+1:0/0/custom_data_0 = 1
 1:0/0/custom_data_1 = true
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.2430296, -8, 6.342124, -8, 0, 4.85569)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.002279, -8, 6.992218, -8, -0.030182838, 6.142084)
+2:0/0/custom_data_0 = 2
 2:0/0/custom_data_1 = true
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.9457417, 4.9547853, -0.099095345, -8, 6.044838)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -7.007309, -8, 6.9570045, 6.046507, 0.0050296783)
+3:0/0/custom_data_0 = 3
 3:0/0/custom_data_1 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsv4i"]
@@ -215,24 +217,9 @@ texture = ExtResource("9_7sgf7")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5icb"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bsf56"]
 resource_name = "BouncePad"
-texture = ExtResource("10_nb4lf")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.0900526, 8, -1.0900526, 8, 8, -8, 8)
-0:0/0/custom_data_2 = 525
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.99095726, 8, -0.99095726, -8, 8, -8, 8, 8)
-1:0/0/custom_data_0 = 1
-1:0/0/custom_data_2 = 525
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.99095726, 8, 0.99095726, 8, -8, -8, -8)
-2:0/0/custom_data_0 = 2
-2:0/0/custom_data_2 = 525
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.8918619, -8, 0.9909563, 8, -8, 8, -8, -8)
-3:0/0/custom_data_0 = 3
-3:0/0/custom_data_2 = 525
+scenes/0/scene = ExtResource("17_7ehpm")
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -242,15 +229,12 @@ custom_data_layer_1/name = "Kill On Touch"
 custom_data_layer_1/type = 1
 custom_data_layer_2/name = "Bounce Pad Height"
 custom_data_layer_2/type = 2
-sources/2 = SubResource("TileSetAtlasSource_n2a6n")
 sources/1 = SubResource("TileSetAtlasSource_iku51")
 sources/3 = SubResource("TileSetAtlasSource_ab4rv")
 sources/4 = SubResource("TileSetAtlasSource_nhcus")
 sources/6 = SubResource("TileSetAtlasSource_3l3dk")
 sources/7 = SubResource("TileSetAtlasSource_7sgf7")
 sources/8 = SubResource("TileSetAtlasSource_qnubn")
-sources/9 = SubResource("TileSetAtlasSource_p5icb")
-sources/10 = SubResource("TileSetAtlasSource_yjfwl")
 sources/11 = SubResource("TileSetAtlasSource_dr4my")
 sources/13 = SubResource("TileSetAtlasSource_o8ylv")
 sources/14 = SubResource("TileSetAtlasSource_i2f7v")
@@ -262,3 +246,6 @@ sources/20 = SubResource("TileSetAtlasSource_qsv4i")
 sources/21 = SubResource("TileSetAtlasSource_yj4um")
 sources/22 = SubResource("TileSetAtlasSource_ck5jw")
 sources/23 = SubResource("TileSetAtlasSource_cgj0e")
+sources/2 = SubResource("TileSetAtlasSource_7ehpm")
+sources/9 = SubResource("TileSetScenesCollectionSource_bsf56")
+sources/10 = SubResource("TileSetScenesCollectionSource_2j2uc")

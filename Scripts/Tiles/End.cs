@@ -5,11 +5,6 @@ public partial class End : Tile
 {
     [Export] AudioStream victorySound;
 
-    public override void OnTileCreated()
-    {
-        //just be a chill guy
-    }
-
     public override void OnBodyEntered(Node2D body)
     {
         if (body is PlayerMovement player)

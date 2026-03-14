@@ -91,35 +91,29 @@ public enum TileRotation
 public abstract partial class Tile : Sprite2D
 {
     [Export] bool usesAdjacency;
+    [Export] TileRotation rotation;
     [Export] CollisionObject2D collisionObject;
     [Export] public CollisionShape2D collisionShape;
 
     public TileInfo info;
 
-    public abstract void OnTileCreated();
-
-    public abstract void OnBodyEntered(Node2D body);
-
-    public void UpdateTile(TileInfo newInfo)
+    public override void _Ready()
     {
-        //set this tile's info
-        info = newInfo;
-
-        SetRotation(info);
-
-        OnTileCreated();
+        SetRotation();
 
         //subscribe to onbodyentered if applicable
         if (collisionObject is Area2D area) area.BodyEntered += OnBodyEntered;
     }
 
-    public virtual void SetRotation(TileInfo rotationInfo)
+    public abstract void OnBodyEntered(Node2D body);
+
+    public virtual void SetRotation()
     {
         //set rotation from info
         //this works for 90% of tiles. if you need custom rotation (i.e. signs), it can be implemented in OnTileCreated.
-        if (rotationInfo.rotation == TileRotation.Up) RotationDegrees = 0;
-        else if (rotationInfo.rotation == TileRotation.Left) RotationDegrees = -90;
-        else if (rotationInfo.rotation == TileRotation.Down) RotationDegrees = 180;
+        if (rotation == TileRotation.Up) RotationDegrees = 0;
+        else if (rotation == TileRotation.Left) RotationDegrees = -90;
+        else if (rotation == TileRotation.Down) RotationDegrees = 180;
         else RotationDegrees = 90;
     }
 

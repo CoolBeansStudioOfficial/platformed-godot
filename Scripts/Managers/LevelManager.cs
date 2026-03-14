@@ -7,6 +7,7 @@ public partial class LevelManager : Node
     [Export] PackedScene playerScene;
     [Export] TileMapLayer tileMapLayer;
     [Export] Godot.Collections.Array<bool> useAdjacency;
+    [Export] Godot.Collections.Array<bool> sceneTile;
 
     [Export] AudioStream deathSound;
 
@@ -135,16 +136,22 @@ public partial class LevelManager : Node
     {
         //get atlas coords for tile
         Vector2I atlasCoords;
+        int altTile = 0;
         if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
         else atlasCoords = new((int)rotation, 0);
+
+        if (sceneTile[(int)info.id])
+        {
+            atlasCoords = Vector2I.Zero;
+        }
 
         //set grid cell
         tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords);
     }
 
-    public TileData GetTileFromPosition(Vector2 position)
+    public TileData GetTileFromCollision(Rid rid)
     {
-        return tileMapLayer.GetCellTileData(tileMapLayer.LocalToMap(position));
+        return tileMapLayer.GetCellTileData(tileMapLayer.GetCoordsForBodyRid(rid));
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
