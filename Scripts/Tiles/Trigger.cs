@@ -33,7 +33,7 @@ public partial class Trigger : Tile
                     rotation = TileRotation.Up,
                     id = (TileId)command.Block.Value,
                 }, 
-                TileRotation.Up, true);
+                TileRotation.Up);
             }
             else if (command.Type == "rotate")
             {

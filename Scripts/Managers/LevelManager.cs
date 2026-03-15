@@ -95,10 +95,18 @@ public partial class LevelManager : Node
                 {
                     //empty tile
                 }
-                else
+                //regular tile
+                else if (tile.triggerParams is null)
                 {
                     //spawn tile and pass in rotation from map
                     SpawnBlock(tile, (TileRotation)rotationMap[y][x]);
+                }
+                //trigger
+                else
+                {
+
+
+                    
                 }
 
                 x++;
@@ -132,21 +140,29 @@ public partial class LevelManager : Node
         isPlayerSpawned = true;
     }
 
-    public void SpawnBlock(TileInfo info, TileRotation rotation, bool deferred = false)
+    public void SpawnBlock(TileInfo info, TileRotation rotation)
     {
         //get atlas coords for tile
         Vector2I atlasCoords;
         int altTile = 0;
+
         if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
         else atlasCoords = new((int)rotation, 0);
 
+        //if scene tile, use alternate scene instead of atlas coords
         if (sceneTile[(int)info.id])
         {
             atlasCoords = Vector2I.Zero;
+            altTile = (int)rotation;
         }
 
         //set grid cell
-        tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords);
+        tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords, altTile);
+    }
+
+    public void SpawnTrigger(TileInfo info, TileRotation rotation)
+    {
+
     }
 
     public TileData GetTileFromCollision(Rid rid)

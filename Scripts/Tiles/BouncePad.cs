@@ -9,14 +9,20 @@ public partial class BouncePad : Tile
     {
         if (body is PlayerMovement player)
         {
-            if (info.rotation == TileRotation.Up) player.Velocity = new(player.Velocity.X, -bouncePadHeight);
-            else if (info.rotation == TileRotation.Left)
+            if (rotation == TileRotation.Up)
+            {
+                player.Velocity = new(player.Velocity.X, -bouncePadHeight);
+            }
+            else if (rotation == TileRotation.Left)
             {
                 player.moveLock = 0.25f;
                 player.bouncedSidewaysBySpring = true;
                 player.Velocity = new(-bouncePadHeight, player.Velocity.Y);
             }
-            else if (info.rotation == TileRotation.Down) player.Velocity = new(player.Velocity.X, bouncePadHeight);
+            else if (rotation == TileRotation.Down)
+            {
+                player.Velocity = new(player.Velocity.X, bouncePadHeight);
+            }
             else
             {
                 player.moveLock = 0.25f;

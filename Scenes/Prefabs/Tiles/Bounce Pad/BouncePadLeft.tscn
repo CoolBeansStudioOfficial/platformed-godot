@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dx183ctntrodl"]
+[gd_scene format=3 uid="uid://dtxa0tkm5wx8f"]
 
-[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="1_6lq0d"]
-[ext_resource type="Script" uid="uid://bnjgepdd78vti" path="res://Scripts/Tiles/BouncePad.cs" id="2_6lq0d"]
+[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="1_y0yj2"]
+[ext_resource type="Script" uid="uid://bnjgepdd78vti" path="res://Scripts/Tiles/BouncePad.cs" id="2_fv3ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73p2"]
 size = Vector2(16, 16)
@@ -9,10 +9,10 @@ size = Vector2(16, 16)
 [node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
 texture_filter = 1
 rotation = 1
-texture = ExtResource("1_6lq0d")
+texture = ExtResource("1_y0yj2")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
-script = ExtResource("2_6lq0d")
+script = ExtResource("2_fv3ew")
 bouncePadHeight = 525.0
 rotation = 1
 collisionObject = NodePath("Area2D")

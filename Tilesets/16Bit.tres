@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="2_7ehpm"]
 [ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="3_q2l7b"]
 [ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="3_w2f5o"]
-[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/checkpoint.png" id="4_3jijm"]
 [ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="4_7ehpm"]
-[ext_resource type="Texture2D" uid="uid://cisqatxwyl1aj" path="res://Images/Raster/end.png" id="5_3afvo"]
 [ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="5_bsf56"]
 [ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="6_2j2uc"]
 [ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="6_q2l7b"]
@@ -19,7 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="12_12fwq"]
 [ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="13_trg7l"]
 [ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="14_rfy21"]
-[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/BouncePad.tscn" id="17_7ehpm"]
+[ext_resource type="PackedScene" uid="uid://bsydybqamwolx" path="res://Scenes/Prefabs/Tiles/Checkpoint.tscn" id="16_7ehpm"]
+[ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/End.tscn" id="17_bsf56"]
+[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadUp.tscn" id="20_bsf56"]
+[ext_resource type="PackedScene" uid="uid://dtxa0tkm5wx8f" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadLeft.tscn" id="21_2j2uc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
 resource_name = "Ground"
@@ -85,8 +86,11 @@ resource_name = "TriggerOne"
 texture = ExtResource("6_2j2uc")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a41yl"]
 resource_name = "TriggerThree"
@@ -99,16 +103,22 @@ resource_name = "SignRight"
 texture = ExtResource("8_w03wh")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yx260"]
 resource_name = "SignLeft"
 texture = ExtResource("9_upe0s")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehpm"]
 resource_name = "Spikes"
@@ -134,16 +144,22 @@ resource_name = "SignUp"
 texture = ExtResource("11_uu4np")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yj4um"]
 resource_name = "SignDown"
 texture = ExtResource("12_12fwq")
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ck5jw"]
 resource_name = "HalfSpikesRight"
@@ -152,10 +168,13 @@ texture = ExtResource("13_trg7l")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.19819164, 8, 6.8376036, 8, 3.4683485, 0.7927656)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.19819069, 8, -7.1348906, 0.8918619, -3.4683495)
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -8, -0.0990963, -8, -3.5674458, -1.189148)
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.0990963, -8, 6.639412, -1.1891489, 3.1710625)
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
 resource_name = "HalfSpikesLeft"
@@ -164,10 +183,13 @@ texture = ExtResource("14_rfy21")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.6574984, 0.7927656)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0.99095726, 0.8918619, 4.0629234)
+1:0/0/custom_data_0 = 1
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0.6936693, -8, 4.3602114, -1.0900526)
+2:0/0/custom_data_0 = 2
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -1.2882442, -1.3873405, -4.6574974)
+3:0/0/custom_data_0 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
 resource_name = "SpikesDouble"
@@ -177,23 +199,24 @@ texture = ExtResource("3_w2f5o")
 0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 0.8918619, 4.558403, 0.9909563, -3.666541, 8, -7.0357947)
+1:0/0/custom_data_0 = 1
 1:0/0/custom_data_1 = true
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.8376036, -8, -3.666541, -1.189148, 4.3602114, -1.0900526, 8, -8)
+2:0/0/custom_data_0 = 2
 2:0/0/custom_data_1 = true
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.0900526, -4.6574974, -1.0900526, 3.2701588, -8, 6.738508)
+3:0/0/custom_data_0 = 3
 3:0/0/custom_data_1 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nhcus"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dt0r2"]
 resource_name = "Checkpoint"
-texture = ExtResource("4_3jijm")
-0:0/0 = 0
+scenes/0/scene = ExtResource("16_7ehpm")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3l3dk"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_w03wh"]
 resource_name = "End"
-texture = ExtResource("5_3afvo")
-0:0/0 = 0
+scenes/0/scene = ExtResource("17_bsf56")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sgf7"]
 resource_name = "Cactus"
@@ -219,7 +242,8 @@ texture = ExtResource("9_7sgf7")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bsf56"]
 resource_name = "BouncePad"
-scenes/0/scene = ExtResource("17_7ehpm")
+scenes/0/scene = ExtResource("20_bsf56")
+scenes/1/scene = ExtResource("21_2j2uc")
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -231,8 +255,6 @@ custom_data_layer_2/name = "Bounce Pad Height"
 custom_data_layer_2/type = 2
 sources/1 = SubResource("TileSetAtlasSource_iku51")
 sources/3 = SubResource("TileSetAtlasSource_ab4rv")
-sources/4 = SubResource("TileSetAtlasSource_nhcus")
-sources/6 = SubResource("TileSetAtlasSource_3l3dk")
 sources/7 = SubResource("TileSetAtlasSource_7sgf7")
 sources/8 = SubResource("TileSetAtlasSource_qnubn")
 sources/11 = SubResource("TileSetAtlasSource_dr4my")
@@ -249,3 +271,5 @@ sources/23 = SubResource("TileSetAtlasSource_cgj0e")
 sources/2 = SubResource("TileSetAtlasSource_7ehpm")
 sources/9 = SubResource("TileSetScenesCollectionSource_bsf56")
 sources/10 = SubResource("TileSetScenesCollectionSource_2j2uc")
+sources/4 = SubResource("TileSetScenesCollectionSource_dt0r2")
+sources/6 = SubResource("TileSetScenesCollectionSource_w03wh")

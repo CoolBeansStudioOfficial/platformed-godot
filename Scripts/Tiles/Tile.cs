@@ -91,7 +91,7 @@ public enum TileRotation
 public abstract partial class Tile : Sprite2D
 {
     [Export] bool usesAdjacency;
-    [Export] TileRotation rotation;
+    [Export] public TileRotation rotation;
     [Export] CollisionObject2D collisionObject;
     [Export] public CollisionShape2D collisionShape;
 
