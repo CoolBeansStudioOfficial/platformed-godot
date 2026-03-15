@@ -7,12 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="3_w2f5o"]
 [ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/ToggleBlockBlue.tscn" id="4_dt0r2"]
 [ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="5_dt0r2"]
-[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="6_2j2uc"]
+[ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/Trigger One/TriggerOneUp.tscn" id="6_12fwq"]
 [ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="6_q2l7b"]
-[ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/trigger-three.png" id="7_dt0r2"]
+[ext_resource type="PackedScene" uid="uid://jfla72d508dv" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/Trigger One/TriggerOneLeft.tscn" id="7_trg7l"]
+[ext_resource type="PackedScene" uid="uid://kvpxum50ge3" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/Trigger One/TriggerOneDown.tscn" id="8_rfy21"]
 [ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/sign-right.png" id="8_w03wh"]
 [ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/crate.png" id="9_7sgf7"]
+[ext_resource type="PackedScene" uid="uid://elnb7is0i8xf" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/Trigger One/TriggerOneRight.tscn" id="9_o8ylv"]
 [ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/sign-left.png" id="9_upe0s"]
+[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/InvisibleTrigger.tscn" id="10_i2f7v"]
+[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/With Rotations/Triggers/TriggerThree.tscn" id="11_dgasy"]
 [ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/sign-up.png" id="11_uu4np"]
 [ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="12_12fwq"]
 [ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="13_trg7l"]
@@ -89,22 +93,20 @@ scenes/1/scene = ExtResource("5_dt0r2")
 scenes/2/scene = ExtResource("5_dt0r2")
 scenes/3/scene = ExtResource("5_dt0r2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgasy"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_trg7l"]
 resource_name = "TriggerOne"
-texture = ExtResource("6_2j2uc")
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/custom_data_0 = 1
-2:0/0 = 0
-2:0/0/custom_data_0 = 2
-3:0/0 = 0
-3:0/0/custom_data_0 = 3
+scenes/0/scene = ExtResource("6_12fwq")
+scenes/1/scene = ExtResource("7_trg7l")
+scenes/2/scene = ExtResource("8_rfy21")
+scenes/3/scene = ExtResource("9_o8ylv")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a41yl"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_12fwq"]
+resource_name = "InvisibleTrigger"
+scenes/0/scene = ExtResource("10_i2f7v")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rfy21"]
 resource_name = "TriggerThree"
-texture = ExtResource("7_dt0r2")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+scenes/0/scene = ExtResource("11_dgasy")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvu8y"]
 resource_name = "SignRight"
@@ -174,30 +176,38 @@ resource_name = "HalfSpikesRight"
 texture = ExtResource("13_trg7l")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.19819164, 8, 6.8376036, 8, 3.4683485, 0.7927656)
+0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.19819069, 8, -7.1348906, 0.8918619, -3.4683495)
 1:0/0/custom_data_0 = 1
+1:0/0/custom_data_1 = true
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -8, -0.0990963, -8, -3.5674458, -1.189148)
 2:0/0/custom_data_0 = 2
+2:0/0/custom_data_1 = true
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.0990963, -8, 6.639412, -1.1891489, 3.1710625)
 3:0/0/custom_data_0 = 3
+3:0/0/custom_data_1 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
 resource_name = "HalfSpikesLeft"
 texture = ExtResource("14_rfy21")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.4921875, 0.99609375)
+0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0.99095726, 0.8918619, 4.0629234)
 1:0/0/custom_data_0 = 1
+1:0/0/custom_data_1 = true
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 0.6936693, -8, 4.3602114, -1.0900526)
 2:0/0/custom_data_0 = 2
+2:0/0/custom_data_1 = true
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -1.2882442, -1.3873405, -4.6574974)
 3:0/0/custom_data_0 = 3
+3:0/0/custom_data_1 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
 resource_name = "SpikesDouble"
@@ -274,8 +284,6 @@ sources/3 = SubResource("TileSetAtlasSource_ab4rv")
 sources/7 = SubResource("TileSetAtlasSource_7sgf7")
 sources/8 = SubResource("TileSetAtlasSource_qnubn")
 sources/11 = SubResource("TileSetAtlasSource_dr4my")
-sources/15 = SubResource("TileSetAtlasSource_dgasy")
-sources/17 = SubResource("TileSetAtlasSource_a41yl")
 sources/18 = SubResource("TileSetAtlasSource_pvu8y")
 sources/19 = SubResource("TileSetAtlasSource_yx260")
 sources/20 = SubResource("TileSetAtlasSource_qsv4i")
@@ -289,3 +297,6 @@ sources/4 = SubResource("TileSetScenesCollectionSource_dt0r2")
 sources/6 = SubResource("TileSetScenesCollectionSource_w03wh")
 sources/13 = SubResource("TileSetScenesCollectionSource_upe0s")
 sources/14 = SubResource("TileSetScenesCollectionSource_uu4np")
+sources/16 = SubResource("TileSetScenesCollectionSource_12fwq")
+sources/15 = SubResource("TileSetScenesCollectionSource_trg7l")
+sources/17 = SubResource("TileSetScenesCollectionSource_rfy21")

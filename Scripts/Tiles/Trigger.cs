@@ -5,13 +5,15 @@ public partial class Trigger : Tile
 {
     TriggerParams triggerParams;
 
-    public override void _Ready()
-    {
-        triggerParams = LevelManager.Instance.GetTriggerParams(Position);
-    }
-
     public override void OnBodyEntered(Node2D body)
     {
+        if (triggerParams is null)
+        {
+            triggerParams = LevelManager.Instance.GetTriggerParams(Position);
+
+            if (triggerParams is null) GD.Print("no params found for trigger");
+        }
+
         if (body is PlayerMovement player)
         {
             if (triggerParams is not null) RunTrigger();
