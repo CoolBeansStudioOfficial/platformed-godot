@@ -3,16 +3,22 @@ using System;
 
 public partial class Trigger : Tile
 {
+    TriggerParams triggerParams;
+
+    public override void _Ready()
+    {
+        triggerParams = LevelManager.Instance.GetTriggerParams(Position);
+    }
+
     public override void OnBodyEntered(Node2D body)
     {
         if (body is PlayerMovement player)
         {
-            if (info.triggerParams is not null) RunTrigger(info.triggerParams);
+            if (triggerParams is not null) RunTrigger();
         }
     }
 
-
-    void RunTrigger(TriggerParams triggerParams)
+    void RunTrigger()
     {
         foreach (var command in triggerParams.Execute)
         {
@@ -26,8 +32,7 @@ public partial class Trigger : Tile
             }
             else if (command.Type == "updateBlock")
             {
-                //spawn block deferred
-                LevelManager.Instance.SpawnBlock(new()
+                LevelManager.Instance.SetTile(new()
                 {
                     position = new(command.X.Value, command.Y.Value),
                     rotation = TileRotation.Up,
@@ -37,19 +42,7 @@ public partial class Trigger : Tile
             }
             else if (command.Type == "rotate")
             {
-                Vector2 targetPosition = new(command.X.Value, command.Y.Value);
-                foreach (var tile in LevelManager.Instance.tiles)
-                {
-                    if (tile.info.position == targetPosition)
-                    {
-                        TileInfo newInfo = tile.info;
-                        newInfo.rotation = (TileRotation)command.Rotation.Value;
-
-                        tile.SetRotation();
-
-                        break;
-                    }
-                }
+                throw new NotImplementedException();
             }
         }
     }

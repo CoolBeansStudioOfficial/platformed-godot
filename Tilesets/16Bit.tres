@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="2_7ehpm"]
 [ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="3_q2l7b"]
 [ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="3_w2f5o"]
-[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="4_7ehpm"]
-[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="5_bsf56"]
+[ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/ToggleBlockBlue.tscn" id="4_dt0r2"]
+[ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="5_dt0r2"]
 [ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="6_2j2uc"]
 [ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="6_q2l7b"]
 [ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/trigger-three.png" id="7_dt0r2"]
@@ -19,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="14_rfy21"]
 [ext_resource type="PackedScene" uid="uid://bsydybqamwolx" path="res://Scenes/Prefabs/Tiles/Checkpoint.tscn" id="16_7ehpm"]
 [ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/End.tscn" id="17_bsf56"]
-[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadUp.tscn" id="20_bsf56"]
-[ext_resource type="PackedScene" uid="uid://dtxa0tkm5wx8f" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadLeft.tscn" id="21_2j2uc"]
-[ext_resource type="PackedScene" uid="uid://d1ogjjgyi1g5t" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadDown.tscn" id="22_2j2uc"]
-[ext_resource type="PackedScene" uid="uid://bt6i8d5gbuupt" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadRight.tscn" id="23_dt0r2"]
+[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/With Rotations/Bounce Pad/BouncePadUp.tscn" id="20_dt0r2"]
+[ext_resource type="PackedScene" uid="uid://dtxa0tkm5wx8f" path="res://Scenes/Prefabs/Tiles/With Rotations/Bounce Pad/BouncePadLeft.tscn" id="21_w03wh"]
+[ext_resource type="PackedScene" uid="uid://d1ogjjgyi1g5t" path="res://Scenes/Prefabs/Tiles/With Rotations/Bounce Pad/BouncePadDown.tscn" id="22_upe0s"]
+[ext_resource type="PackedScene" uid="uid://bt6i8d5gbuupt" path="res://Scenes/Prefabs/Tiles/With Rotations/Bounce Pad/BouncePadRight.tscn" id="23_uu4np"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
 resource_name = "Ground"
@@ -63,6 +63,9 @@ texture = ExtResource("1_lawiu")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2j2uc"]
 resource_name = "Coin"
 scenes/0/scene = ExtResource("2_7ehpm")
+scenes/1/scene = ExtResource("2_7ehpm")
+scenes/2/scene = ExtResource("2_7ehpm")
+scenes/3/scene = ExtResource("2_7ehpm")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dr4my"]
 resource_name = "DissipationBlock"
@@ -72,16 +75,19 @@ texture = ExtResource("3_q2l7b")
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8ylv"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_upe0s"]
 resource_name = "BlockBlue"
-texture = ExtResource("4_7ehpm")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+scenes/0/scene = ExtResource("4_dt0r2")
+scenes/1/scene = ExtResource("4_dt0r2")
+scenes/2/scene = ExtResource("4_dt0r2")
+scenes/3/scene = ExtResource("4_dt0r2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2f7v"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uu4np"]
 resource_name = "BlockRed"
-texture = ExtResource("5_bsf56")
-0:0/0 = 0
+scenes/0/scene = ExtResource("5_dt0r2")
+scenes/1/scene = ExtResource("5_dt0r2")
+scenes/2/scene = ExtResource("5_dt0r2")
+scenes/3/scene = ExtResource("5_dt0r2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgasy"]
 resource_name = "TriggerOne"
@@ -182,7 +188,7 @@ texture = ExtResource("13_trg7l")
 resource_name = "HalfSpikesLeft"
 texture = ExtResource("14_rfy21")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.6574984, 0.7927656)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.4921875, 0.99609375)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0.99095726, 0.8918619, 4.0629234)
 1:0/0/custom_data_0 = 1
@@ -215,10 +221,16 @@ texture = ExtResource("3_w2f5o")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dt0r2"]
 resource_name = "Checkpoint"
 scenes/0/scene = ExtResource("16_7ehpm")
+scenes/1/scene = ExtResource("16_7ehpm")
+scenes/2/scene = ExtResource("16_7ehpm")
+scenes/3/scene = ExtResource("16_7ehpm")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_w03wh"]
 resource_name = "End"
 scenes/0/scene = ExtResource("17_bsf56")
+scenes/1/scene = ExtResource("17_bsf56")
+scenes/2/scene = ExtResource("17_bsf56")
+scenes/3/scene = ExtResource("17_bsf56")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sgf7"]
 resource_name = "Cactus"
@@ -244,10 +256,10 @@ texture = ExtResource("9_7sgf7")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bsf56"]
 resource_name = "BouncePad"
-scenes/0/scene = ExtResource("20_bsf56")
-scenes/1/scene = ExtResource("21_2j2uc")
-scenes/2/scene = ExtResource("22_2j2uc")
-scenes/3/scene = ExtResource("23_dt0r2")
+scenes/0/scene = ExtResource("20_dt0r2")
+scenes/1/scene = ExtResource("21_w03wh")
+scenes/2/scene = ExtResource("22_upe0s")
+scenes/3/scene = ExtResource("23_uu4np")
 
 [resource]
 physics_layer_0/collision_layer = 1
@@ -262,8 +274,6 @@ sources/3 = SubResource("TileSetAtlasSource_ab4rv")
 sources/7 = SubResource("TileSetAtlasSource_7sgf7")
 sources/8 = SubResource("TileSetAtlasSource_qnubn")
 sources/11 = SubResource("TileSetAtlasSource_dr4my")
-sources/13 = SubResource("TileSetAtlasSource_o8ylv")
-sources/14 = SubResource("TileSetAtlasSource_i2f7v")
 sources/15 = SubResource("TileSetAtlasSource_dgasy")
 sources/17 = SubResource("TileSetAtlasSource_a41yl")
 sources/18 = SubResource("TileSetAtlasSource_pvu8y")
@@ -277,3 +287,5 @@ sources/9 = SubResource("TileSetScenesCollectionSource_bsf56")
 sources/10 = SubResource("TileSetScenesCollectionSource_2j2uc")
 sources/4 = SubResource("TileSetScenesCollectionSource_dt0r2")
 sources/6 = SubResource("TileSetScenesCollectionSource_w03wh")
+sources/13 = SubResource("TileSetScenesCollectionSource_upe0s")
+sources/14 = SubResource("TileSetScenesCollectionSource_uu4np")

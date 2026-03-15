@@ -72,6 +72,13 @@ public partial class PlayerMovement : CharacterBody2D
                     //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
                     for (int i = 0; i < wallCastLeft.GetCollisionCount(); i++)
                     {
+                        //if collision is with scene, skip invalid object check
+                        if (wallCastLeft.GetCollider(i) is not TileMapLayer)
+                        {
+                            canJumpFromLeft = true;
+                            break;
+                        }
+
                         var tile = LevelManager.Instance.GetTileFromCollision(wallCastLeft.GetColliderRid(i));
                         if (tile is not null)
                         {
@@ -92,6 +99,13 @@ public partial class PlayerMovement : CharacterBody2D
                     //don't let the player wall jump if the only thing the cast hit was stuff that should kill the player
                     for (int i = 0; i < wallCastRight.GetCollisionCount(); i++)
                     {
+                        //if collision is with scene, skip invalid object check
+                        if (wallCastRight.GetCollider(i) is not TileMapLayer)
+                        {
+                            canJumpFromLeft = true;
+                            break;
+                        }
+
                         var tile = LevelManager.Instance.GetTileFromCollision(wallCastRight.GetColliderRid(i));
                         if (tile is not null)
                         {
@@ -223,7 +237,7 @@ public partial class PlayerMovement : CharacterBody2D
 
     void HandleCollision(KinematicCollision2D collision)
     {
-        if (collision is not null)
+        if (collision is not null && collision.GetCollider() is TileMapLayer)
         {
             TileData tile = LevelManager.Instance.GetTileFromCollision(collision.GetColliderRid());
 

@@ -12,8 +12,6 @@ public struct TileInfo
     public bool tileLeft;
     public bool tileRight;
 
-    public TriggerParams triggerParams;
-
     public int GetAdjacency()
     {
         if (!tileAbove && !tileBelow && !tileLeft && !tileRight) return 0;

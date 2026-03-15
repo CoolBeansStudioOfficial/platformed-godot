@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 public partial class LevelManager : Node
@@ -12,7 +13,6 @@ public partial class LevelManager : Node
     [Export] AudioStream deathSound;
 
     Level currentLevel;
-    public List<Tile> tiles = [];
 
     PlayerMovement player;
     bool isPlayerSpawned = false;
@@ -80,7 +80,7 @@ public partial class LevelManager : Node
 
 
         //get tilemap from compressed level data
-        var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width), level.Data.Triggers);
+        var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));
         //get each tile's rotation from compressed level data
         var rotationMap = DecodeRLE(currentLevel.Data.Layers[1].Data, currentLevel.Width);
 
@@ -95,18 +95,10 @@ public partial class LevelManager : Node
                 {
                     //empty tile
                 }
-                //regular tile
-                else if (tile.triggerParams is null)
-                {
-                    //spawn tile and pass in rotation from map
-                    SpawnBlock(tile, (TileRotation)rotationMap[y][x]);
-                }
-                //trigger
                 else
                 {
-
-
-                    
+                    //spawn tile and pass in rotation from map
+                    SetTile(tile, (TileRotation)rotationMap[y][x]);
                 }
 
                 x++;
@@ -140,7 +132,7 @@ public partial class LevelManager : Node
         isPlayerSpawned = true;
     }
 
-    public void SpawnBlock(TileInfo info, TileRotation rotation)
+    public void SetTile(TileInfo info, TileRotation rotation)
     {
         //get atlas coords for tile
         Vector2I atlasCoords;
@@ -160,18 +152,40 @@ public partial class LevelManager : Node
         tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords, altTile);
     }
 
-    public void SpawnTrigger(TileInfo info, TileRotation rotation)
-    {
-
-    }
-
     public TileData GetTileFromCollision(Rid rid)
     {
         return tileMapLayer.GetCellTileData(tileMapLayer.GetCoordsForBodyRid(rid));
     }
 
+    public TileData GetTileFromGrid(Vector2I position)
+    {
+        return tileMapLayer.GetCellTileData(position);
+    }
+
+    public TriggerParams GetTriggerParams(Vector2 position)
+    {
+        Vector2I tilePosition = tileMapLayer.LocalToMap(position);
+
+        TriggerParams triggerParams = null;
+
+        if (currentLevel.Data.Triggers is not null)
+        {
+            foreach (var trigger in currentLevel.Data.Triggers)
+            {
+                if (trigger.X == tilePosition.X && trigger.Y == tilePosition.Y)
+                {
+                    triggerParams = trigger;
+
+                    break;
+                }
+            }
+        }
+
+        return triggerParams;
+    }
+
     //takes list of rows of tiles and returns same list but with info about each tile
-    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles, List<TriggerParams> triggers)
+    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles)
     {
         List<List<TileInfo>> tilemap = [];
 
@@ -201,22 +215,6 @@ public partial class LevelManager : Node
                 //check right, skip if this tile is rightmost tile
                 if (x != tiles[y].Count - 1) if (tiles[y][x + 1] == tile) right = true;
 
-                //check for trigger params
-                TriggerParams triggerParams = null;
-                
-                if (triggers is not null)
-                {
-                    foreach (var trigger in triggers)
-                    {
-                        if (trigger.X == x && trigger.Y == y)
-                        {
-                            triggerParams = trigger;
-
-                            break;
-                        }
-                    }
-                }
-
                 //construct tile info
                 TileInfo info = new()
                 {
@@ -227,8 +225,6 @@ public partial class LevelManager : Node
                     tileBelow = below,
                     tileLeft = left,
                     tileRight = right,
-
-                    triggerParams = triggerParams
                 };
 
                 currentRow.Add(info);
