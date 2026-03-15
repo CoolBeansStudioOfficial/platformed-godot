@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/End.tscn" id="17_bsf56"]
 [ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadUp.tscn" id="20_bsf56"]
 [ext_resource type="PackedScene" uid="uid://dtxa0tkm5wx8f" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadLeft.tscn" id="21_2j2uc"]
+[ext_resource type="PackedScene" uid="uid://d1ogjjgyi1g5t" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadDown.tscn" id="22_2j2uc"]
+[ext_resource type="PackedScene" uid="uid://bt6i8d5gbuupt" path="res://Scenes/Prefabs/Tiles/Bounce Pad/BouncePadRight.tscn" id="23_dt0r2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
 resource_name = "Ground"
@@ -244,6 +246,8 @@ texture = ExtResource("9_7sgf7")
 resource_name = "BouncePad"
 scenes/0/scene = ExtResource("20_bsf56")
 scenes/1/scene = ExtResource("21_2j2uc")
+scenes/2/scene = ExtResource("22_2j2uc")
+scenes/3/scene = ExtResource("23_dt0r2")
 
 [resource]
 physics_layer_0/collision_layer = 1
