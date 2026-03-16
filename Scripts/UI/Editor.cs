@@ -4,14 +4,11 @@ using System.Collections.Generic;
 
 public partial class Editor : Control
 {
-    [Export] public Vector2 gridSize;
+    [Export] public Vector2I gridSize;
     [Export] TilesViewport viewport;
-    [Export] Control rowsContainer;
-    [Export] PackedScene rowScene;
-    [Export] PackedScene tileScene;
+    [Export] TileMapLayer tileMapLayer;
 
-    List<EditorRow> rows = [];
-	List<EditorTile> tiles;
+    List<List<TileInfo>> tiles = [];
 
     public override void _Ready()
     {
@@ -19,19 +16,20 @@ public partial class Editor : Control
 
         for (int i = 0; i < gridSize.Y; i++)
         {
-            //create new row
-            EditorRow row = rowScene.Instantiate() as EditorRow;
-            rows.Add(row);
-            rowsContainer.AddChild(row);
 
             //add tiles to row
             for (int j = 0; j < gridSize.X; j++)
             {
-                EditorTile tile = tileScene.Instantiate() as EditorTile;
-                row.tiles.Add(tile);
-                row.AddChild(tile);
             }
         }
+    }
+
+    public override void _Process(double delta)
+    {
+        tileMapLayer.Clear();
+
+        var mouse = tileMapLayer.LocalToMap(tileMapLayer.GetLocalMousePosition());
+        tileMapLayer.SetCell(mouse, 1, Vector2I.Zero);
     }
 
 	public void ImportLevel(Level level)

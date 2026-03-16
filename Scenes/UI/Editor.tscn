@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
-[ext_resource type="PackedScene" uid="uid://dm7o2sov5gbem" path="res://Scenes/UI/Elements/Editor Tile.tscn" id="3_cfu02"]
-[ext_resource type="PackedScene" uid="uid://btwpeudsqc3pq" path="res://Scenes/UI/Elements/Tile Row.tscn" id="5_cfu02"]
+[ext_resource type="TileSet" uid="uid://dctmpwbks4vbo" path="res://Tilesets/16Bit.tres" id="5_45moc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -18,7 +17,7 @@ texture = ExtResource("3_38yy1")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "rowsContainer")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMapLayer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,11 +25,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eiun3")
-gridSize = Vector2(100, 50)
 viewport = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport")
-rowsContainer = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid/Rows Container")
-rowScene = ExtResource("5_cfu02")
-tileScene = ExtResource("3_cfu02")
+tileMapLayer = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/TileMapLayer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -51,14 +47,14 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("content", "grid")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "grid")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
 minZoom = 1.0
 maxZoom = 4.0
 zoomSpeed = 0.04
-content = NodePath("Content")
+tileMapLayer = NodePath("Content/TileMapLayer")
 grid = NodePath("Content/Grid")
 
 [node name="Content" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
@@ -78,14 +74,10 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="Rows Container" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content/Grid" unique_id=1570195613]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
+[node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("5_45moc")
 
 [node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
 custom_minimum_size = Vector2(64, 0)

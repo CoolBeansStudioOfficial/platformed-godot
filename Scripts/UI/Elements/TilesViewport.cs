@@ -7,7 +7,7 @@ public partial class TilesViewport : ScrollContainer
     [Export] float minZoom;
     [Export] float maxZoom;
     [Export] float zoomSpeed;
-    [Export] Control content;
+    [Export] TileMapLayer tileMapLayer;
     [Export] Control grid;
 
     public Vector2 viewportSize;
@@ -74,7 +74,7 @@ public partial class TilesViewport : ScrollContainer
     public override void _Process(double delta)
     {
         Vector2 newZoom = new(zoom, zoom);
-        content.CustomMinimumSize = viewportSize * zoom;
+        tileMapLayer.Scale = newZoom;
         grid.Scale = newZoom;
     }
 }

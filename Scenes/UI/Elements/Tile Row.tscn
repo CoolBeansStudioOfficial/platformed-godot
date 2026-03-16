@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://btwpeudsqc3pq"]
-
-[ext_resource type="Script" uid="uid://cuoyw36wcatf8" path="res://Scripts/UI/Elements/EditorRow.cs" id="1_nugxi"]
-
-[node name="Tile Row" type="HBoxContainer" unique_id=1291021813]
-custom_minimum_size = Vector2(0, 16)
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-script = ExtResource("1_nugxi")
