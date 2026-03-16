@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="1_lawiu"]
 [ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/spikes.png" id="2_2tsvu"]
 [ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/Coin.tscn" id="2_7ehpm"]
-[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="3_q2l7b"]
+[ext_resource type="PackedScene" uid="uid://dd7s6fvhrw1mm" path="res://Scenes/Prefabs/Tiles/With Rotations/Dissipation Block/DissipationBlockUp.tscn" id="3_12fwq"]
 [ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="3_w2f5o"]
 [ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/ToggleBlockBlue.tscn" id="4_dt0r2"]
 [ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/ToggleBlockRed.tscn" id="5_dt0r2"]
@@ -71,13 +71,12 @@ scenes/1/scene = ExtResource("2_7ehpm")
 scenes/2/scene = ExtResource("2_7ehpm")
 scenes/3/scene = ExtResource("2_7ehpm")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dr4my"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o8ylv"]
 resource_name = "DissipationBlock"
-texture = ExtResource("3_q2l7b")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
+scenes/0/scene = ExtResource("3_12fwq")
+scenes/1/scene = ExtResource("3_12fwq")
+scenes/2/scene = ExtResource("3_12fwq")
+scenes/3/scene = ExtResource("3_12fwq")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_upe0s"]
 resource_name = "BlockBlue"
@@ -283,7 +282,6 @@ sources/1 = SubResource("TileSetAtlasSource_iku51")
 sources/3 = SubResource("TileSetAtlasSource_ab4rv")
 sources/7 = SubResource("TileSetAtlasSource_7sgf7")
 sources/8 = SubResource("TileSetAtlasSource_qnubn")
-sources/11 = SubResource("TileSetAtlasSource_dr4my")
 sources/18 = SubResource("TileSetAtlasSource_pvu8y")
 sources/19 = SubResource("TileSetAtlasSource_yx260")
 sources/20 = SubResource("TileSetAtlasSource_qsv4i")
@@ -300,3 +298,4 @@ sources/14 = SubResource("TileSetScenesCollectionSource_uu4np")
 sources/16 = SubResource("TileSetScenesCollectionSource_12fwq")
 sources/15 = SubResource("TileSetScenesCollectionSource_trg7l")
 sources/17 = SubResource("TileSetScenesCollectionSource_rfy21")
+sources/11 = SubResource("TileSetScenesCollectionSource_o8ylv")
