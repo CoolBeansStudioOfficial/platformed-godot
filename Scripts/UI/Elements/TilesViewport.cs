@@ -8,7 +8,8 @@ public partial class TilesViewport : ScrollContainer
     [Export] float maxZoom;
     [Export] float zoomSpeed;
     [Export] TileMapLayer tileMapLayer;
-    [Export] Control[] content;
+    [Export] Control content;
+    [Export] Control grid;
 
     public Vector2 viewportSize;
 
@@ -99,10 +100,9 @@ public partial class TilesViewport : ScrollContainer
     {
         Vector2 newZoom = new(zoom, zoom);
 
+        content.CustomMinimumSize = newZoom * 3000;
+
         tileMapLayer.Scale = newZoom;
-        foreach (var control in content)
-        {
-            control.Scale = newZoom;
-        }
+        grid.Scale = newZoom;
     }
 }

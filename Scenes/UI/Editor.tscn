@@ -63,7 +63,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content", "grid")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
@@ -71,7 +71,8 @@ minZoom = 1.0
 maxZoom = 4.0
 zoomSpeed = 0.04
 tileMapLayer = NodePath("Content/TileMapLayer")
-content = [NodePath("Content"), NodePath("Content/Grid")]
+content = NodePath("Content")
+grid = NodePath("Content/Grid")
 
 [node name="Content" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(3000, 3000)
