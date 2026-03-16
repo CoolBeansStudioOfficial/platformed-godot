@@ -26,13 +26,21 @@ public partial class Editor : Control
 
     public override void _Process(double delta)
     {
-        tileMapLayer.Clear();
+        Vector2I mouseCoords = tileMapLayer.LocalToMap(tileMapLayer.GetLocalMousePosition());
 
-        var mouse = tileMapLayer.LocalToMap(tileMapLayer.GetLocalMousePosition());
-        tileMapLayer.SetCell(mouse, 1, Vector2I.Zero);
+        if (viewport.clicking)
+        {
+            tileMapLayer.SetCell(mouseCoords, 1, Vector2I.Zero);
+        }
+
+        if (viewport.rightClicking)
+        {
+            tileMapLayer.SetCell(mouseCoords);
+        }
+        
     }
 
-	public void ImportLevel(Level level)
+    public void ImportLevel(Level level)
 	{
 
 	}

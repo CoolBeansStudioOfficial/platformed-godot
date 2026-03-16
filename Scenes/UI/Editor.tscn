@@ -17,6 +17,22 @@ texture = ExtResource("3_38yy1")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfu02"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiun3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
+corner_detail = 5
+
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMapLayer")]
 layout_mode = 3
 anchors_preset = 15
@@ -47,7 +63,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "grid")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
@@ -55,13 +71,18 @@ minZoom = 1.0
 maxZoom = 4.0
 zoomSpeed = 0.04
 tileMapLayer = NodePath("Content/TileMapLayer")
-grid = NodePath("Content/Grid")
+content = [NodePath("Content"), NodePath("Content/Grid")]
 
 [node name="Content" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(3000, 3000)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("5_45moc")
 
 [node name="Grid" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
 texture_repeat = 2
@@ -74,14 +95,15 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
-z_index = 1
-texture_filter = 1
-tile_set = ExtResource("5_45moc")
-
-[node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
+[node name="Side Bar Expanded" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cfu02")
+
+[node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=1896088638]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eiun3")
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0

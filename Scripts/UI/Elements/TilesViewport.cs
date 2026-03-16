@@ -8,23 +8,47 @@ public partial class TilesViewport : ScrollContainer
     [Export] float maxZoom;
     [Export] float zoomSpeed;
     [Export] TileMapLayer tileMapLayer;
-    [Export] Control grid;
+    [Export] Control[] content;
 
     public Vector2 viewportSize;
 
     float zoom = 1f;
-    bool dragging = false;
+    public bool clicking = false;
+    public bool rightClicking = false;
+    public bool middleDragging = false;
     Vector2 lastMousePosition = Vector2.Zero;
 
     public override void _GuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton mb)
         {
-            if (mb.ButtonIndex == MouseButton.Middle)
+            if (mb.ButtonIndex == MouseButton.Left)
             {
                 if (mb.Pressed)
                 {
-                    dragging = true;
+                    clicking = true;
+                }
+                else
+                {
+                    clicking = false;
+                }
+            }
+            else if (mb.ButtonIndex == MouseButton.Right)
+            {
+                if (mb.Pressed)
+                {
+                    rightClicking = true;
+                }
+                else
+                {
+                    rightClicking = false;
+                }
+            }
+            else if (mb.ButtonIndex == MouseButton.Middle)
+            {
+                if (mb.Pressed)
+                {
+                    middleDragging = true;
                     MouseDefaultCursorShape = CursorShape.Drag;
 
                     lastMousePosition = mb.Position;
@@ -33,7 +57,7 @@ public partial class TilesViewport : ScrollContainer
                 }
                 else
                 {
-                    dragging = false;
+                    middleDragging = false;
                     MouseDefaultCursorShape = CursorShape.Arrow;
                     GD.Print("middle mouse button released in viewport");
                 }
@@ -53,7 +77,7 @@ public partial class TilesViewport : ScrollContainer
         }
         else if (@event is InputEventMouseMotion m)
         {
-            if (!dragging) return;
+            if (!middleDragging) return;
 
             Vector2 delta = m.Position - lastMousePosition;
             lastMousePosition = m.Position;
@@ -74,7 +98,11 @@ public partial class TilesViewport : ScrollContainer
     public override void _Process(double delta)
     {
         Vector2 newZoom = new(zoom, zoom);
+
         tileMapLayer.Scale = newZoom;
-        grid.Scale = newZoom;
+        foreach (var control in content)
+        {
+            control.Scale = newZoom;
+        }
     }
 }
