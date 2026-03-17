@@ -43,6 +43,14 @@ public partial class GameManager : Node
         UIManager.Instance.levelsMenu.Visible = false;
     }
 
+    public async void RemixLevel(Level level)
+    {
+        UIManager.Instance.editor.ImportLevel(level);
+
+        UIManager.Instance.editor.Visible = true;
+        UIManager.Instance.levelsMenu.Visible = false;
+    }
+
     public void ReturnToLevelsMenu(bool topMenu = false)
     {
         if (topMenu) UIManager.Instance.levelsMenu.ShowLevelsList(true);
@@ -69,7 +77,7 @@ public partial class GameManager : Node
         }
     }
 
-    public async Task<List<Level>> BrowseLevelsFromAPI()
+    public async Task<LevelList> BrowseLevelsFromAPI()
     {
         //request levels json
         try
@@ -78,7 +86,7 @@ public partial class GameManager : Node
             var response = await client.GetAsync($"https://platformed.jmeow.net/api/browse");
             if (!response.IsSuccessStatusCode) return null;
             //parse json
-            return await JsonSerializer.DeserializeAsync<List<Level>>(await response.Content.ReadAsStreamAsync());
+            return await JsonSerializer.DeserializeAsync<LevelList>(await response.Content.ReadAsStreamAsync());
         }
         catch
         {

@@ -16,16 +16,21 @@ public partial class Editor : Control
 
         for (int i = 0; i < gridSize.Y; i++)
         {
+            //add row
+            tiles.Add(new());
 
             //add tiles to row
             for (int j = 0; j < gridSize.X; j++)
             {
+                tiles[i].Add(new());
             }
         }
     }
 
     public override void _Process(double delta)
     {
+
+
         Vector2I mouseCoords = tileMapLayer.LocalToMap(tileMapLayer.GetLocalMousePosition());
 
         if (viewport.clicking)
@@ -42,6 +47,16 @@ public partial class Editor : Control
 
     public void ImportLevel(Level level)
 	{
+        tiles = LevelManager.Instance.CreateTilemap(level);
 
-	}
+        gridSize = new(level.Width, level.Height);
+
+        foreach (var row in tiles)
+        {
+            foreach (var tile in row)
+            {
+                tileMapLayer.SetCell(tile.position, (int)tile.id, Vector2I.Zero);
+            }
+        }
+    }
 }

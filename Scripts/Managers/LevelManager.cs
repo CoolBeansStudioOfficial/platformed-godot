@@ -1,6 +1,5 @@
 using Godot;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Text.Json;
 
 public partial class LevelManager : Node
@@ -80,7 +79,7 @@ public partial class LevelManager : Node
 
 
         //get tilemap from compressed level data
-        var tilemap = CreateTilemap(DecodeRLE(currentLevel.Data.Layers[0].Data, currentLevel.Width));
+        var tilemap = CreateTilemap(level);
         //get each tile's rotation from compressed level data
         var rotationMap = DecodeRLE(currentLevel.Data.Layers[1].Data, currentLevel.Width);
 
@@ -185,8 +184,10 @@ public partial class LevelManager : Node
     }
 
     //takes list of rows of tiles and returns same list but with info about each tile
-    List<List<TileInfo>> CreateTilemap(List<List<int>> tiles)
+    public List<List<TileInfo>> CreateTilemap(Level level)
     {
+        var tiles = DecodeRLE(level.Data.Layers[0].Data, level.Width);
+
         List<List<TileInfo>> tilemap = [];
 
         int y = 0;

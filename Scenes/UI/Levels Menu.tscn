@@ -171,7 +171,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "remixButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,6 +189,7 @@ levelsList = NodePath("VBoxContainer/Levels List")
 levelView = NodePath("VBoxContainer/Level View")
 backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
+remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix")
 levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
 levelDescription = NodePath("VBoxContainer/Level View/Details/ScrollContainer/Description Text")
@@ -644,7 +645,7 @@ vertical_alignment = 1
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=681396235]
 oversampling_override = 1.0
-title = "Choose Levels Folder"
+title = "Open a Directory"
 position = Vector2i(0, 36)
 size = Vector2i(1280, 720)
 file_mode = 2

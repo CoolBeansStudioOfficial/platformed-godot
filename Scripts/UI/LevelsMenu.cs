@@ -16,6 +16,7 @@ public partial class LevelsMenu : Control
 
     [Export] Button backButton;
     [Export] Button playButton;
+    [Export] Button remixButton;
     [Export] Label levelName;
     [Export] Label levelCreator;
     [Export] RichTextLabel levelDescription;
@@ -39,8 +40,10 @@ public partial class LevelsMenu : Control
         addLevelsFolderButton.Pressed += OnAddLevelsFolderButtonPressed;
         backButton.Pressed += OnBackButtonPressed;
         playButton.Pressed += OnPlayButtonPressed;
+        remixButton.Pressed += OnRemixButtonPressed;
         Explore();
     }
+
 
     public async void Explore()
     {
@@ -51,7 +54,8 @@ public partial class LevelsMenu : Control
 
         //load explore levels
         levelsList.ClearLevels();
-        levelsList.SetLevels(await GameManager.Instance.BrowseLevelsFromAPI());
+        LevelList list = await GameManager.Instance.BrowseLevelsFromAPI();
+        levelsList.SetLevels(list.Levels);
     }
 
     public async void MyLevels()
@@ -119,6 +123,13 @@ public partial class LevelsMenu : Control
             GameManager.Instance.PlayLevel(selectedLevel);
         }
 
+    }
+    void OnRemixButtonPressed()
+    {
+        if (selectedLevel is not null)
+        {
+            GameManager.Instance.RemixLevel(selectedLevel);
+        }
     }
 
     void OnBackButtonPressed()

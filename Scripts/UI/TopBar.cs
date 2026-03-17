@@ -16,7 +16,10 @@ public partial class TopBar : Panel
 
 	void OnCreateButtonPressed()
     {
-
+        UIManager.Instance.editor.Visible = true;
+        UIManager.Instance.levelsMenu.Visible = false;
+        UIManager.Instance.pauseMenu.Visible = false;
+        LevelManager.Instance.DestroyLevel();
     }
 
     void OnExploreButtonPressed()

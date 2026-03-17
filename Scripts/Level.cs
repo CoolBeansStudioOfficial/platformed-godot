@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+public class LevelList
+{
+    [JsonPropertyName("levels")]
+    public List<Level> Levels { get; set; }
+
+    [JsonPropertyName("total")]
+    public int? Total { get; set; }
+
+    [JsonPropertyName("pages")]
+    public int? Pages { get; set; }
+}
+
 public class Level
 {
     [JsonPropertyName("id")]

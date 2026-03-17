@@ -100,6 +100,7 @@ public partial class TilesViewport : ScrollContainer
     {
         Vector2 newZoom = new(zoom, zoom);
 
+        //content gets scaled differently to get scrolling with the scrollbars to work
         content.CustomMinimumSize = newZoom * 3000;
 
         tileMapLayer.Scale = newZoom;
