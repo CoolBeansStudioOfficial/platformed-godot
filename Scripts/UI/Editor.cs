@@ -17,6 +17,8 @@ public partial class Editor : Control
     Level currentLevel;
     List<List<TileInfo>> tiles = [];
 
+    public TileId selectedTile = TileId.Ground;
+
     public override void _Ready()
     {
         backButton.Pressed += OnBackButtonPressed;
@@ -46,7 +48,13 @@ public partial class Editor : Control
 
         if (viewport.clicking)
         {
-            tileMap.SetCell(mouseCoords, 1, Vector2I.Zero);
+            TileInfo editedTile = tiles[mouseCoords.Y][mouseCoords.X];
+
+            editedTile.id = selectedTile;
+
+            tiles[mouseCoords.Y][mouseCoords.X] = editedTile;
+
+            tileMap.SetCell(mouseCoords, (int)selectedTile, Vector2I.Zero);
         }
 
         if (viewport.rightClicking)
@@ -78,6 +86,7 @@ public partial class Editor : Control
         currentLevel = level;
         nameLabel.Text = level.Name;
 
+        tileMap.Clear();
         tiles = LevelManager.Instance.CreateTilemap(level);
 
         gridSize = new(level.Width, level.Height);

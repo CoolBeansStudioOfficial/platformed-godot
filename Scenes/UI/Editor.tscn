@@ -7,6 +7,28 @@
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="4_eiun3"]
+[ext_resource type="PackedScene" uid="uid://bmvwfjpmmvgyi" path="res://Scenes/UI/Elements/Editor Block Select.tscn" id="8_aqfah"]
+[ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/crate.png" id="9_qdfva"]
+[ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/spikes.png" id="9_swd7v"]
+[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="10_dorju"]
+[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="11_2e3v0"]
+[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/checkpoint.png" id="11_o3210"]
+[ext_resource type="Texture2D" uid="uid://bsq1003qkba8m" path="res://Images/Raster/spawn.png" id="12_hwn3q"]
+[ext_resource type="Texture2D" uid="uid://cisqatxwyl1aj" path="res://Images/Raster/end.png" id="13_5pgwn"]
+[ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="14_wogks"]
+[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="16_pijs4"]
+[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="17_0nqbs"]
+[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="19_skcvm"]
+[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="20_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="21_yqw02"]
+[ext_resource type="Texture2D" uid="uid://daqg5ardwqysx" path="res://Images/Raster/trigger-two.png" id="22_t841b"]
+[ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/trigger-three.png" id="23_skcvm"]
+[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/sign-right.png" id="24_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/sign-left.png" id="25_yqw02"]
+[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/sign-up.png" id="26_t841b"]
+[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="27_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="28_t841b"]
+[ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="29_kvt7y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -44,6 +66,30 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e3v0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101960786, 0.6392157, 0.101960786, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o422j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7882353, 0.101960786, 0.101960786, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
 texture = ExtResource("2_fvgsq")
 
@@ -59,6 +105,299 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3p2xf"]
+texture = ExtResource("16_pijs4")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dj86"]
+texture = ExtResource("16_pijs4")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gbx3p"]
+texture = ExtResource("16_pijs4")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_etdxq"]
+texture = ExtResource("11_2e3v0")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vhy4"]
+texture = ExtResource("11_2e3v0")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f28st"]
+texture = ExtResource("11_2e3v0")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgvkk"]
+texture = ExtResource("14_wogks")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehlpm"]
+texture = ExtResource("14_wogks")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j1kqi"]
+texture = ExtResource("14_wogks")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwn3q"]
+texture = ExtResource("9_swd7v")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0okdv"]
+texture = ExtResource("9_swd7v")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sykhj"]
+texture = ExtResource("9_swd7v")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pgwn"]
+texture = ExtResource("10_dorju")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wogks"]
+texture = ExtResource("10_dorju")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pijs4"]
+texture = ExtResource("10_dorju")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpokt"]
+texture = ExtResource("28_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilavr"]
+texture = ExtResource("28_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0g7n"]
+texture = ExtResource("28_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vs1f4"]
+texture = ExtResource("29_kvt7y")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxsxq"]
+texture = ExtResource("29_kvt7y")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7v5i"]
+texture = ExtResource("29_kvt7y")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ei811"]
+texture = ExtResource("9_qdfva")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dorju"]
+texture = ExtResource("9_qdfva")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3210"]
+texture = ExtResource("9_qdfva")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sags"]
+texture = ExtResource("24_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_immas"]
+texture = ExtResource("24_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lk5qh"]
+texture = ExtResource("24_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgdat"]
+texture = ExtResource("25_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ouav8"]
+texture = ExtResource("25_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lae7s"]
+texture = ExtResource("25_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vq1xv"]
+texture = ExtResource("26_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7e5w"]
+texture = ExtResource("26_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w5wxy"]
+texture = ExtResource("26_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y4g32"]
+texture = ExtResource("27_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7gp2n"]
+texture = ExtResource("27_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkf4y"]
+texture = ExtResource("27_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjxyc"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a27t6"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijjhq"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwxjg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7unpn"]
+bg_color = Color(0.17402825, 0.17402825, 0.17402825, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj855"]
+bg_color = Color(0.05342087, 0.053420886, 0.05342088, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yqw02"]
+texture = ExtResource("12_hwn3q")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t841b"]
+texture = ExtResource("12_hwn3q")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvt7y"]
+texture = ExtResource("12_hwn3q")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nqbs"]
+texture = ExtResource("11_o3210")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_skcvm"]
+texture = ExtResource("11_o3210")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqe5u"]
+texture = ExtResource("11_o3210")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4cnwd"]
+texture = ExtResource("13_5pgwn")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vqn0s"]
+texture = ExtResource("13_5pgwn")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x62ro"]
+texture = ExtResource("13_5pgwn")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ro6dp"]
+texture = ExtResource("21_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8sup"]
+texture = ExtResource("21_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_viewn"]
+texture = ExtResource("21_yqw02")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lpbup"]
+texture = ExtResource("22_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwxjg"]
+texture = ExtResource("23_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7unpn"]
+texture = ExtResource("23_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yj855"]
+texture = ExtResource("23_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ps8e3"]
+texture = ExtResource("19_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27ou3"]
+texture = ExtResource("19_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d3xfs"]
+texture = ExtResource("19_skcvm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8pot"]
+texture = ExtResource("20_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2w5g"]
+texture = ExtResource("20_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_chl6m"]
+texture = ExtResource("20_eqe5u")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiun3"]
 content_margin_left = 0.0
@@ -76,14 +415,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eiun3")
-viewport = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport")
-tileMap = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Tiles")
-overlayMap = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Overlay")
-nameLabel = NodePath("VBoxContainer/Top Bar/Level Name/Name")
-unsavedLabel = NodePath("VBoxContainer/Top Bar/Level Name/Unsaved Indicator")
-backButton = NodePath("VBoxContainer/Top Bar/Back")
+viewport = NodePath("Content/HBoxContainer/Tiles Viewport")
+tileMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Tiles")
+overlayMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
+nameLabel = NodePath("Content/Top Bar/Level Name/Name")
+unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
+backButton = NodePath("Content/Top Bar/Back")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1498817097]
+[node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,12 +431,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Top Bar" type="Panel" parent="VBoxContainer" unique_id=1548784277]
+[node name="Top Bar" type="Panel" parent="Content" unique_id=1548784277]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c2eik")
 
-[node name="Back" type="Button" parent="VBoxContainer/Top Bar" unique_id=1287583877]
+[node name="Back" type="Button" parent="Content/Top Bar" unique_id=1287583877]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 15.654999
@@ -113,15 +452,15 @@ icon = ExtResource("2_45moc")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Level Name" type="HBoxContainer" parent="VBoxContainer/Top Bar" unique_id=664139010]
+[node name="Level Name" type="HBoxContainer" parent="Content/Top Bar" unique_id=664139010]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 74.0
-offset_right = 374.0
+offset_left = 80.0
+offset_right = 189.0
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/Top Bar/Level Name" unique_id=1858181076]
+[node name="Name" type="Label" parent="Content/Top Bar/Level Name" unique_id=1858181076]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_cfu02")
@@ -129,7 +468,7 @@ theme_override_font_sizes/font_size = 24
 text = "Untitled"
 vertical_alignment = 1
 
-[node name="Unsaved Indicator" type="Label" parent="VBoxContainer/Top Bar/Level Name" unique_id=609327538]
+[node name="Unsaved Indicator" type="Label" parent="Content/Top Bar/Level Name" unique_id=609327538]
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -140,51 +479,69 @@ text = "*"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Options" type="HBoxContainer" parent="VBoxContainer/Top Bar" unique_id=1218458422]
+[node name="Flyout Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=465115347]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -270.0
-offset_right = 270.0
+offset_left = -73.0
+offset_right = 73.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=1284301119]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_2e3v0")
+text = "Confirm
+"
+
+[node name="Button2" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=717220092]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o422j")
+text = "Cancel
+"
+
+[node name="Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=1218458422]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -430.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=71509377]
+[node name="Button" type="Button" parent="Content/Top Bar/Options" unique_id=71509377]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Save"
 
-[node name="Button2" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=1929401594]
+[node name="Button2" type="Button" parent="Content/Top Bar/Options" unique_id=1929401594]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Export
 "
 
-[node name="Button5" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=702609518]
+[node name="Button5" type="Button" parent="Content/Top Bar/Options" unique_id=702609518]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=1929087739]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Add
-"
-
-[node name="Button4" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=1240888243]
+[node name="Button4" type="Button" parent="Content/Top Bar/Options" unique_id=1240888243]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Erase"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=655443654]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=655443654]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="VBoxContainer/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content", "grid")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="Content/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content", "grid")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
@@ -195,23 +552,23 @@ tileMapLayer = NodePath("Content/Tiles")
 content = NodePath("Content")
 grid = NodePath("Content/Grid")
 
-[node name="Content" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport" unique_id=762280860]
+[node name="Content" type="Panel" parent="Content/HBoxContainer/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(3000, 3000)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
-[node name="Tiles" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+[node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
 z_index = 1
 texture_filter = 1
 tile_set = ExtResource("4_eiun3")
 
-[node name="Overlay" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=700661819]
+[node name="Overlay" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=700661819]
 z_index = 1
 texture_filter = 1
 tile_set = ExtResource("4_eiun3")
 
-[node name="Grid" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
+[node name="Grid" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
@@ -222,15 +579,252 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="Side Bar Expanded" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
-custom_minimum_size = Vector2(80, 0)
+[node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Side Bar Blocks" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=686860024]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cfu02")
 
-[node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=1896088638]
-custom_minimum_size = Vector2(80, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks" unique_id=484323198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blocks" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer" unique_id=1383287447]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Basic Terrain" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=2106872583]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Ground" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=261942924 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+
+[node name="BouncePad" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=729977691 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Bounce Pad"
+theme_override_styles/normal = SubResource("StyleBoxTexture_3p2xf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6dj86")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gbx3p")
+tileId = 9
+
+[node name="Dissipation Block" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=1762339187 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Dissipation Block"
+theme_override_styles/normal = SubResource("StyleBoxTexture_etdxq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3vhy4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f28st")
+tileId = 11
+
+[node name="Hazards" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=1311651595]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Cactus" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=1331319457 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Cactus"
+theme_override_styles/normal = SubResource("StyleBoxTexture_xgvkk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ehlpm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j1kqi")
+tileId = 7
+
+[node name="Spikes" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=896651421 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Spikes"
+theme_override_styles/normal = SubResource("StyleBoxTexture_hwn3q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0okdv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sykhj")
+tileId = 2
+
+[node name="SpikesDouble" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=270541621 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Double Spikes"
+theme_override_styles/normal = SubResource("StyleBoxTexture_5pgwn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wogks")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pijs4")
+tileId = 3
+
+[node name="HalfSpikesRight" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=184281886 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Half Spikes Right"
+theme_override_styles/normal = SubResource("StyleBoxTexture_rpokt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ilavr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p0g7n")
+tileId = 22
+
+[node name="HalfSpikesLeft" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=1841879040 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Half Spikes Left"
+theme_override_styles/normal = SubResource("StyleBoxTexture_vs1f4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oxsxq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l7v5i")
+tileId = 23
+
+[node name="Decoration" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=603445467]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Crate" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1603383150 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Crate"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ei811")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dorju")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o3210")
+tileId = 8
+
+[node name="SignRight" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=996559731 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Sign Right"
+theme_override_styles/normal = SubResource("StyleBoxTexture_4sags")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_immas")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lk5qh")
+tileId = 18
+
+[node name="SignLeft" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=558636611 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Sign Left"
+theme_override_styles/normal = SubResource("StyleBoxTexture_tgdat")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ouav8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lae7s")
+tileId = 19
+
+[node name="SignUp" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=939575702 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Sign Up"
+theme_override_styles/normal = SubResource("StyleBoxTexture_vq1xv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m7e5w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w5wxy")
+tileId = 20
+
+[node name="SignDown" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1901528433 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Sign Down"
+theme_override_styles/normal = SubResource("StyleBoxTexture_y4g32")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7gp2n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lkf4y")
+tileId = 21
+
+[node name="Interactable" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=870687639]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Coin" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=1409477411 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Coin"
+theme_override_styles/normal = SubResource("StyleBoxTexture_pjxyc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a27t6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ijjhq")
+tileId = 10
+
+[node name="Enemy" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=96465722 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Enemy"
+theme_override_styles/normal = SubResource("StyleBoxFlat_mwxjg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7unpn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yj855")
+tileId = 12
+
+[node name="Control Flags" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=1648223147]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Spawn" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=887051754 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Spawn"
+theme_override_styles/normal = SubResource("StyleBoxTexture_yqw02")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t841b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kvt7y")
+tileId = 5
+
+[node name="Checkpoint" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=1667668126 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Checkpoint"
+theme_override_styles/normal = SubResource("StyleBoxTexture_0nqbs")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_skcvm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eqe5u")
+tileId = 4
+
+[node name="End" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=529785624 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "End"
+theme_override_styles/normal = SubResource("StyleBoxTexture_4cnwd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vqn0s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x62ro")
+tileId = 6
+
+[node name="Triggers" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=860023682]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TriggerOne" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=762320674 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Trigger"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ro6dp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m8sup")
+theme_override_styles/hover = SubResource("StyleBoxTexture_viewn")
+tileId = 15
+
+[node name="TriggerInvisible" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=995973916 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Invisible Trigger"
+theme_override_styles/normal = SubResource("StyleBoxTexture_lpbup")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lpbup")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lpbup")
+tileId = 16
+
+[node name="TriggerThree" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1941686431 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Trigger (Alternate Style)"
+theme_override_styles/normal = SubResource("StyleBoxTexture_mwxjg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7unpn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yj855")
+tileId = 17
+
+[node name="BlockBlue" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1561543149 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Blue Toggle Block"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ps8e3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_27ou3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d3xfs")
+tileId = 13
+
+[node name="BlockRed" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1090562526 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Red Toggle Block"
+theme_override_styles/normal = SubResource("StyleBoxTexture_n8pot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s2w5g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_chl6m")
+tileId = 14
+
+[node name="Side Bar Options" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=1896088638]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eiun3")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=407619925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Categories" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options/ScrollContainer" unique_id=272970238]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0

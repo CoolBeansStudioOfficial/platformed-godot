@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bmvwfjpmmvgyi"]
+
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="1_hyqdm"]
+[ext_resource type="Script" uid="uid://pqqo4sq0l8ud" path="res://Scripts/UI/Elements/BlockSelectButton.cs" id="2_e8gge"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swd7v"]
+texture = ExtResource("1_hyqdm")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqfah"]
+texture = ExtResource("1_hyqdm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdfva"]
+texture = ExtResource("1_hyqdm")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[node name="Block Select" type="Button" unique_id=261942924]
+texture_filter = 1
+custom_minimum_size = Vector2(70, 70)
+size_flags_horizontal = 4
+tooltip_text = "Ground"
+theme_override_styles/normal = SubResource("StyleBoxTexture_swd7v")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aqfah")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qdfva")
+script = ExtResource("2_e8gge")
+tileId = 1
