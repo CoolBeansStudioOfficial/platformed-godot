@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jfla72d508dv"]
 
-[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="1_20mua"]
+[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/Tiles/trigger-one.png" id="1_20mua"]
 [ext_resource type="Script" uid="uid://di7v811beuyqn" path="res://Scripts/Tiles/Trigger.cs" id="2_fqfdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck1ky"]

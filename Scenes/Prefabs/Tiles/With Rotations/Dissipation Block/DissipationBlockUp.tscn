@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dd7s6fvhrw1mm"]
 
-[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="1_nfn0b"]
+[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/Tiles/dissipation-block.png" id="1_nfn0b"]
 [ext_resource type="Script" uid="uid://05htp3kd1mf5" path="res://Scripts/Tiles/DissipationBlock.cs" id="2_o27nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]

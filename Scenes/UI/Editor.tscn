@@ -5,30 +5,37 @@
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="2_45moc"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_cfu02"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
-[ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
+[ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/Tiles/outline.png" id="3_38yy1"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="4_eiun3"]
 [ext_resource type="PackedScene" uid="uid://bmvwfjpmmvgyi" path="res://Scenes/UI/Elements/Editor Block Select.tscn" id="8_aqfah"]
-[ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/crate.png" id="9_qdfva"]
-[ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/spikes.png" id="9_swd7v"]
-[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="10_dorju"]
-[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="11_2e3v0"]
-[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/checkpoint.png" id="11_o3210"]
-[ext_resource type="Texture2D" uid="uid://bsq1003qkba8m" path="res://Images/Raster/spawn.png" id="12_hwn3q"]
-[ext_resource type="Texture2D" uid="uid://cisqatxwyl1aj" path="res://Images/Raster/end.png" id="13_5pgwn"]
-[ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="14_wogks"]
-[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="16_pijs4"]
-[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="17_0nqbs"]
-[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="19_skcvm"]
-[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="20_eqe5u"]
-[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="21_yqw02"]
-[ext_resource type="Texture2D" uid="uid://daqg5ardwqysx" path="res://Images/Raster/trigger-two.png" id="22_t841b"]
-[ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/trigger-three.png" id="23_skcvm"]
-[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/sign-right.png" id="24_eqe5u"]
-[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/sign-left.png" id="25_yqw02"]
-[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/sign-up.png" id="26_t841b"]
-[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="27_eqe5u"]
-[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="28_t841b"]
-[ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="29_kvt7y"]
+[ext_resource type="Script" uid="uid://xxtwkexwn3be" path="res://Scripts/UI/Elements/EditorSideBar.cs" id="8_j1kqi"]
+[ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/Tiles/crate.png" id="9_qdfva"]
+[ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/Tiles/spikes.png" id="9_swd7v"]
+[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/Tiles/double-spikes.png" id="10_dorju"]
+[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/Tiles/dissipation-block.png" id="11_2e3v0"]
+[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/Tiles/checkpoint.png" id="11_o3210"]
+[ext_resource type="Texture2D" uid="uid://bsq1003qkba8m" path="res://Images/Raster/Tiles/spawn.png" id="12_hwn3q"]
+[ext_resource type="Texture2D" uid="uid://cisqatxwyl1aj" path="res://Images/Raster/Tiles/end.png" id="13_5pgwn"]
+[ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/Tiles/cactus.png" id="14_wogks"]
+[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/Tiles/bounce-pad.png" id="16_pijs4"]
+[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/Tiles/coin.png" id="17_0nqbs"]
+[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/Tiles/blue-block.png" id="19_skcvm"]
+[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/Tiles/red-block.png" id="20_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/Tiles/trigger-one.png" id="21_yqw02"]
+[ext_resource type="Texture2D" uid="uid://daqg5ardwqysx" path="res://Images/Raster/Tiles/trigger-two.png" id="22_t841b"]
+[ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/Tiles/trigger-three.png" id="23_skcvm"]
+[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/Tiles/sign-right.png" id="24_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/Tiles/sign-left.png" id="25_yqw02"]
+[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/Tiles/sign-up.png" id="26_t841b"]
+[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/Tiles/sign-down.png" id="27_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/Tiles/half-double-spike-right.png" id="28_t841b"]
+[ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/Tiles/half-double-spike-left.png" id="29_kvt7y"]
+[ext_resource type="PackedScene" uid="uid://cmi06n2qygfbl" path="res://Scenes/UI/Elements/Editor Category Toggle.tscn" id="30_kvt7y"]
+[ext_resource type="Texture2D" uid="uid://ovhwo2s4fqb7" path="res://Images/Raster/Editor/Hazards.png" id="31_ehlpm"]
+[ext_resource type="Texture2D" uid="uid://j3mjmchemqjc" path="res://Images/Raster/Editor/Decoration.png" id="32_j1kqi"]
+[ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Editor/Interactables.png" id="33_3p2xf"]
+[ext_resource type="Texture2D" uid="uid://4eu70dxsulca" path="res://Images/Raster/Editor/Control Flags.png" id="34_6dj86"]
+[ext_resource type="Texture2D" uid="uid://rr8888xpm14e" path="res://Images/Raster/Editor/Triggers.png" id="35_gbx3p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -204,6 +211,20 @@ texture = ExtResource("29_kvt7y")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjxyc"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a27t6"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijjhq"]
+texture = ExtResource("17_0nqbs")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ei811"]
 texture = ExtResource("9_qdfva")
 region_rect = Rect2(0, 0, 16, 16)
@@ -271,20 +292,6 @@ modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkf4y"]
 texture = ExtResource("27_eqe5u")
-region_rect = Rect2(0, 0, 16, 16)
-modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjxyc"]
-texture = ExtResource("17_0nqbs")
-region_rect = Rect2(0, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a27t6"]
-texture = ExtResource("17_0nqbs")
-region_rect = Rect2(0, 0, 16, 16)
-modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijjhq"]
-texture = ExtResource("17_0nqbs")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
@@ -579,9 +586,12 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401]
+[node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401 node_paths=PackedStringArray("sideBarBlocks", "buttons")]
 layout_mode = 2
 theme_override_constants/separation = 0
+script = ExtResource("8_j1kqi")
+sideBarBlocks = NodePath("Side Bar Blocks")
+buttons = [NodePath("Side Bar Options/Categories/Basic Terrain"), NodePath("Side Bar Options/Categories/Hazards"), NodePath("Side Bar Options/Categories/Decoration"), NodePath("Side Bar Options/Categories/Interactables"), NodePath("Side Bar Options/Categories/Control Flags"), NodePath("Side Bar Options/Categories/Triggers")]
 
 [node name="Side Bar Blocks" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=686860024]
 custom_minimum_size = Vector2(90, 0)
@@ -674,6 +684,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
+[node name="Coin" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1409477411 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Coin"
+theme_override_styles/normal = SubResource("StyleBoxTexture_pjxyc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a27t6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ijjhq")
+tileId = 10
+
 [node name="Crate" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1603383150 instance=ExtResource("8_aqfah")]
 layout_mode = 2
 tooltip_text = "Crate"
@@ -718,14 +736,6 @@ tileId = 21
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
-
-[node name="Coin" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=1409477411 instance=ExtResource("8_aqfah")]
-layout_mode = 2
-tooltip_text = "Coin"
-theme_override_styles/normal = SubResource("StyleBoxTexture_pjxyc")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_a27t6")
-theme_override_styles/hover = SubResource("StyleBoxTexture_ijjhq")
-tileId = 10
 
 [node name="Enemy" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=96465722 instance=ExtResource("8_aqfah")]
 layout_mode = 2
@@ -813,18 +823,59 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eiun3")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=407619925]
+[node name="Categories" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=272970238]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Categories" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options/ScrollContainer" unique_id=272970238]
-layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
+
+[node name="Basic Terrain" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=1653942434 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Basic Terrain
+Click to toggle visibility of blocks in category"
+button_pressed = true
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain")
+
+[node name="Hazards" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=566747366 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Hazards
+Click to toggle visibility of blocks in category"
+button_pressed = true
+icon = ExtResource("31_ehlpm")
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Hazards")
+
+[node name="Decoration" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=2004597306 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Decoration
+Click to toggle visibility of blocks in category"
+icon = ExtResource("32_j1kqi")
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Decoration")
+
+[node name="Interactables" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=444021579 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Interactables
+Click to toggle visibility of blocks in category"
+icon = ExtResource("33_3p2xf")
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Interactable")
+
+[node name="Control Flags" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=152018747 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Control Flags
+Click to toggle visibility of blocks in category"
+button_pressed = true
+icon = ExtResource("34_6dj86")
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Control Flags")
+
+[node name="Triggers" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=1166517644 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+layout_mode = 2
+tooltip_text = "Triggers
+Click to toggle visibility of blocks in category"
+icon = ExtResource("35_gbx3p")
+category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Triggers")
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0

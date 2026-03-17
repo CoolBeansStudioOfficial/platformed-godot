@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cmi06n2qygfbl"]
+
+[ext_resource type="Texture2D" uid="uid://dxlkjm5c5xxb6" path="res://Images/Raster/Editor/Basic Terrain.png" id="1_yxdw0"]
+[ext_resource type="Script" uid="uid://g2bq7iw6e7s" path="res://Scripts/UI/Elements/EditorCategoryToggle.cs" id="2_4ecdo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cnwd"]
+bg_color = Color(1, 1, 1, 0.11764706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqn0s"]
+bg_color = Color(0.5370987, 0.5370987, 0.5370987, 0.11764706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Category" type="Button" unique_id=1653942434]
+texture_filter = 1
+custom_minimum_size = Vector2(70, 70)
+size_flags_horizontal = 4
+tooltip_text = "Category"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kvt7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4cnwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vqn0s")
+toggle_mode = true
+icon = ExtResource("1_yxdw0")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_4ecdo")

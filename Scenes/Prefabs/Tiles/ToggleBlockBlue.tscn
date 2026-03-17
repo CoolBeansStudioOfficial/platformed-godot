@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://iauavcmgsrky"]
 
-[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="1_bq6rs"]
+[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/Tiles/blue-block.png" id="1_bq6rs"]
 [ext_resource type="Script" uid="uid://ejdpprkkurg7" path="res://Scripts/Tiles/ToggleBlock.cs" id="2_bq6rs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]
