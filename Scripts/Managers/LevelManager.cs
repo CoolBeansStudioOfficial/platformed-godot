@@ -80,8 +80,6 @@ public partial class LevelManager : Node
 
         //get tilemap from compressed level data
         var tilemap = CreateTilemap(level);
-        //get each tile's rotation from compressed level data
-        var rotationMap = DecodeRLE(currentLevel.Data.Layers[1].Data, currentLevel.Width);
 
         //create actual blocks from tilemap
         int y = 0;
@@ -94,11 +92,7 @@ public partial class LevelManager : Node
                 {
                     //empty tile
                 }
-                else
-                {
-                    //spawn tile and pass in rotation from map
-                    SetTile(tile, (TileRotation)rotationMap[y][x]);
-                }
+                else SetTile(tile);
 
                 x++;
             }
@@ -131,24 +125,41 @@ public partial class LevelManager : Node
         isPlayerSpawned = true;
     }
 
-    public void SetTile(TileInfo info, TileRotation rotation)
+    public void SetTile(TileInfo info)
     {
+        //if tile is not a solid block, just remove whatever is in that cell
+        if (info.id == TileId.Air)
+        {
+            tileMapLayer.SetCell(info.position);
+            return;
+        }
+
         //get atlas coords for tile
         Vector2I atlasCoords;
         int altTile = 0;
 
-        if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
-        else atlasCoords = new((int)rotation, 0);
+        atlasCoords = GetAtlasCoords(info);
 
         //if scene tile, use alternate scene instead of atlas coords
         if (sceneTile[(int)info.id])
         {
+            altTile = atlasCoords.X;
             atlasCoords = Vector2I.Zero;
-            altTile = (int)rotation;
         }
 
         //set grid cell
         tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords, altTile);
+    }
+
+    public Vector2I GetAtlasCoords(TileInfo info)
+    {
+        //get atlas coords for tile
+        Vector2I atlasCoords;
+
+        if (useAdjacency[(int)info.id]) atlasCoords = new(info.GetAdjacency(), 0);
+        else atlasCoords = new((int)info.rotation, 0);
+
+        return atlasCoords;
     }
 
     public TileData GetTileFromCollision(Rid rid)
@@ -188,6 +199,49 @@ public partial class LevelManager : Node
     {
         var tiles = DecodeRLE(level.Data.Layers[0].Data, level.Width);
 
+        //get each tile's rotation from compressed level data
+        var rotationMap = DecodeRLE(level.Data.Layers[1].Data, level.Width);
+
+        List<List<TileInfo>> tilemap = [];
+
+        int y = 0;
+        foreach (var row in tiles)
+        {
+            List<TileInfo> currentRow = [];
+
+            int x = 0;
+            foreach (var tile in row)
+            {
+                //construct tile info
+                TileInfo info = new()
+                {
+                    position = new(x, y),
+                    id = (TileId)tile,
+                    rotation = (TileRotation)rotationMap[y][x]
+                };
+
+                currentRow.Add(info);
+
+                x++;
+            }
+
+            //add new row to tilemap
+            List<TileInfo> toAdd = [];
+            toAdd.AddRange(currentRow);
+            tilemap.Add(toAdd);
+            currentRow.Clear();
+
+            y++;
+        }
+
+        //update adjacencies for tilemap
+        tilemap = UpdateAdjacencies(tilemap);
+
+        return tilemap;
+    }
+
+    public List<List<TileInfo>> UpdateAdjacencies(List<List<TileInfo>> tiles)
+    {
         List<List<TileInfo>> tilemap = [];
 
         int y = 0;
@@ -205,27 +259,29 @@ public partial class LevelManager : Node
                 bool right = false;
 
                 //check above, skip check if this is top row
-                if (y != 0) if (tiles[y - 1][x] == tile) above = true;
+                if (y != 0) if (tiles[y - 1][x].id == tile.id) above = true;
 
                 //check below, skip check if this is bottom row
-                if (y != tiles.Count - 1) if (tiles[y + 1][x] == tile) below = true;
+                if (y != tiles.Count - 1) if (tiles[y + 1][x].id == tile.id) below = true;
 
                 //check left, skip if this tile is leftmost tile
-                if (x != 0) if (tiles[y][x - 1] == tile) left = true;
+                if (x != 0) if (tiles[y][x - 1].id == tile.id) left = true;
 
                 //check right, skip if this tile is rightmost tile
-                if (x != tiles[y].Count - 1) if (tiles[y][x + 1] == tile) right = true;
+                if (x != tiles[y].Count - 1) if (tiles[y][x + 1].id == tile.id) right = true;
 
                 //construct tile info
                 TileInfo info = new()
                 {
                     position = new(x, y),
-                    id = (TileId)tile,
+                    id = tile.id,
 
                     tileAbove = above,
                     tileBelow = below,
                     tileLeft = left,
                     tileRight = right,
+
+                    rotation = tile.rotation
                 };
 
                 currentRow.Add(info);

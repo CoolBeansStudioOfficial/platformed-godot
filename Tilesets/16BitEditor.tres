@@ -1,0 +1,235 @@
+[gd_resource type="TileSet" format=3 uid="uid://0hopm4cgilpq"]
+
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/ground.png" id="1_lxpf4"]
+[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/coin.png" id="2_pmos5"]
+[ext_resource type="Texture2D" uid="uid://bsl1x4lu63rdr" path="res://Images/Raster/dissipation-block.png" id="3_0ptmc"]
+[ext_resource type="Texture2D" uid="uid://cat2ylev5h88b" path="res://Images/Raster/blue-block.png" id="4_bnprb"]
+[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/red-block.png" id="5_qho3r"]
+[ext_resource type="Texture2D" uid="uid://dal60rd5opboa" path="res://Images/Raster/trigger-one.png" id="6_47247"]
+[ext_resource type="Texture2D" uid="uid://daqg5ardwqysx" path="res://Images/Raster/trigger-two.png" id="7_88yk8"]
+[ext_resource type="Texture2D" uid="uid://df6m4yj0vip43" path="res://Images/Raster/trigger-three.png" id="8_cxld8"]
+[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/sign-right.png" id="15_otdqs"]
+[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/sign-left.png" id="16_lgvrp"]
+[ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/spikes.png" id="17_3krmr"]
+[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/checkpoint.png" id="17_syvnk"]
+[ext_resource type="Texture2D" uid="uid://bsq1003qkba8m" path="res://Images/Raster/spawn.png" id="18_0ptmc"]
+[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/sign-up.png" id="18_2yuol"]
+[ext_resource type="Texture2D" uid="uid://cisqatxwyl1aj" path="res://Images/Raster/end.png" id="18_74fmd"]
+[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/sign-down.png" id="19_n2412"]
+[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/half-double-spike-right.png" id="20_pbixp"]
+[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/bounce-pad.png" id="21_lxpf4"]
+[ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/half-double-spike-left.png" id="21_wruj4"]
+[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/double-spikes.png" id="22_b7n2y"]
+[ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/cactus.png" id="25_uir12"]
+[ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/crate.png" id="26_410h2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
+resource_name = "Ground"
+texture = ExtResource("1_lxpf4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw7hp"]
+resource_name = "Coin"
+texture = ExtResource("2_pmos5")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgr4m"]
+resource_name = "DissipationBlock"
+texture = ExtResource("3_0ptmc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07yr0"]
+resource_name = "BlockBlue"
+texture = ExtResource("4_bnprb")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhrv2"]
+resource_name = "BlockRed"
+texture = ExtResource("5_qho3r")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4nfc"]
+resource_name = "TriggerOne"
+texture = ExtResource("6_47247")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_un1af"]
+resource_name = "InvisibleTrigger"
+texture = ExtResource("7_88yk8")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q607b"]
+resource_name = "TriggerThree"
+texture = ExtResource("8_cxld8")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvu8y"]
+resource_name = "SignRight"
+texture = ExtResource("15_otdqs")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yx260"]
+resource_name = "SignLeft"
+texture = ExtResource("16_lgvrp")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehpm"]
+resource_name = "Spikes"
+texture = ExtResource("17_3krmr")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsv4i"]
+resource_name = "SignUp"
+texture = ExtResource("18_2yuol")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yj4um"]
+resource_name = "SignDown"
+texture = ExtResource("19_n2412")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ck5jw"]
+resource_name = "HalfSpikesRight"
+texture = ExtResource("20_pbixp")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
+resource_name = "HalfSpikesLeft"
+texture = ExtResource("21_wruj4")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
+resource_name = "SpikesDouble"
+texture = ExtResource("22_b7n2y")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kikk5"]
+resource_name = "Checkpoint"
+texture = ExtResource("17_syvnk")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnprb"]
+resource_name = "Spawn"
+texture = ExtResource("18_0ptmc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dpk3"]
+resource_name = "End"
+texture = ExtResource("18_74fmd")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sgf7"]
+resource_name = "Cactus"
+texture = ExtResource("25_uir12")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnubn"]
+resource_name = "Crate"
+texture = ExtResource("26_410h2")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmhga"]
+resource_name = "BouncePad"
+texture = ExtResource("21_lxpf4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+custom_data_layer_0/name = "Rotation"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_iku51")
+sources/3 = SubResource("TileSetAtlasSource_ab4rv")
+sources/7 = SubResource("TileSetAtlasSource_7sgf7")
+sources/8 = SubResource("TileSetAtlasSource_qnubn")
+sources/18 = SubResource("TileSetAtlasSource_pvu8y")
+sources/19 = SubResource("TileSetAtlasSource_yx260")
+sources/20 = SubResource("TileSetAtlasSource_qsv4i")
+sources/21 = SubResource("TileSetAtlasSource_yj4um")
+sources/22 = SubResource("TileSetAtlasSource_ck5jw")
+sources/23 = SubResource("TileSetAtlasSource_cgj0e")
+sources/2 = SubResource("TileSetAtlasSource_7ehpm")
+sources/4 = SubResource("TileSetAtlasSource_kikk5")
+sources/6 = SubResource("TileSetAtlasSource_3dpk3")
+sources/9 = SubResource("TileSetAtlasSource_kmhga")
+sources/10 = SubResource("TileSetAtlasSource_iw7hp")
+sources/11 = SubResource("TileSetAtlasSource_hgr4m")
+sources/13 = SubResource("TileSetAtlasSource_07yr0")
+sources/14 = SubResource("TileSetAtlasSource_qhrv2")
+sources/15 = SubResource("TileSetAtlasSource_m4nfc")
+sources/16 = SubResource("TileSetAtlasSource_un1af")
+sources/17 = SubResource("TileSetAtlasSource_q607b")
+sources/5 = SubResource("TileSetAtlasSource_bnprb")

@@ -29,9 +29,10 @@ public partial class Editor : Control
 
     public override void _Process(double delta)
     {
-
-
         Vector2I mouseCoords = tileMapLayer.LocalToMap(tileMapLayer.GetLocalMousePosition());
+
+        //return if mouse is outside of set level size
+        if (mouseCoords.X >= gridSize.X || mouseCoords.Y >= gridSize.Y) return;
 
         if (viewport.clicking)
         {
@@ -41,8 +42,25 @@ public partial class Editor : Control
         if (viewport.rightClicking)
         {
             tileMapLayer.SetCell(mouseCoords);
+
+            tiles[mouseCoords.Y][mouseCoords.X] = new();
         }
         
+        UpdateTiles();
+    }
+
+    public void UpdateTiles()
+    {
+        tiles = LevelManager.Instance.UpdateAdjacencies(tiles);
+        
+        //set cells according to stored tiles
+        foreach (var row in tiles)
+        {
+            foreach (var tile in row)
+            {
+                tileMapLayer.SetCell(tile.position, (int)tile.id, LevelManager.Instance.GetAtlasCoords(tile));
+            }
+        }
     }
 
     public void ImportLevel(Level level)
@@ -55,7 +73,7 @@ public partial class Editor : Control
         {
             foreach (var tile in row)
             {
-                tileMapLayer.SetCell(tile.position, (int)tile.id, Vector2I.Zero);
+                tileMapLayer.SetCell(tile.position, (int)tile.id, LevelManager.Instance.GetAtlasCoords(tile));
             }
         }
     }

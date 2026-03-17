@@ -39,8 +39,7 @@ public partial class Trigger : Tile
                     position = new(command.X.Value, command.Y.Value),
                     rotation = TileRotation.Up,
                     id = (TileId)command.Block.Value,
-                }, 
-                TileRotation.Up);
+                });
             }
             else if (command.Type == "rotate")
             {

@@ -20,12 +20,12 @@ public partial class UIManager : Node
 		if (Input.IsActionJustPressed("pause"))
 		{
 			//only show pause menu if in game
-			if (levelsMenu.Visible == false)
+			if (!levelsMenu.Visible && !editor.Visible)
 			{
 				pauseMenu.Visible = !pauseMenu.Visible;
 			}
 		}
 
-		if (levelsMenu.Visible == true) pauseMenu.Visible = false;
+		if (levelsMenu.Visible) pauseMenu.Visible = false;
 	}
 }

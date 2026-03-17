@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
-[ext_resource type="TileSet" uid="uid://dctmpwbks4vbo" path="res://Tilesets/16Bit.tres" id="5_45moc"]
+[ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="4_eiun3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -83,7 +83,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 [node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
 z_index = 1
 texture_filter = 1
-tile_set = ExtResource("5_45moc")
+tile_set = ExtResource("4_eiun3")
 
 [node name="Grid" type="Panel" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
 texture_repeat = 2
