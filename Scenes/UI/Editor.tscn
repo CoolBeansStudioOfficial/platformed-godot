@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwxdsr6ws288l" path="res://Scripts/UI/Editor.cs" id="1_eiun3"]
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
+[ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="2_45moc"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_cfu02"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/outline.png" id="3_38yy1"]
@@ -10,8 +11,38 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45moc"]
-content_margin_left = 25.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqfah"]
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swd7v"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdfva"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.735357, 0.735357, 0.735357, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
 texture = ExtResource("2_fvgsq")
@@ -37,7 +68,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
 corner_detail = 5
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMapLayer")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +77,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eiun3")
 viewport = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport")
-tileMapLayer = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/TileMapLayer")
+tileMap = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Tiles")
+overlayMap = NodePath("VBoxContainer/HBoxContainer/Tiles Viewport/Content/Overlay")
+nameLabel = NodePath("VBoxContainer/Top Bar/Level Name/Name")
+unsavedLabel = NodePath("VBoxContainer/Top Bar/Level Name/Unsaved Indicator")
+backButton = NodePath("VBoxContainer/Top Bar/Back")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -62,25 +97,60 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_c2eik")
 
-[node name="Options" type="HBoxContainer" parent="VBoxContainer/Top Bar" unique_id=1218458422]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
+[node name="Back" type="Button" parent="VBoxContainer/Top Bar" unique_id=1287583877]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.654999
+offset_right = 68.0
+offset_bottom = 47.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 37
+theme_override_styles/normal = SubResource("StyleBoxFlat_aqfah")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_swd7v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qdfva")
+icon = ExtResource("2_45moc")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Label" type="Label" parent="VBoxContainer/Top Bar/Options" unique_id=1858181076]
-custom_minimum_size = Vector2(300, 0)
+[node name="Level Name" type="HBoxContainer" parent="VBoxContainer/Top Bar" unique_id=664139010]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_right = 374.0
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="VBoxContainer/Top Bar/Level Name" unique_id=1858181076]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_cfu02")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_45moc")
-text = "Untitled Level"
+text = "Untitled"
+vertical_alignment = 1
+
+[node name="Unsaved Indicator" type="Label" parent="VBoxContainer/Top Bar/Level Name" unique_id=609327538]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 24
+text = "*"
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="Options" type="HBoxContainer" parent="VBoxContainer/Top Bar" unique_id=1218458422]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_right = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=71509377]
 custom_minimum_size = Vector2(100, 0)
@@ -93,6 +163,11 @@ layout_mode = 2
 text = "Export
 "
 
+[node name="Button5" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=702609518]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Settings"
+
 [node name="Button3" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=1929087739]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -103,11 +178,6 @@ text = "Add
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Erase"
-
-[node name="Button5" type="Button" parent="VBoxContainer/Top Bar/Options" unique_id=702609518]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Settings"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=655443654]
 layout_mode = 2
@@ -121,7 +191,7 @@ script = ExtResource("1_fvgsq")
 minZoom = 1.0
 maxZoom = 4.0
 zoomSpeed = 0.04
-tileMapLayer = NodePath("Content/TileMapLayer")
+tileMapLayer = NodePath("Content/Tiles")
 content = NodePath("Content")
 grid = NodePath("Content/Grid")
 
@@ -131,7 +201,12 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+[node name="Tiles" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("4_eiun3")
+
+[node name="Overlay" type="TileMapLayer" parent="VBoxContainer/HBoxContainer/Tiles Viewport/Content" unique_id=700661819]
 z_index = 1
 texture_filter = 1
 tile_set = ExtResource("4_eiun3")
@@ -148,12 +223,12 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
 [node name="Side Bar Expanded" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=686860024]
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cfu02")
 
 [node name="Side Bar" type="Panel" parent="VBoxContainer/HBoxContainer" unique_id=1896088638]
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eiun3")
 

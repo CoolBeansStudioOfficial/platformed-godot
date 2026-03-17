@@ -55,6 +55,7 @@ public partial class GameManager : Node
     {
         if (topMenu) UIManager.Instance.levelsMenu.ShowLevelsList(true);
         UIManager.Instance.levelsMenu.Visible = true;
+        UIManager.Instance.editor.Visible = false;
         LevelManager.Instance.DestroyLevel();
     }
 
