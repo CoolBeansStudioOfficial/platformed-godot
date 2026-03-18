@@ -17,6 +17,7 @@ public partial class Editor : Control
     Level currentLevel;
     List<List<TileInfo>> tiles = [];
 
+    public bool eraserSelected = false;
     public TileId selectedTile = TileId.Ground;
 
     public override void _Ready()
@@ -48,20 +49,22 @@ public partial class Editor : Control
 
         if (viewport.clicking)
         {
-            TileInfo editedTile = tiles[mouseCoords.Y][mouseCoords.X];
+            if (eraserSelected)
+            {
+                tileMap.SetCell(mouseCoords);
+                tiles[mouseCoords.Y][mouseCoords.X] = new();
+            }
+            else
+            {
+                TileInfo editedTile = tiles[mouseCoords.Y][mouseCoords.X];
 
-            editedTile.id = selectedTile;
+                editedTile.id = selectedTile;
 
-            tiles[mouseCoords.Y][mouseCoords.X] = editedTile;
+                tiles[mouseCoords.Y][mouseCoords.X] = editedTile;
 
-            tileMap.SetCell(mouseCoords, (int)selectedTile, Vector2I.Zero);
-        }
-
-        if (viewport.rightClicking)
-        {
-            tileMap.SetCell(mouseCoords);
-
-            tiles[mouseCoords.Y][mouseCoords.X] = new();
+                tileMap.SetCell(mouseCoords, (int)selectedTile, Vector2I.Zero);
+            }
+            
         }
         
         UpdateTiles();

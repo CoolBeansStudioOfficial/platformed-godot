@@ -4,7 +4,8 @@ using System;
 public partial class EditorSideBar : HBoxContainer
 {
 	[Export] Panel sideBarBlocks;
-	[Export] Button[] buttons;
+    [Export] Button eraserButton;
+    [Export] Button[] buttons;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -15,6 +16,8 @@ public partial class EditorSideBar : HBoxContainer
 		{
 			if (button.ButtonPressed) showBlocks = true;
 		}
+
+		if (eraserButton.ButtonPressed) showBlocks = false;
 
 		sideBarBlocks.Visible = showBlocks;
 	}

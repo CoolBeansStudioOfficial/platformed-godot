@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Editor/Interactables.png" id="33_3p2xf"]
 [ext_resource type="Texture2D" uid="uid://4eu70dxsulca" path="res://Images/Raster/Editor/Control Flags.png" id="34_6dj86"]
 [ext_resource type="Texture2D" uid="uid://rr8888xpm14e" path="res://Images/Raster/Editor/Triggers.png" id="35_gbx3p"]
+[ext_resource type="Texture2D" uid="uid://bo2rfi640fm8w" path="res://Images/Raster/Editor/Erase.png" id="37_3p2xf"]
+[ext_resource type="Script" uid="uid://ctqthqd8c4px3" path="res://Scripts/UI/Elements/EraserButton.cs" id="38_6dj86"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -414,6 +416,34 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1kqi"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.50271857, 0.50271857, 0.5027185, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cnwd"]
+bg_color = Color(1, 1, 1, 0.11764706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqn0s"]
+bg_color = Color(0.5370987, 0.5370987, 0.5370987, 0.11764706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton")]
 layout_mode = 3
 anchors_preset = 15
@@ -538,11 +568,6 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Settings"
 
-[node name="Button4" type="Button" parent="Content/Top Bar/Options" unique_id=1240888243]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Erase"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=655443654]
 layout_mode = 2
 size_flags_vertical = 3
@@ -586,12 +611,13 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
 
-[node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401 node_paths=PackedStringArray("sideBarBlocks", "buttons")]
+[node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401 node_paths=PackedStringArray("sideBarBlocks", "eraserButton", "buttons")]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("8_j1kqi")
 sideBarBlocks = NodePath("Side Bar Blocks")
-buttons = [NodePath("Side Bar Options/Categories/Basic Terrain"), NodePath("Side Bar Options/Categories/Hazards"), NodePath("Side Bar Options/Categories/Decoration"), NodePath("Side Bar Options/Categories/Interactables"), NodePath("Side Bar Options/Categories/Control Flags"), NodePath("Side Bar Options/Categories/Triggers")]
+eraserButton = NodePath("Side Bar Options/VBoxContainer/VBoxContainer/Eraser")
+buttons = [NodePath("Side Bar Options/VBoxContainer/Categories/Basic Terrain"), NodePath("Side Bar Options/VBoxContainer/Categories/Hazards"), NodePath("Side Bar Options/VBoxContainer/Categories/Decoration"), NodePath("Side Bar Options/VBoxContainer/Categories/Interactables"), NodePath("Side Bar Options/VBoxContainer/Categories/Control Flags"), NodePath("Side Bar Options/VBoxContainer/Categories/Triggers")]
 
 [node name="Side Bar Blocks" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=686860024]
 custom_minimum_size = Vector2(90, 0)
@@ -823,59 +849,93 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eiun3")
 
-[node name="Categories" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=272970238]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=1003692621]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Categories" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer" unique_id=272970238]
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="Basic Terrain" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=1653942434 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Basic Terrain" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=1653942434 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Basic Terrain
 Click to toggle visibility of blocks in category"
 button_pressed = true
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain")
 
-[node name="Hazards" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=566747366 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Hazards" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=566747366 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Hazards
 Click to toggle visibility of blocks in category"
 button_pressed = true
 icon = ExtResource("31_ehlpm")
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Hazards")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Hazards")
 
-[node name="Decoration" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=2004597306 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Decoration" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=2004597306 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Decoration
 Click to toggle visibility of blocks in category"
 icon = ExtResource("32_j1kqi")
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Decoration")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Decoration")
 
-[node name="Interactables" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=444021579 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Interactables" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=444021579 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Interactables
 Click to toggle visibility of blocks in category"
 icon = ExtResource("33_3p2xf")
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Interactable")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Interactable")
 
-[node name="Control Flags" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=152018747 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Control Flags" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=152018747 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Control Flags
 Click to toggle visibility of blocks in category"
 button_pressed = true
 icon = ExtResource("34_6dj86")
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Control Flags")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Control Flags")
 
-[node name="Triggers" parent="Content/HBoxContainer/Side Bar/Side Bar Options/Categories" unique_id=1166517644 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+[node name="Triggers" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/Categories" unique_id=1166517644 node_paths=PackedStringArray("category") instance=ExtResource("30_kvt7y")]
+texture_filter = 2
 layout_mode = 2
 tooltip_text = "Triggers
 Click to toggle visibility of blocks in category"
 icon = ExtResource("35_gbx3p")
-category = NodePath("../../../Side Bar Blocks/ScrollContainer/Blocks/Triggers")
+category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Triggers")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer" unique_id=588468222]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/VBoxContainer" unique_id=1857406180]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
+
+[node name="Eraser" type="Button" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer/VBoxContainer" unique_id=244950733]
+texture_filter = 2
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Toggle Eraser"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kvt7y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4cnwd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vqn0s")
+toggle_mode = true
+icon = ExtResource("37_3p2xf")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("38_6dj86")
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0
