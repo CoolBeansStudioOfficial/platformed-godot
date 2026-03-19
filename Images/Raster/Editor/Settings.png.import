@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rr8888xpm14e"
-path="res://.godot/imported/Triggers.png-fa895116d226af0a6700a975da3fe869.ctex"
+path="res://.godot/imported/Settings.png-cd91d9380781ff3246b49e06db28ca39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Triggers.png"
-dest_files=["res://.godot/imported/Triggers.png-fa895116d226af0a6700a975da3fe869.ctex"]
+source_file="res://Images/Raster/Editor/Settings.png"
+dest_files=["res://.godot/imported/Settings.png-cd91d9380781ff3246b49e06db28ca39.ctex"]
 
 [params]
 

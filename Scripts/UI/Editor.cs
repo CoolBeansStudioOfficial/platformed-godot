@@ -16,6 +16,7 @@ public partial class Editor : Control
     [Export] HBoxContainer flyoutOptions;
     [Export] Button confirmButton;
     [Export] Button cancelButton;
+    [Export] Button undoButton;
 
     Level currentLevel;
 
@@ -31,6 +32,7 @@ public partial class Editor : Control
     {
         confirmButton.Pressed += Confirm;
         cancelButton.Pressed += Cancel;
+        undoButton.Pressed += Undo;
         backButton.Pressed += OnBackButtonPressed;
 
         ResetEditHistory();
@@ -91,8 +93,12 @@ public partial class Editor : Control
                 }
             }
         }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
         //key presses
-        else if (@event is InputEventKey k)
+        if (@event is InputEventKey k)
         {
             if (k.Pressed)
             {
@@ -105,32 +111,28 @@ public partial class Editor : Control
         }
     }
 
-
-    enum EditorMode
-    {
-        Edit,
-        Place
-    }
     void Undo()
     {
+        if (currentEdit == 0) return;
 
+        //if in place mode, exit place mode before reverting changes
+        if (placeMode) SetMode(EditorMode.Edit);
+        
+        RevertEdit();
     }
 
     void Redo()
     {
-
+        
     }
+
     void Cancel()
     {
-        RevertEdit();
-
-        if (placeMode) SetMode(EditorMode.Edit);
+        if (placeMode) Undo();
     }
 
     void Confirm()
     {
-        AddEdit();
-
         if (placeMode) SetMode(EditorMode.Edit);
     }
 
@@ -148,6 +150,12 @@ public partial class Editor : Control
         editHistory[currentEdit][position.Y][position.X] = editedTile;
 
         UpdateTiles();
+    }
+
+    enum EditorMode
+    {
+        Edit,
+        Place
     }
 
     void SetMode(EditorMode mode)

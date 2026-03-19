@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/Tiles/outline.png" id="3_38yy1"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="4_eiun3"]
+[ext_resource type="Texture2D" uid="uid://557vmxcpsye" path="res://Images/Raster/Editor/Undo.png" id="4_gbx3p"]
+[ext_resource type="Texture2D" uid="uid://e38rsu0s0w62" path="res://Images/Raster/Editor/Redo.png" id="5_a27t6"]
 [ext_resource type="PackedScene" uid="uid://bmvwfjpmmvgyi" path="res://Scenes/UI/Elements/Editor Block Select.tscn" id="8_aqfah"]
 [ext_resource type="Script" uid="uid://xxtwkexwn3be" path="res://Scripts/UI/Elements/EditorSideBar.cs" id="8_j1kqi"]
 [ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/Tiles/crate.png" id="9_qdfva"]
@@ -35,9 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://j3mjmchemqjc" path="res://Images/Raster/Editor/Decoration.png" id="32_j1kqi"]
 [ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Editor/Interactables.png" id="33_3p2xf"]
 [ext_resource type="Texture2D" uid="uid://4eu70dxsulca" path="res://Images/Raster/Editor/Control Flags.png" id="34_6dj86"]
-[ext_resource type="Texture2D" uid="uid://rr8888xpm14e" path="res://Images/Raster/Editor/Triggers.png" id="35_gbx3p"]
+[ext_resource type="Texture2D" uid="uid://rr8888xpm14e" path="res://Images/Raster/Editor/Settings.png" id="35_gbx3p"]
 [ext_resource type="Texture2D" uid="uid://bo2rfi640fm8w" path="res://Images/Raster/Editor/Erase.png" id="37_3p2xf"]
 [ext_resource type="Script" uid="uid://ctqthqd8c4px3" path="res://Scripts/UI/Elements/EraserButton.cs" id="38_6dj86"]
+[ext_resource type="Texture2D" uid="uid://c72rdejnnyphw" path="res://Images/Raster/Editor/Trigger.png" id="38_pjxyc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -142,6 +145,18 @@ modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
 texture = ExtResource("11_2e3v0")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1kqi"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.50271857, 0.50271857, 0.5027185, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgvkk"]
 texture = ExtResource("14_wogks")
@@ -416,18 +431,6 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1kqi"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.50271857, 0.50271857, 0.5027185, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dj86"]
@@ -444,7 +447,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "undoButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -461,6 +464,7 @@ backButton = NodePath("Content/Top Bar/Back")
 flyoutOptions = NodePath("Content/Top Bar/Flyout Options")
 confirmButton = NodePath("Content/Top Bar/Flyout Options/Confirm")
 cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
+undoButton = NodePath("Content/Top Bar/Options/Undo")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -484,6 +488,7 @@ offset_right = 68.0
 offset_bottom = 47.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+tooltip_text = "Return to Menu"
 theme_override_constants/icon_max_width = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_aqfah")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_swd7v")
@@ -556,31 +561,40 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="Content/Top Bar/Options" unique_id=71509377]
+[node name="Undo" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Undo"
+icon = ExtResource("4_gbx3p")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Redo" type="Button" parent="Content/Top Bar/Options" unique_id=1249271328]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Redo"
+icon = ExtResource("5_a27t6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Save" type="Button" parent="Content/Top Bar/Options" unique_id=71509377]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Save"
 
-[node name="Button2" type="Button" parent="Content/Top Bar/Options" unique_id=1929401594]
+[node name="Export" type="Button" parent="Content/Top Bar/Options" unique_id=1929401594]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Export
 "
 
-[node name="Button5" type="Button" parent="Content/Top Bar/Options" unique_id=702609518]
+[node name="Settings" type="Button" parent="Content/Top Bar/Options" unique_id=702609518]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Settings"
-
-[node name="Button6" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Undo"
-
-[node name="Button7" type="Button" parent="Content/Top Bar/Options" unique_id=1249271328]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Redo"
+tooltip_text = "Settings"
+icon = ExtResource("35_gbx3p")
+icon_alignment = 1
+expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=655443654]
 layout_mode = 2
@@ -675,6 +689,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_3vhy4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f28st")
 tileId = 11
 
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=486506412]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
+
 [node name="Hazards" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=1311651595]
 layout_mode = 2
 theme_override_constants/separation = 12
@@ -718,6 +738,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_vs1f4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_oxsxq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l7v5i")
 tileId = 23
+
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=580416152]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
 
 [node name="Decoration" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=603445467]
 layout_mode = 2
@@ -772,6 +798,12 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7gp2n")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lkf4y")
 tileId = 21
 
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=347948993]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
+
 [node name="Interactable" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=870687639]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -784,6 +816,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mwxjg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7unpn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yj855")
 tileId = 12
+
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=1002589132]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
 
 [node name="Control Flags" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=1648223147]
 layout_mode = 2
@@ -813,6 +851,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_4cnwd")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vqn0s")
 theme_override_styles/hover = SubResource("StyleBoxTexture_x62ro")
 tileId = 6
+
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=1090558249]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
 
 [node name="Triggers" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks" unique_id=860023682]
 layout_mode = 2
@@ -857,6 +901,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_n8pot")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxTexture_chl6m")
 tileId = 14
+
+[node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=232306808]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
 
 [node name="Side Bar Options" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=1896088638]
 custom_minimum_size = Vector2(90, 0)
@@ -923,7 +973,7 @@ texture_filter = 2
 layout_mode = 2
 tooltip_text = "Triggers
 Click to toggle visibility of blocks in category"
-icon = ExtResource("35_gbx3p")
+icon = ExtResource("38_pjxyc")
 category = NodePath("../../../../Side Bar Blocks/ScrollContainer/Blocks/Triggers")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options/VBoxContainer" unique_id=588468222]
