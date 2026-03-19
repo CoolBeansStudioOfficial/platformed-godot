@@ -12,6 +12,6 @@ public partial class BlockSelectButton : Button
 
     private void OnPressed()
     {
-        UIManager.Instance.editor.selectedTile = tileId;
+        UIManager.Instance.editor.SelectTile(tileId);
     }
 }

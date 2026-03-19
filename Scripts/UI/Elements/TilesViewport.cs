@@ -14,8 +14,7 @@ public partial class TilesViewport : ScrollContainer
     public Vector2 viewportSize;
 
     float zoom = 1f;
-    public bool clicking = false;
-    public bool rightClicking = false;
+    //number of inputs each action has been performed for
     public bool middleDragging = false;
     Vector2 lastMousePosition = Vector2.Zero;
 
@@ -23,29 +22,7 @@ public partial class TilesViewport : ScrollContainer
     {
         if (@event is InputEventMouseButton mb)
         {
-            if (mb.ButtonIndex == MouseButton.Left)
-            {
-                if (mb.Pressed)
-                {
-                    clicking = true;
-                }
-                else
-                {
-                    clicking = false;
-                }
-            }
-            else if (mb.ButtonIndex == MouseButton.Right)
-            {
-                if (mb.Pressed)
-                {
-                    rightClicking = true;
-                }
-                else
-                {
-                    rightClicking = false;
-                }
-            }
-            else if (mb.ButtonIndex == MouseButton.Middle)
+            if (mb.ButtonIndex == MouseButton.Middle)
             {
                 if (mb.Pressed)
                 {

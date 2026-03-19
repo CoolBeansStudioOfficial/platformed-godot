@@ -13,69 +13,183 @@ public partial class Editor : Control
     [Export] Label nameLabel;
     [Export] Label unsavedLabel;
     [Export] Button backButton;
+    [Export] HBoxContainer flyoutOptions;
+    [Export] Button confirmButton;
+    [Export] Button cancelButton;
 
     Level currentLevel;
-    List<List<TileInfo>> tiles = [];
+
+    Dictionary<int, List<List<TileInfo>>> editHistory = [];
+    int currentEdit = 0;
+    bool placeMode = false;
+    bool mouseDown = false;
 
     public bool eraserSelected = false;
-    public TileId selectedTile = TileId.Ground;
+    TileId selectedTile = TileId.Ground;
 
     public override void _Ready()
     {
+        confirmButton.Pressed += Confirm;
+        cancelButton.Pressed += Cancel;
         backButton.Pressed += OnBackButtonPressed;
 
-        viewport.viewportSize = gridSize * 16;
+        ResetEditHistory();
 
+        viewport.GuiInput += OnViewportInput;
+
+        viewport.viewportSize = gridSize * 16;
         for (int i = 0; i < gridSize.Y; i++)
         {
             //add row
-            tiles.Add(new());
+            editHistory[currentEdit].Add(new());
 
             //add tiles to row
             for (int j = 0; j < gridSize.X; j++)
             {
-                tiles[i].Add(new());
+                editHistory[currentEdit][i].Add(new());
             }
         }
     }
 
-    public override void _Process(double delta)
+    void OnViewportInput(InputEvent @event)
     {
         Vector2I mouseCoords = tileMap.LocalToMap(tileMap.GetLocalMousePosition());
 
-        //return if mouse is outside of set level size
-        if (mouseCoords.X >= gridSize.X || mouseCoords.Y >= gridSize.Y) return;
-        if (mouseCoords.X < 0  || mouseCoords.Y < 0) return;
-
-        if (viewport.clicking)
+        //mouse button presses
+        if (@event is InputEventMouseButton mb)
         {
-            if (eraserSelected)
+            if (mb.ButtonIndex == MouseButton.Left)
             {
-                tileMap.SetCell(mouseCoords);
-                tiles[mouseCoords.Y][mouseCoords.X] = new();
+                //handle left mouse button press
+                if (mb.Pressed)
+                {
+                    mouseDown = true;
+
+                    //place mode
+                    if (placeMode)
+                    {
+                        if (eraserSelected) SetTile(mouseCoords, TileId.Air);
+                        else SetTile(mouseCoords, selectedTile);
+                    }
+                }
+                //handle left mouse button release
+                else
+                {
+                    mouseDown = false;
+                }
             }
-            else
-            {
-                TileInfo editedTile = tiles[mouseCoords.Y][mouseCoords.X];
-
-                editedTile.id = selectedTile;
-
-                tiles[mouseCoords.Y][mouseCoords.X] = editedTile;
-
-                tileMap.SetCell(mouseCoords, (int)selectedTile, Vector2I.Zero);
-            }
-            
         }
-        
+        //mouse movement
+        else if (@event is InputEventMouseMotion)
+        {
+            if (mouseDown)
+            {
+                if (placeMode)
+                {
+                    if (eraserSelected) SetTile(mouseCoords, TileId.Air);
+                    else SetTile(mouseCoords, selectedTile);
+                }
+            }
+        }
+        //key presses
+        else if (@event is InputEventKey k)
+        {
+            if (k.Pressed)
+            {
+                if (k.Keycode == Key.Z && k.IsCommandOrControlPressed())
+                {
+                    if (k.ShiftPressed) Redo();
+                    else Undo();
+                }
+            }
+        }
+    }
+
+    void SetTile(Vector2I position, TileId id)
+    {
+        //return if position is outside of set level size
+        if (position.X >= gridSize.X || position.Y >= gridSize.Y) return;
+        if (position.X < 0 || position.Y < 0) return;
+
+        if (id == TileId.Air) tileMap.SetCell(position);
+        else tileMap.SetCell(position, (int)id, Vector2I.Zero);
+
+        TileInfo editedTile = editHistory[currentEdit][position.Y][position.X];
+        editedTile.id = id;
+        editHistory[currentEdit][position.Y][position.X] = editedTile;
+
         UpdateTiles();
+    }
+
+    enum EditorMode
+    {
+        Edit,
+        Place
+    }
+
+    void SetMode(EditorMode mode)
+    {
+        //place mode
+        if (mode == EditorMode.Place)
+        {
+            placeMode = true;
+            flyoutOptions.Visible = true;
+        }
+        //edit mode
+        else
+        {
+            placeMode = false;
+            eraserSelected = false;
+            GD.Print("hide flyout options");
+            flyoutOptions.Visible = false;
+        }
+    }
+
+    void Undo()
+    {
+
+    }
+
+    void Redo()
+    {
+
+    }
+
+    public void SelectTile(TileId id)
+    {
+        if (!placeMode) SetMode(EditorMode.Place);
+
+        selectedTile = id;
+    }
+
+    public void SelectEraser(bool doSelect)
+    {
+        if (!eraserSelected && !placeMode && doSelect) SetMode(EditorMode.Place);
+
+        eraserSelected = doSelect;
+    }
+
+
+    void Cancel()
+    {
+        //revert changes
+
+        if (placeMode) SetMode(EditorMode.Edit);
+    }
+
+    void Confirm()
+    {
+        //store changes as new edit history
+
+        if (placeMode) SetMode(EditorMode.Edit);
     }
 
     public void UpdateTiles()
     {
-        tiles = LevelManager.Instance.UpdateAdjacencies(tiles);
+        editHistory[currentEdit] = LevelManager.Instance.UpdateAdjacencies(editHistory[currentEdit]);
         
         //set cells according to stored tiles
-        foreach (var row in tiles)
+        foreach (var row in editHistory[currentEdit])
         {
             foreach (var tile in row)
             {
@@ -83,18 +197,27 @@ public partial class Editor : Control
             }
         }
     }
+    
+    void ResetEditHistory()
+    {
+        editHistory.Clear();
+        editHistory.Add(0, []);
+        currentEdit = 0;
+    }
 
     public void ImportLevel(Level level)
 	{
         currentLevel = level;
         nameLabel.Text = level.Name;
 
-        tileMap.Clear();
-        tiles = LevelManager.Instance.CreateTilemap(level);
+        ResetEditHistory();
+
+        editHistory[currentEdit] = LevelManager.Instance.CreateTilemap(level);
 
         gridSize = new(level.Width, level.Height);
 
-        foreach (var row in tiles)
+        tileMap.Clear();
+        foreach (var row in editHistory[currentEdit])
         {
             foreach (var tile in row)
             {
@@ -106,5 +229,7 @@ public partial class Editor : Control
     void OnBackButtonPressed()
     {
         GameManager.Instance.ReturnToLevelsMenu();
+
+        //other editor exitng stuff can be handled here
     }
 }

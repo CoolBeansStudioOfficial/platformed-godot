@@ -11,6 +11,11 @@ public partial class EraserButton : Button
 
     private void OnToggled(bool toggledOn)
     {
-        UIManager.Instance.editor.eraserSelected = toggledOn;
+        UIManager.Instance.editor.SelectEraser(toggledOn);
+    }
+
+    public override void _Process(double delta)
+    {
+        ButtonPressed = UIManager.Instance.editor.eraserSelected;
     }
 }

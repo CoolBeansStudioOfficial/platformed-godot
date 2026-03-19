@@ -430,8 +430,8 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cnwd"]
-bg_color = Color(1, 1, 1, 0.11764706)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dj86"]
+bg_color = Color(1, 0.5019608, 0.5019608, 0.5019608)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -444,7 +444,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -458,6 +458,9 @@ overlayMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
 nameLabel = NodePath("Content/Top Bar/Level Name/Name")
 unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
 backButton = NodePath("Content/Top Bar/Back")
+flyoutOptions = NodePath("Content/Top Bar/Flyout Options")
+confirmButton = NodePath("Content/Top Bar/Flyout Options/Confirm")
+cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -517,6 +520,7 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="Flyout Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=465115347]
+visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -527,14 +531,14 @@ offset_right = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=1284301119]
+[node name="Confirm" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=1284301119]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_2e3v0")
 text = "Confirm
 "
 
-[node name="Button2" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=717220092]
+[node name="Cancel" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=717220092]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_o422j")
@@ -567,6 +571,16 @@ text = "Export
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Settings"
+
+[node name="Button6" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Undo"
+
+[node name="Button7" type="Button" parent="Content/Top Bar/Options" unique_id=1249271328]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Redo"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=655443654]
 layout_mode = 2
@@ -929,7 +943,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Toggle Eraser"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kvt7y")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4cnwd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6dj86")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vqn0s")
 toggle_mode = true
 icon = ExtResource("37_3p2xf")
