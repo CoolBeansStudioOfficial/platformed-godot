@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cvpefptbk8db1" path="res://Images/Raster/Tiles/outline.png" id="3_38yy1"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="4_eiun3"]
 [ext_resource type="Texture2D" uid="uid://557vmxcpsye" path="res://Images/Raster/Editor/Undo.png" id="4_gbx3p"]
+[ext_resource type="Texture2D" uid="uid://bm3xhxy1gyii0" path="res://Images/Raster/Editor/Confirm.png" id="4_mwxjg"]
+[ext_resource type="Texture2D" uid="uid://t5jtg7xp50l2" path="res://Images/Raster/Editor/Cancel.png" id="5_7unpn"]
 [ext_resource type="Texture2D" uid="uid://e38rsu0s0w62" path="res://Images/Raster/Editor/Redo.png" id="5_a27t6"]
 [ext_resource type="PackedScene" uid="uid://bmvwfjpmmvgyi" path="res://Scenes/UI/Elements/Editor Block Select.tscn" id="8_aqfah"]
 [ext_resource type="Script" uid="uid://xxtwkexwn3be" path="res://Scripts/UI/Elements/EditorSideBar.cs" id="8_j1kqi"]
@@ -83,11 +85,35 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.101960786, 0.6392157, 0.101960786, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0.08618771, 0.548856, 0.085389964, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps8e3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.012957456, 0.19895898, 0.012957456, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27ou3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0508363, 0.39750344, 0.0508363, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o422j"]
@@ -95,11 +121,35 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.7882353, 0.101960786, 0.101960786, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0.63976383, 0.070399635, 0.07197326, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3xfs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.23688176, 0.009768863, 0.009768863, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8pot"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.46507415, 0.039075453, 0.039075453, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
@@ -531,24 +581,36 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -73.0
-offset_right = 73.0
+offset_left = -66.0
+offset_top = 7.0
+offset_right = 66.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="Confirm" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=1284301119]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+tooltip_text = "Confirm"
 theme_override_styles/normal = SubResource("StyleBoxFlat_2e3v0")
-text = "Confirm
-"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ps8e3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27ou3")
+icon = ExtResource("4_mwxjg")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Cancel" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=717220092]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+tooltip_text = "Cancel"
 theme_override_styles/normal = SubResource("StyleBoxFlat_o422j")
-text = "Cancel
-"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d3xfs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n8pot")
+icon = ExtResource("5_7unpn")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=1218458422]
 layout_mode = 1
