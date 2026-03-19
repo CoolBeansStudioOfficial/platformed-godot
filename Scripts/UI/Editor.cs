@@ -19,7 +19,7 @@ public partial class Editor : Control
 
     Level currentLevel;
 
-    Dictionary<int, List<List<TileInfo>>> editHistory = [];
+    List<List<List<TileInfo>>> editHistory = [];
     int currentEdit = 0;
     bool placeMode = false;
     bool mouseDown = false;
@@ -105,6 +105,35 @@ public partial class Editor : Control
         }
     }
 
+
+    enum EditorMode
+    {
+        Edit,
+        Place
+    }
+    void Undo()
+    {
+
+    }
+
+    void Redo()
+    {
+
+    }
+    void Cancel()
+    {
+        RevertEdit();
+
+        if (placeMode) SetMode(EditorMode.Edit);
+    }
+
+    void Confirm()
+    {
+        AddEdit();
+
+        if (placeMode) SetMode(EditorMode.Edit);
+    }
+
     void SetTile(Vector2I position, TileId id)
     {
         //return if position is outside of set level size
@@ -121,12 +150,6 @@ public partial class Editor : Control
         UpdateTiles();
     }
 
-    enum EditorMode
-    {
-        Edit,
-        Place
-    }
-
     void SetMode(EditorMode mode)
     {
         //place mode
@@ -134,25 +157,40 @@ public partial class Editor : Control
         {
             placeMode = true;
             flyoutOptions.Visible = true;
+
+            AddEdit();
         }
         //edit mode
         else
         {
             placeMode = false;
             eraserSelected = false;
-            GD.Print("hide flyout options");
             flyoutOptions.Visible = false;
         }
     }
 
-    void Undo()
+    void AddEdit()
     {
+        List<List<TileInfo>> newEdit = [];
+        newEdit.AddRange(editHistory[currentEdit]);
+        editHistory.Add(newEdit);
+        currentEdit++;
 
+        UpdateTiles();
     }
 
-    void Redo()
+    void RevertEdit()
     {
+        editHistory.RemoveAt(currentEdit);
+        currentEdit--;
 
+        UpdateTiles();
+    }
+    void ResetEditHistory()
+    {
+        editHistory.Clear();
+        editHistory.Add([]);
+        currentEdit = 0;
     }
 
     public void SelectTile(TileId id)
@@ -170,19 +208,6 @@ public partial class Editor : Control
     }
 
 
-    void Cancel()
-    {
-        //revert changes
-
-        if (placeMode) SetMode(EditorMode.Edit);
-    }
-
-    void Confirm()
-    {
-        //store changes as new edit history
-
-        if (placeMode) SetMode(EditorMode.Edit);
-    }
 
     public void UpdateTiles()
     {
@@ -198,12 +223,6 @@ public partial class Editor : Control
         }
     }
     
-    void ResetEditHistory()
-    {
-        editHistory.Clear();
-        editHistory.Add(0, []);
-        currentEdit = 0;
-    }
 
     public void ImportLevel(Level level)
 	{
