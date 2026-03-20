@@ -17,6 +17,7 @@ public partial class Editor : Control
     [Export] Button confirmButton;
     [Export] Button cancelButton;
     [Export] Button undoButton;
+    [Export] Button redoButton;
 
     Level currentLevel;
 
@@ -33,6 +34,7 @@ public partial class Editor : Control
         confirmButton.Pressed += Confirm;
         cancelButton.Pressed += Cancel;
         undoButton.Pressed += Undo;
+        redoButton.Pressed += Redo;
         backButton.Pressed += OnBackButtonPressed;
 
         ResetEditHistory();
@@ -123,7 +125,8 @@ public partial class Editor : Control
 
     void Redo()
     {
-        
+        if (currentEdit == editHistory.Count - 1) return;
+        RedoEdit();
     }
 
     void Cancel()
@@ -181,19 +184,38 @@ public partial class Editor : Control
     {
         List<List<TileInfo>> newEdit = [];
         newEdit.AddRange(editHistory[currentEdit]);
+
+        //remove all edits after the current one
+        editHistory.RemoveRange(currentEdit + 1, editHistory.Count - currentEdit - 1);
+
+        //start new edit
         editHistory.Add(newEdit);
         currentEdit++;
 
         UpdateTiles();
+
+        undoButton.Disabled = false;
+        redoButton.Disabled = true;
     }
 
     void RevertEdit()
     {
-        editHistory.RemoveAt(currentEdit);
         currentEdit--;
-
         UpdateTiles();
+
+        if (currentEdit == 0) undoButton.Disabled = true;
+        redoButton.Disabled = false;
     }
+
+    void RedoEdit()
+    {
+        currentEdit++;
+        UpdateTiles();
+
+        if (currentEdit == editHistory.Count - 1) redoButton.Disabled = true;
+        undoButton.Disabled = false;
+    }
+
     void ResetEditHistory()
     {
         editHistory.Clear();

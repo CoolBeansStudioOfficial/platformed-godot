@@ -497,7 +497,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "undoButton")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "undoButton", "redoButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -515,6 +515,7 @@ flyoutOptions = NodePath("Content/Top Bar/Flyout Options")
 confirmButton = NodePath("Content/Top Bar/Flyout Options/Confirm")
 cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
+redoButton = NodePath("Content/Top Bar/Options/Redo")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -627,6 +628,7 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Undo"
+disabled = true
 icon = ExtResource("4_gbx3p")
 icon_alignment = 1
 expand_icon = true
@@ -635,6 +637,7 @@ expand_icon = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Redo"
+disabled = true
 icon = ExtResource("5_a27t6")
 icon_alignment = 1
 expand_icon = true
