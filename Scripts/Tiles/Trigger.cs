@@ -32,7 +32,7 @@ public partial class Trigger : Tile
             {
                 LevelManager.Instance.TeleportPlayer(new(command.X.Value, command.Y.Value));
             }
-            else if (command.Type == "updateBlock")
+            else if (command.Type == "updateBlock" || command.Type == "change")
             {
                 LevelManager.Instance.SetTile(new()
                 {
@@ -44,6 +44,22 @@ public partial class Trigger : Tile
             else if (command.Type == "rotate")
             {
                 throw new NotImplementedException();
+            }
+            else if (command.Type == "fill")
+            {
+                for (int y = command.StartY.Value; y <= command.EndY.Value; y++)
+                {
+                    for (int x = command.StartX.Value; x <= command.EndX.Value; x++)
+                    {
+                        LevelManager.Instance.SetTile(new()
+                        {
+                            position = new(x, y),
+                            rotation = TileRotation.Up,
+                            id = (TileId)command.Block.Value,
+                        });
+                    }
+                }
+                
             }
         }
     }

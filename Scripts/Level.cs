@@ -163,4 +163,16 @@ public class Execute
 
     [JsonPropertyName("rotation")]
     public int? Rotation { get; set; }
+
+    [JsonPropertyName("startX")]
+    public int? StartX { get; set; }
+
+    [JsonPropertyName("startY")]
+    public int? StartY { get; set; }
+
+    [JsonPropertyName("endX")]
+    public int? EndX { get; set; }
+
+    [JsonPropertyName("endY")]
+    public int? EndY { get; set; }
 }
