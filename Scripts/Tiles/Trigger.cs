@@ -43,7 +43,7 @@ public partial class Trigger : Tile
             }
             else if (command.Type == "rotate")
             {
-                throw new NotImplementedException();
+                LevelManager.Instance.RotateTile(new(command.X.Value, command.Y.Value), (TileRotation)command.Rotation.Value);
             }
             else if (command.Type == "fill")
             {

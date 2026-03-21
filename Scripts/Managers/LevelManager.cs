@@ -152,6 +152,16 @@ public partial class LevelManager : Node
         tileMapLayer.SetCell(info.position, (int)info.id, atlasCoords, altTile);
     }
 
+    public void RotateTile(Vector2I position, TileRotation rotation)
+    {
+        SetTile(new()
+        {
+            id = (TileId)tileMapLayer.GetCellSourceId(position),
+            position = position,
+            rotation = rotation
+        });
+    }
+
     public Vector2I GetAtlasCoords(TileInfo info)
     {
         //get atlas coords for tile
@@ -381,7 +391,7 @@ public partial class LevelManager : Node
                 }
 
                 //start new array
-                currentArray = [(int)tiles[i].id, 0];
+                currentArray = [(int)tiles[i].id, 1];
             }
         }
 

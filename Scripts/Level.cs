@@ -161,7 +161,7 @@ public class Execute
     [JsonPropertyName("block")]
     public int? Block { get; set; }
 
-    [JsonPropertyName("rotation")]
+    [JsonPropertyName("beforeRotation")]
     public int? Rotation { get; set; }
 
     [JsonPropertyName("startX")]

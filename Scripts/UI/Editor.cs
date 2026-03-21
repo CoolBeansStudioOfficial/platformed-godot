@@ -16,8 +16,10 @@ public partial class Editor : Control
     [Export] HBoxContainer flyoutOptions;
     [Export] Button confirmButton;
     [Export] Button cancelButton;
+    [Export] Button playButton;
     [Export] Button undoButton;
     [Export] Button redoButton;
+    [Export] MenuButton saveButton;
 
     Level currentLevel;
 
@@ -31,11 +33,13 @@ public partial class Editor : Control
 
     public override void _Ready()
     {
+        backButton.Pressed += OnBackButtonPressed;
         confirmButton.Pressed += Confirm;
         cancelButton.Pressed += Cancel;
+        playButton.Pressed += Play;
         undoButton.Pressed += Undo;
         redoButton.Pressed += Redo;
-        backButton.Pressed += OnBackButtonPressed;
+        saveButton.GetPopup().IdPressed += SaveLevel;
 
         ResetEditHistory();
 
@@ -275,9 +279,40 @@ public partial class Editor : Control
         }
     }
 
-    void ExportLevel()
+    private void SaveLevel(long id)
     {
+        //save to levels folder
+        if (id == 0)
+        {
+            if (GameManager.Instance.IsLevelsFolderSet())
+            {
+                //test level saving
+                currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
+                ImportLevel(currentLevel);
+            }
+            else
+            {
+                UIManager.Instance.PopupNotification("No levels folder has been set\n(You can choose a folder in the My Levels menu)", "Save Failed");
+            }
 
+            
+        }
+        //save to custom directory
+        else if (id == 1)
+        {
+            GD.Print("save to custom directory");
+        }
+        //upload to web
+        else
+        {
+            GD.Print("upload to web");
+        }
+    }
+
+    void Play()
+    {
+        currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
+        GameManager.Instance.PlayLevel(currentLevel);
     }
 
     void OnBackButtonPressed()

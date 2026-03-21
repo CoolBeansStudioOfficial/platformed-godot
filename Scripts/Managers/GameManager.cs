@@ -27,6 +27,7 @@ public partial class GameManager : Node
         LevelManager.Instance.GenerateLevel(level);
 
         UIManager.Instance.levelsMenu.Visible = false;
+        UIManager.Instance.editor.Visible = false;
     }
 
     //play level from the web using its level id
@@ -41,6 +42,7 @@ public partial class GameManager : Node
         LevelManager.Instance.GenerateLevel(level);
 
         UIManager.Instance.levelsMenu.Visible = false;
+        UIManager.Instance.editor.Visible = false;
     }
 
     public async void RemixLevel(Level level)

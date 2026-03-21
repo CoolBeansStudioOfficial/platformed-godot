@@ -6,6 +6,7 @@ public partial class UIManager : Node
 	[Export] public Editor editor;
 	[Export] public LevelsMenu levelsMenu;
     [Export] public Control pauseMenu;
+	[Export] public AcceptDialog notification;
 
     //singleton pringleton
     public static UIManager Instance { get; private set; }
@@ -28,4 +29,11 @@ public partial class UIManager : Node
 
 		if (levelsMenu.Visible) pauseMenu.Visible = false;
 	}
+
+    public void PopupNotification(string message, string title = "Notification")
+    {
+		notification.DialogText = message;
+		notification.Title = title;
+		notification.Popup();
+    }
 }
