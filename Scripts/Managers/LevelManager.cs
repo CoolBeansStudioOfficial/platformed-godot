@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
@@ -361,26 +362,40 @@ public partial class LevelManager : Node
             }
         }
 
-        int currentId = -1;
-        int count = 0;
+        int[] currentArray = [(int)tiles[0].id, 0];
+
+        //turn raw list of tiles into run lengths
         for (int i = 0; i < tiles.Count; i++)
         {
-            if ((int)tiles[i].id != currentId)
+            if ((int)tiles[i].id == currentArray[0]) currentArray[1]++;
+            else
             {
-                if (count > 1)
+                //save array
+                if (currentArray[1] > 1)
                 {
-                    rle.Add(JsonSerializer.SerializeToElement(currentId));
+                    rle.Add(JsonSerializer.SerializeToElement(currentArray));
                 }
                 else
                 {
-                    rle.Add(JsonSerializer.SerializeToElement(currentId));
+                    rle.Add(JsonSerializer.SerializeToElement(currentArray[0]));
                 }
-            }
-            else
-            {
-                count++;
+
+                //start new array
+                currentArray = [(int)tiles[i].id, 0];
             }
         }
+
+        //save array for final one
+        if (currentArray[1] > 1)
+        {
+            rle.Add(JsonSerializer.SerializeToElement(currentArray));
+        }
+        else
+        {
+            rle.Add(JsonSerializer.SerializeToElement(currentArray[0]));
+        }
+
+
 
         return rle;
     }
