@@ -75,7 +75,7 @@ public partial class LevelManager : Node
         DestroyLevel();
 
         //set player spawn point
-        spawnPoint = new(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16);
+        spawnPoint = new Vector2(currentLevel.Data.Spawn.X * 16, currentLevel.Data.Spawn.Y * 16) + new Vector2(8f, 8f);
 
 
         //get tilemap from compressed level data
@@ -344,5 +344,44 @@ public partial class LevelManager : Node
         }
 
         return map;
+    }
+
+    //take list of rows of tiles and turn it back into rle encoded map data
+    public List<JsonElement> EncodeRLE(List<List<TileInfo>> rows)
+    {
+        List<JsonElement> rle = [];
+
+        //unroll list of rows into one long list of tiles
+        List<TileInfo> tiles = [];
+        foreach (var row in rows)
+        {
+            foreach (var tile in row)
+            {
+                tiles.Add(tile);
+            }
+        }
+
+        int currentId = -1;
+        int count = 0;
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            if ((int)tiles[i].id != currentId)
+            {
+                if (count > 1)
+                {
+                    rle.Add(JsonSerializer.SerializeToElement(currentId));
+                }
+                else
+                {
+                    rle.Add(JsonSerializer.SerializeToElement(currentId));
+                }
+            }
+            else
+            {
+                count++;
+            }
+        }
+
+        return rle;
     }
 }

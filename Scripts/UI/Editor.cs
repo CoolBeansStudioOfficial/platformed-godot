@@ -275,6 +275,11 @@ public partial class Editor : Control
         }
     }
 
+    void ExportLevel()
+    {
+
+    }
+
     void OnBackButtonPressed()
     {
         GameManager.Instance.ReturnToLevelsMenu();

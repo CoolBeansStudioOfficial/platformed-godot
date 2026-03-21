@@ -20,7 +20,6 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [node name="Category" type="Button" unique_id=1653942434]
-texture_filter = 1
 custom_minimum_size = Vector2(70, 70)
 size_flags_horizontal = 4
 tooltip_text = "Category"
