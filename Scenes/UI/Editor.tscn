@@ -84,6 +84,8 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3xfs"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n8pot"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e3v0"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -525,7 +527,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameLabel", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -536,7 +538,7 @@ script = ExtResource("1_eiun3")
 viewport = NodePath("Content/HBoxContainer/Tiles Viewport")
 tileMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Tiles")
 overlayMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
-nameLabel = NodePath("")
+nameEdit = NodePath("Content/Top Bar/Level Name/Level Name")
 unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
 backButton = NodePath("Content/Top Bar/Back")
 flyoutOptions = NodePath("Content/Top Bar/Flyout Options")
@@ -586,14 +588,16 @@ offset_left = 80.0
 offset_right = 189.0
 grow_vertical = 2
 
-[node name="LineEdit" type="LineEdit" parent="Content/Top Bar/Level Name" unique_id=822042623]
+[node name="Level Name" type="LineEdit" parent="Content/Top Bar/Level Name" unique_id=822042623]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_cfu02")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d3xfs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n8pot")
 text = "Untitled"
 placeholder_text = "Enter level name..."
 alignment = 1
+max_length = 64
 expand_to_text_length = true
 
 [node name="Unsaved Indicator" type="Label" parent="Content/Top Bar/Level Name" unique_id=609327538]

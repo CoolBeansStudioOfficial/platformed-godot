@@ -10,7 +10,7 @@ public partial class Editor : Control
     [Export] TileMapLayer overlayMap;
 
     [ExportGroup("UI")]
-    [Export] Label nameLabel;
+    [Export] LineEdit nameEdit;
     [Export] Label unsavedLabel;
     [Export] Button backButton;
     [Export] HBoxContainer flyoutOptions;
@@ -34,6 +34,7 @@ public partial class Editor : Control
     public override void _Ready()
     {
         backButton.Pressed += OnBackButtonPressed;
+        nameEdit.TextChanged += NameChanged;
         confirmButton.Pressed += Confirm;
         cancelButton.Pressed += Cancel;
         playButton.Pressed += Play;
@@ -49,7 +50,7 @@ public partial class Editor : Control
         for (int i = 0; i < gridSize.Y; i++)
         {
             //add row
-            editHistory[currentEdit].Add(new());
+            editHistory[currentEdit].Add([]);
 
             //add tiles to row
             for (int j = 0; j < gridSize.X; j++)
@@ -261,7 +262,7 @@ public partial class Editor : Control
     public void ImportLevel(Level level)
 	{
         currentLevel = level;
-        nameLabel.Text = level.Name;
+        nameEdit.Text = level.Name;
 
         ResetEditHistory();
 
@@ -286,9 +287,10 @@ public partial class Editor : Control
         {
             if (GameManager.Instance.IsLevelsFolderSet())
             {
-                //test level saving
                 currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
-                ImportLevel(currentLevel);
+
+                string path = $"{GameManager.Instance.GetLevelsFolder()}/{currentLevel.Name}.json";
+                GameManager.Instance.SaveLevelAsFile(currentLevel, path);
             }
             else
             {
@@ -305,8 +307,13 @@ public partial class Editor : Control
         //upload to web
         else
         {
-            GD.Print("upload to web");
+            UIManager.Instance.PopupNotification("I have't actually implemented this yet lol", "Upload Failed");
         }
+    }
+
+    private void NameChanged(string newText)
+    {
+        currentLevel.Name = newText;
     }
 
     void Play()

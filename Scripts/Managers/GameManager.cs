@@ -157,4 +157,13 @@ public partial class GameManager : Node
 
         return levels;
     }
+
+    public async void SaveLevelAsFile(Level level, string path)
+    {
+        var stream = File.Create(path);
+        await JsonSerializer.SerializeAsync(stream, level);
+        stream.DisposeAsync();
+
+
+    }
 }
