@@ -357,8 +357,14 @@ public partial class LevelManager : Node
         return map;
     }
 
+    public enum EncodeFilter
+    {
+        Tiles,
+        Rotation
+    }
+
     //take list of rows of tiles and turn it back into rle encoded map data
-    public List<JsonElement> EncodeRLE(List<List<TileInfo>> rows)
+    public List<JsonElement> EncodeRLE(List<List<TileInfo>> rows, EncodeFilter filter = EncodeFilter.Tiles)
     {
         List<JsonElement> rle = [];
 
@@ -374,24 +380,50 @@ public partial class LevelManager : Node
 
         int[] currentArray = [(int)tiles[0].id, 0];
 
-        //turn raw list of tiles into run lengths
-        for (int i = 0; i < tiles.Count; i++)
+        if (filter == EncodeFilter.Tiles)
         {
-            if ((int)tiles[i].id == currentArray[0]) currentArray[1]++;
-            else
+            //turn raw list of tiles into run lengths
+            for (int i = 0; i < tiles.Count; i++)
             {
-                //save array
-                if (currentArray[1] > 1)
-                {
-                    rle.Add(JsonSerializer.SerializeToElement(currentArray));
-                }
+                if ((int)tiles[i].id == currentArray[0]) currentArray[1]++;
                 else
                 {
-                    rle.Add(JsonSerializer.SerializeToElement(currentArray[0]));
-                }
+                    //save array
+                    if (currentArray[1] > 1)
+                    {
+                        rle.Add(JsonSerializer.SerializeToElement(currentArray));
+                    }
+                    else
+                    {
+                        rle.Add(JsonSerializer.SerializeToElement(currentArray[0]));
+                    }
 
-                //start new array
-                currentArray = [(int)tiles[i].id, 1];
+                    //start new array
+                    currentArray = [(int)tiles[i].id, 1];
+                }
+            }
+        }
+        else
+        {
+            //turn raw list of tiles into run lengths
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                if ((int)tiles[i].rotation == currentArray[0]) currentArray[1]++;
+                else
+                {
+                    //save array
+                    if (currentArray[1] > 1)
+                    {
+                        rle.Add(JsonSerializer.SerializeToElement(currentArray));
+                    }
+                    else
+                    {
+                        rle.Add(JsonSerializer.SerializeToElement(currentArray[0]));
+                    }
+
+                    //start new array
+                    currentArray = [(int)tiles[i].id, 1];
+                }
             }
         }
 

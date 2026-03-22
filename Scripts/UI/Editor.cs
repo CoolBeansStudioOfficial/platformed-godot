@@ -20,6 +20,7 @@ public partial class Editor : Control
     [Export] Button undoButton;
     [Export] Button redoButton;
     [Export] MenuButton saveButton;
+    [Export] FileDialog saveDialog;
 
     Level currentLevel;
 
@@ -41,11 +42,13 @@ public partial class Editor : Control
         undoButton.Pressed += Undo;
         redoButton.Pressed += Redo;
         saveButton.GetPopup().IdPressed += SaveLevel;
+        saveDialog.FileSelected += SaveDialogFileSelected;
 
         ResetEditHistory();
 
         viewport.GuiInput += OnViewportInput;
 
+        //add
         viewport.viewportSize = gridSize * 16;
         for (int i = 0; i < gridSize.Y; i++)
         {
@@ -58,6 +61,36 @@ public partial class Editor : Control
                 editHistory[currentEdit][i].Add(new());
             }
         }
+
+        //create default level
+        currentLevel = new()
+        {
+            Data = new()
+            {
+                Spawn = new()
+                {
+                    X = 0,
+                    Y = 0,
+                },
+                Width = gridSize.X,
+                Height = gridSize.Y,
+                Layers = [new()
+                {
+                    Data = [],
+                    Name = "level",
+                    Type = "tileLayer"
+                }, new()
+                {
+                    Data = [],
+                    Type = "rotation"
+                }],
+                WallJump = "off"
+            },
+            Name = "Untitled",
+            CreatedAt = DateTime.Now,
+            Width = gridSize.X,
+            Height = gridSize.Y,
+        };
     }
 
     void OnViewportInput(InputEvent @event)
@@ -280,15 +313,17 @@ public partial class Editor : Control
         }
     }
 
-    private void SaveLevel(long id)
+    void SaveLevel(long id)
     {
+        //save changes to working level class instance
+        currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
+        currentLevel.Data.Layers[1].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit], LevelManager.EncodeFilter.Rotation);
+
         //save to levels folder
         if (id == 0)
         {
             if (GameManager.Instance.IsLevelsFolderSet())
             {
-                currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
-
                 string path = $"{GameManager.Instance.GetLevelsFolder()}/{currentLevel.Name}.json";
                 GameManager.Instance.SaveLevelAsFile(currentLevel, path);
             }
@@ -302,13 +337,19 @@ public partial class Editor : Control
         //save to custom directory
         else if (id == 1)
         {
-            GD.Print("save to custom directory");
+            saveDialog.FileNameFilter = currentLevel.Name;
+            saveDialog.Popup();
         }
         //upload to web
         else
         {
             UIManager.Instance.PopupNotification("I have't actually implemented this yet lol", "Upload Failed");
         }
+    }
+
+    void SaveDialogFileSelected(string path)
+    {
+        GameManager.Instance.SaveLevelAsFile(currentLevel, path);
     }
 
     private void NameChanged(string newText)

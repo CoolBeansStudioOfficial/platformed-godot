@@ -527,7 +527,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,6 +548,7 @@ playButton = NodePath("Content/Top Bar/Options/Play")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 saveButton = NodePath("Content/Top Bar/Options/Save")
+saveDialog = NodePath("Save Dialog")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -1144,3 +1145,11 @@ script = ExtResource("38_6dj86")
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0
+
+[node name="Save Dialog" type="FileDialog" parent="." unique_id=147782080]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(1280, 720)
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true

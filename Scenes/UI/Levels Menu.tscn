@@ -645,8 +645,8 @@ vertical_alignment = 1
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=681396235]
 oversampling_override = 1.0
-title = "Open a Directory"
-position = Vector2i(0, 36)
+title = "Select Levels Folder"
+initial_position = 2
 size = Vector2i(1280, 720)
 file_mode = 2
 access = 2
