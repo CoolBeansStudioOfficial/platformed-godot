@@ -666,7 +666,8 @@ theme_override_constants/separation = 10
 [node name="Play" type="Button" parent="Content/Top Bar/Options" unique_id=1261242300]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-tooltip_text = "Play"
+tooltip_text = "Play
+(Ctrl+Space)"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro6dp")
@@ -678,7 +679,8 @@ expand_icon = true
 [node name="Undo" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-tooltip_text = "Undo"
+tooltip_text = "Undo
+(Ctrl+Z)"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro6dp")
@@ -691,7 +693,8 @@ expand_icon = true
 [node name="Redo" type="Button" parent="Content/Top Bar/Options" unique_id=1640505515]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-tooltip_text = "Redo"
+tooltip_text = "Redo
+(Ctrl+Shfit+Z)"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro6dp")
@@ -704,7 +707,8 @@ expand_icon = true
 [node name="Save" type="MenuButton" parent="Content/Top Bar/Options" unique_id=195890749]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-tooltip_text = "Save Options"
+tooltip_text = "Save Options
+(Save to levels folder: Ctrl+S)"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_27ou3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro6dp")

@@ -108,12 +108,7 @@ public partial class Editor : Control
                 {
                     mouseDown = true;
 
-                    //place mode
-                    if (placeMode)
-                    {
-                        if (eraserSelected) SetTile(mouseCoords, TileId.Air);
-                        else SetTile(mouseCoords, selectedTile);
-                    }
+                    HandleClick(mouseCoords);
                 }
                 //handle left mouse button release
                 else
@@ -127,11 +122,7 @@ public partial class Editor : Control
         {
             if (mouseDown)
             {
-                if (placeMode)
-                {
-                    if (eraserSelected) SetTile(mouseCoords, TileId.Air);
-                    else SetTile(mouseCoords, selectedTile);
-                }
+                HandleClick(mouseCoords);
             }
         }
     }
@@ -143,12 +134,37 @@ public partial class Editor : Control
         {
             if (k.Pressed)
             {
+                if (k.Keycode == Key.Space && k.IsCommandOrControlPressed())
+                {
+                    Play();
+                }
+
+                if (k.Keycode == Key.S && k.IsCommandOrControlPressed())
+                {
+                    SaveLevel(0);
+                }
+
                 if (k.Keycode == Key.Z && k.IsCommandOrControlPressed())
                 {
                     if (k.ShiftPressed) Redo();
                     else Undo();
                 }
             }
+        }
+    }
+
+    void HandleClick(Vector2I mouseCoords)
+    {
+        //place mode
+        if (placeMode)
+        {
+            if (eraserSelected) SetTile(mouseCoords, TileId.Air);
+            else SetTile(mouseCoords, selectedTile);
+        }
+        //edit mode
+        else
+        {
+
         }
     }
 
@@ -235,6 +251,8 @@ public partial class Editor : Control
 
         undoButton.Disabled = false;
         redoButton.Disabled = true;
+
+        unsavedLabel.Visible = true;
     }
 
     void RevertEdit()
@@ -244,6 +262,8 @@ public partial class Editor : Control
 
         if (currentEdit == 0) undoButton.Disabled = true;
         redoButton.Disabled = false;
+
+        unsavedLabel.Visible = true;
     }
 
     void RedoEdit()
@@ -253,6 +273,8 @@ public partial class Editor : Control
 
         if (currentEdit == editHistory.Count - 1) redoButton.Disabled = true;
         undoButton.Disabled = false;
+
+        unsavedLabel.Visible = true;
     }
 
     void ResetEditHistory()
@@ -299,6 +321,7 @@ public partial class Editor : Control
         nameEdit.Text = level.Name;
 
         ResetEditHistory();
+        unsavedLabel.Visible = true;
 
         editHistory[currentEdit] = LevelManager.Instance.CreateTilemap(level);
 
@@ -327,6 +350,8 @@ public partial class Editor : Control
             {
                 string path = $"{GameManager.Instance.GetLevelsFolder()}/{currentLevel.Name}.json";
                 GameManager.Instance.SaveLevelAsFile(currentLevel, path);
+
+                unsavedLabel.Visible = false;
             }
             else
             {
@@ -351,6 +376,7 @@ public partial class Editor : Control
     void SaveDialogFileSelected(string path)
     {
         GameManager.Instance.SaveLevelAsFile(currentLevel, path);
+        unsavedLabel.Visible = false;
     }
 
     private void NameChanged(string newText)

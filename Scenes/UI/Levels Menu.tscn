@@ -72,6 +72,42 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8xdp"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kngc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2s4xu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1x40"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkhnm"]
@@ -314,6 +350,9 @@ offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f8xdp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kngc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2s4xu")
 text = "Set Levels Folder"
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "searchBox", "searchButton")]
