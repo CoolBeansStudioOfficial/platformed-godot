@@ -4,7 +4,8 @@ using System;
 public partial class UIManager : Node
 {
 	[Export] public Editor editor;
-	[Export] public LevelsMenu levelsMenu;
+    [Export] public Button returnToEditorButton;
+    [Export] public LevelsMenu levelsMenu;
     [Export] public Control pauseMenu;
 	[Export] public AcceptDialog notification;
 

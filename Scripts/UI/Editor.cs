@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public partial class Editor : Control
 {
@@ -360,7 +361,9 @@ public partial class Editor : Control
     void Play()
     {
         currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
+        currentLevel.Data.Layers[1].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit], LevelManager.EncodeFilter.Rotation);
         GameManager.Instance.PlayLevel(currentLevel);
+        UIManager.Instance.returnToEditorButton.Visible = true;
     }
 
     void OnBackButtonPressed()
