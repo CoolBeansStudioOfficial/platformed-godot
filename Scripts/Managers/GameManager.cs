@@ -56,12 +56,18 @@ public partial class GameManager : Node
     public void ReturnToLevelsMenu(bool topMenu = false)
     {
         if (topMenu) UIManager.Instance.levelsMenu.ShowLevelsList(true);
+        UIManager.Instance.returnToEditorButton.Visible = false;
         UIManager.Instance.levelsMenu.Visible = true;
         UIManager.Instance.editor.Visible = false;
         LevelManager.Instance.DestroyLevel();
     }
 
-
+    public void ReturnToEditor()
+    {
+        UIManager.Instance.returnToEditorButton.Visible = false;
+        UIManager.Instance.editor.Visible = true;
+        LevelManager.Instance.DestroyLevel();
+    }
 
     async Task<Level> GetLevelFromAPI(int id)
     {

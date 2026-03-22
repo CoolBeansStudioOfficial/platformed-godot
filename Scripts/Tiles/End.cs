@@ -10,7 +10,16 @@ public partial class End : Tile
         if (body is PlayerMovement player)
         {
             AudioManager.Instance.PlayStream(victorySound);
-            GameManager.Instance.ReturnToLevelsMenu();
+            if (UIManager.Instance.returnToEditorButton.Visible)
+            {
+                GameManager.Instance.ReturnToEditor();
+            }
+            else
+            {
+                GameManager.Instance.ReturnToLevelsMenu();
+            }
+            
+            
         }
     }
 }
