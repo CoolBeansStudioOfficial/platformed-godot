@@ -7,9 +7,8 @@ public partial class TilesViewport : ScrollContainer
     [Export] float minZoom;
     [Export] float maxZoom;
     [Export] float zoomSpeed;
-    [Export] TileMapLayer tileMapLayer;
     [Export] Control content;
-    [Export] Control grid;
+    [Export] Node[] scaleItems;
 
     public Vector2 viewportSize;
 
@@ -80,7 +79,10 @@ public partial class TilesViewport : ScrollContainer
         //content gets scaled differently to get scrolling with the scrollbars to work
         content.CustomMinimumSize = newZoom * 3000;
 
-        tileMapLayer.Scale = newZoom;
-        grid.Scale = newZoom;
+        foreach (var node in scaleItems)
+        {
+            if (node is Node2D n) n.Scale = newZoom;
+            else if (node is Control c) c.Scale = newZoom;
+        }
     }
 }

@@ -550,7 +550,7 @@ redoButton = NodePath("Content/Top Bar/Options/Redo")
 saveButton = NodePath("Content/Top Bar/Options/Save")
 saveDialog = NodePath("Save Dialog")
 contextMenu = NodePath("Context Menu")
-overlay = NodePath("Overlay")
+overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -749,16 +749,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="Content/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("tileMapLayer", "content", "grid")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="Content/HBoxContainer" unique_id=880828721 node_paths=PackedStringArray("content", "scaleItems")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
 minZoom = 1.0
 maxZoom = 4.0
 zoomSpeed = 0.04
-tileMapLayer = NodePath("Content/Tiles")
 content = NodePath("Content")
-grid = NodePath("Content/Grid")
+scaleItems = [NodePath("Content/Tiles"), NodePath("Content/Grid"), NodePath("Content/Overlay")]
 
 [node name="Content" type="Panel" parent="Content/HBoxContainer/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(3000, 3000)
@@ -781,6 +780,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
+
+[node name="Overlay" type="Control" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=2011071763]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("46_ps8e3")
 
 [node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401 node_paths=PackedStringArray("sideBarBlocks", "eraserButton", "buttons")]
 layout_mode = 2
@@ -1164,6 +1174,7 @@ filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="Overlay" type="Control" parent="." unique_id=410672359]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

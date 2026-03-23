@@ -170,13 +170,14 @@ public partial class Editor : Control
             contextMenu.Position = (Vector2I)viewport.GetGlobalMousePosition() + new Vector2I(10, 10);
             contextMenu.Popup();
 
-            Vector2 worldPosition = tileMap.ToGlobal(tileMap.MapToLocal(mouseCoords)) - tileMap.Position;
+            Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
+            Vector2 boxSize = new(16, 16);
 
             overlay.SetOutline(new()
             {
-                rect = new Rect2(worldPosition.X, worldPosition.Y, 16 * viewport.zoom, 16 * viewport.zoom),
+                rect = new Rect2(worldPosition.X - boxSize.X / 2, worldPosition.Y - boxSize.Y / 2, boxSize.X, boxSize.Y),
                 color = Colors.Orange,
-                width = viewport.zoom,
+                width = 1,
             });
         }
     }
