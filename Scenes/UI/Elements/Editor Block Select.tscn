@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmvwfjpmmvgyi"]
 
-[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/Tiles/ground.png" id="1_hyqdm"]
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/Tiles/16 Bit/ground.png" id="1_hyqdm"]
 [ext_resource type="Script" uid="uid://pqqo4sq0l8ud" path="res://Scripts/UI/Elements/BlockSelectButton.cs" id="2_e8gge"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swd7v"]

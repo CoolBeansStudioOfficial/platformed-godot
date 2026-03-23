@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwudkfrg61r7"]
 
-[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/Tiles/red-block.png" id="1_t2rm3"]
+[ext_resource type="Texture2D" uid="uid://dsn8f6p80xa0o" path="res://Images/Raster/Tiles/16 Bit/red-block.png" id="1_t2rm3"]
 [ext_resource type="Script" uid="uid://ejdpprkkurg7" path="res://Scripts/Tiles/ToggleBlock.cs" id="2_t2rm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]

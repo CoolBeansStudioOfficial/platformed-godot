@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtxa0tkm5wx8f"]
 
-[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/Tiles/bounce-pad.png" id="1_y0yj2"]
+[ext_resource type="Texture2D" uid="uid://c8tshpqdylk7p" path="res://Images/Raster/Tiles/16 Bit/bounce-pad.png" id="1_y0yj2"]
 [ext_resource type="Script" uid="uid://bnjgepdd78vti" path="res://Scripts/Tiles/BouncePad.cs" id="2_fv3ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73p2"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsydybqamwolx"]
 
-[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/Tiles/checkpoint.png" id="1_30y1y"]
+[ext_resource type="Texture2D" uid="uid://bb6pl32vevxe4" path="res://Images/Raster/Tiles/16 Bit/checkpoint.png" id="1_30y1y"]
 [ext_resource type="Script" uid="uid://e40mnvhni3jk" path="res://Scripts/Tiles/Checkpoint.cs" id="2_30y1y"]
 [ext_resource type="AudioStream" uid="uid://cbxg08ks60nhc" path="res://Audio/Raw Files/checkpoint.wav" id="3_mp0u8"]
 

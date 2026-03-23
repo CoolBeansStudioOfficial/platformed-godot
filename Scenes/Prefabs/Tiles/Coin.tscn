@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlsslbkftga4b"]
 
-[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/Tiles/coin.png" id="1_k5o75"]
+[ext_resource type="Texture2D" uid="uid://cxkiwjslxab1q" path="res://Images/Raster/Tiles/16 Bit/coin.png" id="1_k5o75"]
 [ext_resource type="Script" uid="uid://e65eqheugpyj" path="res://Scripts/Tiles/Coin.cs" id="2_k5o75"]
 [ext_resource type="AudioStream" uid="uid://crf5amk1gs6bs" path="res://Audio/Randomizers/Coin.tres" id="3_rcbvg"]
 

@@ -1,0 +1,235 @@
+[gd_resource type="TileSet" format=3 uid="uid://bhy6co17x4llf"]
+
+[ext_resource type="Texture2D" uid="uid://bsqsvk4x7a6q4" path="res://Images/Raster/Tiles/8 Bit/ground.png" id="1_f4if7"]
+[ext_resource type="Texture2D" uid="uid://u7jb44jcrfyv" path="res://Images/Raster/Tiles/8 Bit/coin.png" id="2_pcwf7"]
+[ext_resource type="Texture2D" uid="uid://dkjvjc1kqymrv" path="res://Images/Raster/Tiles/8 Bit/dissipation-block.png" id="3_hfbbg"]
+[ext_resource type="Texture2D" uid="uid://dx41rbe2vebax" path="res://Images/Raster/Tiles/8 Bit/block-blue.png" id="4_cuc5v"]
+[ext_resource type="Texture2D" uid="uid://8gyc4o2vv8jk" path="res://Images/Raster/Tiles/8 Bit/block-red.png" id="5_s0gax"]
+[ext_resource type="Texture2D" uid="uid://dp40eqe73xpvg" path="res://Images/Raster/Tiles/8 Bit/trigger-one.png" id="6_xgiac"]
+[ext_resource type="Texture2D" uid="uid://hw4b3qh0rf4m" path="res://Images/Raster/Tiles/8 Bit/trigger-two.png" id="7_2vn55"]
+[ext_resource type="Texture2D" uid="uid://cupcjp31jrek6" path="res://Images/Raster/Tiles/8 Bit/trigger-three-8bit.png" id="8_w3jnq"]
+[ext_resource type="Texture2D" uid="uid://co37abjwu4wyq" path="res://Images/Raster/Tiles/8 Bit/sign-right-8bit.png" id="9_lxvut"]
+[ext_resource type="Texture2D" uid="uid://1ppjn5p8qofu" path="res://Images/Raster/Tiles/8 Bit/sign-left-8bit.png" id="10_lbswa"]
+[ext_resource type="Texture2D" uid="uid://dkdjx6211opkx" path="res://Images/Raster/Tiles/8 Bit/spikes.png" id="11_6hbf0"]
+[ext_resource type="Texture2D" uid="uid://bjh5ic6hfevs" path="res://Images/Raster/Tiles/8 Bit/sign-up-8bit.png" id="12_sesux"]
+[ext_resource type="Texture2D" uid="uid://bdv8yknb3hmka" path="res://Images/Raster/Tiles/8 Bit/sign-down-8bit.png" id="13_qg0lo"]
+[ext_resource type="Texture2D" uid="uid://uk8tvw00nb2k" path="res://Images/Raster/Tiles/8 Bit/half-spikes-right.png" id="14_l1leg"]
+[ext_resource type="Texture2D" uid="uid://gvcr66nssteb" path="res://Images/Raster/Tiles/8 Bit/half-spikes-left.png" id="15_0rhtk"]
+[ext_resource type="Texture2D" uid="uid://x7l8sd6ncfc2" path="res://Images/Raster/Tiles/8 Bit/double-spikes.png" id="16_hpv0q"]
+[ext_resource type="Texture2D" uid="uid://ti7d1ym4sal0" path="res://Images/Raster/Tiles/8 Bit/checkpoint.png" id="17_dk2fv"]
+[ext_resource type="Texture2D" uid="uid://cp8ikufrktklh" path="res://Images/Raster/Tiles/8 Bit/spawn.png" id="18_677iw"]
+[ext_resource type="Texture2D" uid="uid://ceh6qch8u6bv6" path="res://Images/Raster/Tiles/8 Bit/end.png" id="19_aj5m1"]
+[ext_resource type="Texture2D" uid="uid://dkw2601ysg3or" path="res://Images/Raster/Tiles/8 Bit/cactus.png" id="20_dj1kq"]
+[ext_resource type="Texture2D" uid="uid://mql3to6yacip" path="res://Images/Raster/Tiles/8 Bit/crate.png" id="21_bv36n"]
+[ext_resource type="Texture2D" uid="uid://dup7i0rpk1bi1" path="res://Images/Raster/Tiles/8 Bit/bounce-pad.png" id="22_wlyg7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
+resource_name = "Ground"
+texture = ExtResource("1_f4if7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw7hp"]
+resource_name = "Coin"
+texture = ExtResource("2_pcwf7")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgr4m"]
+resource_name = "DissipationBlock"
+texture = ExtResource("3_hfbbg")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07yr0"]
+resource_name = "BlockBlue"
+texture = ExtResource("4_cuc5v")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhrv2"]
+resource_name = "BlockRed"
+texture = ExtResource("5_s0gax")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4nfc"]
+resource_name = "TriggerOne"
+texture = ExtResource("6_xgiac")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_un1af"]
+resource_name = "InvisibleTrigger"
+texture = ExtResource("7_2vn55")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q607b"]
+resource_name = "TriggerThree"
+texture = ExtResource("8_w3jnq")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvu8y"]
+resource_name = "SignRight"
+texture = ExtResource("9_lxvut")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yx260"]
+resource_name = "SignLeft"
+texture = ExtResource("10_lbswa")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehpm"]
+resource_name = "Spikes"
+texture = ExtResource("11_6hbf0")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsv4i"]
+resource_name = "SignUp"
+texture = ExtResource("12_sesux")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yj4um"]
+resource_name = "SignDown"
+texture = ExtResource("13_qg0lo")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ck5jw"]
+resource_name = "HalfSpikesRight"
+texture = ExtResource("14_l1leg")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
+resource_name = "HalfSpikesLeft"
+texture = ExtResource("15_0rhtk")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
+resource_name = "SpikesDouble"
+texture = ExtResource("16_hpv0q")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/custom_data_0 = 2
+3:0/0 = 0
+3:0/0/custom_data_0 = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kikk5"]
+resource_name = "Checkpoint"
+texture = ExtResource("17_dk2fv")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnprb"]
+resource_name = "Spawn"
+texture = ExtResource("18_677iw")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dpk3"]
+resource_name = "End"
+texture = ExtResource("19_aj5m1")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sgf7"]
+resource_name = "Cactus"
+texture = ExtResource("20_dj1kq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnubn"]
+resource_name = "Crate"
+texture = ExtResource("21_bv36n")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmhga"]
+resource_name = "BouncePad"
+texture = ExtResource("22_wlyg7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+custom_data_layer_0/name = "Rotation"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_iku51")
+sources/3 = SubResource("TileSetAtlasSource_ab4rv")
+sources/7 = SubResource("TileSetAtlasSource_7sgf7")
+sources/8 = SubResource("TileSetAtlasSource_qnubn")
+sources/18 = SubResource("TileSetAtlasSource_pvu8y")
+sources/19 = SubResource("TileSetAtlasSource_yx260")
+sources/20 = SubResource("TileSetAtlasSource_qsv4i")
+sources/21 = SubResource("TileSetAtlasSource_yj4um")
+sources/22 = SubResource("TileSetAtlasSource_ck5jw")
+sources/23 = SubResource("TileSetAtlasSource_cgj0e")
+sources/2 = SubResource("TileSetAtlasSource_7ehpm")
+sources/4 = SubResource("TileSetAtlasSource_kikk5")
+sources/6 = SubResource("TileSetAtlasSource_3dpk3")
+sources/9 = SubResource("TileSetAtlasSource_kmhga")
+sources/10 = SubResource("TileSetAtlasSource_iw7hp")
+sources/11 = SubResource("TileSetAtlasSource_hgr4m")
+sources/13 = SubResource("TileSetAtlasSource_07yr0")
+sources/14 = SubResource("TileSetAtlasSource_qhrv2")
+sources/15 = SubResource("TileSetAtlasSource_m4nfc")
+sources/16 = SubResource("TileSetAtlasSource_un1af")
+sources/17 = SubResource("TileSetAtlasSource_q607b")
+sources/5 = SubResource("TileSetAtlasSource_bnprb")
