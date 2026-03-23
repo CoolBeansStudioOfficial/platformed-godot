@@ -1,39 +1,39 @@
-[gd_resource type="TileSet" format=3 uid="uid://dctmpwbks4vbo"]
+[gd_resource type="TileSet" format=3 uid="uid://dqbpaythrtkoq"]
 
-[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/Tiles/16 Bit/ground.png" id="1_lawiu"]
-[ext_resource type="Texture2D" uid="uid://cpc5libvc7s8a" path="res://Images/Raster/Tiles/16 Bit/spikes.png" id="2_2tsvu"]
-[ext_resource type="PackedScene" uid="uid://dlsslbkftga4b" path="res://Scenes/Prefabs/Tiles/16 Bit/Coin.tscn" id="2_7ehpm"]
-[ext_resource type="PackedScene" uid="uid://dd7s6fvhrw1mm" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Dissipation Block/DissipationBlockUp.tscn" id="3_12fwq"]
-[ext_resource type="Texture2D" uid="uid://bg8tt0xu1nktw" path="res://Images/Raster/Tiles/16 Bit/double-spikes.png" id="3_w2f5o"]
-[ext_resource type="PackedScene" uid="uid://iauavcmgsrky" path="res://Scenes/Prefabs/Tiles/16 Bit/ToggleBlockBlue.tscn" id="4_dt0r2"]
-[ext_resource type="PackedScene" uid="uid://d6rqh1f02720" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Dissipation Block/DissipationBlockLeft.tscn" id="4_o8ylv"]
-[ext_resource type="PackedScene" uid="uid://dwudkfrg61r7" path="res://Scenes/Prefabs/Tiles/16 Bit/ToggleBlockRed.tscn" id="5_dt0r2"]
-[ext_resource type="PackedScene" uid="uid://ouo6m1hx2rll" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Dissipation Block/DissipationBlockDown.tscn" id="5_i2f7v"]
-[ext_resource type="PackedScene" uid="uid://bp7je2j56aji" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/Trigger One/TriggerOneUp.tscn" id="6_12fwq"]
-[ext_resource type="PackedScene" uid="uid://drj520ar1ac8b" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Dissipation Block/DissipationBlockRight.tscn" id="6_dgasy"]
-[ext_resource type="Texture2D" uid="uid://c7srm58bbtnui" path="res://Images/Raster/Tiles/16 Bit/cactus.png" id="6_q2l7b"]
-[ext_resource type="PackedScene" uid="uid://jfla72d508dv" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/Trigger One/TriggerOneLeft.tscn" id="7_trg7l"]
-[ext_resource type="PackedScene" uid="uid://kvpxum50ge3" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/Trigger One/TriggerOneDown.tscn" id="8_rfy21"]
-[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/Tiles/16 Bit/sign-right.png" id="8_w03wh"]
-[ext_resource type="Texture2D" uid="uid://dby4cqdt6vom6" path="res://Images/Raster/Tiles/16 Bit/crate.png" id="9_7sgf7"]
-[ext_resource type="PackedScene" uid="uid://elnb7is0i8xf" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/Trigger One/TriggerOneRight.tscn" id="9_o8ylv"]
-[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/Tiles/16 Bit/sign-left.png" id="9_upe0s"]
-[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/InvisibleTrigger.tscn" id="10_i2f7v"]
-[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/TriggerThree.tscn" id="11_dgasy"]
-[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/Tiles/16 Bit/sign-up.png" id="11_uu4np"]
-[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/Tiles/16 Bit/sign-down.png" id="12_12fwq"]
-[ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-right.png" id="13_trg7l"]
-[ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-left.png" id="14_rfy21"]
-[ext_resource type="PackedScene" uid="uid://bsydybqamwolx" path="res://Scenes/Prefabs/Tiles/16 Bit/Checkpoint.tscn" id="16_7ehpm"]
-[ext_resource type="PackedScene" uid="uid://d1mw3nng0nunt" path="res://Scenes/Prefabs/Tiles/16 Bit/End.tscn" id="17_bsf56"]
-[ext_resource type="PackedScene" uid="uid://dx183ctntrodl" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Bounce Pad/BouncePadUp.tscn" id="20_dt0r2"]
-[ext_resource type="PackedScene" uid="uid://dtxa0tkm5wx8f" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Bounce Pad/BouncePadLeft.tscn" id="21_w03wh"]
-[ext_resource type="PackedScene" uid="uid://d1ogjjgyi1g5t" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Bounce Pad/BouncePadDown.tscn" id="22_upe0s"]
-[ext_resource type="PackedScene" uid="uid://bt6i8d5gbuupt" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Bounce Pad/BouncePadRight.tscn" id="23_uu4np"]
+[ext_resource type="Texture2D" uid="uid://bsqsvk4x7a6q4" path="res://Images/Raster/Tiles/8 Bit/ground.png" id="1_10loc"]
+[ext_resource type="PackedScene" uid="uid://dhi6vwwa5jlh1" path="res://Scenes/Prefabs/Tiles/8 Bit/Coin.tscn" id="2_10loc"]
+[ext_resource type="PackedScene" uid="uid://dvo06nfckejp" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Dissipation Block/DissipationBlockUp.tscn" id="3_10loc"]
+[ext_resource type="PackedScene" uid="uid://cm5omop32xs5b" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Dissipation Block/DissipationBlockLeft.tscn" id="4_dxl0w"]
+[ext_resource type="PackedScene" uid="uid://dqhuyj31uh3ln" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Dissipation Block/DissipationBlockDown.tscn" id="5_wbd1u"]
+[ext_resource type="PackedScene" uid="uid://bu8ayeasdcj6r" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Dissipation Block/DissipationBlockRight.tscn" id="6_qu2kx"]
+[ext_resource type="PackedScene" uid="uid://diqlrn4t2vwk" path="res://Scenes/Prefabs/Tiles/8 Bit/ToggleBlockBlue.tscn" id="7_10loc"]
+[ext_resource type="PackedScene" uid="uid://ck1un11snlo6p" path="res://Scenes/Prefabs/Tiles/8 Bit/ToggleBlockRed.tscn" id="8_10loc"]
+[ext_resource type="PackedScene" uid="uid://dmetuyyf5bohf" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Triggers/Trigger One/TriggerOneUp.tscn" id="9_10loc"]
+[ext_resource type="PackedScene" uid="uid://c2tp83npi7ltn" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Triggers/Trigger One/TriggerOneLeft.tscn" id="10_dxl0w"]
+[ext_resource type="PackedScene" uid="uid://ctifmb4xh4igt" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Triggers/Trigger One/TriggerOneDown.tscn" id="11_wbd1u"]
+[ext_resource type="PackedScene" uid="uid://dibrxmcb3xk7p" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Triggers/Trigger One/TriggerOneRight.tscn" id="12_qu2kx"]
+[ext_resource type="PackedScene" uid="uid://ct0l6d7r4d216" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/InvisibleTrigger.tscn" id="13_u0nlg"]
+[ext_resource type="PackedScene" uid="uid://cn4lhypcukx7i" path="res://Scenes/Prefabs/Tiles/16 Bit/With Rotations/Triggers/TriggerThree.tscn" id="14_vo2ak"]
+[ext_resource type="Texture2D" uid="uid://co37abjwu4wyq" path="res://Images/Raster/Tiles/8 Bit/sign-right-8bit.png" id="15_dxl0w"]
+[ext_resource type="Texture2D" uid="uid://1ppjn5p8qofu" path="res://Images/Raster/Tiles/8 Bit/sign-left-8bit.png" id="16_wbd1u"]
+[ext_resource type="Texture2D" uid="uid://dkdjx6211opkx" path="res://Images/Raster/Tiles/8 Bit/spikes.png" id="17_qu2kx"]
+[ext_resource type="Texture2D" uid="uid://bjh5ic6hfevs" path="res://Images/Raster/Tiles/8 Bit/sign-up-8bit.png" id="18_bfss1"]
+[ext_resource type="Texture2D" uid="uid://bdv8yknb3hmka" path="res://Images/Raster/Tiles/8 Bit/sign-down-8bit.png" id="19_evx7d"]
+[ext_resource type="Texture2D" uid="uid://uk8tvw00nb2k" path="res://Images/Raster/Tiles/8 Bit/half-spikes-right.png" id="20_40s16"]
+[ext_resource type="Texture2D" uid="uid://gvcr66nssteb" path="res://Images/Raster/Tiles/8 Bit/half-spikes-left.png" id="21_2lq1r"]
+[ext_resource type="Texture2D" uid="uid://x7l8sd6ncfc2" path="res://Images/Raster/Tiles/8 Bit/double-spikes.png" id="22_mgmtf"]
+[ext_resource type="PackedScene" uid="uid://dwh4rkfgg7dlx" path="res://Scenes/Prefabs/Tiles/8 Bit/Checkpoint.tscn" id="23_kp1rf"]
+[ext_resource type="PackedScene" uid="uid://budh2wxeqqwk2" path="res://Scenes/Prefabs/Tiles/8 Bit/End.tscn" id="24_10loc"]
+[ext_resource type="Texture2D" uid="uid://dkw2601ysg3or" path="res://Images/Raster/Tiles/8 Bit/cactus.png" id="25_6dk7p"]
+[ext_resource type="Texture2D" uid="uid://mql3to6yacip" path="res://Images/Raster/Tiles/8 Bit/crate.png" id="26_q7fd6"]
+[ext_resource type="PackedScene" uid="uid://c7cwsg5aqivb1" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Bounce Pad/BouncePadUp.tscn" id="27_10loc"]
+[ext_resource type="PackedScene" uid="uid://c1fp0ea21xq8w" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Bounce Pad/BouncePadLeft.tscn" id="28_dxl0w"]
+[ext_resource type="PackedScene" uid="uid://bm4eur5d36mjf" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Bounce Pad/BouncePadDown.tscn" id="29_wbd1u"]
+[ext_resource type="PackedScene" uid="uid://cpw6niov5pnjp" path="res://Scenes/Prefabs/Tiles/8 Bit/With Rotations/Bounce Pad/BouncePadRight.tscn" id="30_qu2kx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iku51"]
 resource_name = "Ground"
-texture = ExtResource("1_lawiu")
+texture = ExtResource("1_10loc")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -69,50 +69,50 @@ texture = ExtResource("1_lawiu")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2j2uc"]
 resource_name = "Coin"
-scenes/0/scene = ExtResource("2_7ehpm")
-scenes/1/scene = ExtResource("2_7ehpm")
-scenes/2/scene = ExtResource("2_7ehpm")
-scenes/3/scene = ExtResource("2_7ehpm")
+scenes/0/scene = ExtResource("2_10loc")
+scenes/1/scene = ExtResource("2_10loc")
+scenes/2/scene = ExtResource("2_10loc")
+scenes/3/scene = ExtResource("2_10loc")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o8ylv"]
 resource_name = "DissipationBlock"
-scenes/0/scene = ExtResource("3_12fwq")
-scenes/1/scene = ExtResource("4_o8ylv")
-scenes/2/scene = ExtResource("5_i2f7v")
-scenes/3/scene = ExtResource("6_dgasy")
+scenes/0/scene = ExtResource("3_10loc")
+scenes/1/scene = ExtResource("4_dxl0w")
+scenes/2/scene = ExtResource("5_wbd1u")
+scenes/3/scene = ExtResource("6_qu2kx")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_upe0s"]
 resource_name = "BlockBlue"
-scenes/0/scene = ExtResource("4_dt0r2")
-scenes/1/scene = ExtResource("4_dt0r2")
-scenes/2/scene = ExtResource("4_dt0r2")
-scenes/3/scene = ExtResource("4_dt0r2")
+scenes/0/scene = ExtResource("7_10loc")
+scenes/1/scene = ExtResource("7_10loc")
+scenes/2/scene = ExtResource("7_10loc")
+scenes/3/scene = ExtResource("7_10loc")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uu4np"]
 resource_name = "BlockRed"
-scenes/0/scene = ExtResource("5_dt0r2")
-scenes/1/scene = ExtResource("5_dt0r2")
-scenes/2/scene = ExtResource("5_dt0r2")
-scenes/3/scene = ExtResource("5_dt0r2")
+scenes/0/scene = ExtResource("8_10loc")
+scenes/1/scene = ExtResource("8_10loc")
+scenes/2/scene = ExtResource("8_10loc")
+scenes/3/scene = ExtResource("8_10loc")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_trg7l"]
 resource_name = "TriggerOne"
-scenes/0/scene = ExtResource("6_12fwq")
-scenes/1/scene = ExtResource("7_trg7l")
-scenes/2/scene = ExtResource("8_rfy21")
-scenes/3/scene = ExtResource("9_o8ylv")
+scenes/0/scene = ExtResource("9_10loc")
+scenes/1/scene = ExtResource("10_dxl0w")
+scenes/2/scene = ExtResource("11_wbd1u")
+scenes/3/scene = ExtResource("12_qu2kx")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_12fwq"]
 resource_name = "InvisibleTrigger"
-scenes/0/scene = ExtResource("10_i2f7v")
+scenes/0/scene = ExtResource("13_u0nlg")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rfy21"]
 resource_name = "TriggerThree"
-scenes/0/scene = ExtResource("11_dgasy")
+scenes/0/scene = ExtResource("14_vo2ak")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvu8y"]
 resource_name = "SignRight"
-texture = ExtResource("8_w03wh")
+texture = ExtResource("15_dxl0w")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_0 = 1
@@ -123,7 +123,7 @@ texture = ExtResource("8_w03wh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yx260"]
 resource_name = "SignLeft"
-texture = ExtResource("9_upe0s")
+texture = ExtResource("16_wbd1u")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_0 = 1
@@ -134,7 +134,7 @@ texture = ExtResource("9_upe0s")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ehpm"]
 resource_name = "Spikes"
-texture = ExtResource("2_2tsvu")
+texture = ExtResource("17_qu2kx")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.0123396, 8, 7.0123386, 8, 0.01006031, -6.031417)
 0:0/0/custom_data_1 = true
@@ -153,7 +153,7 @@ texture = ExtResource("2_2tsvu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsv4i"]
 resource_name = "SignUp"
-texture = ExtResource("11_uu4np")
+texture = ExtResource("18_bfss1")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_0 = 1
@@ -164,7 +164,7 @@ texture = ExtResource("11_uu4np")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yj4um"]
 resource_name = "SignDown"
-texture = ExtResource("12_12fwq")
+texture = ExtResource("19_evx7d")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_0 = 1
@@ -175,7 +175,7 @@ texture = ExtResource("12_12fwq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ck5jw"]
 resource_name = "HalfSpikesRight"
-texture = ExtResource("13_trg7l")
+texture = ExtResource("20_40s16")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.19819164, 8, 6.8376036, 8, 3.4683485, 0.7927656)
 0:0/0/custom_data_1 = true
@@ -194,7 +194,7 @@ texture = ExtResource("13_trg7l")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cgj0e"]
 resource_name = "HalfSpikesLeft"
-texture = ExtResource("14_rfy21")
+texture = ExtResource("21_2lq1r")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -0.99095726, 8, -4.4921875, 0.99609375)
 0:0/0/custom_data_1 = true
@@ -213,7 +213,7 @@ texture = ExtResource("14_rfy21")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ab4rv"]
 resource_name = "SpikesDouble"
-texture = ExtResource("3_w2f5o")
+texture = ExtResource("22_mgmtf")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 6.936698, 8, 3.4683485, 0.8918619, -4.7565937, 0.99095726)
 0:0/0/custom_data_1 = true
@@ -232,21 +232,21 @@ texture = ExtResource("3_w2f5o")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dt0r2"]
 resource_name = "Checkpoint"
-scenes/0/scene = ExtResource("16_7ehpm")
-scenes/1/scene = ExtResource("16_7ehpm")
-scenes/2/scene = ExtResource("16_7ehpm")
-scenes/3/scene = ExtResource("16_7ehpm")
+scenes/0/scene = ExtResource("23_kp1rf")
+scenes/1/scene = ExtResource("23_kp1rf")
+scenes/2/scene = ExtResource("23_kp1rf")
+scenes/3/scene = ExtResource("23_kp1rf")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_w03wh"]
 resource_name = "End"
-scenes/0/scene = ExtResource("17_bsf56")
-scenes/1/scene = ExtResource("17_bsf56")
-scenes/2/scene = ExtResource("17_bsf56")
-scenes/3/scene = ExtResource("17_bsf56")
+scenes/0/scene = ExtResource("24_10loc")
+scenes/1/scene = ExtResource("24_10loc")
+scenes/2/scene = ExtResource("24_10loc")
+scenes/3/scene = ExtResource("24_10loc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sgf7"]
 resource_name = "Cactus"
-texture = ExtResource("6_q2l7b")
+texture = ExtResource("25_6dk7p")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:0/0/custom_data_1 = true
@@ -262,16 +262,16 @@ texture = ExtResource("6_q2l7b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnubn"]
 resource_name = "Crate"
-texture = ExtResource("9_7sgf7")
+texture = ExtResource("26_q7fd6")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bsf56"]
 resource_name = "BouncePad"
-scenes/0/scene = ExtResource("20_dt0r2")
-scenes/1/scene = ExtResource("21_w03wh")
-scenes/2/scene = ExtResource("22_upe0s")
-scenes/3/scene = ExtResource("23_uu4np")
+scenes/0/scene = ExtResource("27_10loc")
+scenes/1/scene = ExtResource("28_dxl0w")
+scenes/2/scene = ExtResource("29_wbd1u")
+scenes/3/scene = ExtResource("30_qu2kx")
 
 [resource]
 physics_layer_0/collision_layer = 1

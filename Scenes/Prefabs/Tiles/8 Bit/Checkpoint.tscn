@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dwh4rkfgg7dlx"]
+
+[ext_resource type="Texture2D" uid="uid://ti7d1ym4sal0" path="res://Images/Raster/Tiles/8 Bit/checkpoint.png" id="1_end0f"]
+[ext_resource type="Script" uid="uid://e40mnvhni3jk" path="res://Scripts/Tiles/Checkpoint.cs" id="2_rm08i"]
+[ext_resource type="AudioStream" uid="uid://cbxg08ks60nhc" path="res://Audio/Raw Files/checkpoint.wav" id="3_itr31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]
+size = Vector2(16, 16)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
+texture_filter = 1
+texture = ExtResource("1_end0f")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_rm08i")
+checkpointSound = ExtResource("3_itr31")
+collisionObject = NodePath("Area2D")
+collisionShape = NodePath("Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=843167105]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=810442276]
+shape = SubResource("RectangleShape2D_032lv")

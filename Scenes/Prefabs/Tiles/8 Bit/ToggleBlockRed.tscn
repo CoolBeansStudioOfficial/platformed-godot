@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ck1un11snlo6p"]
+
+[ext_resource type="Texture2D" uid="uid://8gyc4o2vv8jk" path="res://Images/Raster/Tiles/8 Bit/block-red.png" id="1_0ad0v"]
+[ext_resource type="Script" uid="uid://ejdpprkkurg7" path="res://Scripts/Tiles/ToggleBlock.cs" id="2_85lo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_032lv"]
+size = Vector2(16, 16)
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
+texture_filter = 1
+texture = ExtResource("1_0ad0v")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_85lo2")
+isRedBlock = true
+collisionObject = NodePath("StaticBody2D")
+collisionShape = NodePath("StaticBody2D/CollisionShape2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1008771073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=810442276]
+shape = SubResource("RectangleShape2D_032lv")

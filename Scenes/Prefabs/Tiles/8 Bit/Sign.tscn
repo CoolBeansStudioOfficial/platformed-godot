@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://p3bugfojiuup"]
+
+[ext_resource type="Texture2D" uid="uid://24o3no6h8vlw" path="res://Images/Raster/Tiles/16 Bit/sign-right.png" id="1_vbo37"]
+[ext_resource type="Script" uid="uid://be8gilb7u7ii8" path="res://Scripts/Tiles/Sign.cs" id="2_q163r"]
+[ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/Tiles/16 Bit/sign-left.png" id="3_bdqus"]
+[ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/Tiles/16 Bit/sign-up.png" id="4_40i83"]
+[ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/Tiles/16 Bit/sign-down.png" id="5_iyase"]
+
+[node name="Tile" type="Sprite2D" unique_id=1346281759 node_paths=PackedStringArray("collisionObject", "collisionShape")]
+texture_filter = 1
+texture = ExtResource("1_vbo37")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_q163r")
+rightTexture = ExtResource("1_vbo37")
+leftTexture = ExtResource("3_bdqus")
+upTexture = ExtResource("4_40i83")
+downTexture = ExtResource("5_iyase")
+collisionObject = NodePath("")
+collisionShape = NodePath("")
