@@ -170,7 +170,8 @@ public partial class Editor : Control
             contextMenu.Position = (Vector2I)viewport.GetGlobalMousePosition() + new Vector2I(10, 10);
             contextMenu.Popup();
 
-            Vector2 worldPosition = tileMap.ToGlobal(tileMap.MapToLocal(mouseCoords));
+            Vector2 worldPosition = tileMap.ToGlobal(tileMap.MapToLocal(mouseCoords)) - tileMap.Position;
+
             overlay.SetOutline(new()
             {
                 rect = new Rect2(worldPosition.X, worldPosition.Y, 16 * viewport.zoom, 16 * viewport.zoom),
