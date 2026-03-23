@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e38rsu0s0w62"
-path="res://.godot/imported/Redo.png-b0dbb60c5b80faa420193f7baeefd5c6.ctex"
+uid="uid://chbx60psimog"
+path="res://.godot/imported/Play.png-942e0051951029ec731187b1ba00e59e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Redo.png"
-dest_files=["res://.godot/imported/Redo.png-b0dbb60c5b80faa420193f7baeefd5c6.ctex"]
+source_file="res://Images/Raster/Icons/Play.png"
+dest_files=["res://.godot/imported/Play.png-942e0051951029ec731187b1ba00e59e.ctex"]
 
 [params]
 

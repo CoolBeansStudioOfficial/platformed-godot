@@ -7,6 +7,7 @@ public partial class TopBar : Panel
     [Export] Button returnToEditorButton;
     [Export] Button exploreButton;
     [Export] Button myLevelsButton;
+    [Export] Button settingsButton;
 
     public override void _Ready()
 	{
@@ -14,9 +15,11 @@ public partial class TopBar : Panel
         returnToEditorButton.Pressed += OnCreateButtonPressed;
         exploreButton.Pressed += OnExploreButtonPressed;
         myLevelsButton.Pressed += OnMyLevelsButtonPressed;
+        settingsButton.Pressed += OnSettingsButtonPressed;
 	}
 
-	void OnCreateButtonPressed()
+
+    void OnCreateButtonPressed()
     {
         returnToEditorButton.Visible = false;
         UIManager.Instance.editor.Visible = true;
@@ -39,5 +42,9 @@ public partial class TopBar : Panel
         GameManager.Instance.ReturnToLevelsMenu(true);
         UIManager.Instance.levelsMenu.MyLevels();
         UIManager.Instance.editor.Visible = false;
+    }
+    void OnSettingsButtonPressed()
+    {
+        
     }
 }

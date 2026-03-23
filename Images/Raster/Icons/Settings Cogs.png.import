@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxlkjm5c5xxb6"
-path="res://.godot/imported/Basic Terrain.png-3011dcde0a6a9488e2ef77b4a84d3ca6.ctex"
+uid="uid://et21qn04tyxn"
+path="res://.godot/imported/Settings Cogs.png-b314e6dc36b16521227e29455d75cc1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Basic Terrain.png"
-dest_files=["res://.godot/imported/Basic Terrain.png-3011dcde0a6a9488e2ef77b4a84d3ca6.ctex"]
+source_file="res://Images/Raster/Icons/Settings Cogs.png"
+dest_files=["res://.godot/imported/Settings Cogs.png-b314e6dc36b16521227e29455d75cc1f.ctex"]
 
 [params]
 

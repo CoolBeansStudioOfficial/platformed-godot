@@ -13,7 +13,7 @@ config_version=5
 config/name="platformed"
 run/main_scene="uid://cyha7tis5u1r6"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://vq1pylkwcdhw"
 
 [autoload]
 

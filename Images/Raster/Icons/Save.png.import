@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo2rfi640fm8w"
-path="res://.godot/imported/Erase.png-00649ea45594057c05f7c2988038e4d3.ctex"
+uid="uid://cwegv4uf4sidc"
+path="res://.godot/imported/Save.png-b0be3d04efff1745993ee58f9ffbba13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Erase.png"
-dest_files=["res://.godot/imported/Erase.png-00649ea45594057c05f7c2988038e4d3.ctex"]
+source_file="res://Images/Raster/Icons/Save.png"
+dest_files=["res://.godot/imported/Save.png-b0be3d04efff1745993ee58f9ffbba13.ctex"]
 
 [params]
 

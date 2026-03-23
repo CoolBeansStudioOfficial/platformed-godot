@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ovhwo2s4fqb7"
-path="res://.godot/imported/Hazards.png-1d9edecd2deabe92a77c3801a71e667a.ctex"
+uid="uid://vq1pylkwcdhw"
+path="res://.godot/imported/platformed.svg-71a4b6093c26936522d63a531963f074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Hazards.png"
-dest_files=["res://.godot/imported/Hazards.png-1d9edecd2deabe92a77c3801a71e667a.ctex"]
+source_file="res://platformed.svg"
+dest_files=["res://.godot/imported/platformed.svg-71a4b6093c26936522d63a531963f074.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=10.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

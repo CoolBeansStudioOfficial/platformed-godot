@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmi06n2qygfbl"]
 
-[ext_resource type="Texture2D" uid="uid://dxlkjm5c5xxb6" path="res://Images/Raster/Editor/Basic Terrain.png" id="1_yxdw0"]
+[ext_resource type="Texture2D" uid="uid://dxlkjm5c5xxb6" path="res://Images/Raster/Icons/Basic Terrain.png" id="1_yxdw0"]
 [ext_resource type="Script" uid="uid://g2bq7iw6e7s" path="res://Scripts/UI/Elements/EditorCategoryToggle.cs" id="2_4ecdo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]

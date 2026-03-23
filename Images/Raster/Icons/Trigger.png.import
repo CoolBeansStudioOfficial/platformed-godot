@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chbx60psimog"
-path="res://.godot/imported/Play.png-b52619da8c6880d68ea967f1dabaedd7.ctex"
+uid="uid://c72rdejnnyphw"
+path="res://.godot/imported/Trigger.png-c1e5cbf5fe8543529e36d45541915cff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Play.png"
-dest_files=["res://.godot/imported/Play.png-b52619da8c6880d68ea967f1dabaedd7.ctex"]
+source_file="res://Images/Raster/Icons/Trigger.png"
+dest_files=["res://.godot/imported/Trigger.png-c1e5cbf5fe8543529e36d45541915cff.ctex"]
 
 [params]
 

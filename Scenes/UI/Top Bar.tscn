@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_4vp1j"]
 [ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
+[ext_resource type="Texture2D" uid="uid://et21qn04tyxn" path="res://Images/Raster/Icons/Settings Cogs.png" id="4_2vrv4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
 bg_color = Color(0, 0, 0, 0.5019608)
@@ -115,7 +116,25 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Top Bar" type="Panel" unique_id=1523222259 node_paths=PackedStringArray("createButton", "exploreButton", "myLevelsButton")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vrv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxqdd"]
+bg_color = Color(0.44128296, 0.44128296, 0.44128296, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx6et"]
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[node name="Top Bar" type="Panel" unique_id=1523222259 node_paths=PackedStringArray("createButton", "exploreButton", "myLevelsButton", "settingsButton")]
 custom_minimum_size = Vector2(0, 60)
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,6 +146,7 @@ script = ExtResource("1_swqkx")
 createButton = NodePath("HBoxContainer/Create")
 exploreButton = NodePath("HBoxContainer/Explore")
 myLevelsButton = NodePath("HBoxContainer/My Levels")
+settingsButton = NodePath("Settings")
 
 [node name="Title" type="Label" parent="." unique_id=420061]
 layout_mode = 1
@@ -216,3 +236,19 @@ theme_override_fonts/font = ExtResource("2_swqkx")
 theme_override_font_sizes/font_size = 20
 text = "My Levels"
 vertical_alignment = 1
+
+[node name="Settings" type="Button" parent="." unique_id=2041528482]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2vrv4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mxqdd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lx6et")
+icon = ExtResource("4_2vrv4")
+expand_icon = true

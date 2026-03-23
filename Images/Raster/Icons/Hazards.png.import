@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t5jtg7xp50l2"
-path="res://.godot/imported/Cancel.png-f16c14857b1a72fd94f3688ae02a3caa.ctex"
+uid="uid://ovhwo2s4fqb7"
+path="res://.godot/imported/Hazards.png-5526c614a7ba4bda828f7317c77955c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Cancel.png"
-dest_files=["res://.godot/imported/Cancel.png-f16c14857b1a72fd94f3688ae02a3caa.ctex"]
+source_file="res://Images/Raster/Icons/Hazards.png"
+dest_files=["res://.godot/imported/Hazards.png-5526c614a7ba4bda828f7317c77955c0.ctex"]
 
 [params]
 

@@ -21,7 +21,6 @@ public partial class Editor : Control
     [Export] Button redoButton;
     [Export] MenuButton saveButton;
     [Export] FileDialog saveDialog;
-    [Export] PopupMenu contextMenu;
     [Export] EditorOverlay overlay;
 
     Level currentLevel;
@@ -123,7 +122,7 @@ public partial class Editor : Control
         {
             if (mouseDown)
             {
-                HandleClick(mouseCoords);
+                HandleClick(mouseCoords, true);
             }
         }
     }
@@ -154,7 +153,7 @@ public partial class Editor : Control
         }
     }
 
-    void HandleClick(Vector2I mouseCoords)
+    void HandleClick(Vector2I mouseCoords, bool drag = false)
     {
         //place mode
         if (placeMode)
@@ -165,13 +164,18 @@ public partial class Editor : Control
         //edit mode
         else
         {
-            //TileInfo editedTile = editHistory[currentEdit][mouseCoords.Y][mouseCoords.X];
-            //SetTile(mouseCoords, editedTile.id, TileRotation.Right);
-            contextMenu.Position = (Vector2I)viewport.GetGlobalMousePosition() + new Vector2I(10, 10);
-            contextMenu.Popup();
-
             Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
             Vector2 boxSize = new(16, 16);
+
+            if (!drag)
+            {
+                boxSize = new(16, 16);
+
+            }
+            else
+            {
+                boxSize = Vector2.Zero;
+            }
 
             overlay.SetOutline(new()
             {
@@ -179,6 +183,7 @@ public partial class Editor : Control
                 color = Colors.Orange,
                 width = 1,
             });
+
         }
     }
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm3xhxy1gyii0"
-path="res://.godot/imported/Confirm.png-cbfbc8d3482f79458829a661011b20a8.ctex"
+uid="uid://j3mjmchemqjc"
+path="res://.godot/imported/Decoration.png-7d0f90f9e00c594ae6118cabcac6ee34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Confirm.png"
-dest_files=["res://.godot/imported/Confirm.png-cbfbc8d3482f79458829a661011b20a8.ctex"]
+source_file="res://Images/Raster/Icons/Decoration.png"
+dest_files=["res://.godot/imported/Decoration.png-7d0f90f9e00c594ae6118cabcac6ee34.ctex"]
 
 [params]
 

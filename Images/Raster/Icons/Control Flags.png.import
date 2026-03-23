@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j3mjmchemqjc"
-path="res://.godot/imported/Decoration.png-ef29bd5b5a567759fd02cc565d225eee.ctex"
+uid="uid://4eu70dxsulca"
+path="res://.godot/imported/Control Flags.png-110030615ff37a0ed356f250d10cf619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Editor/Decoration.png"
-dest_files=["res://.godot/imported/Decoration.png-ef29bd5b5a567759fd02cc565d225eee.ctex"]
+source_file="res://Images/Raster/Icons/Control Flags.png"
+dest_files=["res://.godot/imported/Control Flags.png-110030615ff37a0ed356f250d10cf619.ctex"]
 
 [params]
 
