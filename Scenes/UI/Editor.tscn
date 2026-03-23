@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://bo2rfi640fm8w" path="res://Images/Raster/Editor/Erase.png" id="37_3p2xf"]
 [ext_resource type="Script" uid="uid://ctqthqd8c4px3" path="res://Scripts/UI/Elements/EraserButton.cs" id="38_6dj86"]
 [ext_resource type="Texture2D" uid="uid://c72rdejnnyphw" path="res://Images/Raster/Editor/Trigger.png" id="38_pjxyc"]
+[ext_resource type="Script" uid="uid://byvsis2o3ollx" path="res://Scripts/UI/Elements/EditorOverlay.cs" id="46_ps8e3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2eik"]
 bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
@@ -527,7 +528,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "overlayMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog", "contextMenu", "overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -537,7 +538,6 @@ grow_vertical = 2
 script = ExtResource("1_eiun3")
 viewport = NodePath("Content/HBoxContainer/Tiles Viewport")
 tileMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Tiles")
-overlayMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
 nameEdit = NodePath("Content/Top Bar/Level Name/Level Name")
 unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
 backButton = NodePath("Content/Top Bar/Back")
@@ -549,6 +549,8 @@ undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 saveButton = NodePath("Content/Top Bar/Options/Save")
 saveDialog = NodePath("Save Dialog")
+contextMenu = NodePath("Context Menu")
+overlay = NodePath("Overlay")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1
@@ -765,11 +767,6 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
 [node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
-z_index = 1
-texture_filter = 1
-tile_set = ExtResource("4_eiun3")
-
-[node name="Overlay" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=700661819]
 z_index = 1
 texture_filter = 1
 tile_set = ExtResource("4_eiun3")
@@ -1147,8 +1144,12 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("38_6dj86")
 
-[node name="PopupMenu" type="PopupMenu" parent="." unique_id=674494714]
+[node name="Context Menu" type="PopupMenu" parent="." unique_id=674494714]
 oversampling_override = 1.0
+size = Vector2i(300, 100)
+item_count = 1
+item_0/text = "Rotate"
+item_0/id = 0
 
 [node name="Save Dialog" type="FileDialog" parent="." unique_id=147782080]
 oversampling_override = 1.0
@@ -1157,3 +1158,13 @@ size = Vector2i(1280, 720)
 access = 2
 filters = PackedStringArray("*.json")
 use_native_dialog = true
+
+[node name="Overlay" type="Control" parent="." unique_id=410672359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("46_ps8e3")

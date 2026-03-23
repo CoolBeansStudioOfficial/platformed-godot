@@ -13,7 +13,7 @@ public partial class TilesViewport : ScrollContainer
 
     public Vector2 viewportSize;
 
-    float zoom = 1f;
+    public float zoom = 1f;
     //number of inputs each action has been performed for
     public bool middleDragging = false;
     Vector2 lastMousePosition = Vector2.Zero;

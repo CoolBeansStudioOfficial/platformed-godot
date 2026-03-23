@@ -8,7 +8,6 @@ public partial class Editor : Control
     [Export] public Vector2I gridSize;
     [Export] TilesViewport viewport;
     [Export] TileMapLayer tileMap;
-    [Export] TileMapLayer overlayMap;
 
     [ExportGroup("UI")]
     [Export] LineEdit nameEdit;
@@ -22,6 +21,8 @@ public partial class Editor : Control
     [Export] Button redoButton;
     [Export] MenuButton saveButton;
     [Export] FileDialog saveDialog;
+    [Export] PopupMenu contextMenu;
+    [Export] EditorOverlay overlay;
 
     Level currentLevel;
 
@@ -164,7 +165,18 @@ public partial class Editor : Control
         //edit mode
         else
         {
+            //TileInfo editedTile = editHistory[currentEdit][mouseCoords.Y][mouseCoords.X];
+            //SetTile(mouseCoords, editedTile.id, TileRotation.Right);
+            contextMenu.Position = (Vector2I)viewport.GetGlobalMousePosition() + new Vector2I(10, 10);
+            contextMenu.Popup();
 
+            Vector2 worldPosition = tileMap.ToGlobal(tileMap.MapToLocal(mouseCoords));
+            overlay.SetOutline(new()
+            {
+                rect = new Rect2(worldPosition.X, worldPosition.Y, 16 * viewport.zoom, 16 * viewport.zoom),
+                color = Colors.Orange,
+                width = viewport.zoom,
+            });
         }
     }
 
@@ -194,7 +206,7 @@ public partial class Editor : Control
         if (placeMode) SetMode(EditorMode.Edit);
     }
 
-    void SetTile(Vector2I position, TileId id)
+    void SetTile(Vector2I position, TileId id, TileRotation rotation = TileRotation.Up)
     {
         //return if position is outside of set level size
         if (position.X >= gridSize.X || position.Y >= gridSize.Y) return;
@@ -205,6 +217,7 @@ public partial class Editor : Control
 
         TileInfo editedTile = editHistory[currentEdit][position.Y][position.X];
         editedTile.id = id;
+        editedTile.rotation = rotation;
         editHistory[currentEdit][position.Y][position.X] = editedTile;
 
         UpdateTiles();
