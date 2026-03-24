@@ -409,7 +409,7 @@ public partial class LevelManager : Node
         }
         else
         {
-            //turn raw list of tiles into run lengths
+            //turn raw list of rotations into run lengths
             for (int i = 0; i < tiles.Count; i++)
             {
                 if ((int)tiles[i].rotation == currentArray[0]) currentArray[1]++;
@@ -426,7 +426,7 @@ public partial class LevelManager : Node
                     }
 
                     //start new array
-                    currentArray = [(int)tiles[i].id, 1];
+                    currentArray = [(int)tiles[i].rotation, 1];
                 }
             }
         }
