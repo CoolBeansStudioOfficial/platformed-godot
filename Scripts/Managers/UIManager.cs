@@ -7,6 +7,7 @@ public partial class UIManager : Node
     [Export] public Button returnToEditorButton;
     [Export] public LevelsMenu levelsMenu;
     [Export] public Control pauseMenu;
+	[Export] public Window settingsMenu;
 	[Export] public AcceptDialog notification;
 
     //singleton pringleton

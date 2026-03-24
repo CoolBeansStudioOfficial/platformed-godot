@@ -172,4 +172,25 @@ public partial class GameManager : Node
 
 
     }
+
+    public void SetPreference(string key, Variant value)
+    {
+        ConfigFile config = new();
+
+        config.SetValue("Preferences", key, value);
+
+        config.Save("user://config.cfg");
+    }
+
+    public Variant? GetPreference(string key)
+    {
+        ConfigFile config = new();
+
+        Error error = config.Load("user://config.cfg");
+
+        //catch if the config file didn't get fetched
+        if (error != Error.Ok) return null;
+
+        return config.GetValue("Preferences", key);
+    }
 }

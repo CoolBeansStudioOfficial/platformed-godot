@@ -662,10 +662,11 @@ anchor_bottom = 1.0
 offset_left = -430.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
+alignment = 2
 
 [node name="Play" type="Button" parent="Content/Top Bar/Options" unique_id=1261242300]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Play
 (Ctrl+Space)"
@@ -678,7 +679,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Undo" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Undo
 (Ctrl+Z)"
@@ -692,7 +693,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Redo" type="Button" parent="Content/Top Bar/Options" unique_id=1640505515]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Redo
 (Ctrl+Shfit+Z)"
@@ -706,7 +707,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Save" type="MenuButton" parent="Content/Top Bar/Options" unique_id=195890749]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Save Options
 (Save to levels folder: Ctrl+S)"
@@ -732,7 +733,7 @@ popup/item_4/text = "Upload to web"
 popup/item_4/id = 2
 
 [node name="Settings" type="Button" parent="Content/Top Bar/Options" unique_id=253857849]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Settings"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")

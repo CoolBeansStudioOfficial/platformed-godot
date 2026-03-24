@@ -45,6 +45,6 @@ public partial class TopBar : Panel
     }
     void OnSettingsButtonPressed()
     {
-        
+        UIManager.Instance.settingsMenu.Popup();
     }
 }

@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://de1xbtvhmay4k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
-bg_color = Color(0.17402837, 0.17402822, 0.17402825, 1)
+[ext_resource type="Script" uid="uid://bm7uuevq7umdh" path="res://Scripts/UI/SettingsMenu.cs" id="1_hdrfj"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_inooc"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_tkyaf"]
 
-[node name="Settings Menu" type="Control" unique_id=2016157972]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.98039216)
+
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("styleOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hdrfj")
+styleOptions = NodePath("Panel/VBoxContainer/Style Options")
 
 [node name="Panel" type="Panel" parent="." unique_id=1427619110]
 layout_mode = 1
@@ -20,13 +26,67 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r50y6")
 
-[node name="Label" type="Label" parent="Panel" unique_id=114212846]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1862171430]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 10.0
 grow_horizontal = 2
-text = "Settings"
+grow_vertical = 2
+
+[node name="Graphics" type="Label" parent="Panel/VBoxContainer" unique_id=114212846]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_inooc")
+theme_override_font_sizes/font_size = 24
+text = "Graphics
+"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1691613711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "Style"
+
+[node name="Style Options" type="OptionButton" parent="Panel/VBoxContainer" unique_id=1608893756]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_tkyaf")
+selected = 1
+item_count = 2
+popup/item_0/text = "8 Bit"
+popup/item_0/id = 0
+popup/item_1/text = "16 Bit"
+popup/item_1/id = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1763348458]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -60.0
+offset_right = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Apply" type="Button" parent="Panel/HBoxContainer" unique_id=1321485023]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "Apply"
+
+[node name="Close" type="Button" parent="Panel/HBoxContainer" unique_id=691585012]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "Close"
+
+[node name="OK" type="Button" parent="Panel/HBoxContainer" unique_id=354860619]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "OK"
