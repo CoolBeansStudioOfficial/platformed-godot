@@ -94,6 +94,11 @@ public partial class Editor : Control
         };
     }
 
+    public void SetTileset(TileSet tileset)
+    {
+        tileMap.TileSet = tileset;
+    }
+
     void OnViewportInput(InputEvent @event)
     {
         Vector2I mouseCoords = tileMap.LocalToMap(tileMap.GetLocalMousePosition());

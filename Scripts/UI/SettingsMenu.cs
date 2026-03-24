@@ -4,12 +4,18 @@ using System;
 
 public partial class SettingsMenu : Control
 {
+    [ExportGroup("Controls")]
     [Export] Window window;
     [Export] Button apply;
     [Export] Button close;
     [Export] Button ok;
 
+    [ExportGroup("Settings Buttons")]
 	[Export] OptionButton styleOptions;
+
+    [ExportGroup("Config")]
+    [Export] TileSet[] playSets;
+    [Export] TileSet[] editorSets;
 
     Dictionary<string, Variant> savedSettings;
     Dictionary<string, Variant> unsavedSettings;
@@ -45,9 +51,19 @@ public partial class SettingsMenu : Control
 
     public void Apply()
     {
+        //set values
         unsavedSettings["tile_style"] = styleOptions.GetSelectedId();
 
+        //save to config file
         GameManager.Instance.SetPreference("app_settings", unsavedSettings);
+
+        //reset saved settings
+        savedSettings = savedSettings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
+
+        //apply settings
+        LevelManager.Instance.SetTileset(playSets[(int)savedSettings["tile_style"]]);
+        UIManager.Instance.editor.SetTileset(editorSets[(int)savedSettings["tile_style"]]);
+
     }
 
     public void OK()

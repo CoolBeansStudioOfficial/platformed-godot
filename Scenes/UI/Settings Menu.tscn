@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://de1xbtvhmay4k"]
 
 [ext_resource type="Script" uid="uid://bm7uuevq7umdh" path="res://Scripts/UI/SettingsMenu.cs" id="1_hdrfj"]
+[ext_resource type="TileSet" uid="uid://dqbpaythrtkoq" path="res://Tilesets/8Bit.tres" id="2_1vk5b"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_inooc"]
+[ext_resource type="TileSet" uid="uid://dctmpwbks4vbo" path="res://Tilesets/16Bit.tres" id="3_q7h03"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_tkyaf"]
+[ext_resource type="TileSet" uid="uid://bhy6co17x4llf" path="res://Tilesets/8BitEditor.tres" id="4_6ly1g"]
+[ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.98039216)
@@ -19,6 +23,8 @@ apply = NodePath("Panel/HBoxContainer/Apply")
 close = NodePath("Panel/HBoxContainer/Close")
 ok = NodePath("Panel/HBoxContainer/OK")
 styleOptions = NodePath("Panel/VBoxContainer/Style Options")
+playSets = Array[TileSet]([ExtResource("2_1vk5b"), ExtResource("3_q7h03")])
+editorSets = Array[TileSet]([ExtResource("4_6ly1g"), ExtResource("5_fy6my")])
 
 [node name="Panel" type="Panel" parent="." unique_id=1427619110]
 layout_mode = 1
