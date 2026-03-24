@@ -23,13 +23,16 @@ public partial class SettingsMenu : Control
     public override void _Ready()
     {
         window.CloseRequested += OnCloseRequested;
-        window.AboutToPopup += OnShow;
+        window.AboutToPopup += GetSettings;
         apply.Pressed += Apply;
         close.Pressed += Close;
         ok.Pressed += OK;
+
+        GetSettings();
+        ApplySettings();
     }
 
-    void OnShow()
+    void GetSettings()
     {
         savedSettings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
 
@@ -58,12 +61,9 @@ public partial class SettingsMenu : Control
         GameManager.Instance.SetPreference("app_settings", unsavedSettings);
 
         //reset saved settings
-        savedSettings = savedSettings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
+        savedSettings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
 
-        //apply settings
-        LevelManager.Instance.SetTileset(playSets[(int)savedSettings["tile_style"]]);
-        UIManager.Instance.editor.SetTileset(editorSets[(int)savedSettings["tile_style"]]);
-
+        ApplySettings();
     }
 
     public void OK()
@@ -75,6 +75,13 @@ public partial class SettingsMenu : Control
     public void Close()
     {
         window.Hide();
+    }
+
+    void ApplySettings()
+    {
+        //apply settings
+        LevelManager.Instance.SetTileset(playSets[(int)savedSettings["tile_style"]]);
+        UIManager.Instance.editor.SetTileset(editorSets[(int)savedSettings["tile_style"]]);
     }
 
     private void OnCloseRequested()
