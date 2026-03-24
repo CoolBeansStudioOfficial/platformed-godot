@@ -18,12 +18,12 @@ public partial class SettingsMenu : Control
         //8 bit
         if (index == 0)
         {
-
+            GameManager.Instance.SetPreference("tile_style", 0);
         }
         //16 bit
         else if (index == 1)
         {
-
+            GameManager.Instance.SetPreference("tile_style", 0);
         }
     }
 

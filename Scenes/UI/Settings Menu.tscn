@@ -60,17 +60,22 @@ popup/item_0/id = 0
 popup/item_1/text = "16 Bit"
 popup/item_1/id = 1
 
+[node name="Audio" type="Label" parent="Panel/VBoxContainer" unique_id=1488470327]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_inooc")
+theme_override_font_sizes/font_size = 24
+text = "Audio
+"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1763348458]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = -60.0
-offset_right = 10.0
+offset_right = 318.0
 offset_bottom = -10.0
-grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Apply" type="Button" parent="Panel/HBoxContainer" unique_id=1321485023]
