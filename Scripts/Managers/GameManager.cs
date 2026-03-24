@@ -191,6 +191,13 @@ public partial class GameManager : Node
         //catch if the config file didn't get fetched
         if (error != Error.Ok) return null;
 
-        return config.GetValue("Preferences", key);
+        try
+        {
+            return config.GetValue("Preferences", key);
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

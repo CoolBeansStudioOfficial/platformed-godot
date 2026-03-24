@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.98039216)
 
-[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("styleOptions")]
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("apply", "close", "ok", "styleOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdrfj")
+apply = NodePath("Panel/HBoxContainer/Apply")
+close = NodePath("Panel/HBoxContainer/Close")
+ok = NodePath("Panel/HBoxContainer/OK")
 styleOptions = NodePath("Panel/VBoxContainer/Style Options")
 
 [node name="Panel" type="Panel" parent="." unique_id=1427619110]

@@ -7,6 +7,7 @@ public partial class LevelManager : Node
 {
     [Export] PackedScene playerScene;
     [Export] TileMapLayer tileMapLayer;
+    [Export] TileSet[] tileSets;
     [Export] Godot.Collections.Array<bool> useAdjacency;
     [Export] Godot.Collections.Array<bool> sceneTile;
 
@@ -68,6 +69,10 @@ public partial class LevelManager : Node
     public void GenerateLevel(Level level)
     {
         if (level is null) return;
+
+        //get selected tileset
+        var appSettings = (Godot.Collections.Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
+        tileMapLayer.TileSet = tileSets[(int)appSettings["tile_style"]];
 
         //set current level
         currentLevel = level;
