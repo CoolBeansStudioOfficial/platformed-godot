@@ -164,7 +164,33 @@ public partial class Editor : Control
         if (placeMode)
         {
             if (eraserSelected) SetTile(mouseCoords, TileId.Air);
-            else SetTile(mouseCoords, selectedTile);
+            else
+            {
+                //remove any other spawn tiles
+                if (selectedTile == TileId.Spawn)
+                {
+                    for (int y = 0; y < editHistory[currentEdit].Count; y++)
+                    {
+                        for (int x = 0; x < editHistory[currentEdit][y].Count; x++)
+                        {
+                            if (editHistory[currentEdit][y][x].id == TileId.Spawn)
+                            {
+                                SetTile(new(x, y), TileId.Air);
+                            }
+                        }
+                    }
+
+                    //set level spawn
+                    currentLevel.Data.Spawn = new() 
+                    { 
+                        X = mouseCoords.X,
+                        Y = mouseCoords.Y,
+                    };
+                }
+
+                SetTile(mouseCoords, selectedTile);
+            }
+
         }
         //edit mode
         else

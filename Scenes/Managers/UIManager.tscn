@@ -131,7 +131,8 @@ transient = true
 exclusive = true
 unresizable = true
 transparent = true
-popup_window = true
+minimize_disabled = true
+maximize_disabled = true
 force_native = true
 
 [node name="Settings Menu" parent="Settings" unique_id=2016157972 node_paths=PackedStringArray("window") instance=ExtResource("7_eeyuk")]

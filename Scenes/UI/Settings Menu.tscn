@@ -11,7 +11,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.98039216)
 
-[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("apply", "close", "ok", "styleOptions")]
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "styleOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdrfj")
+unsavedDialog = NodePath("ConfirmationDialog")
 apply = NodePath("Panel/HBoxContainer/Apply")
 close = NodePath("Panel/HBoxContainer/Close")
 ok = NodePath("Panel/HBoxContainer/OK")
@@ -70,6 +71,7 @@ popup/item_1/text = "16 Bit"
 popup/item_1/id = 1
 
 [node name="Audio" type="Label" parent="Panel/VBoxContainer" unique_id=1488470327]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_inooc")
 theme_override_font_sizes/font_size = 24
@@ -104,3 +106,12 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "OK"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=1414757868]
+oversampling_override = 1.0
+title = "Unsaved Changes"
+initial_position = 2
+size = Vector2i(396, 100)
+ok_button_text = "Apply changes"
+dialog_text = "You have unsaved changes. Apply before closing?"
+cancel_button_text = "Close without saving"
