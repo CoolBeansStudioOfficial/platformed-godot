@@ -3,10 +3,10 @@ using System;
 
 public partial class EditorOverlay : Control
 {
-    public Outline currentOutline;
+    public Outline? currentOutline;
     public Outline? currentTexture;
 
-    public void SetOutline(Outline outline)
+    public void SetOutline(Outline? outline)
     {
         currentOutline = outline;
         QueueRedraw();
@@ -20,7 +20,11 @@ public partial class EditorOverlay : Control
 
     public override void _Draw()
     {
-        DrawRect(currentOutline.rect, currentOutline.color, false, currentOutline.width, true);
+        if (currentOutline.HasValue)
+        {
+            DrawRect(currentOutline.Value.rect, currentOutline.Value.color, false, currentOutline.Value.width, true);
+        }
+        
         if (currentTexture.HasValue)
         {
             GD.Print("should be drawing texture");

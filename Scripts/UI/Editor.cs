@@ -30,8 +30,13 @@ public partial class Editor : Control
     bool placeMode = false;
     bool mouseDown = false;
 
+    //place mode
     public bool eraserSelected = false;
     TileSelection selectedTile;
+
+    //edit mode
+    bool startedSelection = false;
+    EditSelection selection;
 
     public struct TileSelection
     {
@@ -39,6 +44,42 @@ public partial class Editor : Control
         public Texture2D texture;
         public Rect2 region;
     }
+
+    public struct EditSelection
+    {
+        public Vector2I start;
+        public Vector2I end;
+
+        public bool IsInRect(Vector2I position)
+        {
+            Vector2 rangeX = new(Mathf.Min(start.X, end.X), Mathf.Max(start.X, end.X));
+            Vector2 rangeY = new(Mathf.Min(start.Y, end.Y), Mathf.Max(start.Y, end.Y));
+
+            //return false if horizontally out of bounds
+            if (!(position.X >= rangeX.X && position.X <= rangeX.Y)) return false;
+
+            //return false if vertically out of bounds
+            if (!(position.Y >= rangeY.X && position.Y <= rangeY.Y)) return false;
+
+            return true;
+        }
+
+        public Vector2I GetCenter()
+        {
+            return new((start.X + end.X) / 2, (start.Y + end.Y) / 2);
+        }
+
+        public Vector2 GetSize()
+        {
+            return new(Mathf.Abs(start.X - end.X), Mathf.Abs(start.Y - end.Y));
+        }
+
+        public Rect2 GetRect()
+        {
+            return new(start.X, start.Y, 16, 16);
+        }
+    }
+
 
     public override void _Ready()
     {
@@ -126,6 +167,7 @@ public partial class Editor : Control
                 else
                 {
                     mouseDown = false;
+                    startedSelection = false;
                 }
             }
         }
@@ -216,26 +258,49 @@ public partial class Editor : Control
                 SetTile(mouseCoords, selectedTile.id);
             }
 
+            overlay.SetOutline(null);
         }
         //edit mode
         else
         {
-            Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
-            Vector2 boxSize = new(16, 16);
-
+            //click
             if (!drag)
             {
-                boxSize = new(16, 16);
+                //if selection has not been started, start new selection
+                if (!startedSelection && !selection.IsInRect(mouseCoords))
+                {
+                    selection = new()
+                    {
+                        start = mouseCoords,
+                        end = mouseCoords
+                    };
 
+                    startedSelection = true;
+                }
             }
+            //drag
             else
             {
-                boxSize = Vector2.Zero;
+                if (startedSelection)
+                {
+                    selection.end = mouseCoords;
+                }
+                else
+                {
+                    //if the mouse is inside of selection box, drag selection
+                    if (selection.IsInRect(mouseCoords))
+                    {
+
+                    }
+                }
             }
+
+            Vector2 worldPosition = tileMap.MapToLocal(selection.GetCenter());
+            Vector2 boxSize = selection.GetSize() * 16;
 
             overlay.SetOutline(new()
             {
-                rect = new Rect2(worldPosition.X - boxSize.X / 2, worldPosition.Y - boxSize.Y / 2, boxSize.X, boxSize.Y),
+                rect = new Rect2(worldPosition.X - (boxSize.X / 2), worldPosition.Y - (boxSize.Y / 2), boxSize.X, boxSize.Y),
                 color = Colors.Orange,
                 width = 1,
             });

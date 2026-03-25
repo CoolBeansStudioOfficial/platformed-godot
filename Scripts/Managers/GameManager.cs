@@ -113,6 +113,8 @@ public partial class GameManager : Node
     {
         ConfigFile config = new();
 
+        config.Load("user://config.cfg");
+
         config.SetValue("Preferences", "levels_folder", folder);
 
         config.Save("user://config.cfg");
@@ -176,6 +178,8 @@ public partial class GameManager : Node
     public void SetPreference(string key, Variant value)
     {
         ConfigFile config = new();
+
+        config.Load("user://config.cfg");
 
         config.SetValue("Preferences", key, value);
 
