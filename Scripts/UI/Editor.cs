@@ -31,7 +31,14 @@ public partial class Editor : Control
     bool mouseDown = false;
 
     public bool eraserSelected = false;
-    TileId selectedTile = TileId.Ground;
+    TileSelection selectedTile;
+
+    public struct TileSelection
+    {
+        public TileId id;
+        public Texture2D texture;
+        public Rect2 region;
+    }
 
     public override void _Ready()
     {
@@ -125,6 +132,24 @@ public partial class Editor : Control
         //mouse movement
         else if (@event is InputEventMouseMotion)
         {
+            if (placeMode && !eraserSelected)
+            {
+                Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
+                Vector2 boxSize = new(16, 16);
+
+                overlay.SetTexture(new()
+                {
+                    texture = selectedTile.texture,
+                    rect = new Rect2(worldPosition.X - boxSize.X / 2, worldPosition.Y - boxSize.Y / 2, boxSize.X, boxSize.Y),
+                    region = selectedTile.region,
+                    color = Colors.White,
+                });
+            }
+            else
+            {
+                overlay.SetTexture(null);
+            }
+
             if (mouseDown)
             {
                 HandleClick(mouseCoords, true);
@@ -167,7 +192,7 @@ public partial class Editor : Control
             else
             {
                 //remove any other spawn tiles
-                if (selectedTile == TileId.Spawn)
+                if (selectedTile.id == TileId.Spawn)
                 {
                     for (int y = 0; y < editHistory[currentEdit].Count; y++)
                     {
@@ -188,7 +213,7 @@ public partial class Editor : Control
                     };
                 }
 
-                SetTile(mouseCoords, selectedTile);
+                SetTile(mouseCoords, selectedTile.id);
             }
 
         }
@@ -335,11 +360,11 @@ public partial class Editor : Control
         currentEdit = 0;
     }
 
-    public void SelectTile(TileId id)
+    public void SelectTile(TileSelection newSelection)
     {
         if (!placeMode) SetMode(EditorMode.Place);
 
-        selectedTile = id;
+        selectedTile = newSelection;
     }
 
     public void SelectEraser(bool doSelect)
