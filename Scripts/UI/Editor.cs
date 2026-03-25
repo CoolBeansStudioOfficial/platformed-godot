@@ -71,7 +71,7 @@ public partial class Editor : Control
 
         public Vector2 GetSize()
         {
-            return new(Mathf.Abs(start.X - end.X), Mathf.Abs(start.Y - end.Y));
+            return new(Mathf.Abs(start.X - end.X) + 1, Mathf.Abs(start.Y - end.Y) + 1);
         }
 
         public Rect2 GetRect()
