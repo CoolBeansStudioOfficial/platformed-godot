@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
 [ext_resource type="Texture2D" uid="uid://et21qn04tyxn" path="res://Images/Raster/Icons/Settings Cogs.png" id="4_2vrv4"]
+[ext_resource type="Texture2D" uid="uid://0ig0aixq8bto" path="res://Images/Vector/bluebanner.svg" id="4_mxqdd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
 bg_color = Color(0, 0, 0, 0.5019608)
@@ -116,6 +117,24 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vrv4"]
+bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25fso"]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dj3h"]
+texture = ExtResource("4_mxqdd")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxqdd"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vrv4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxqdd"]
@@ -143,10 +162,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dg67f")
 script = ExtResource("1_swqkx")
-createButton = NodePath("HBoxContainer/Create")
-exploreButton = NodePath("HBoxContainer/Explore")
-myLevelsButton = NodePath("HBoxContainer/My Levels")
-settingsButton = NodePath("Settings")
+createButton = NodePath("Menu Buttons/Create")
+exploreButton = NodePath("Menu Buttons/Explore")
+myLevelsButton = NodePath("Menu Buttons/My Levels")
+settingsButton = NodePath("App Settings/Settings")
 
 [node name="Title" type="Label" parent="." unique_id=420061]
 layout_mode = 1
@@ -160,7 +179,7 @@ theme_override_font_sizes/font_size = 36
 text = "Platformed"
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1514214120]
+[node name="Menu Buttons" type="HBoxContainer" parent="." unique_id=1514214120]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -171,7 +190,7 @@ offset_bottom = -9.0
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="Create" type="Button" parent="HBoxContainer" unique_id=742047276]
+[node name="Create" type="Button" parent="Menu Buttons" unique_id=742047276]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur25d")
@@ -180,7 +199,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nrx0y")
 alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="HBoxContainer/Create" unique_id=1045213659]
+[node name="Label" type="Label" parent="Menu Buttons/Create" unique_id=1045213659]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -193,7 +212,7 @@ theme_override_font_sizes/font_size = 20
 text = "Create"
 vertical_alignment = 1
 
-[node name="Explore" type="Button" parent="HBoxContainer" unique_id=696900827]
+[node name="Explore" type="Button" parent="Menu Buttons" unique_id=696900827]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_eotax")
@@ -202,7 +221,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nkryc")
 alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="HBoxContainer/Explore" unique_id=1512411604]
+[node name="Label" type="Label" parent="Menu Buttons/Explore" unique_id=1512411604]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -215,7 +234,7 @@ theme_override_font_sizes/font_size = 20
 text = "Explore"
 vertical_alignment = 1
 
-[node name="My Levels" type="Button" parent="HBoxContainer" unique_id=620282737]
+[node name="My Levels" type="Button" parent="Menu Buttons" unique_id=620282737]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_udm2q")
@@ -224,7 +243,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_h1y0k")
 alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="HBoxContainer/My Levels" unique_id=212074731]
+[node name="Label" type="Label" parent="Menu Buttons/My Levels" unique_id=212074731]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -237,16 +256,72 @@ theme_override_font_sizes/font_size = 20
 text = "My Levels"
 vertical_alignment = 1
 
-[node name="Settings" type="Button" parent="." unique_id=2041528482]
-custom_minimum_size = Vector2(60, 0)
+[node name="App Settings" type="HBoxContainer" parent="." unique_id=1582205793]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
+offset_left = -255.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Profile Button" type="Button" parent="App Settings" unique_id=1343589176]
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2vrv4")
+
+[node name="Username" type="Label" parent="App Settings/Profile Button" unique_id=317154670]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -11.5
+offset_right = 85.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Username"
+
+[node name="Avatar2" type="Panel" parent="App Settings/Profile Button" unique_id=1444269797]
+clip_children = 1
+clip_contents = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -22.5
+offset_right = -6.0
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_25fso")
+
+[node name="Avatar" type="Panel" parent="App Settings/Profile Button/Avatar2" unique_id=533110270]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1dj3h")
+
+[node name="Spacer" type="Panel" parent="App Settings" unique_id=478442194]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mxqdd")
+
+[node name="Settings" type="Button" parent="App Settings" unique_id=2041528482]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2vrv4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mxqdd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx6et")
