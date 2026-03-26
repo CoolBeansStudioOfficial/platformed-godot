@@ -355,12 +355,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_4kngc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2s4xu")
 text = "Set Levels Folder"
 
-[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "searchBox", "searchButton")]
+[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "noLevelsLabel", "searchBox", "searchButton")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_0kyo8")
 levelPreview = ExtResource("2_o2yn0")
 levelsContainer = NodePath("Levels Container")
+noLevelsLabel = NodePath("Levels Container/No Levels Found")
 searchBox = NodePath("../Search Bar/Search Box/LineEdit")
 searchButton = NodePath("../Search Bar/Search Box/LineEdit/Button")
 
@@ -371,6 +372,12 @@ theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 30
 alignment = 1
 last_wrap_alignment = 1
+
+[node name="No Levels Found" type="Label" parent="VBoxContainer/Levels List/Levels Container" unique_id=995898261]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.60662574, 0.60662585, 0.6066258, 1)
+text = "No levels found"
+horizontal_alignment = 1
 
 [node name="Level View" type="Panel" parent="VBoxContainer" unique_id=2005307311]
 visible = false

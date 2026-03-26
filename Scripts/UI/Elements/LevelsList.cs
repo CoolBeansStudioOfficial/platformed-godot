@@ -6,6 +6,7 @@ public partial class LevelsList : ScrollContainer
 {
     [Export] PackedScene levelPreview;
     [Export] FlowContainer levelsContainer;
+    [Export] Label noLevelsLabel;
 
     [Export] LineEdit searchBox;
     [Export] Button searchButton;
@@ -74,5 +75,14 @@ public partial class LevelsList : ScrollContainer
     {
         foreach (LevelPreview preview in previews) preview.QueueFree();
         previews.Clear();
+    }
+
+    public override void _Process(double delta)
+    {
+        noLevelsLabel.Visible = true;
+        foreach (LevelPreview preview in previews)
+        {
+            if (preview.Visible) noLevelsLabel.Visible = false;
+        }
     }
 }
