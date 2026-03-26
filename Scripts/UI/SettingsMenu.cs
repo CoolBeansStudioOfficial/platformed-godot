@@ -77,8 +77,15 @@ public partial class SettingsMenu : Control
     //i only did this because it was giving an error when apply is called in ready
     public async void SetEditorTileset()
     {
-        await Task.Delay(1000);
-        UIManager.Instance.editor.SetTileset(editorSets[(int)settings["tile_style"]]);
+        try
+        {
+            UIManager.Instance.editor.SetTileset(editorSets[(int)settings["tile_style"]]);
+        }
+        catch
+        {
+            await Task.Delay(1000);
+            UIManager.Instance.editor.SetTileset(editorSets[(int)settings["tile_style"]]);
+        }
     }
 
     public void OK()

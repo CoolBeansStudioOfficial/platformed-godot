@@ -27,7 +27,6 @@ public partial class EditorOverlay : Control
         
         if (currentTexture.HasValue)
         {
-            GD.Print("should be drawing texture");
             DrawTextureRectRegion(currentTexture.Value.texture, currentTexture.Value.rect, currentTexture.Value.region, currentTexture.Value.color);
         }
     }

@@ -130,6 +130,7 @@ visible = false
 transient = true
 exclusive = true
 unresizable = true
+borderless = true
 transparent = true
 minimize_disabled = true
 maximize_disabled = true
