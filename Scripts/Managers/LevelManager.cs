@@ -382,10 +382,12 @@ public partial class LevelManager : Node
             }
         }
 
-        int[] currentArray = [(int)tiles[0].id, 0];
+        int[] currentArray;
 
         if (filter == EncodeFilter.Tiles)
         {
+            currentArray = [(int)tiles[0].id, 0];
+
             //turn raw list of tiles into run lengths
             for (int i = 0; i < tiles.Count; i++)
             {
@@ -409,6 +411,8 @@ public partial class LevelManager : Node
         }
         else
         {
+            currentArray = [(int)tiles[0].rotation, 0];
+
             //turn raw list of rotations into run lengths
             for (int i = 0; i < tiles.Count; i++)
             {
