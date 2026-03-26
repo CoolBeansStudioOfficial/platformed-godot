@@ -4,10 +4,12 @@
 [ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
 [ext_resource type="Texture2D" uid="uid://et21qn04tyxn" path="res://Images/Raster/Icons/Settings Cogs.png" id="4_2vrv4"]
-[ext_resource type="Texture2D" uid="uid://0ig0aixq8bto" path="res://Images/Vector/bluebanner.svg" id="4_mxqdd"]
+[ext_resource type="Script" uid="uid://hdfwn2atnldv" path="res://Scripts/UI/Elements/ProfileMenu.cs" id="4_lx6et"]
+[ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="4_mxqdd"]
+[ext_resource type="Script" uid="uid://djqm5h48kpd8d" path="res://Scripts/UI/Elements/SignInWindow.cs" id="6_25fso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
-bg_color = Color(0, 0, 0, 0.5019608)
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur25d"]
 bg_color = Color(0.13333334, 0.17254902, 0.09803922, 1)
@@ -117,8 +119,22 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vrv4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dj3h"]
 bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aig7t"]
+bg_color = Color(0.30108815, 0.30108815, 0.30108815, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wk7i"]
+bg_color = Color(0.26293245, 0.26293245, 0.26293245, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -133,7 +149,12 @@ corner_radius_bottom_left = 50
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dj3h"]
 texture = ExtResource("4_mxqdd")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxqdd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nil4o"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.99215686)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vrv4"]
 
@@ -268,25 +289,35 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Profile Button" type="Button" parent="App Settings" unique_id=1343589176]
-custom_minimum_size = Vector2(200, 55)
+[node name="Profile" type="MenuButton" parent="App Settings" unique_id=1747159355 node_paths=PackedStringArray("window")]
+custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_2vrv4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dj3h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aig7t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5wk7i")
+flat = false
+script = ExtResource("4_lx6et")
+window = NodePath("Sign In")
 
-[node name="Username" type="Label" parent="App Settings/Profile Button" unique_id=317154670]
+[node name="Username" type="Label" parent="App Settings/Profile" unique_id=317154670]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 5.0
+offset_left = 3.0
 offset_top = -11.5
-offset_right = 85.0
+offset_right = 168.0
 offset_bottom = 11.5
 grow_vertical = 2
-text = "Username"
+theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 12
+text = "Sign In"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Avatar2" type="Panel" parent="App Settings/Profile Button" unique_id=1444269797]
+[node name="Mask" type="Panel" parent="App Settings/Profile" unique_id=1444269797]
 clip_children = 1
 clip_contents = true
 custom_minimum_size = Vector2(45, 45)
@@ -296,15 +327,16 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -51.0
+offset_left = -50.0
 offset_top = -22.5
-offset_right = -6.0
+offset_right = -5.0
 offset_bottom = 22.5
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_25fso")
 
-[node name="Avatar" type="Panel" parent="App Settings/Profile Button/Avatar2" unique_id=533110270]
+[node name="Avatar" type="Panel" parent="App Settings/Profile/Mask" unique_id=533110270]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 15
@@ -312,12 +344,122 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_1dj3h")
 
-[node name="Spacer" type="Panel" parent="App Settings" unique_id=478442194]
-custom_minimum_size = Vector2(15, 0)
+[node name="Sign In" type="Window" parent="App Settings/Profile" unique_id=788876782 node_paths=PackedStringArray("profileMenu", "usernameEdit", "passwordEdit", "errorText", "signInButton", "closeButton")]
+transparent_bg = true
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(500, 500)
+visible = false
+transient = true
+exclusive = true
+unresizable = true
+borderless = true
+transparent = true
+force_native = true
+script = ExtResource("6_25fso")
+profileMenu = NodePath("..")
+usernameEdit = NodePath("Panel/Input Fields/Username")
+passwordEdit = NodePath("Panel/Input Fields/Password")
+errorText = NodePath("Panel/Error Text")
+signInButton = NodePath("Panel/Buttons/Sign In")
+closeButton = NodePath("Panel/Buttons/Close")
+
+[node name="Panel" type="Panel" parent="App Settings/Profile/Sign In" unique_id=1709619531]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nil4o")
+
+[node name="Title" type="Label" parent="App Settings/Profile/Sign In/Panel" unique_id=992987704]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 23.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_swqkx")
+theme_override_font_sizes/font_size = 24
+text = "Sign In"
+horizontal_alignment = 1
+
+[node name="Error Text" type="Label" parent="App Settings/Profile/Sign In/Panel" unique_id=1762736283]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 137.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.51551, 0.4494092, 1)
+text = "Username or password incorrect"
+horizontal_alignment = 1
+
+[node name="Input Fields" type="VBoxContainer" parent="App Settings/Profile/Sign In/Panel" unique_id=1983317232]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -60.0
+offset_right = -29.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1039861881]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_mxqdd")
+theme_override_fonts/font = ExtResource("1_4vp1j")
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=436052690]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4vp1j")
+placeholder_text = "Enter username..."
+
+[node name="Spacer" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=829573711]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1027953449]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4vp1j")
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1194216792]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4vp1j")
+placeholder_text = "Enter password..."
+secret = true
+
+[node name="Buttons" type="HBoxContainer" parent="App Settings/Profile/Sign In/Panel" unique_id=130129353]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -65.0
+offset_right = -12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sign In" type="Button" parent="App Settings/Profile/Sign In/Panel/Buttons" unique_id=706567402]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_swqkx")
+text = "Sign In"
+
+[node name="Close" type="Button" parent="App Settings/Profile/Sign In/Panel/Buttons" unique_id=929599685]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_swqkx")
+text = "Close"
 
 [node name="Settings" type="Button" parent="App Settings" unique_id=2041528482]
 custom_minimum_size = Vector2(60, 0)

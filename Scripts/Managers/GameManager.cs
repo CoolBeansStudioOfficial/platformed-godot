@@ -1,7 +1,11 @@
 using Godot;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using HttpClient = System.Net.Http.HttpClient;
 
@@ -101,6 +105,93 @@ public partial class GameManager : Node
         {
             return null;
         }
+    }
+
+    public bool IsLoggedIn()
+    {
+        return false;
+    }
+
+    public class LoginCredentials
+    {
+        [JsonPropertyName("username")]
+        public string Username { get; set; }
+
+        [JsonPropertyName("password")]
+        public string Password { get; set; }
+    }
+
+    public async Task<bool> Login(LoginCredentials credentials)
+    {
+        var headers = new StringContent(JsonSerializer.Serialize(credentials));
+        var response = await client.PostAsync("https://platformed.jmeow.net/api/login", headers);
+        if (response.IsSuccessStatusCode)
+        {
+            GD.Print("signed in");
+
+            //save user credentials
+            var cookies = GetCookies(response);
+            foreach (Cookie cookie in cookies)
+            {
+                GD.Print($"{cookie.Name}, {cookie.Value}");
+            }
+            
+            //SetPreference("username", )
+
+            return true;
+        }
+        else
+        {
+            GD.Print("sign in failure");
+            return false;
+        }
+    }
+
+    //i found this on stack overflow lol
+    public static CookieCollection GetCookies(HttpResponseMessage message)
+    {
+        var cookies = new CookieCollection();
+        if (message == null)
+            return cookies;
+        var setCookie = Enumerable.Empty<string>();
+        if (message.Headers.TryGetValues("Set-Cookie", out setCookie))
+        {
+            foreach (var cookieStr in setCookie)
+            {
+                foreach (var cookieToken in cookieStr.Split(';'))
+                {
+                    var name = cookieToken.Trim();
+                    var value = "";
+                    if (cookieToken.Contains('='))
+                    {
+                        var keyValueTokens = cookieToken.Split('=');
+                        name = (keyValueTokens[0]).Trim();
+                        if (keyValueTokens.Length > 1 && !string.IsNullOrEmpty(keyValueTokens[1]))
+                        {
+                            value = (keyValueTokens[1]).Trim();
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        var cookie = new Cookie(name, value);
+                        cookies.Add(cookie);
+                    }
+                }
+            }
+        }
+        return cookies;
+    }
+
+    public class Profile
+    {
+        [JsonPropertyName("username")]
+        public string Username { get; set; }
+
+        [JsonPropertyName("avatar")]
+        public Texture2D? Avatar { get; set; }
+
+        [JsonPropertyName("token")]
+        public string Token { get; set; }
     }
 
     public bool IsLevelsFolderSet()

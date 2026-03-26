@@ -18,7 +18,6 @@ public partial class TopBar : Panel
         settingsButton.Pressed += OnSettingsButtonPressed;
 	}
 
-
     void OnCreateButtonPressed()
     {
         returnToEditorButton.Visible = false;
@@ -43,6 +42,7 @@ public partial class TopBar : Panel
         UIManager.Instance.levelsMenu.MyLevels();
         UIManager.Instance.editor.Visible = false;
     }
+
     void OnSettingsButtonPressed()
     {
         UIManager.Instance.settingsMenu.Popup();
