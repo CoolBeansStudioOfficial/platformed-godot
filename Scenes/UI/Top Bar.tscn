@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
 [ext_resource type="Texture2D" uid="uid://et21qn04tyxn" path="res://Images/Raster/Icons/Settings Cogs.png" id="4_2vrv4"]
 [ext_resource type="Script" uid="uid://hdfwn2atnldv" path="res://Scripts/UI/Elements/ProfileMenu.cs" id="4_lx6et"]
-[ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="4_mxqdd"]
+[ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Icons/Interactables.png" id="5_25fso"]
 [ext_resource type="Script" uid="uid://djqm5h48kpd8d" path="res://Scripts/UI/Elements/SignInWindow.cs" id="6_25fso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
@@ -147,7 +147,8 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dj3h"]
-texture = ExtResource("4_mxqdd")
+texture = ExtResource("5_25fso")
+region_rect = Rect2(129.68, 133.31, 250, 250)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nil4o"]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.99215686)
@@ -300,44 +301,39 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5wk7i")
 flat = false
 script = ExtResource("4_lx6et")
 window = NodePath("Sign In")
-usernameLabel = NodePath("Username")
+usernameLabel = NodePath("HBoxContainer/Username")
 
-[node name="Username" type="Label" parent="App Settings/Profile" unique_id=317154670]
+[node name="HBoxContainer" type="HBoxContainer" parent="App Settings/Profile" unique_id=861990895]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = -11.5
-offset_right = 169.0
-offset_bottom = 11.5
+offset_right = -3.0
+grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Username" type="Label" parent="App Settings/Profile/HBoxContainer" unique_id=317154670]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_4vp1j")
 theme_override_font_sizes/font_size = 12
 text = "Sign In..."
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 3
 
-[node name="Mask" type="Panel" parent="App Settings/Profile" unique_id=1444269797]
+[node name="Mask" type="Panel" parent="App Settings/Profile/HBoxContainer" unique_id=1444269797]
 clip_children = 1
 clip_contents = true
 custom_minimum_size = Vector2(45, 45)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -22.5
-offset_right = -3.0
-offset_bottom = 22.5
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_25fso")
 
-[node name="Avatar" type="Panel" parent="App Settings/Profile/Mask" unique_id=533110270]
+[node name="Avatar" type="Panel" parent="App Settings/Profile/HBoxContainer/Mask" unique_id=533110270]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 15

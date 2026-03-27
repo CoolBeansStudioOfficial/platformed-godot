@@ -109,7 +109,7 @@ public partial class GameManager : Node
 
     public bool IsLoggedIn()
     {
-        return false;
+        return (bool)GetPreference("logged_in");
     }
 
     public class LoginCredentials
@@ -128,8 +128,6 @@ public partial class GameManager : Node
 
         if (response.IsSuccessStatusCode)
         {
-            GD.Print("signed in");
-
             //save user credentials
             SetPreference("username", credentials.Username);
 
@@ -140,13 +138,10 @@ public partial class GameManager : Node
                 if (cookie.Name == "session-id") SetPreference("session_id", cookie.Value);
             }
 
+            SetPreference("logged_in", true);
             return true;
         }
-        else
-        {
-            GD.Print("sign in failure");
-            return false;
-        }
+        else return false;
     }
 
     public void Logout()
@@ -154,6 +149,7 @@ public partial class GameManager : Node
         SetPreference("username", default);
         SetPreference("token", default);
         SetPreference("session_id", default);
+        SetPreference("logged_in", false);
     }
 
     //i found this on stack overflow lol
