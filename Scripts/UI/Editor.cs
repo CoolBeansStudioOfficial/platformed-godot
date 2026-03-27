@@ -533,6 +533,7 @@ public partial class Editor : Control
     void UploadDialogConfirmed()
     {
         currentLevel.Description = $"This level was uploaded by {GameManager.Instance.GetPreference("username")} using the desktop client!";
+        currentLevel.Data.TilesetPath = "/assets/medium.json";
 
         GameManager.Instance.UploadLevel(currentLevel);
     }
