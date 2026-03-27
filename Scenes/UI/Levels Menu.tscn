@@ -212,6 +212,20 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn0xr"]
+bg_color = Color(0.20885187, 0.098381154, 0.3127273, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfs72"]
+bg_color = Color(0.4151306, 0.21829414, 0.60021555, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghl26"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n1uh"]
@@ -552,8 +566,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_vy1gy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vn0xr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfs72")
 text = "View On Web"
 
 [node name="Details" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]

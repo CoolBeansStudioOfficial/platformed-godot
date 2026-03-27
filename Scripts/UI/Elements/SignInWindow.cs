@@ -16,6 +16,7 @@ public partial class SignInWindow : Window
 	{
         signInButton.Pressed += OnSignInPressed;
         closeButton.Pressed += OnClosePressed;
+        CloseRequested += OnClosePressed;
 	}
 
     async void OnSignInPressed()

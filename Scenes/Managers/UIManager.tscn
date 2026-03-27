@@ -123,7 +123,6 @@ force_native = true
 dialog_text = "You are being notified about something"
 
 [node name="Settings" type="Window" parent="." unique_id=554453960]
-transparent_bg = true
 oversampling_override = 1.0
 title = "Application Settings"
 initial_position = 2
@@ -132,8 +131,6 @@ visible = false
 transient = true
 exclusive = true
 unresizable = true
-borderless = true
-transparent = true
 minimize_disabled = true
 maximize_disabled = true
 force_native = true

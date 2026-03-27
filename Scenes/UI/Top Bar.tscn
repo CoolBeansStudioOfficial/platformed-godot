@@ -151,11 +151,7 @@ texture = ExtResource("5_25fso")
 region_rect = Rect2(129.68, 133.31, 250, 250)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nil4o"]
-bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.99215686)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vrv4"]
 
@@ -345,16 +341,15 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_1dj3h")
 
 [node name="Sign In" type="Window" parent="App Settings/Profile" unique_id=788876782 node_paths=PackedStringArray("profileMenu", "usernameEdit", "passwordEdit", "errorText", "signInButton", "closeButton")]
-transparent_bg = true
 oversampling_override = 1.0
+title = "Sign In"
 initial_position = 2
-size = Vector2i(500, 500)
+size = Vector2i(800, 800)
 visible = false
 transient = true
 exclusive = true
-unresizable = true
-borderless = true
-transparent = true
+minimize_disabled = true
+maximize_disabled = true
 force_native = true
 script = ExtResource("6_25fso")
 profileMenu = NodePath("..")

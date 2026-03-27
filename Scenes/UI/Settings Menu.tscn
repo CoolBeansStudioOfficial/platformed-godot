@@ -9,11 +9,7 @@
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
-bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.99215686)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
 [node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "styleOptions")]
 layout_mode = 3
