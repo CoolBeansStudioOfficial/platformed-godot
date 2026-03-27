@@ -57,7 +57,7 @@ public partial class LevelsMenu : Control
     {
         //set ui to explore menu
         searchBar.AddThemeStyleboxOverride("panel", exploreStyle);
-        searchBarText.Text = "[b][font_size=29][wave freq=2]Explore[/wave][/font_size][/b]";
+        searchBarText.Text = "[b][font_size=29][wave freq=2][rainbow sat=0.1 val=1 freq=0.25]Explore[/rainbow][/wave][/font_size][/b]";
         addLevelsFolderButton.Visible = false;
 
         //load explore levels
@@ -76,7 +76,7 @@ public partial class LevelsMenu : Control
     {
         //set ui to my levels menu
         searchBar.AddThemeStyleboxOverride("panel", myLevelsStyle);
-        searchBarText.Text = "[b][font_size=29][wave freq=2]My Levels[/wave][/font_size][/b]";
+        searchBarText.Text = "[b][font_size=29][wave freq=2][rainbow sat=0.1 val=1 freq=0.25]My Levels[/rainbow][/wave][/font_size][/b]";
         addLevelsFolderButton.Visible = true;
 
         //load my levels

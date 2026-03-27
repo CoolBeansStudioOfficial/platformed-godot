@@ -344,7 +344,7 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_eotax")
 theme_override_fonts/bold_font = ExtResource("4_eotax")
 bbcode_enabled = true
-text = "[b][font_size=29][wave freq=2][rainbow sat=0.15 val=1 freq=0.1]Explore[/rainbow][/wave][/font_size][/b]"
+text = "[b][font_size=29][wave freq=2][rainbow sat=0.15 val=1 freq=0.25]Explore[/rainbow][/wave][/font_size][/b]"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
