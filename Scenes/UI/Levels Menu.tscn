@@ -350,8 +350,8 @@ offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
 tooltip_text = "Set Levels Folder
-Your levels folder is also the default location
-that levels you create will be saved."
+You can choose a folder to save levels locally to.
+This will also be the default location created levels are saved."
 theme_override_fonts/font = ExtResource("2_eotax")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f8xdp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kngc")

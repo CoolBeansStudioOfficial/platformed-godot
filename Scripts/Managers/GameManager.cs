@@ -90,6 +90,30 @@ public partial class GameManager : Node
         }
     }
 
+    public async Task<List<Level>> GetMyLevelsFromAPI()
+    {
+        if (!IsLoggedIn()) return null;
+
+        HttpRequestMessage message = new(HttpMethod.Get, "https://platformed.jmeow.net/api/myLevels");
+        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode)
+        {
+            GD.Print("grabbed my levels");
+            return await JsonSerializer.DeserializeAsync<List<Level>>(await response.Content.ReadAsStreamAsync());
+        }
+        else
+        {
+            GD.Print("failed to grab my levels");
+            GD.Print(await response.Content.ReadAsStringAsync());
+            return null;
+        }
+
+        
+    }
+
     public async Task<LevelList> BrowseLevelsFromAPI()
     {
         //request levels json

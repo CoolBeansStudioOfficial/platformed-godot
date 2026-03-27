@@ -67,7 +67,27 @@ public partial class LevelsMenu : Control
 
         //load my levels
         levelsList.ClearLevels();
-        levelsList.SetLevels(await GameManager.Instance.GetLevelsFromFolder());
+        var myLevels = await GameManager.Instance.GetMyLevelsFromAPI();
+
+        //load levels from folder
+        var folderLevels = await GameManager.Instance.GetLevelsFromFolder();
+
+        if (myLevels is not null)
+        {
+            if (folderLevels is not null)
+            {
+                //mark online levels
+
+                //combine level lists
+                myLevels.AddRange(folderLevels);
+            }
+            levelsList.SetLevels(myLevels);
+        }
+        else if (folderLevels is not null)
+        {
+            levelsList.SetLevels(folderLevels);
+        }
+        
     }
 
     public void ShowLevelsList(bool doShow)

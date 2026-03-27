@@ -47,10 +47,7 @@ public partial class ProfileMenu : MenuButton
     private void OnProfileOptionSelected(long id)
     {
         //sign in
-        if (id == 0)
-        {
-            window.PopupCentered();
-        }
+        if (id == 0) window.PopupCentered();
         //sign out
         else if (id == 1)
         {
@@ -58,9 +55,4 @@ public partial class ProfileMenu : MenuButton
             SetLoginState(false);
         }
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
 }

@@ -12,7 +12,6 @@ public partial class SignInWindow : Window
     [Export] Button signInButton;
     [Export] Button closeButton;
 
-
     public override void _Ready()
 	{
         signInButton.Pressed += OnSignInPressed;
@@ -34,19 +33,11 @@ public partial class SignInWindow : Window
             profileMenu.SetLoginState(true);
             Hide();
         }
-        else
-        {
-            errorText.Visible = true;
-        }
+        else errorText.Visible = true;
     }
 
     private void OnClosePressed()
     {
         Hide();
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
 }
