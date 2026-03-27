@@ -106,7 +106,6 @@ public partial class GameManager : Node
         }
         else
         {
-            GD.Print(await response.Content.ReadAsStringAsync());
             return null;
         }
 
@@ -177,6 +176,7 @@ public partial class GameManager : Node
         }));
 
         var response = await client.SendAsync(message);
+        GD.Print(await response.Content.ReadAsStringAsync());
 
         if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level deleted successfully");
         else UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.");
@@ -259,7 +259,6 @@ public partial class GameManager : Node
 
         if (response.IsSuccessStatusCode)
         {
-            GD.Print("deserialize me");
             return await JsonSerializer.DeserializeAsync<Me>(await response.Content.ReadAsStreamAsync());
         }
         else return null;

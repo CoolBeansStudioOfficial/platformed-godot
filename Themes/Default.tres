@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://cgupe3ntmkv8k"]
+
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_hymkg"]
+
+[resource]
+default_font = ExtResource("1_hymkg")
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
