@@ -5,22 +5,27 @@ public partial class LevelsMenu : Control
 {
     [Export] FileDialog fileDialog;
     [Export] Button addLevelsFolderButton;
+    [Export] LevelsList levelsList;
+    [Export] Control levelView;
 
+    [ExportGroup("Search")]
     [Export] Panel searchBar;
     [Export] RichTextLabel searchBarText;
     [Export] StyleBoxTexture exploreStyle;
     [Export] StyleBoxTexture myLevelsStyle;
 
-    [Export] LevelsList levelsList;
-    [Export] Control levelView;
-
+    [ExportGroup("Level Buttons")]
     [Export] Button backButton;
     [Export] Button playButton;
     [Export] Button remixButton;
+    [Export] Button deleteButton;
+    [Export] ConfirmationDialog deleteConfirmation;
+    [Export] Button webButton;
+
+    [ExportGroup("Level Info")]
     [Export] Label levelName;
     [Export] Label levelCreator;
     [Export] RichTextLabel levelDescription;
-
     [Export] Label ratingCount;
     [Export] Label ratingPercentagePositive;
     [Export] Label ratingPercentageNegative;
@@ -41,6 +46,9 @@ public partial class LevelsMenu : Control
         backButton.Pressed += OnBackButtonPressed;
         playButton.Pressed += OnPlayButtonPressed;
         remixButton.Pressed += OnRemixButtonPressed;
+        deleteButton.Pressed += OnDeleteButtonPressed;
+        deleteConfirmation.Confirmed += OnDeleteConfirmed;
+        webButton.Pressed += OnWebButtonPressed;
         Explore();
     }
 
@@ -54,8 +62,14 @@ public partial class LevelsMenu : Control
 
         //load explore levels
         levelsList.ClearLevels();
-        LevelList list = await GameManager.Instance.BrowseLevelsFromAPI();
-        levelsList.SetLevels(list.Levels);
+        var levels = (await GameManager.Instance.BrowseLevelsFromAPI()).Levels;
+        //mark online levels
+        for (int i = 0; i < levels.Count; i++)
+        {
+            levels[i].Tags.Add("online");
+        }
+
+        levelsList.SetLevels(levels);
     }
 
     public async void MyLevels()
@@ -136,7 +150,24 @@ public partial class LevelsMenu : Control
             playBar.Value = percentage;
         }
 
-        
+        webButton.Visible = false;
+        deleteButton.Visible = false;
+
+        if (level.Tags is not null)
+        {
+            foreach (var tag in level.Tags)
+            {
+                if (tag is string t) if (t == "online")
+                {
+                    webButton.Visible = true;
+
+                    if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.GetPreference("user_id"))
+                    {
+                        deleteButton.Visible = true;
+                    }
+                }
+            }
+        }
 
         ShowLevelsList(false);
     }
@@ -160,6 +191,22 @@ public partial class LevelsMenu : Control
     void OnBackButtonPressed()
     {
         ShowLevelsList(true);
+    }
+
+    void OnDeleteButtonPressed()
+    {
+        deleteConfirmation.PopupCentered();
+    }
+
+    void OnDeleteConfirmed()
+    {
+        GameManager.Instance.DeleteLevel(selectedLevel.Id);
+        GameManager.Instance.ReturnToLevelsMenu();
+    }
+
+    void OnWebButtonPressed()
+    {
+        OS.ShellOpen($"https://platformed.jmeow.net/level/{selectedLevel.Id}");
     }
 
     void OnAddLevelsFolderButtonPressed()

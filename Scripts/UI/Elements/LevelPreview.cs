@@ -37,9 +37,12 @@ public partial class LevelPreview : Panel
         {
             foreach (var tag in level.Tags)
             {
-                if (tag is string t)
+                if (tag is string t) if (t == "online")
                 {
-                    if (t == "online") cloudIcon.Visible = true;
+                    if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.GetPreference("user_id"))
+                    {
+                        cloudIcon.Visible = true;
+                    }
                 }
             }
         }

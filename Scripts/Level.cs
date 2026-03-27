@@ -87,6 +87,12 @@ public class LevelUpdate
     public int? Height { get; set; }
 }
 
+public class LevelDelete
+{
+    [JsonPropertyName("levelId")]
+    public int LevelId { get; set; }
+}
+
 public class Data
 {
     [JsonPropertyName("zoom")]

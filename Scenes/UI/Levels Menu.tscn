@@ -184,6 +184,34 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmdl3"]
+bg_color = Color(1, 0.3811961, 0.31453565, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_141j1"]
+bg_color = Color(0.38857287, 0.12805986, 0.100029975, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0b4a"]
+bg_color = Color(0.735357, 0.2711756, 0.221232, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy1gy"]
+bg_color = Color(0.5712548, 0.31022376, 0.8211601, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghl26"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n1uh"]
@@ -207,7 +235,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "searchBar", "searchBarText", "levelsList", "levelView", "backButton", "playButton", "remixButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,15 +245,18 @@ grow_vertical = 2
 script = ExtResource("1_u0pm4")
 fileDialog = NodePath("FileDialog")
 addLevelsFolderButton = NodePath("VBoxContainer/Search Bar/Set Levels Folder")
+levelsList = NodePath("VBoxContainer/Levels List")
+levelView = NodePath("VBoxContainer/Level View")
 searchBar = NodePath("VBoxContainer/Search Bar")
 searchBarText = NodePath("VBoxContainer/Search Bar/Search Box/RichTextLabel")
 exploreStyle = SubResource("StyleBoxTexture_krmfw")
 myLevelsStyle = SubResource("StyleBoxTexture_8sich")
-levelsList = NodePath("VBoxContainer/Levels List")
-levelView = NodePath("VBoxContainer/Level View")
 backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
 remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix")
+deleteButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/Delete")
+deleteConfirmation = NodePath("ConfirmationDialog")
+webButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/View On Web")
 levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
 levelDescription = NodePath("VBoxContainer/Level View/Details/ScrollContainer/Description Text")
@@ -489,6 +520,42 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
 text = "Remix"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1546063072]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 230.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Delete" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer2" unique_id=1294952517]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmdl3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_141j1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r0b4a")
+text = "Delete"
+
+[node name="View On Web" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer2" unique_id=889790051]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_vy1gy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
+text = "View On Web"
+
 [node name="Details" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]
 layout_mode = 1
 anchors_preset = 6
@@ -701,3 +768,13 @@ size = Vector2i(1280, 720)
 file_mode = 2
 access = 2
 use_native_dialog = true
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=616860006]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(645, 106)
+unresizable = true
+force_native = true
+ok_button_text = "Delete"
+dialog_text = "Are you sure you want to delete this level? 
+This action is irreversible; there is no way to recover a level after it is deleted."

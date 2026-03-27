@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection.Emit;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -162,12 +163,35 @@ public partial class GameManager : Node
 
         if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level updated successfully");
         else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.");
-        GD.Print(await response.Content.ReadAsStringAsync());
+    }
+
+    public async void DeleteLevel(int id)
+    {
+        if (!IsLoggedIn()) return;
+
+        HttpRequestMessage message = new(HttpMethod.Delete, "https://platformed.jmeow.net/api/upload");
+        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Content = new StringContent(JsonSerializer.Serialize(new LevelDelete()
+        {
+            LevelId = id
+        }));
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level deleted successfully");
+        else UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.");
     }
 
     public bool IsLoggedIn()
     {
-        return (bool)GetPreference("logged_in");
+        try
+        {
+            return (bool)GetPreference("logged_in");
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     public class LoginCredentials
@@ -177,6 +201,15 @@ public partial class GameManager : Node
 
         [JsonPropertyName("password")]
         public string Password { get; set; }
+    }
+
+    public class Me
+    {
+        [JsonPropertyName("user")]
+        public int UserId { get; set; }
+
+        [JsonPropertyName("theme")]
+        public string Theme { get; set; }
     }
 
     public async Task<bool> Login(LoginCredentials credentials)
@@ -197,6 +230,10 @@ public partial class GameManager : Node
             }
 
             SetPreference("logged_in", true);
+
+            Me me = await GetMe();
+            if (me is not null) SetPreference("user_id", me.UserId);
+            
             return true;
         }
         else return false;
@@ -207,7 +244,26 @@ public partial class GameManager : Node
         SetPreference("username", default);
         SetPreference("token", default);
         SetPreference("session_id", default);
+        SetPreference("user_id", default);
         SetPreference("logged_in", false);
+    }
+
+    public async Task<Me> GetMe()
+    {
+        if (!IsLoggedIn()) return null;
+
+        HttpRequestMessage message = new(HttpMethod.Get, "https://platformed.jmeow.net/api/me");
+        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode)
+        {
+            GD.Print("deserialize me");
+            return await JsonSerializer.DeserializeAsync<Me>(await response.Content.ReadAsStreamAsync());
+        }
+        else return null;
+
     }
 
     //i found this on stack overflow lol
@@ -264,14 +320,7 @@ public partial class GameManager : Node
 
     public string GetLevelsFolder()
     {
-        ConfigFile config = new();
-
-        Error error = config.Load("user://config.cfg");
-
-        //catch if the config file didn't get fetched
-        if (error != Error.Ok) return null;
-
-        string folder = (string)config.GetValue("Preferences", "levels_folder");
+        string folder = (string)GetPreference("levels_folder");
 
         //catch if folder is an empty string
         if (folder is null) return null;
@@ -337,13 +386,10 @@ public partial class GameManager : Node
         //catch if the config file didn't get fetched
         if (error != Error.Ok) return null;
 
-        try
+        if (config.HasSectionKey("Preferences", key))
         {
             return config.GetValue("Preferences", key);
         }
-        catch
-        {
-            return null;
-        }
+        else return null;
     }
 }
