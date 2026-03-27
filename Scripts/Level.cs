@@ -72,6 +72,21 @@ public class Level
     public bool Owned { get; set; }
 }
 
+public class LevelUpdate
+{
+    [JsonPropertyName("levelId")]
+    public int? LevelId { get; set; }
+
+    [JsonPropertyName("data")]
+    public Data Data { get; set; }
+
+    [JsonPropertyName("width")]
+    public int? Width { get; set; }
+
+    [JsonPropertyName("height")]
+    public int? Height { get; set; }
+}
+
 public class Data
 {
     [JsonPropertyName("zoom")]

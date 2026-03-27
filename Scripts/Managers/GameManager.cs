@@ -143,6 +143,28 @@ public partial class GameManager : Node
         else UIManager.Instance.PopupNotification("Level uploaded failed. If you are connected to the internet, the servers may be down.");
     }
 
+    public async void EditLevel(Level level, int id)
+    {
+        if (!IsLoggedIn()) return;
+
+        HttpRequestMessage message = new(HttpMethod.Patch, "https://platformed.jmeow.net/api/edit");
+        level.Id = id;
+        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}"); 
+        message.Content = new StringContent(JsonSerializer.Serialize(new LevelUpdate()
+        {
+            LevelId = id,
+            Data = level.Data,
+            Width = level.Width,
+            Height = level.Height
+        }));
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level updated successfully");
+        else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.");
+        GD.Print(await response.Content.ReadAsStringAsync());
+    }
+
     public bool IsLoggedIn()
     {
         return (bool)GetPreference("logged_in");
