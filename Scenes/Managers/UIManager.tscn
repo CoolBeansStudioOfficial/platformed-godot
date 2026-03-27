@@ -118,6 +118,8 @@ oversampling_override = 1.0
 title = "Notification"
 initial_position = 2
 size = Vector2i(323, 100)
+unresizable = true
+force_native = true
 dialog_text = "You are being notified about something"
 
 [node name="Settings" type="Window" parent="." unique_id=554453960]

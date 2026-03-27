@@ -535,7 +535,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog", "overlay")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog", "uploadDialog", "overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -556,6 +556,7 @@ undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 saveButton = NodePath("Content/Top Bar/Options/Save")
 saveDialog = NodePath("Save Dialog")
+uploadDialog = NodePath("Upload Confirmation")
 overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
@@ -1200,3 +1201,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_chl6m")
+
+[node name="Upload Confirmation" type="ConfirmationDialog" parent="." unique_id=1373407094]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(538, 106)
+unresizable = true
+force_native = true
+ok_button_text = "Upload"
+dialog_text = "Are you sure you want to publicly upload this level to your account?
+(You can edit it later in the web editor)"

@@ -21,6 +21,7 @@ public partial class Editor : Control
     [Export] Button redoButton;
     [Export] MenuButton saveButton;
     [Export] FileDialog saveDialog;
+    [Export] ConfirmationDialog uploadDialog;
     [Export] EditorOverlay overlay;
 
     Level currentLevel;
@@ -92,6 +93,7 @@ public partial class Editor : Control
         redoButton.Pressed += Redo;
         saveButton.GetPopup().IdPressed += SaveLevel;
         saveDialog.FileSelected += SaveDialogFileSelected;
+        uploadDialog.Confirmed += UploadDialogConfirmed;
 
         ResetEditHistory();
 
@@ -510,7 +512,15 @@ public partial class Editor : Control
         //upload to web
         else
         {
-            UIManager.Instance.PopupNotification("I have't actually implemented this yet lol", "Upload Failed");
+            if (GameManager.Instance.IsLoggedIn())
+            {
+                uploadDialog.PopupCentered();
+            }
+            else
+            {
+                UIManager.Instance.PopupNotification("You are not currently signed in. Please sign in to upload levels.", "Upload Failed");
+            }
+            
         }
     }
 
@@ -518,6 +528,13 @@ public partial class Editor : Control
     {
         GameManager.Instance.SaveLevelAsFile(currentLevel, path);
         unsavedLabel.Visible = false;
+    }
+
+    void UploadDialogConfirmed()
+    {
+        currentLevel.Description = $"This level was uploaded by {GameManager.Instance.GetPreference("username")} using the desktop client!";
+
+        GameManager.Instance.UploadLevel(currentLevel);
     }
 
     private void NameChanged(string newText)

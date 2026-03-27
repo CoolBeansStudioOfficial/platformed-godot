@@ -101,12 +101,10 @@ public partial class GameManager : Node
 
         if (response.IsSuccessStatusCode)
         {
-            GD.Print("grabbed my levels");
             return await JsonSerializer.DeserializeAsync<List<Level>>(await response.Content.ReadAsStreamAsync());
         }
         else
         {
-            GD.Print("failed to grab my levels");
             GD.Print(await response.Content.ReadAsStringAsync());
             return null;
         }
@@ -129,6 +127,20 @@ public partial class GameManager : Node
         {
             return null;
         }
+    }
+
+    public async void UploadLevel(Level level)
+    {
+        if (!IsLoggedIn()) return;
+
+        HttpRequestMessage message = new(HttpMethod.Post, "https://platformed.jmeow.net/api/upload");
+        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Content = new StringContent(JsonSerializer.Serialize(level));
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level uploaded successfully");
+        else UIManager.Instance.PopupNotification("Level uploaded failed. If you are connected to the internet, the servers may be down.");
     }
 
     public bool IsLoggedIn()
