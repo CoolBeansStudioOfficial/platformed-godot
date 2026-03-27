@@ -379,6 +379,7 @@ last_wrap_alignment = 1
 [node name="No Levels Found" type="Label" parent="VBoxContainer/Levels List/Levels Container" unique_id=995898261]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.60662574, 0.60662585, 0.6066258, 1)
+theme_override_fonts/font = ExtResource("2_eotax")
 text = "No levels found"
 horizontal_alignment = 1
 

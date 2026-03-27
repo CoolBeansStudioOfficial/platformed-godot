@@ -289,8 +289,8 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Profile" type="MenuButton" parent="App Settings" unique_id=1747159355 node_paths=PackedStringArray("window")]
-custom_minimum_size = Vector2(220, 55)
+[node name="Profile" type="MenuButton" parent="App Settings" unique_id=1747159355 node_paths=PackedStringArray("window", "usernameLabel")]
+custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -300,6 +300,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5wk7i")
 flat = false
 script = ExtResource("4_lx6et")
 window = NodePath("Sign In")
+usernameLabel = NodePath("Username")
 
 [node name="Username" type="Label" parent="App Settings/Profile" unique_id=317154670]
 layout_mode = 1
@@ -308,12 +309,12 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 3.0
 offset_top = -11.5
-offset_right = 168.0
+offset_right = 169.0
 offset_bottom = 11.5
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
 theme_override_font_sizes/font_size = 12
-text = "Sign In"
+text = "Sign In..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -327,9 +328,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -50.0
+offset_left = -48.0
 offset_top = -22.5
-offset_right = -5.0
+offset_right = -3.0
 offset_bottom = 22.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -435,6 +436,13 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
 placeholder_text = "Enter password..."
 secret = true
+
+[node name="LinkButton" type="LinkButton" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=380739400]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 12
+text = "Create Account"
+uri = "https://platformed.jmeow.net/register"
 
 [node name="Buttons" type="HBoxContainer" parent="App Settings/Profile/Sign In/Panel" unique_id=130129353]
 layout_mode = 1

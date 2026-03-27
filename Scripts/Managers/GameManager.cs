@@ -125,18 +125,20 @@ public partial class GameManager : Node
     {
         var headers = new StringContent(JsonSerializer.Serialize(credentials));
         var response = await client.PostAsync("https://platformed.jmeow.net/api/login", headers);
+
         if (response.IsSuccessStatusCode)
         {
             GD.Print("signed in");
 
             //save user credentials
+            SetPreference("username", credentials.Username);
+
             var cookies = GetCookies(response);
             foreach (Cookie cookie in cookies)
             {
-                GD.Print($"{cookie.Name}, {cookie.Value}");
+                if (cookie.Name == "token") SetPreference("token", cookie.Value);
+                if (cookie.Name == "session-id") SetPreference("session_id", cookie.Value);
             }
-            
-            //SetPreference("username", )
 
             return true;
         }
@@ -145,6 +147,13 @@ public partial class GameManager : Node
             GD.Print("sign in failure");
             return false;
         }
+    }
+
+    public void Logout()
+    {
+        SetPreference("username", default);
+        SetPreference("token", default);
+        SetPreference("session_id", default);
     }
 
     //i found this on stack overflow lol
@@ -180,18 +189,6 @@ public partial class GameManager : Node
             }
         }
         return cookies;
-    }
-
-    public class Profile
-    {
-        [JsonPropertyName("username")]
-        public string Username { get; set; }
-
-        [JsonPropertyName("avatar")]
-        public Texture2D? Avatar { get; set; }
-
-        [JsonPropertyName("token")]
-        public string Token { get; set; }
     }
 
     public bool IsLevelsFolderSet()
