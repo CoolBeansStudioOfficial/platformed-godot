@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_3f0yt"]
 [ext_resource type="Texture2D" uid="uid://64dx5l7x1wsy" path="res://Images/Vector/thumbs up.svg" id="3_k66nv"]
 [ext_resource type="Texture2D" uid="uid://dp8h5j7pvxiph" path="res://Images/Vector/flag.svg" id="4_xjleh"]
+[ext_resource type="Texture2D" uid="uid://blxwvm4it5k33" path="res://Images/Raster/Icons/Cloud.png" id="6_6t133"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2yn0"]
 bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
@@ -39,7 +40,10 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Level Preview" type="Panel" unique_id=647445914 node_paths=PackedStringArray("playButton", "levelName", "creator", "likePercentage", "completionPercentage")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mg4jk"]
+texture = ExtResource("6_6t133")
+
+[node name="Level Preview" type="Panel" unique_id=647445914 node_paths=PackedStringArray("playButton", "levelName", "creator", "likePercentage", "completionPercentage", "cloudIcon")]
 custom_minimum_size = Vector2(400, 250)
 theme_override_styles/panel = SubResource("StyleBoxFlat_o2yn0")
 script = ExtResource("1_3f0yt")
@@ -48,6 +52,7 @@ levelName = NodePath("Info/Level Name")
 creator = NodePath("Info/Creator")
 likePercentage = NodePath("Info/Like Percentage")
 completionPercentage = NodePath("Info/Completion Percentage")
+cloudIcon = NodePath("Cloud Icon")
 
 [node name="Info" type="Panel" parent="." unique_id=1919460031]
 layout_mode = 1
@@ -171,3 +176,15 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rpuu6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rpuu6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3f0yt")
+
+[node name="Cloud Icon" type="Panel" parent="." unique_id=1462017390]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+tooltip_text = "This level is one of your uploaded levels"
+theme_override_styles/panel = SubResource("StyleBoxTexture_mg4jk")

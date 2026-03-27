@@ -9,6 +9,7 @@ public partial class LevelPreview : Panel
     [Export] Label creator;
     [Export] Label likePercentage;
     [Export] Label completionPercentage;
+    [Export] Panel cloudIcon;
 
     public Level level;
 
@@ -31,6 +32,18 @@ public partial class LevelPreview : Panel
         }
         
         completionPercentage.Text = $"{percentage}%";
+
+        if (level.Tags is not null)
+        {
+            foreach (var tag in level.Tags)
+            {
+                if (tag is string t)
+                {
+                    if (t == "online") cloudIcon.Visible = true;
+                }
+            }
+        }
+        
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

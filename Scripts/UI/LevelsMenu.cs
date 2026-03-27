@@ -74,13 +74,18 @@ public partial class LevelsMenu : Control
 
         if (myLevels is not null)
         {
+            //mark online levels
+            for (int i = 0; i < myLevels.Count; i++)
+            {
+                myLevels[i].Tags.Add("online");
+            }
+
             if (folderLevels is not null)
             {
-                //mark online levels
-
                 //combine level lists
                 myLevels.AddRange(folderLevels);
             }
+
             levelsList.SetLevels(myLevels);
         }
         else if (folderLevels is not null)
