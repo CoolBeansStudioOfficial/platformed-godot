@@ -297,6 +297,20 @@ public partial class Editor : Control
             }
 
             Vector2 worldPosition = tileMap.MapToLocal(selection.GetCenter());
+
+            //if selection width is even, move the box to the right by half a tile
+            if ((int)selection.GetSize().X % 2 == 0 && (int)selection.GetSize().X > 1)
+            {
+                worldPosition.X += 8f;
+            }
+
+            //if selection height is even, move the box to the down by half a tile
+            if ((int)selection.GetSize().Y % 2 == 0 && (int)selection.GetSize().Y > 1)
+            {
+                worldPosition.Y += 8f;
+            }
+
+
             Vector2 boxSize = selection.GetSize() * 16;
 
             overlay.SetOutline(new()
