@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bysbtfwwnlfum"]
+
+[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="1_xyhr6"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_f4myd"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_7e3b8"]
+
+[node name="Sign In" type="Panel" unique_id=1864225525]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xyhr6")
+theme_type_variation = &"Background"
+
+[node name="Title" type="Label" parent="." unique_id=1303102532]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 23.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_f4myd")
+theme_override_font_sizes/font_size = 36
+text = "Sign In"
+horizontal_alignment = 1
+
+[node name="Error Text" type="Label" parent="." unique_id=1574355075]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 137.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.51551, 0.4494092, 1)
+text = "Username or password incorrect"
+horizontal_alignment = 1
+
+[node name="Input Fields" type="VBoxContainer" parent="." unique_id=496219760]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -60.0
+offset_right = -29.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Input Fields" unique_id=1734580639]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7e3b8")
+theme_override_font_sizes/font_size = 24
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="Input Fields" unique_id=1974695550]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7e3b8")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter username..."
+
+[node name="Spacer" type="Label" parent="Input Fields" unique_id=608794232]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Input Fields" unique_id=1291403108]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7e3b8")
+theme_override_font_sizes/font_size = 24
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="Input Fields" unique_id=372217139]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7e3b8")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter password..."
+secret = true
+
+[node name="LinkButton" type="LinkButton" parent="Input Fields" unique_id=439251008]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7e3b8")
+theme_override_font_sizes/font_size = 16
+text = "Create Account"
+uri = "https://platformed.jmeow.net/register"
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=401547731]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -65.0
+offset_right = -12.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sign In" type="Button" parent="Buttons" unique_id=215717748]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_f4myd")
+theme_override_font_sizes/font_size = 24
+text = "Sign In"
+
+[node name="Close" type="Button" parent="Buttons" unique_id=1084287015]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_f4myd")
+theme_override_font_sizes/font_size = 24
+text = "Close"

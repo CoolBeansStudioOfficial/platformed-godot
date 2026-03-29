@@ -5,7 +5,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymkg"]
 bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w0b6"]
+bg_color = Color(0.094904155, 0.08609058, 0.07433915, 1)
+
 [resource]
 default_font = ExtResource("1_hymkg")
 Background/base_type = &"Panel"
 Background/styles/panel = SubResource("StyleBoxFlat_hymkg")
+BackgroundAccent/base_type = &"Panel"
+BackgroundAccent/styles/panel = SubResource("StyleBoxFlat_5w0b6")

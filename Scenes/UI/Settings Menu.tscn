@@ -7,9 +7,7 @@
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_tkyaf"]
 [ext_resource type="TileSet" uid="uid://bhy6co17x4llf" path="res://Tilesets/8BitEditor.tres" id="4_6ly1g"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r50y6"]
-bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="6_q7h03"]
 
 [node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "styleOptions")]
 layout_mode = 3
@@ -34,7 +32,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_r50y6")
+theme = ExtResource("6_q7h03")
+theme_type_variation = &"Background"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1862171430]
 layout_mode = 1
