@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cas2vmmt4ladm"]
 
 [ext_resource type="Script" uid="uid://chpbx16hmoo5a" path="res://Scripts/Managers/GameManager.cs" id="1_7cxpe"]
+[ext_resource type="Script" uid="uid://e7op2ao1kcf1" path="res://Scripts/Managers/Preferences.cs" id="2_6f8c0"]
 
-[node name="Game Manager" type="Node" unique_id=1493430733]
+[node name="Game Manager" type="Node" unique_id=1493430733 node_paths=PackedStringArray("preferences")]
 script = ExtResource("1_7cxpe")
+preferences = NodePath("Preferences")
+
+[node name="Preferences" type="Node" parent="." unique_id=1557900592]
+script = ExtResource("2_6f8c0")

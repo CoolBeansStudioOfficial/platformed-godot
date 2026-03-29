@@ -12,6 +12,8 @@ using HttpClient = System.Net.Http.HttpClient;
 
 public partial class GameManager : Node
 {
+    [Export] public Preferences preferences;
+
     HttpClient client;
     
     public static GameManager Instance { get; private set; }
@@ -96,7 +98,7 @@ public partial class GameManager : Node
         if (!IsLoggedIn()) return null;
 
         HttpRequestMessage message = new(HttpMethod.Get, "https://platformed.jmeow.net/api/myLevels");
-        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
 
         var response = await client.SendAsync(message);
 
@@ -134,7 +136,7 @@ public partial class GameManager : Node
         if (!IsLoggedIn()) return;
 
         HttpRequestMessage message = new(HttpMethod.Post, "https://platformed.jmeow.net/api/upload");
-        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
         message.Content = new StringContent(JsonSerializer.Serialize(level));
 
         var response = await client.SendAsync(message);
@@ -149,7 +151,7 @@ public partial class GameManager : Node
 
         HttpRequestMessage message = new(HttpMethod.Patch, "https://platformed.jmeow.net/api/edit");
         level.Id = id;
-        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}"); 
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}"); 
         message.Content = new StringContent(JsonSerializer.Serialize(new LevelUpdate()
         {
             LevelId = id,
@@ -169,7 +171,7 @@ public partial class GameManager : Node
         if (!IsLoggedIn()) return;
 
         HttpRequestMessage message = new(HttpMethod.Delete, "https://platformed.jmeow.net/api/upload");
-        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
         message.Content = new StringContent(JsonSerializer.Serialize(new LevelDelete()
         {
             LevelId = id
@@ -186,7 +188,7 @@ public partial class GameManager : Node
     {
         try
         {
-            return (bool)GetPreference("logged_in");
+            return (bool)preferences.GetPreference("logged_in");
         }
         catch
         {
@@ -220,19 +222,19 @@ public partial class GameManager : Node
         if (response.IsSuccessStatusCode)
         {
             //save user credentials
-            SetPreference("username", credentials.Username);
+            preferences.SetPreference("username", credentials.Username);
 
             var cookies = GetCookies(response);
             foreach (Cookie cookie in cookies)
             {
-                if (cookie.Name == "token") SetPreference("token", cookie.Value);
-                if (cookie.Name == "session-id") SetPreference("session_id", cookie.Value);
+                if (cookie.Name == "token") preferences.SetPreference("token", cookie.Value);
+                if (cookie.Name == "session-id") preferences.SetPreference("session_id", cookie.Value);
             }
 
-            SetPreference("logged_in", true);
+            preferences.SetPreference("logged_in", true);
 
             Me me = await GetMe();
-            if (me is not null) SetPreference("user_id", me.UserId);
+            if (me is not null) preferences.SetPreference("user_id", me.UserId);
             
             return true;
         }
@@ -241,11 +243,11 @@ public partial class GameManager : Node
 
     public void Logout()
     {
-        SetPreference("username", default);
-        SetPreference("token", default);
-        SetPreference("session_id", default);
-        SetPreference("user_id", default);
-        SetPreference("logged_in", false);
+        preferences.SetPreference("username", default);
+        preferences.SetPreference("token", default);
+        preferences.SetPreference("session_id", default);
+        preferences.SetPreference("user_id", default);
+        preferences.SetPreference("logged_in", false);
     }
 
     public async Task<Me> GetMe()
@@ -253,7 +255,7 @@ public partial class GameManager : Node
         if (!IsLoggedIn()) return null;
 
         HttpRequestMessage message = new(HttpMethod.Get, "https://platformed.jmeow.net/api/me");
-        message.Headers.Add("Cookie", $"session-id={(string)GetPreference("session_id")}; token={(string)GetPreference("token")}");
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
 
         var response = await client.SendAsync(message);
 
@@ -298,97 +300,5 @@ public partial class GameManager : Node
             }
         }
         return cookies;
-    }
-
-    public bool IsLevelsFolderSet()
-    {
-        if (GetLevelsFolder() is null) return false;
-        else return true;
-    }
-
-    public void SetLevelsFolder(string folder)
-    {
-        ConfigFile config = new();
-
-        config.Load("user://config.cfg");
-
-        config.SetValue("Preferences", "levels_folder", folder);
-
-        config.Save("user://config.cfg");
-    }
-
-    public string GetLevelsFolder()
-    {
-        string folder = (string)GetPreference("levels_folder");
-
-        //catch if folder is an empty string
-        if (folder is null) return null;
-
-        //catch if folder is not a valid path to a real folder
-        try
-        {
-            Path.GetDirectoryName(folder);
-        }
-        catch
-        {
-            return null;
-        }
-
-        return folder;
-    }
-
-    public async Task<List<Level>> GetLevelsFromFolder()
-    {
-        if (!IsLevelsFolderSet()) return null;
-
-        List<Level> levels = [];
-
-        foreach (string path in Directory.GetFiles(GetLevelsFolder()))
-        {
-            if (Path.GetExtension(path) != ".json") continue;
-
-            //read and deserialize the level json
-            Level level = await JsonSerializer.DeserializeAsync<Level>(File.OpenRead(path));
-
-            levels.Add(level);
-        }
-
-        return levels;
-    }
-
-    public async void SaveLevelAsFile(Level level, string path)
-    {
-        var stream = File.Create(path);
-        await JsonSerializer.SerializeAsync(stream, level);
-        stream.DisposeAsync();
-
-
-    }
-
-    public void SetPreference(string key, Variant value)
-    {
-        ConfigFile config = new();
-
-        config.Load("user://config.cfg");
-
-        config.SetValue("Preferences", key, value);
-
-        config.Save("user://config.cfg");
-    }
-
-    public Variant? GetPreference(string key)
-    {
-        ConfigFile config = new();
-
-        Error error = config.Load("user://config.cfg");
-
-        //catch if the config file didn't get fetched
-        if (error != Error.Ok) return null;
-
-        if (config.HasSectionKey("Preferences", key))
-        {
-            return config.GetValue("Preferences", key);
-        }
-        else return null;
     }
 }

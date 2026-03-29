@@ -37,18 +37,18 @@ public partial class SettingsMenu : Control
 
     void GetSettings()
     {
-        settings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
+        settings = (Dictionary<string, Variant>)GameManager.Instance.preferences.GetPreference("app_settings");
 
         //create new default settings config if settings has never been set before
         if (settings == null)
         {
-            GameManager.Instance.SetPreference("app_settings", new Dictionary<string, Variant>()
+            GameManager.Instance.preferences.SetPreference("app_settings", new Dictionary<string, Variant>()
             {
                 { "tile_style", 1 }
             });
         }
 
-        settings = (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings");
+        settings = (Dictionary<string, Variant>)GameManager.Instance.preferences.GetPreference("app_settings");
 
         //set buttons to match config file
         styleOptions.Selected = (int)settings["tile_style"];
@@ -67,7 +67,7 @@ public partial class SettingsMenu : Control
         Update();
 
         //save to config file
-        GameManager.Instance.SetPreference("app_settings", settings);
+        GameManager.Instance.preferences.SetPreference("app_settings", settings);
 
         //apply settings
         LevelManager.Instance.SetTileset(playSets[(int)settings["tile_style"]]);
@@ -98,7 +98,7 @@ public partial class SettingsMenu : Control
     {
         Update();
         bool unsavedChanges = true;
-        if (DoSettingsMatch(settings, (Dictionary<string, Variant>)GameManager.Instance.GetPreference("app_settings"))) unsavedChanges = false;
+        if (DoSettingsMatch(settings, (Dictionary<string, Variant>)GameManager.Instance.preferences.GetPreference("app_settings"))) unsavedChanges = false;
 
         if (!unsavedChanges) window.Hide();
         else

@@ -26,7 +26,7 @@ public partial class ProfileMenu : MenuButton
             popup.AddItem("Sign Out", 1);
             popup.AddItem("View Profile", 2);
 
-            usernameLabel.Text = (string)GameManager.Instance.GetPreference("username");
+            usernameLabel.Text = (string)GameManager.Instance.preferences.GetPreference("username");
         }
         else
         {

@@ -84,7 +84,7 @@ public partial class LevelsMenu : Control
         var myLevels = await GameManager.Instance.GetMyLevelsFromAPI();
 
         //load levels from folder
-        var folderLevels = await GameManager.Instance.GetLevelsFromFolder();
+        var folderLevels = await GameManager.Instance.preferences.GetLevelsFromFolder();
 
         if (myLevels is not null)
         {
@@ -161,7 +161,7 @@ public partial class LevelsMenu : Control
                 {
                     webButton.Visible = true;
 
-                    if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.GetPreference("user_id"))
+                    if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.preferences.GetPreference("user_id"))
                     {
                         deleteButton.Visible = true;
                     }
@@ -216,7 +216,7 @@ public partial class LevelsMenu : Control
 
     void OnLevelsFolderSelected(string directory)
     {
-        GameManager.Instance.SetLevelsFolder(directory);
+        GameManager.Instance.preferences.SetLevelsFolder(directory);
         MyLevels();
     }
 }

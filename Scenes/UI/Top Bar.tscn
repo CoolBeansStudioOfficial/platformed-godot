@@ -345,7 +345,6 @@ oversampling_override = 1.0
 title = "Sign In"
 initial_position = 2
 size = Vector2i(800, 800)
-visible = false
 transient = true
 exclusive = true
 minimize_disabled = true
@@ -375,7 +374,7 @@ offset_top = 23.0
 offset_bottom = 57.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_swqkx")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Sign In"
 horizontal_alignment = 1
 
@@ -407,11 +406,13 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1039861881]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 24
 text = "Username"
 
 [node name="Username" type="LineEdit" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=436052690]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter username..."
 
 [node name="Spacer" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=829573711]
@@ -420,18 +421,20 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1027953449]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 24
 text = "Password"
 
 [node name="Password" type="LineEdit" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=1194216792]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
+theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter password..."
 secret = true
 
 [node name="LinkButton" type="LinkButton" parent="App Settings/Profile/Sign In/Panel/Input Fields" unique_id=380739400]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4vp1j")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Create Account"
 uri = "https://platformed.jmeow.net/register"
 
@@ -452,12 +455,14 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_swqkx")
+theme_override_font_sizes/font_size = 24
 text = "Sign In"
 
 [node name="Close" type="Button" parent="App Settings/Profile/Sign In/Panel/Buttons" unique_id=929599685]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_swqkx")
+theme_override_font_sizes/font_size = 24
 text = "Close"
 
 [node name="Settings" type="Button" parent="App Settings" unique_id=2041528482]

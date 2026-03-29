@@ -488,10 +488,10 @@ public partial class Editor : Control
         //save to levels folder
         if (id == 0)
         {
-            if (GameManager.Instance.IsLevelsFolderSet())
+            if (GameManager.Instance.preferences.IsLevelsFolderSet())
             {
-                string path = $"{GameManager.Instance.GetLevelsFolder()}/{currentLevel.Name}.json";
-                GameManager.Instance.SaveLevelAsFile(currentLevel, path);
+                string path = $"{GameManager.Instance.preferences.GetLevelsFolder()}/{currentLevel.Name}.json";
+                GameManager.Instance.preferences.SaveLevelAsFile(currentLevel, path);
 
                 unsavedLabel.Visible = false;
             }
@@ -537,13 +537,13 @@ public partial class Editor : Control
 
     void SaveDialogFileSelected(string path)
     {
-        GameManager.Instance.SaveLevelAsFile(currentLevel, path);
+        GameManager.Instance.preferences.SaveLevelAsFile(currentLevel, path);
         unsavedLabel.Visible = false;
     }
 
     void UploadDialogConfirmed()
     {
-        currentLevel.Description = $"This level was uploaded by {GameManager.Instance.GetPreference("username")} using the desktop client!";
+        currentLevel.Description = $"This level was uploaded by {GameManager.Instance.preferences.GetPreference("username")} using the desktop client!";
         currentLevel.Data.TilesetPath = "/assets/medium.json";
 
         //edit level instead if this is a change to an existing level
