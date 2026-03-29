@@ -41,13 +41,13 @@ public partial class TilesViewport : ScrollContainer
             }
             else if (mb.ButtonIndex == MouseButton.WheelUp && mb.IsCommandOrControlPressed())
             {
-                Zoom(zoomSpeed);
+                Zoom(zoomSpeed, mb.Position);
 
                 AcceptEvent();
             }
             else if (mb.ButtonIndex == MouseButton.WheelDown && mb.IsCommandOrControlPressed())
             {
-                Zoom(-zoomSpeed);
+                Zoom(-zoomSpeed, mb.Position);
 
                 AcceptEvent();
             }
@@ -64,12 +64,22 @@ public partial class TilesViewport : ScrollContainer
         }
     }
 
-    public void Zoom(float amount)
+    public void Zoom(float amount, Vector2 mousePosition)
     {
+        float previousZoom = zoom;
         zoom += amount;
+        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
 
-        if (zoom < minZoom) zoom = minZoom;
-        else if (zoom > maxZoom) zoom = maxZoom;
+        Vector2 scroll = new(ScrollHorizontal, ScrollVertical);
+
+        //calculate where mouse is relative to previous zoom
+        Vector2 previousPosition = (scroll + mousePosition) / previousZoom;
+
+        //calculate new scroll so the position relative to the mouse stays the same
+        Vector2 newScroll = (previousPosition * zoom) - mousePosition;
+
+        ScrollHorizontal = (int)newScroll.X;
+        ScrollVertical = (int)newScroll.Y;
     }
 
     public override void _Process(double delta)
