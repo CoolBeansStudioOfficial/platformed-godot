@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b7ivncp6f38v"]
 
+[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="1_1dj3h"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_4vp1j"]
 [ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
@@ -7,9 +8,6 @@
 [ext_resource type="Script" uid="uid://hdfwn2atnldv" path="res://Scripts/UI/Elements/ProfileMenu.cs" id="4_lx6et"]
 [ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Icons/Interactables.png" id="5_25fso"]
 [ext_resource type="Script" uid="uid://djqm5h48kpd8d" path="res://Scripts/UI/Elements/SignInWindow.cs" id="6_25fso"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg67f"]
-bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur25d"]
 bg_color = Color(0.13333334, 0.17254902, 0.09803922, 1)
@@ -178,7 +176,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dg67f")
+theme = ExtResource("1_1dj3h")
+theme_type_variation = &"Background"
 script = ExtResource("1_swqkx")
 createButton = NodePath("Menu Buttons/Create")
 exploreButton = NodePath("Menu Buttons/Explore")
@@ -345,6 +344,7 @@ oversampling_override = 1.0
 title = "Sign In"
 initial_position = 2
 size = Vector2i(800, 800)
+visible = false
 transient = true
 exclusive = true
 minimize_disabled = true

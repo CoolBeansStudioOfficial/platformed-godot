@@ -2,8 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_hymkg"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymkg"]
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+
 [resource]
 default_font = ExtResource("1_hymkg")
-Button/styles/hover = null
-Button/styles/normal = null
-Button/styles/pressed = null
+Background/base_type = &"Panel"
+Background/styles/panel = SubResource("StyleBoxFlat_hymkg")
