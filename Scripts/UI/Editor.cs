@@ -406,6 +406,7 @@ public partial class Editor : Control
         //place mode
         if (mode == EditorMode.Place)
         {
+            selection = default;
             placeMode = true;
             flyoutOptions.Visible = true;
 
@@ -559,7 +560,7 @@ public partial class Editor : Control
                 uploadDialog.DialogText = "Are you sure you want to publicly upload this level to your account?\r\n(You can edit it later in the web editor)";
                 uploadDialog.OkButtonText = "Upload";
 
-                foreach (var tag in currentLevel.Tags)
+                if (currentLevel.Tags is not null) foreach (var tag in currentLevel.Tags)
                 {
                     if (tag is string t) if (t == "online")
                     {
@@ -590,7 +591,7 @@ public partial class Editor : Control
         currentLevel.Data.TilesetPath = "/assets/medium.json";
 
         //edit level instead if this is a change to an existing level
-        foreach (var tag in currentLevel.Tags)
+        if (currentLevel.Tags is not null) foreach (var tag in currentLevel.Tags)
         {
             if (tag is string t) if (t == "online")
             {

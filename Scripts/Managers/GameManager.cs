@@ -29,7 +29,7 @@ public partial class GameManager : Node
 
 
     //play level from parsed json
-    public async void PlayLevel(Level level)
+    public async Task PlayLevel(Level level)
     {
         LevelManager.Instance.GenerateLevel(level);
 
@@ -38,7 +38,7 @@ public partial class GameManager : Node
     }
 
     //play level from the web using its level id
-    public async void PlayLevel(int id)
+    public async Task PlayLevel(int id)
     {
         //fetch level
         Level level = await GetLevelFromAPI(id);
@@ -52,7 +52,7 @@ public partial class GameManager : Node
         UIManager.Instance.editor.Visible = false;
     }
 
-    public async void RemixLevel(Level level)
+    public async Task RemixLevel(Level level)
     {
         UIManager.Instance.editor.ImportLevel(level);
 
@@ -131,7 +131,7 @@ public partial class GameManager : Node
         }
     }
 
-    public async void UploadLevel(Level level)
+    public async Task UploadLevel(Level level)
     {
         if (!IsLoggedIn()) return;
 
@@ -145,7 +145,7 @@ public partial class GameManager : Node
         else UIManager.Instance.PopupNotification("Level uploaded failed. If you are connected to the internet, the servers may be down.");
     }
 
-    public async void EditLevel(Level level, int id)
+    public async Task EditLevel(Level level, int id)
     {
         if (!IsLoggedIn()) return;
 
@@ -166,13 +166,18 @@ public partial class GameManager : Node
         else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.");
     }
 
-    public async void DeleteLevel(int id)
+    public async Task DeleteLevel(int id)
     {
         if (!IsLoggedIn()) return;
 
-        HttpRequestMessage message = new(HttpMethod.Delete, "https://platformed.jmeow.net/api/upload");
+        HttpRequestMessage message = new(HttpMethod.Delete, "https://platformed.jmeow.net/api/delete");
         message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
         message.Content = new StringContent(JsonSerializer.Serialize(new LevelDelete()
+        {
+            LevelId = id
+        }));
+
+        GD.Print(JsonSerializer.Serialize(new LevelDelete()
         {
             LevelId = id
         }));
