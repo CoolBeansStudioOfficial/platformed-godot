@@ -29,14 +29,11 @@ public partial class TilesViewport : ScrollContainer
                     MouseDefaultCursorShape = CursorShape.Drag;
 
                     lastMousePosition = mb.Position;
-                    GD.Print("middle mouse button pressed in viewport");
-
                 }
                 else
                 {
                     middleDragging = false;
                     MouseDefaultCursorShape = CursorShape.Arrow;
-                    GD.Print("middle mouse button released in viewport");
                 }
             }
             else if (mb.ButtonIndex == MouseButton.WheelUp && mb.IsCommandOrControlPressed())

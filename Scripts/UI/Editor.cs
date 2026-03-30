@@ -36,6 +36,7 @@ public partial class Editor : Control
 
     //edit mode
     bool startedSelection = false;
+    bool startedDrag = false;
     EditSelection selection;
 
     public struct TileSelection
@@ -49,6 +50,18 @@ public partial class Editor : Control
     {
         public Vector2I start;
         public Vector2I end;
+
+        public Vector2I dragPosition;
+
+        //move selection to point relative to drag position
+        public void Move(Vector2I position)
+        {
+            Vector2I offset = position - dragPosition;
+
+            dragPosition += offset;
+            start += offset;
+            end += offset;
+        }
 
         public bool IsInRect(Vector2I position)
         {
@@ -169,6 +182,14 @@ public partial class Editor : Control
                 {
                     mouseDown = false;
                     startedSelection = false;
+
+                    //if selection was being dragged, handle release
+                    if (startedDrag)
+                    {
+                        GD.Print("selection moved");
+
+                        startedDrag = false;
+                    }
                 }
             }
         }
@@ -288,10 +309,19 @@ public partial class Editor : Control
                 }
                 else
                 {
-                    //if the mouse is inside of selection box, drag selection
-                    if (selection.IsInRect(mouseCoords))
+                    if (startedDrag)
                     {
+                        selection.Move(mouseCoords);
+                    }
+                    else
+                    {
+                        //if the mouse is inside of selection box, drag selection
+                        if (selection.IsInRect(mouseCoords))
+                        {
+                            selection.dragPosition = mouseCoords;
 
+                            startedDrag = true;
+                        }
                     }
                 }
             }
@@ -309,7 +339,6 @@ public partial class Editor : Control
             {
                 worldPosition.Y += 8f;
             }
-
 
             Vector2 boxSize = selection.GetSize() * 16;
 
