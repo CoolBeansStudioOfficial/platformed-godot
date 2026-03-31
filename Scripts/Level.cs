@@ -213,5 +213,5 @@ public class Execute
     public int? EndY { get; set; }
 
     [JsonPropertyName("time")]
-    public string? Time { get; set; }
+    public string Time { get; set; }
 }

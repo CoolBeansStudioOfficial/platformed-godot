@@ -225,7 +225,8 @@ public partial class LevelsMenu : Control
 
     void OnLevelNameChanged(string newText)
     {
-        if (newText == string.Empty)
+        if (levelNameEdit.Text == selectedLevel.Name) return;
+        else if (newText == string.Empty)
         {
             levelNameEdit.Text = selectedLevel.Name;
             UIManager.Instance.PopupNotification("You cannot submit an empty level name.");
@@ -251,7 +252,14 @@ public partial class LevelsMenu : Control
 
     void OnDescriptionSubmitted()
     {
-        if (levelDescriptionEdit.Text == string.Empty)
+        if (levelDescriptionEdit.Text == selectedLevel.Description)
+        {
+            descriptionSubmitButton.Visible = false;
+            descriptionCancelButton.Visible = false;
+
+            return;
+        }
+        else if (levelDescriptionEdit.Text == string.Empty)
         {
             levelDescriptionEdit.Text = selectedLevel.Description;
             UIManager.Instance.PopupNotification("You cannot submit an empty description.");
