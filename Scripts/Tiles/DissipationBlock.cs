@@ -14,7 +14,7 @@ public partial class DissipationBlock : Tile
         if (body is PlayerMovement) Dissipate();
     }
 
-    public async void Dissipate()
+    public async Task Dissipate()
     {
         //disable dissipation trigger
         collisionShape.SetDeferred("disabled", true);

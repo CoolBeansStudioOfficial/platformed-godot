@@ -196,4 +196,7 @@ public class Execute
 
     [JsonPropertyName("endY")]
     public int? EndY { get; set; }
+
+    [JsonPropertyName("time")]
+    public string? Time { get; set; }
 }

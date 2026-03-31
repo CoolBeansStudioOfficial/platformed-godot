@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Trigger : Tile
 {
@@ -20,7 +21,7 @@ public partial class Trigger : Tile
         }
     }
 
-    void RunTrigger()
+    async Task RunTrigger()
     {
         foreach (var command in triggerParams.Execute)
         {
@@ -60,6 +61,10 @@ public partial class Trigger : Tile
                     }
                 }
                 
+            }
+            else if (command.Type == "delay")
+            {
+                await Task.Delay(Convert.ToInt32(command.Time));
             }
         }
     }

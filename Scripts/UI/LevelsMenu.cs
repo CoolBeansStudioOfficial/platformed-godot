@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class LevelsMenu : Control
 {
@@ -53,7 +54,7 @@ public partial class LevelsMenu : Control
     }
 
 
-    public async void Explore()
+    public async Task Explore()
     {
         //set ui to explore menu
         searchBar.AddThemeStyleboxOverride("panel", exploreStyle);
@@ -72,7 +73,7 @@ public partial class LevelsMenu : Control
         levelsList.SetLevels(levels);
     }
 
-    public async void MyLevels()
+    public async Task MyLevels()
     {
         //set ui to my levels menu
         searchBar.AddThemeStyleboxOverride("panel", myLevelsStyle);

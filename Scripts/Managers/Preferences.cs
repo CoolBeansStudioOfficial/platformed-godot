@@ -63,7 +63,7 @@ public partial class Preferences : Node
         return levels;
     }
 
-    public async void SaveLevelAsFile(Level level, string path)
+    public async Task SaveLevelAsFile(Level level, string path)
     {
         var stream = File.Create(path);
         await JsonSerializer.SerializeAsync(stream, level);

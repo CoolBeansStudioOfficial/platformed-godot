@@ -75,7 +75,7 @@ public partial class SettingsMenu : Control
     }
 
     //i only did this because it was giving an error when apply is called in ready
-    public async void SetEditorTileset()
+    public async Task SetEditorTileset()
     {
         try
         {

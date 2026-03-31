@@ -35,7 +35,7 @@ public partial class LevelPreview : Panel
 
         if (level.Tags is not null)
         {
-            foreach (var tag in level.Tags)
+            if (level.Tags is not null) foreach (var tag in level.Tags)
             {
                 if (tag is string t) if (t == "online")
                 {
