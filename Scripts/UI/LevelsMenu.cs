@@ -212,10 +212,11 @@ public partial class LevelsMenu : Control
         deleteConfirmation.PopupCentered();
     }
 
-    void OnDeleteConfirmed()
+    async void OnDeleteConfirmed()
     {
-        GameManager.Instance.DeleteLevel(selectedLevel.Id);
-        GameManager.Instance.ReturnToLevelsMenu();
+        bool success = await GameManager.Instance.DeleteLevel(selectedLevel.Id);
+
+        if (success) GameManager.Instance.ReturnToLevelsMenu(true);
     }
 
     void OnWebButtonPressed()

@@ -180,9 +180,9 @@ public partial class GameManager : Node
         else UIManager.Instance.PopupNotification("Details update failed. If you are connected to the internet, the servers may be down.");
     }
 
-    public async Task DeleteLevel(int id)
+    public async Task<bool> DeleteLevel(int id)
     {
-        if (!IsLoggedIn()) return;
+        if (!IsLoggedIn()) return false;
 
         HttpRequestMessage message = new(HttpMethod.Delete, "https://platformed.jmeow.net/api/delete");
         message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
@@ -199,8 +199,17 @@ public partial class GameManager : Node
         var response = await client.SendAsync(message);
         GD.Print(await response.Content.ReadAsStringAsync());
 
-        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level deleted successfully");
-        else UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.");
+        if (response.IsSuccessStatusCode)
+        {
+            UIManager.Instance.PopupNotification("Level deleted successfully");
+            return true;
+        }
+        else
+        {
+            UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.");
+            return false;
+        }
+
     }
 
     public bool IsLoggedIn()
