@@ -236,6 +236,44 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7poh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04y1l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kdtg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86vii"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghl26"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n1uh"]
@@ -259,7 +297,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "levelNameEdit", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "descriptionSubmitButton", "descriptionCancelButton", "levelNameEdit", "levelCreator", "levelDescriptionEdit", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -281,9 +319,11 @@ remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix
 deleteButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/Delete")
 deleteConfirmation = NodePath("ConfirmationDialog")
 webButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/View On Web")
+descriptionSubmitButton = NodePath("VBoxContainer/Level View/Details/HBoxContainer/Submit Description")
+descriptionCancelButton = NodePath("VBoxContainer/Level View/Details/HBoxContainer/Cancel Description")
 levelNameEdit = NodePath("VBoxContainer/Level View/Level Image/Level Name Edit")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
-levelDescription = NodePath("VBoxContainer/Level View/Details/ScrollContainer/Description Text")
+levelDescriptionEdit = NodePath("VBoxContainer/Level View/Details/Description")
 ratingCount = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer/Rating Text")
 ratingPercentagePositive = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Like Percentage")
 ratingPercentageNegative = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer2/Dislike Percentage")
@@ -607,33 +647,46 @@ offset_bottom = 289.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Description Label" type="Label" parent="VBoxContainer/Level View/Details" unique_id=81762521]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Details" unique_id=295536525]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Description Label" type="Label" parent="VBoxContainer/Level View/Details/HBoxContainer" unique_id=81762521]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 24
 text = "Description"
+vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Level View/Details" unique_id=1585240261]
+[node name="Submit Description" type="Button" parent="VBoxContainer/Level View/Details/HBoxContainer" unique_id=1899639703]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("4_krmfw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")
+text = "Submit"
+
+[node name="Cancel Description" type="Button" parent="VBoxContainer/Level View/Details/HBoxContainer" unique_id=686480072]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("4_krmfw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")
+text = "Cancel"
+
+[node name="Description" type="TextEdit" parent="VBoxContainer/Level View/Details" unique_id=1158411841]
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
-
-[node name="Description Text" type="RichTextLabel" parent="VBoxContainer/Level View/Details/ScrollContainer" unique_id=2014452105]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/normal_font = ExtResource("2_eotax")
-theme_override_fonts/bold_font = ExtResource("4_eotax")
-theme_override_fonts/bold_italics_font = ExtResource("4_eotax")
-theme_override_fonts/italics_font = ExtResource("2_eotax")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
-text = "This is the description of the level written by its creator.
-"
-fit_content = true
+theme_override_colors/font_readonly_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_86vii")
+placeholder_text = "Description is empty..."
+editable = false
 
 [node name="Rating" type="Panel" parent="VBoxContainer/Level View/Details" unique_id=1396048154]
 custom_minimum_size = Vector2(0, 125)

@@ -22,11 +22,13 @@ public partial class LevelsMenu : Control
     [Export] Button deleteButton;
     [Export] ConfirmationDialog deleteConfirmation;
     [Export] Button webButton;
+    [Export] Button descriptionSubmitButton;
+    [Export] Button descriptionCancelButton;
 
     [ExportGroup("Level Info")]
     [Export] LineEdit levelNameEdit;
     [Export] Label levelCreator;
-    [Export] RichTextLabel levelDescription;
+    [Export] TextEdit levelDescriptionEdit;
     [Export] Label ratingCount;
     [Export] Label ratingPercentagePositive;
     [Export] Label ratingPercentageNegative;
@@ -51,6 +53,9 @@ public partial class LevelsMenu : Control
         deleteConfirmation.Confirmed += OnDeleteConfirmed;
         webButton.Pressed += OnWebButtonPressed;
         levelNameEdit.TextSubmitted += OnLevelNameChanged;
+        levelDescriptionEdit.TextChanged += OnLevelDescriptionChanged;
+        descriptionSubmitButton.Pressed += OnDescriptionSubmitted;
+        descriptionCancelButton.Pressed += OnDescriptionCanceled;
         Explore();
     }
 
@@ -125,7 +130,9 @@ public partial class LevelsMenu : Control
         levelNameEdit.Editable = false;
 
         levelCreator.Text = level.Username;
-        levelDescription.Text = level.Description;
+
+        levelDescriptionEdit.Text = level.Description;
+        levelDescriptionEdit.Editable = false;
 
         ratingCount.Text = $"{level.Approvals + level.Disapprovals} ratings";
         ratingPercentageNegative.Text = $"{100 - level.ApprovalPercentage}%";
@@ -170,6 +177,7 @@ public partial class LevelsMenu : Control
                         deleteButton.Visible = true;
 
                         levelNameEdit.Editable = true;
+                        levelDescriptionEdit.Editable = true;
                     }
                 }
             }
@@ -220,10 +228,11 @@ public partial class LevelsMenu : Control
         if (newText == string.Empty)
         {
             levelNameEdit.Text = selectedLevel.Name;
-            UIManager.Instance.PopupNotification("A level's name cannot be empty.");
+            UIManager.Instance.PopupNotification("You cannot submit an empty level name.");
         }
         else
         {
+            selectedLevel.Name = newText;
             GameManager.Instance.EditLevelDetails(new()
             {
                 Name = levelNameEdit.Text,
@@ -232,6 +241,42 @@ public partial class LevelsMenu : Control
                 LevelId = selectedLevel.Id,
             });
         }
+    }
+
+    void OnLevelDescriptionChanged()
+    {
+        descriptionSubmitButton.Visible = true;
+        descriptionCancelButton.Visible = true;
+    }
+
+    void OnDescriptionSubmitted()
+    {
+        if (levelDescriptionEdit.Text == string.Empty)
+        {
+            levelDescriptionEdit.Text = selectedLevel.Description;
+            UIManager.Instance.PopupNotification("You cannot submit an empty description.");
+        }
+        else
+        {
+            selectedLevel.Description = levelDescriptionEdit.Text;
+            GameManager.Instance.EditLevelDetails(new()
+            {
+                Name = selectedLevel.Name,
+                Public = true,
+                Description = levelDescriptionEdit.Text,
+                LevelId = selectedLevel.Id,
+            });
+        }
+        
+        descriptionSubmitButton.Visible = false;
+        descriptionCancelButton.Visible = false;
+    }
+
+    private void OnDescriptionCanceled()
+    {
+        levelDescriptionEdit.Text = selectedLevel.Description;
+        descriptionSubmitButton.Visible = false;
+        descriptionCancelButton.Visible = false;
     }
 
     void OnAddLevelsFolderButtonPressed()
