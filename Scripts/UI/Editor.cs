@@ -557,14 +557,14 @@ public partial class Editor : Control
         {
             if (GameManager.Instance.IsLoggedIn())
             {
-                uploadDialog.DialogText = "Are you sure you want to publicly upload this level to your account?\r\n(You can edit it later in the web editor)";
+                uploadDialog.DialogText = "Are you sure you want to publicly upload this level to your account?\n(You can edit it later in the web editor)";
                 uploadDialog.OkButtonText = "Upload";
 
                 if (currentLevel.Tags is not null) foreach (var tag in currentLevel.Tags)
                 {
                     if (tag is string t) if (t == "online")
                     {
-                        uploadDialog.DialogText = "Are you sure you want to overwrite your existing online level?\nThis CANNOT be undone.";
+                        uploadDialog.DialogText = "Are you sure you want to overwrite your existing online level?\nThis CANNOT be undone!";
                         uploadDialog.OkButtonText = "Update";
                     }
                 }

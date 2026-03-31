@@ -166,6 +166,20 @@ public partial class GameManager : Node
         else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.");
     }
 
+    public async Task EditLevelDetails(LevelDetails details)
+    {
+        if (!IsLoggedIn()) return;
+
+        HttpRequestMessage message = new(HttpMethod.Patch, "https://platformed.jmeow.net/api/edit");
+        message.Headers.Add("Cookie", $"session-id={(string)preferences.GetPreference("session_id")}; token={(string)preferences.GetPreference("token")}");
+        message.Content = new StringContent(JsonSerializer.Serialize(details));
+
+        var response = await client.SendAsync(message);
+
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level details updated successfully");
+        else UIManager.Instance.PopupNotification("Details update failed. If you are connected to the internet, the servers may be down.");
+    }
+
     public async Task DeleteLevel(int id)
     {
         if (!IsLoggedIn()) return;

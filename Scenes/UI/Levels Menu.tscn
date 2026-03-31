@@ -150,6 +150,8 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krmfw"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ss6"]
 bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
 corner_radius_top_left = 50
@@ -257,7 +259,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "levelName", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "levelNameEdit", "levelCreator", "levelDescription", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -279,7 +281,7 @@ remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix
 deleteButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/Delete")
 deleteConfirmation = NodePath("ConfirmationDialog")
 webButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/View On Web")
-levelName = NodePath("VBoxContainer/Level View/Level Image/Level Name")
+levelNameEdit = NodePath("VBoxContainer/Level View/Level Image/Level Name Edit")
 levelCreator = NodePath("VBoxContainer/Level View/Level Image/Level Creator")
 levelDescription = NodePath("VBoxContainer/Level View/Details/ScrollContainer/Description Text")
 ratingCount = NodePath("VBoxContainer/Level View/Details/Rating/HBoxContainer/Rating Text")
@@ -478,7 +480,7 @@ offset_bottom = 80.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qh20v")
 
-[node name="Level Name" type="Label" parent="VBoxContainer/Level View/Level Image" unique_id=1642413006]
+[node name="Level Name Edit" type="LineEdit" parent="VBoxContainer/Level View/Level Image" unique_id=1584784133]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -488,15 +490,18 @@ anchor_bottom = 1.0
 offset_left = -270.0
 offset_top = 20.0
 offset_right = 270.0
-offset_bottom = 79.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_font_sizes/font_size = 48
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_krmfw")
 text = "Level Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-text_overrun_behavior = 3
+placeholder_text = "Enter Level Name..."
+alignment = 1
+max_length = 32
+editable = false
 
 [node name="Level Creator" type="Label" parent="VBoxContainer/Level View/Level Image" unique_id=117515245]
 layout_mode = 1

@@ -87,6 +87,21 @@ public class LevelUpdate
     public int? Height { get; set; }
 }
 
+public class LevelDetails
+{
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("public")]
+    public bool? Public { get; set; }
+
+    [JsonPropertyName("description")]
+    public string Description { get; set; }
+
+    [JsonPropertyName("levelId")]
+    public int? LevelId { get; set; }
+}
+
 public class LevelDelete
 {
     [JsonPropertyName("levelId")]

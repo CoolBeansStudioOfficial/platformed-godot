@@ -24,7 +24,7 @@ public partial class LevelsMenu : Control
     [Export] Button webButton;
 
     [ExportGroup("Level Info")]
-    [Export] Label levelName;
+    [Export] LineEdit levelNameEdit;
     [Export] Label levelCreator;
     [Export] RichTextLabel levelDescription;
     [Export] Label ratingCount;
@@ -50,9 +50,9 @@ public partial class LevelsMenu : Control
         deleteButton.Pressed += OnDeleteButtonPressed;
         deleteConfirmation.Confirmed += OnDeleteConfirmed;
         webButton.Pressed += OnWebButtonPressed;
+        levelNameEdit.TextSubmitted += OnLevelNameChanged;
         Explore();
     }
-
 
     public async Task Explore()
     {
@@ -121,7 +121,9 @@ public partial class LevelsMenu : Control
     {
         selectedLevel = level;
 
-        levelName.Text = level.Name;
+        levelNameEdit.Text = level.Name;
+        levelNameEdit.Editable = false;
+
         levelCreator.Text = level.Username;
         levelDescription.Text = level.Description;
 
@@ -162,9 +164,12 @@ public partial class LevelsMenu : Control
                 {
                     webButton.Visible = true;
 
+                    //if level is owned by player
                     if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.preferences.GetPreference("user_id"))
                     {
                         deleteButton.Visible = true;
+
+                        levelNameEdit.Editable = true;
                     }
                 }
             }
@@ -208,6 +213,25 @@ public partial class LevelsMenu : Control
     void OnWebButtonPressed()
     {
         OS.ShellOpen($"https://platformed.jmeow.net/level/{selectedLevel.Id}");
+    }
+
+    void OnLevelNameChanged(string newText)
+    {
+        if (newText == string.Empty)
+        {
+            levelNameEdit.Text = selectedLevel.Name;
+            UIManager.Instance.PopupNotification("A level's name cannot be empty.");
+        }
+        else
+        {
+            GameManager.Instance.EditLevelDetails(new()
+            {
+                Name = levelNameEdit.Text,
+                Public = true,
+                Description = selectedLevel.Description,
+                LevelId = selectedLevel.Id,
+            });
+        }
     }
 
     void OnAddLevelsFolderButtonPressed()
