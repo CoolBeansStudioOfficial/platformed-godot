@@ -19,12 +19,6 @@ public partial class ThemeManager : Node
     List<Node> nodes = [];
     Color backgroundAccent;
 
-    public class ColorTheme
-    {
-        [JsonPropertyName("color")]
-        public Color color;
-    }
-
     public static ThemeManager Instance { get; private set; }
     public override void _Ready()
     {

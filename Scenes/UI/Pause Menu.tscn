@@ -53,6 +53,7 @@ offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2glbi")
+metadata/ui = "background"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options" unique_id=1233433045]
 layout_mode = 1
@@ -91,7 +92,7 @@ offset_top = 40.0
 offset_right = 157.0
 offset_bottom = 137.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_2glbi")
 theme_override_font_sizes/font_size = 60
 text = "Paused"
