@@ -135,7 +135,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh20v"]
-bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+bg_color = Color(0.7058824, 0.7058824, 0.7058824, 0.5019608)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -187,45 +187,45 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmdl3"]
 bg_color = Color(1, 0.3811961, 0.31453565, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_141j1"]
 bg_color = Color(0.38857287, 0.12805986, 0.100029975, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0b4a"]
 bg_color = Color(0.735357, 0.2711756, 0.221232, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy1gy"]
 bg_color = Color(0.5712548, 0.31022376, 0.8211601, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn0xr"]
 bg_color = Color(0.20885187, 0.098381154, 0.3127273, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfs72"]
 bg_color = Color(0.4151306, 0.21829414, 0.60021555, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymkg"]
 bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
@@ -458,7 +458,8 @@ grow_vertical = 2
 tooltip_text = "Set Levels Folder
 You can choose a folder to save levels locally to.
 This will also be the default location created levels are saved."
-theme_override_fonts/font = ExtResource("2_eotax")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f8xdp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kngc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2s4xu")
@@ -587,6 +588,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_j1ss6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6ytik")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wb41a")
 text = "Play"
+metadata/ui = "button"
 
 [node name="Remix" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer" unique_id=1225201191]
 layout_mode = 2
@@ -598,6 +600,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l0v1i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ghl26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
 text = "Remix"
+metadata/ui = "button"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1546063072]
 layout_mode = 1

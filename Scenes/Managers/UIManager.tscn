@@ -78,7 +78,7 @@ notification = NodePath("Notification")
 script = ExtResource("2_407tw")
 UINodes = [NodePath("../UI"), NodePath("../Settings")]
 backgroundColor = Color(0.13333334, 0.13333334, 0.13333334, 1)
-accentColor = Color(0.39790323, 0.51976365, 0.5932981, 1)
+accentColor = Color(0.5823133, 0.85650784, 0.94708174, 1)
 buttonStylebox = SubResource("StyleBoxFlat_n6i5l")
 toggleStylebox = SubResource("StyleBoxFlat_k102b")
 

@@ -13,7 +13,9 @@ public partial class SettingsMenu : Control
     [Export] Button ok;
 
     [ExportGroup("Settings Buttons")]
-	[Export] OptionButton styleOptions;
+    [Export] ColorPickerButton backgroundColor;
+    [Export] ColorPickerButton accentColor;
+    [Export] OptionButton styleOptions;
 
     [ExportGroup("Config")]
     [Export] TileSet[] playSets;
@@ -44,7 +46,9 @@ public partial class SettingsMenu : Control
         {
             GameManager.Instance.preferences.SetPreference("app_settings", new Dictionary<string, Variant>()
             {
-                { "tile_style", 1 }
+                { "tile_style", 1 },
+                { "background_color", new Color("#222222") },
+                { "accent_color", new Color("#94daf2") }
             });
         }
 
@@ -52,14 +56,17 @@ public partial class SettingsMenu : Control
 
         //set buttons to match config file
         styleOptions.Selected = (int)settings["tile_style"];
+        backgroundColor.Color = (Color)settings["background_color"];
+        accentColor.Color = (Color)settings["accent_color"];
     }
 
     public void Update()
     {
         //set values
         settings["tile_style"] = styleOptions.GetSelectedId();
+        settings["background_color"] = backgroundColor.Color;
+        settings["accent_color"] = accentColor.Color;
 
-        
     }
 
     void Apply()
@@ -72,6 +79,10 @@ public partial class SettingsMenu : Control
         //apply settings
         LevelManager.Instance.SetTileset(playSets[(int)settings["tile_style"]]);
         SetEditorTileset();
+        
+        ThemeManager.Instance.backgroundColor = (Color)settings["background_color"];
+        ThemeManager.Instance.accentColor = (Color)settings["accent_color"];
+        ThemeManager.Instance.SetTheme();
     }
 
     //i only did this because it was giving an error when apply is called in ready

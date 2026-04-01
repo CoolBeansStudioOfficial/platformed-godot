@@ -9,8 +9,8 @@ public partial class ThemeManager : Node
     [Export] Node[] UINodes;
 
     [ExportGroup("Customization")]
-    [Export] Color backgroundColor;
-    [Export] Color accentColor;
+    [Export] public Color backgroundColor;
+    [Export] public Color accentColor;
 
     [ExportGroup("Hardcoded")]
     [Export] StyleBoxFlat buttonStylebox;
@@ -104,8 +104,7 @@ public partial class ThemeManager : Node
                 if (style == "button")
                 {
                     //create new stylebox, keep things like rounded edges intact
-                    Color buttonColor = CombineColors(Colors.Black, accentColor, 0.25f);
-                    buttonColor.A = 0.3f;
+                    Color buttonColor = accentColor;
                     StyleBoxFlat normalBox = CreateStylebox(buttonStylebox, buttonColor);
                     button.AddThemeStyleboxOverride("normal", normalBox);
 

@@ -7,10 +7,11 @@
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_tkyaf"]
 [ext_resource type="TileSet" uid="uid://bhy6co17x4llf" path="res://Tilesets/8BitEditor.tres" id="4_6ly1g"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
+[ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="7_q7h03"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vk5b"]
 
-[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "styleOptions")]
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "backgroundColor", "accentColor", "styleOptions")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +23,8 @@ unsavedDialog = NodePath("ConfirmationDialog")
 apply = NodePath("Background/HBoxContainer/Apply")
 close = NodePath("Background/HBoxContainer/Close")
 ok = NodePath("Background/HBoxContainer/OK")
+backgroundColor = NodePath("Background/VBoxContainer/HBoxContainer/VBoxContainer/Background Color")
+accentColor = NodePath("Background/VBoxContainer/HBoxContainer/VBoxContainer2/Accent Color")
 styleOptions = NodePath("Background/VBoxContainer/Style Options")
 playSets = Array[TileSet]([ExtResource("2_1vk5b"), ExtResource("3_q7h03")])
 editorSets = Array[TileSet]([ExtResource("4_6ly1g"), ExtResource("5_fy6my")])
@@ -53,15 +56,55 @@ theme_override_font_sizes/font_size = 24
 text = "Graphics
 "
 
-[node name="Label" type="Label" parent="Background/VBoxContainer" unique_id=1691613711]
+[node name="Color Customization" type="Label" parent="Background/VBoxContainer" unique_id=463278779]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_q7h03")
+text = "Color Customization"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer" unique_id=1072992103]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer" unique_id=2000553615]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1027647226]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "Background Color"
+
+[node name="Background Color" type="ColorPickerButton" parent="Background/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1878666882]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_tkyaf")
+color = Color(0.13333334, 0.13333334, 0.13333334, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/VBoxContainer/HBoxContainer" unique_id=780583579]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=752313039]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tkyaf")
+text = "Accent Color"
+
+[node name="Accent Color" type="ColorPickerButton" parent="Background/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=250419690]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_tkyaf")
+color = Color(0.69411767, 0.8901961, 0.22352941, 1)
+
+[node name="Style" type="Label" parent="Background/VBoxContainer" unique_id=1691613711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_q7h03")
 text = "Style"
 
 [node name="Style Options" type="OptionButton" parent="Background/VBoxContainer" unique_id=1608893756]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tkyaf")
 selected = 1
 item_count = 2
@@ -93,6 +136,7 @@ grow_vertical = 0
 [node name="Apply" type="Button" parent="Background/HBoxContainer" unique_id=1321485023]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "Apply"
 metadata/ui = "button"
@@ -100,6 +144,7 @@ metadata/ui = "button"
 [node name="Close" type="Button" parent="Background/HBoxContainer" unique_id=691585012]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "Close"
 metadata/ui = "button"
@@ -107,6 +152,7 @@ metadata/ui = "button"
 [node name="OK" type="Button" parent="Background/HBoxContainer" unique_id=354860619]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "OK"
 metadata/ui = "button"
