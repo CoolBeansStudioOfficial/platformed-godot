@@ -16,6 +16,10 @@ public partial class LevelPreview : Panel
     public override void _Ready()
 	{
         playButton.Pressed += OnPlayButtonPressed;
+
+        AddThemeStyleboxOverride("panel", ThemeManager.Instance.CreateStylebox(
+            (StyleBoxFlat)GetThemeStylebox("panel"), 
+            ThemeManager.Instance.accentColor));
 	}
 
     public void SetLevel(Level newLevel)

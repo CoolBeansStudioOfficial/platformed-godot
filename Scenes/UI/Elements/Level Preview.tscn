@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://blxwvm4it5k33" path="res://Images/Raster/Icons/Cloud.png" id="6_6t133"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2yn0"]
-bg_color = Color(0.70519364, 0.70519364, 0.7051935, 0.5019608)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15

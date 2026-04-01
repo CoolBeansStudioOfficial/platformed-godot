@@ -17,7 +17,7 @@ public partial class ThemeManager : Node
     [Export] StyleBoxFlat toggleStylebox;
 
     List<Node> nodes = [];
-    Color backgroundAccent;
+    public Color backgroundAccent;
 
     public static ThemeManager Instance { get; private set; }
     public override void _Ready()
@@ -140,7 +140,7 @@ public partial class ThemeManager : Node
         };
     }
 
-    StyleBoxFlat CreateStylebox(StyleBoxFlat box, Color color)
+    public StyleBoxFlat CreateStylebox(StyleBoxFlat box, Color color)
     {
         return new()
         {

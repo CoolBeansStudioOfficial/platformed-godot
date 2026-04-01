@@ -77,6 +77,9 @@ text = "Background Color"
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Background Color
+Set to #222222 by default.
+It is recommeneded to set it to a dark neutral color."
 theme_override_fonts/font = ExtResource("3_tkyaf")
 color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
@@ -92,6 +95,9 @@ text = "Accent Color"
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Accent Color
+Set to #94daf2 by default.
+It is recommeneded to set it to a bright saturated color."
 theme_override_fonts/font = ExtResource("3_tkyaf")
 color = Color(0.5803922, 0.85490197, 0.9490196, 1)
 
