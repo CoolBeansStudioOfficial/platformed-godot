@@ -37,6 +37,7 @@ public partial class Editor : Control
     //edit mode
     bool startedSelection = false;
     bool startedDrag = false;
+    List<TileInfo> dragInitial = [];
     EditSelection selection;
 
     public struct TileSelection
@@ -50,17 +51,26 @@ public partial class Editor : Control
     {
         public Vector2I start;
         public Vector2I end;
-
         public Vector2I dragPosition;
+        public List<TileInfo> tiles;
 
         //move selection to point relative to drag position
         public void Move(Vector2I position)
         {
             Vector2I offset = position - dragPosition;
 
-            dragPosition += offset;
+            //offset selection positions
             start += offset;
             end += offset;
+            dragPosition += offset;
+
+            //offset stored tile positions
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                TileInfo tile = tiles[i];
+                tile.position += offset;
+                tiles[i] = tile;
+            }
         }
 
         public bool IsInRect(Vector2I position)
@@ -77,6 +87,21 @@ public partial class Editor : Control
             return true;
         }
 
+        public List<Vector2I> GetCells()
+        {
+            List<Vector2I> cells = [];
+
+            for (int y = Mathf.Min(start.Y, end.Y); y <= Mathf.Max(start.Y, end.Y); y++)
+            {
+                for (int x = Mathf.Min(start.X, end.X); x <= Mathf.Max(start.X, end.X); x++)
+                {
+                    cells.Add(new(x, y));
+                }
+            }
+
+            return cells;
+        }
+
         public Vector2I GetCenter()
         {
             return new((start.X + end.X) / 2, (start.Y + end.Y) / 2);
@@ -85,11 +110,6 @@ public partial class Editor : Control
         public Vector2 GetSize()
         {
             return new(Mathf.Abs(start.X - end.X) + 1, Mathf.Abs(start.Y - end.Y) + 1);
-        }
-
-        public Rect2 GetRect()
-        {
-            return new(start.X, start.Y, 16, 16);
         }
     }
 
@@ -181,13 +201,40 @@ public partial class Editor : Control
                 else
                 {
                     mouseDown = false;
-                    startedSelection = false;
 
-                    //if selection was being dragged, handle release
-                    if (startedDrag)
+                    //if started selection, get blocks in selection and end it
+                    if (startedSelection)
                     {
-                        GD.Print("selection moved");
+                        foreach (Vector2I cell in selection.GetCells())
+                        {
+                            if (!IsInGrid(cell)) continue;
+                            TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
+                            selection.tiles.Add(tile);
+                        }
 
+                        startedSelection = false;
+                    }
+                    //if selection was being dragged, handle release
+                    else if (startedDrag)
+                    {
+                        AddEdit();
+
+                        //remove tiles from previous position
+                        foreach (TileInfo tile in dragInitial)
+                        {
+                            if (tile.id == TileId.Air) continue;
+                            SetTile(tile.position, TileId.Air, tile.rotation, false);
+                        }
+
+                        //add tiles to new position
+                        foreach (TileInfo tile in selection.tiles)
+                        {
+                            if (tile.id == TileId.Air) continue;
+                            SetTile(tile.position, tile.id, tile.rotation, false);
+                        }
+                        UpdateTiles();
+
+                        GD.Print("selection moved");
                         startedDrag = false;
                     }
                 }
@@ -294,7 +341,8 @@ public partial class Editor : Control
                     selection = new()
                     {
                         start = mouseCoords,
-                        end = mouseCoords
+                        end = mouseCoords,
+                        tiles = []
                     };
 
                     startedSelection = true;
@@ -319,6 +367,14 @@ public partial class Editor : Control
                         if (selection.IsInRect(mouseCoords))
                         {
                             selection.dragPosition = mouseCoords;
+
+                            dragInitial.Clear();
+                            foreach (Vector2I cell in selection.GetCells())
+                            {
+                                if (!IsInGrid(cell)) continue;
+                                TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
+                                dragInitial.Add(tile);
+                            }
 
                             startedDrag = true;
                         }
@@ -378,11 +434,10 @@ public partial class Editor : Control
         if (placeMode) SetMode(EditorMode.Edit);
     }
 
-    void SetTile(Vector2I position, TileId id, TileRotation rotation = TileRotation.Up)
+    void SetTile(Vector2I position, TileId id, TileRotation rotation = TileRotation.Up, bool updateTiles = true)
     {
         //return if position is outside of set level size
-        if (position.X >= gridSize.X || position.Y >= gridSize.Y) return;
-        if (position.X < 0 || position.Y < 0) return;
+        if (!IsInGrid(position)) return;
 
         if (id == TileId.Air) tileMap.SetCell(position);
         else tileMap.SetCell(position, (int)id, Vector2I.Zero);
@@ -392,7 +447,14 @@ public partial class Editor : Control
         editedTile.rotation = rotation;
         editHistory[currentEdit][position.Y][position.X] = editedTile;
 
-        UpdateTiles();
+        if (updateTiles) UpdateTiles();
+    }
+
+    bool IsInGrid(Vector2I position)
+    {
+        if (position.X >= gridSize.X || position.Y >= gridSize.Y) return false;
+        if (position.X < 0 || position.Y < 0) return false;
+        return true;
     }
 
     enum EditorMode
@@ -409,6 +471,9 @@ public partial class Editor : Control
             selection = default;
             placeMode = true;
             flyoutOptions.Visible = true;
+
+            overlay.currentOutline = null;
+            overlay.QueueRedraw();
 
             AddEdit();
         }
