@@ -93,7 +93,7 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("3_tkyaf")
-color = Color(0.69411767, 0.8901961, 0.22352941, 1)
+color = Color(0.5803922, 0.85490197, 0.9490196, 1)
 
 [node name="Style" type="Label" parent="Background/VBoxContainer" unique_id=1691613711]
 layout_mode = 2
