@@ -3,11 +3,8 @@
 [ext_resource type="Script" uid="uid://csayj7hje60ul" path="res://Scripts/UI/LevelsMenu.cs" id="1_u0pm4"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_eotax"]
 [ext_resource type="PackedScene" uid="uid://cv2q226lq4h1r" path="res://Scenes/UI/Elements/Level Preview.tscn" id="2_o2yn0"]
-[ext_resource type="Texture2D" uid="uid://bv4x75nrmly7t" path="res://Images/Vector/redbanner.svg" id="3_1n1uh"]
-[ext_resource type="Texture2D" uid="uid://0ig0aixq8bto" path="res://Images/Vector/bluebanner.svg" id="3_j1ss6"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="3_udm2q"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_eotax"]
-[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="4_krmfw"]
 [ext_resource type="Script" uid="uid://d4vgewlv3nlb" path="res://Scripts/UI/Elements/LevelsList.cs" id="5_0kyo8"]
 [ext_resource type="Texture2D" uid="uid://b41k6wgpfrvpj" path="res://Images/Vector/search.svg" id="6_ki7ki"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="7_nrx0y"]
@@ -16,19 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://b0jq6bxbm5kk2" path="res://Images/Vector/DNF.svg" id="11_ghl26"]
 [ext_resource type="Texture2D" uid="uid://c3rg6s8sfvyxu" path="res://Images/Vector/flaglightgreen.svg" id="12_ki7ki"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_krmfw"]
-texture = ExtResource("3_j1ss6")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86vii"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sich"]
-texture = ExtResource("3_1n1uh")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ytik"]
-texture = ExtResource("3_j1ss6")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n1uh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ki7ki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekh4d"]
-bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -236,6 +227,19 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymkg"]
+bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w0b6"]
+bg_color = Color(0.094904155, 0.08609058, 0.07433915, 1)
+
+[sub_resource type="Theme" id="Theme_vkhef"]
+default_font = ExtResource("2_eotax")
+Background/base_type = &"Panel"
+Background/styles/panel = SubResource("StyleBoxFlat_hymkg")
+BackgroundAccent/base_type = &"Panel"
+BackgroundAccent/styles/panel = SubResource("StyleBoxFlat_5w0b6")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7poh"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -311,8 +315,6 @@ levelsList = NodePath("VBoxContainer/Levels List")
 levelView = NodePath("VBoxContainer/Level View")
 searchBar = NodePath("VBoxContainer/Search Bar")
 searchBarText = NodePath("VBoxContainer/Search Bar/Search Box/RichTextLabel")
-exploreStyle = SubResource("StyleBoxTexture_krmfw")
-myLevelsStyle = SubResource("StyleBoxTexture_8sich")
 backButton = NodePath("VBoxContainer/Level View/Back")
 playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
 remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix")
@@ -340,8 +342,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_krmfw")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_86vii")
+metadata/ui = "background"
 
 [node name="Version Number" type="Label" parent="." unique_id=1580076307]
 layout_mode = 1
@@ -371,7 +373,7 @@ theme_override_constants/separation = 25
 [node name="Search Bar" type="Panel" parent="VBoxContainer" unique_id=565823182]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6ytik")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1n1uh")
 
 [node name="Search Box" type="Panel" parent="VBoxContainer/Search Bar" unique_id=1879435141]
 layout_mode = 1
@@ -406,9 +408,8 @@ layout_mode = 0
 offset_left = 206.0
 offset_right = 870.0
 offset_bottom = 56.0
-theme = ExtResource("4_krmfw")
-theme_type_variation = &"Background"
 theme_override_styles/panel = SubResource("StyleBoxFlat_ekh4d")
+metadata/ui = "background_accent"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/Search Bar/Search Box/Search" unique_id=1997814481]
 layout_mode = 1
@@ -462,6 +463,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f8xdp")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kngc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2s4xu")
 text = "Set Levels Folder"
+metadata/ui = "button"
 
 [node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "noLevelsLabel", "searchBox", "searchButton")]
 layout_mode = 2
@@ -663,7 +665,7 @@ vertical_alignment = 1
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("4_krmfw")
+theme = SubResource("Theme_vkhef")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")
@@ -673,7 +675,7 @@ text = "Submit"
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("4_krmfw")
+theme = SubResource("Theme_vkhef")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://blxwvm4it5k33" path="res://Images/Raster/Icons/Cloud.png" id="6_6t133"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2yn0"]
-bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+bg_color = Color(1, 1, 1, 0.5019608)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -53,6 +53,7 @@ creator = NodePath("Info/Creator")
 likePercentage = NodePath("Info/Like Percentage")
 completionPercentage = NodePath("Info/Completion Percentage")
 cloudIcon = NodePath("Cloud Icon")
+metadata/ui = "accent"
 
 [node name="Info" type="Panel" parent="." unique_id=1919460031]
 layout_mode = 1

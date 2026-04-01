@@ -7,7 +7,8 @@
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_tkyaf"]
 [ext_resource type="TileSet" uid="uid://bhy6co17x4llf" path="res://Tilesets/8BitEditor.tres" id="4_6ly1g"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
-[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="6_q7h03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vk5b"]
 
 [node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "styleOptions")]
 layout_mode = 3
@@ -18,24 +19,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdrfj")
 unsavedDialog = NodePath("ConfirmationDialog")
-apply = NodePath("Panel/HBoxContainer/Apply")
-close = NodePath("Panel/HBoxContainer/Close")
-ok = NodePath("Panel/HBoxContainer/OK")
-styleOptions = NodePath("Panel/VBoxContainer/Style Options")
+apply = NodePath("Background/HBoxContainer/Apply")
+close = NodePath("Background/HBoxContainer/Close")
+ok = NodePath("Background/HBoxContainer/OK")
+styleOptions = NodePath("Background/VBoxContainer/Style Options")
 playSets = Array[TileSet]([ExtResource("2_1vk5b"), ExtResource("3_q7h03")])
 editorSets = Array[TileSet]([ExtResource("4_6ly1g"), ExtResource("5_fy6my")])
 
-[node name="Panel" type="Panel" parent="." unique_id=1427619110]
+[node name="Background" type="Panel" parent="." unique_id=1427619110]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_q7h03")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vk5b")
+metadata/ui = "background"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1862171430]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=1862171430]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,19 +46,19 @@ offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Graphics" type="Label" parent="Panel/VBoxContainer" unique_id=114212846]
+[node name="Graphics" type="Label" parent="Background/VBoxContainer" unique_id=114212846]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_inooc")
 theme_override_font_sizes/font_size = 24
 text = "Graphics
 "
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1691613711]
+[node name="Label" type="Label" parent="Background/VBoxContainer" unique_id=1691613711]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "Style"
 
-[node name="Style Options" type="OptionButton" parent="Panel/VBoxContainer" unique_id=1608893756]
+[node name="Style Options" type="OptionButton" parent="Background/VBoxContainer" unique_id=1608893756]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -68,8 +69,9 @@ popup/item_0/text = "8 Bit"
 popup/item_0/id = 0
 popup/item_1/text = "16 Bit"
 popup/item_1/id = 1
+metadata/ui = "button"
 
-[node name="Audio" type="Label" parent="Panel/VBoxContainer" unique_id=1488470327]
+[node name="Audio" type="Label" parent="Background/VBoxContainer" unique_id=1488470327]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_inooc")
@@ -77,7 +79,7 @@ theme_override_font_sizes/font_size = 24
 text = "Audio
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1763348458]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background" unique_id=1763348458]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -88,23 +90,26 @@ offset_right = 318.0
 offset_bottom = -10.0
 grow_vertical = 0
 
-[node name="Apply" type="Button" parent="Panel/HBoxContainer" unique_id=1321485023]
+[node name="Apply" type="Button" parent="Background/HBoxContainer" unique_id=1321485023]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "Apply"
+metadata/ui = "button"
 
-[node name="Close" type="Button" parent="Panel/HBoxContainer" unique_id=691585012]
+[node name="Close" type="Button" parent="Background/HBoxContainer" unique_id=691585012]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "Close"
+metadata/ui = "button"
 
-[node name="OK" type="Button" parent="Panel/HBoxContainer" unique_id=354860619]
+[node name="OK" type="Button" parent="Background/HBoxContainer" unique_id=354860619]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tkyaf")
 text = "OK"
+metadata/ui = "button"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=1414757868]
 oversampling_override = 1.0

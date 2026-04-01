@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b7ivncp6f38v"]
 
-[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="1_1dj3h"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="1_4vp1j"]
 [ext_resource type="Script" uid="uid://bytxpalg3o47w" path="res://Scripts/UI/TopBar.cs" id="1_swqkx"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_swqkx"]
@@ -8,6 +7,8 @@
 [ext_resource type="Script" uid="uid://hdfwn2atnldv" path="res://Scripts/UI/Elements/ProfileMenu.cs" id="4_lx6et"]
 [ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Icons/Interactables.png" id="5_25fso"]
 [ext_resource type="Script" uid="uid://djqm5h48kpd8d" path="res://Scripts/UI/Elements/SignInWindow.cs" id="6_25fso"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nil4o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur25d"]
 bg_color = Color(0.13333334, 0.17254902, 0.09803922, 1)
@@ -118,21 +119,21 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dj3h"]
-bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
+bg_color = Color(0, 0, 0, 0.5019608)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aig7t"]
-bg_color = Color(0.30108815, 0.30108815, 0.30108815, 1)
+bg_color = Color(0.37428045, 0.37428045, 0.37428045, 0.5019608)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wk7i"]
-bg_color = Color(0.26293245, 0.26293245, 0.26293245, 1)
+bg_color = Color(0.15727392, 0.15727395, 0.15727395, 0.5019608)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -147,6 +148,8 @@ corner_radius_bottom_left = 50
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dj3h"]
 texture = ExtResource("5_25fso")
 region_rect = Rect2(129.68, 133.31, 250, 250)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkhef"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vrv4"]
 
@@ -173,13 +176,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_1dj3h")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_nil4o")
 script = ExtResource("1_swqkx")
 createButton = NodePath("Menu Buttons/Create")
 exploreButton = NodePath("Menu Buttons/Explore")
 myLevelsButton = NodePath("Menu Buttons/My Levels")
 settingsButton = NodePath("App Settings/Settings")
+metadata/ui = "background_accent"
 
 [node name="Title" type="Label" parent="." unique_id=420061]
 layout_mode = 1
@@ -361,8 +364,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_1dj3h")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkhef")
+metadata/ui = "background"
 
 [node name="Title" type="Label" parent="App Settings/Profile/Sign In/Sign In" unique_id=1303102532]
 layout_mode = 1
@@ -455,6 +458,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_swqkx")
 theme_override_font_sizes/font_size = 24
 text = "Sign In"
+metadata/ui = "button"
 
 [node name="Close" type="Button" parent="App Settings/Profile/Sign In/Sign In/Buttons" unique_id=1084287015]
 layout_mode = 2
@@ -462,6 +466,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_swqkx")
 theme_override_font_sizes/font_size = 24
 text = "Close"
+metadata/ui = "button"
 
 [node name="Settings" type="Button" parent="App Settings" unique_id=2041528482]
 custom_minimum_size = Vector2(60, 0)
@@ -471,3 +476,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mxqdd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx6et")
 icon = ExtResource("4_2vrv4")
 expand_icon = true
+metadata/ui = "toggle"

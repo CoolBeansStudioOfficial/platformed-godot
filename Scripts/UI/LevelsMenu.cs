@@ -12,8 +12,6 @@ public partial class LevelsMenu : Control
     [ExportGroup("Search")]
     [Export] Panel searchBar;
     [Export] RichTextLabel searchBarText;
-    [Export] StyleBoxTexture exploreStyle;
-    [Export] StyleBoxTexture myLevelsStyle;
 
     [ExportGroup("Level Buttons")]
     [Export] Button backButton;
@@ -62,7 +60,6 @@ public partial class LevelsMenu : Control
     public async Task Explore()
     {
         //set ui to explore menu
-        searchBar.AddThemeStyleboxOverride("panel", exploreStyle);
         searchBarText.Text = "[b][font_size=29][wave freq=2][rainbow sat=0.1 val=1 freq=0.25]Explore[/rainbow][/wave][/font_size][/b]";
         addLevelsFolderButton.Visible = false;
 
@@ -81,7 +78,6 @@ public partial class LevelsMenu : Control
     public async Task MyLevels()
     {
         //set ui to my levels menu
-        searchBar.AddThemeStyleboxOverride("panel", myLevelsStyle);
         searchBarText.Text = "[b][font_size=29][wave freq=2][rainbow sat=0.1 val=1 freq=0.25]My Levels[/rainbow][/wave][/font_size][/b]";
         addLevelsFolderButton.Visible = true;
 

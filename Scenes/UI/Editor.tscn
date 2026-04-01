@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cwxdsr6ws288l" path="res://Scripts/UI/Editor.cs" id="1_eiun3"]
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
-[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="2_27ou3"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="2_45moc"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_cfu02"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
@@ -47,6 +46,8 @@
 [ext_resource type="Script" uid="uid://ctqthqd8c4px3" path="res://Scripts/UI/Elements/EraserButton.cs" id="38_6dj86"]
 [ext_resource type="Texture2D" uid="uid://c72rdejnnyphw" path="res://Images/Raster/Icons/Trigger.png" id="38_pjxyc"]
 [ext_resource type="Script" uid="uid://byvsis2o3ollx" path="res://Scripts/UI/Elements/EditorOverlay.cs" id="46_ps8e3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqfah"]
 content_margin_left = 7.0
@@ -188,6 +189,8 @@ texture = ExtResource("2_fvgsq")
 texture = ExtResource("3_38yy1")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viewn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3p2xf"]
 texture = ExtResource("16_pijs4")
@@ -494,6 +497,8 @@ texture = ExtResource("20_eqe5u")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpbup"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvt7y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dj86"]
@@ -553,8 +558,8 @@ theme_override_constants/separation = 0
 [node name="Top Bar" type="Panel" parent="Content" unique_id=1548784277]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-theme = ExtResource("2_27ou3")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_m8sup")
+metadata/ui = "background"
 
 [node name="Back" type="Button" parent="Content/Top Bar" unique_id=1287583877]
 layout_mode = 0
@@ -669,6 +674,7 @@ disabled = true
 icon = ExtResource("4_gbx3p")
 icon_alignment = 1
 expand_icon = true
+metadata/ui = "toggle"
 
 [node name="Redo" type="Button" parent="Content/Top Bar/Options" unique_id=1640505515]
 custom_minimum_size = Vector2(64, 0)
@@ -683,6 +689,7 @@ disabled = true
 icon = ExtResource("5_a27t6")
 icon_alignment = 1
 expand_icon = true
+metadata/ui = "toggle"
 
 [node name="Save" type="MenuButton" parent="Content/Top Bar/Options" unique_id=195890749]
 custom_minimum_size = Vector2(64, 0)
@@ -709,6 +716,7 @@ popup/item_3/id = 4
 popup/item_3/separator = true
 popup/item_4/text = "Upload to web"
 popup/item_4/id = 2
+metadata/ui = "toggle"
 
 [node name="Play" type="Button" parent="Content/Top Bar/Options" unique_id=1261242300]
 custom_minimum_size = Vector2(64, 0)
@@ -722,6 +730,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_yj855")
 icon = ExtResource("6_yj855")
 icon_alignment = 1
 expand_icon = true
+metadata/ui = "toggle"
 
 [node name="Settings" type="Button" parent="Content/Top Bar/Options" unique_id=253857849]
 custom_minimum_size = Vector2(64, 0)
@@ -734,6 +743,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_ps8e3")
 icon = ExtResource("35_gbx3p")
 icon_alignment = 1
 expand_icon = true
+metadata/ui = "toggle"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content" unique_id=655443654]
 layout_mode = 2
@@ -794,8 +804,8 @@ buttons = [NodePath("Side Bar Options/VBoxContainer/Categories/Basic Terrain"), 
 [node name="Side Bar Blocks" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=686860024]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme = ExtResource("2_27ou3")
-theme_type_variation = &"BackgroundAccent"
+theme_override_styles/panel = SubResource("StyleBoxFlat_viewn")
+metadata/ui = "background_accent"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks" unique_id=484323198]
 layout_mode = 1
@@ -1056,8 +1066,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_j1kqi")
 [node name="Side Bar Options" type="Panel" parent="Content/HBoxContainer/Side Bar" unique_id=1896088638]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme = ExtResource("2_27ou3")
-theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpbup")
+metadata/ui = "background"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/HBoxContainer/Side Bar/Side Bar Options" unique_id=1003692621]
 layout_mode = 1
