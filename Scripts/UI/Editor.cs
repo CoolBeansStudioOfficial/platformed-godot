@@ -18,16 +18,13 @@ public partial class Editor : Control
     [Export] Button playButton;
     [Export] Button undoButton;
     [Export] Button redoButton;
-    [Export] MenuButton saveButton;
-    [Export] FileDialog saveDialog;
-    [Export] ConfirmationDialog uploadDialog;
     [Export] EditorOverlay overlay;
 
     [ExportGroup("Block Textures")]
     [Export] Godot.Collections.Dictionary<TileId, Texture2D> textures;
     [Export] Rect2 textureRegion;
 
-    Level currentLevel;
+    public Level currentLevel;
 
     List<List<List<TileInfo>>> editHistory = [];
     int currentEdit = 0;
@@ -120,9 +117,6 @@ public partial class Editor : Control
         playButton.Pressed += Play;
         undoButton.Pressed += Undo;
         redoButton.Pressed += Redo;
-        saveButton.GetPopup().IdPressed += SaveLevel;
-        saveDialog.FileSelected += SaveDialogFileSelected;
-        uploadDialog.Confirmed += UploadDialogConfirmed;
 
         ResetEditHistory();
 
@@ -245,8 +239,6 @@ public partial class Editor : Control
                 Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
                 Vector2 boxSize = new(16, 16);
 
-                GD.Print(selectedTile);
-
                 overlay.SetTextures(
                 [
                     new() {
@@ -279,11 +271,6 @@ public partial class Editor : Control
                 if (k.Keycode == Key.Space && k.IsCommandOrControlPressed())
                 {
                     Play();
-                }
-
-                if (k.Keycode == Key.S && k.IsCommandOrControlPressed())
-                {
-                    SaveLevel(0);
                 }
 
                 if (k.Keycode == Key.Z && k.IsCommandOrControlPressed())
@@ -563,6 +550,11 @@ public partial class Editor : Control
         currentEdit = 0;
     }
 
+    public List<List<TileInfo>> GetCurrentEdit()
+    {
+        return editHistory[currentEdit];
+    }
+
     public void SelectTile(TileId newSelection)
     {
         if (!placeMode) SetMode(EditorMode.Place);
@@ -614,86 +606,6 @@ public partial class Editor : Control
                 tileMap.SetCell(tile.position, (int)tile.id, LevelManager.Instance.GetAtlasCoords(tile));
             }
         }
-    }
-
-    void SaveLevel(long id)
-    {
-        //save changes to working level class instance
-        currentLevel.Data.Layers[0].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit]);
-        currentLevel.Data.Layers[1].Data = LevelManager.Instance.EncodeRLE(editHistory[currentEdit], LevelManager.EncodeFilter.Rotation);
-
-        //save to levels folder
-        if (id == 0)
-        {
-            if (GameManager.Instance.preferences.IsLevelsFolderSet())
-            {
-                string path = $"{GameManager.Instance.preferences.GetLevelsFolder()}/{currentLevel.Name}.json";
-                GameManager.Instance.preferences.SaveLevelAsFile(currentLevel, path);
-
-                unsavedLabel.Visible = false;
-            }
-            else
-            {
-                UIManager.Instance.PopupNotification("No levels folder has been set\n(You can choose a folder in the My Levels menu)", "Save Failed");
-            }
-
-            
-        }
-        //save to custom directory
-        else if (id == 1)
-        {
-            saveDialog.FileNameFilter = currentLevel.Name;
-            saveDialog.Popup();
-        }
-        //upload to web
-        else
-        {
-            if (GameManager.Instance.IsLoggedIn())
-            {
-                uploadDialog.DialogText = "Are you sure you want to publicly upload this level to your account?\n(You can edit it later in the web editor)";
-                uploadDialog.OkButtonText = "Upload";
-
-                if (currentLevel.Tags is not null) foreach (var tag in currentLevel.Tags)
-                {
-                    if (tag is string t) if (t == "online")
-                    {
-                        uploadDialog.DialogText = "Are you sure you want to overwrite your existing online level?\nThis CANNOT be undone!";
-                        uploadDialog.OkButtonText = "Update";
-                    }
-                }
-
-                uploadDialog.PopupCentered();
-            }
-            else
-            {
-                UIManager.Instance.PopupNotification("You are not currently signed in. Please sign in to upload levels.", "Upload Failed");
-            }
-            
-        }
-    }
-
-    void SaveDialogFileSelected(string path)
-    {
-        GameManager.Instance.preferences.SaveLevelAsFile(currentLevel, path);
-        unsavedLabel.Visible = false;
-    }
-
-    void UploadDialogConfirmed()
-    {
-        currentLevel.Description = $"This level was uploaded by {GameManager.Instance.preferences.GetPreference("username")} using the desktop client!";
-        currentLevel.Data.TilesetPath = "/assets/medium.json";
-
-        //edit level instead if this is a change to an existing level
-        if (currentLevel.Tags is not null) foreach (var tag in currentLevel.Tags)
-        {
-            if (tag is string t) if (t == "online")
-            {
-                GameManager.Instance.EditLevel(currentLevel, currentLevel.Id);
-                return;
-            }
-        }
-
-        GameManager.Instance.UploadLevel(currentLevel);
     }
 
     private void NameChanged(string newText)

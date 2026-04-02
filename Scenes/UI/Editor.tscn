@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-right.png" id="28_t841b"]
 [ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-left.png" id="29_kvt7y"]
 [ext_resource type="PackedScene" uid="uid://cmi06n2qygfbl" path="res://Scenes/UI/Elements/Editor Category Toggle.tscn" id="30_kvt7y"]
+[ext_resource type="Script" uid="uid://c1hhr65kr0dhh" path="res://Scripts/UI/Elements/EditorSave.cs" id="31_d3xfs"]
 [ext_resource type="Texture2D" uid="uid://ovhwo2s4fqb7" path="res://Images/Raster/Icons/Hazards.png" id="31_ehlpm"]
 [ext_resource type="Texture2D" uid="uid://j3mjmchemqjc" path="res://Images/Raster/Icons/Decoration.png" id="32_j1kqi"]
 [ext_resource type="Texture2D" uid="uid://bnso6b38dhv7e" path="res://Images/Raster/Icons/Interactables.png" id="33_3p2xf"]
@@ -523,7 +524,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "saveButton", "saveDialog", "uploadDialog", "overlay")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -542,9 +543,6 @@ cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
 playButton = NodePath("Content/Top Bar/Options/Play")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
-saveButton = NodePath("Content/Top Bar/Options/Save")
-saveDialog = NodePath("Save Dialog")
-uploadDialog = NodePath("Upload Confirmation")
 overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
 textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_27ou3"),
@@ -717,7 +715,7 @@ icon_alignment = 1
 expand_icon = true
 metadata/ui = "toggle"
 
-[node name="Save" type="MenuButton" parent="Content/Top Bar/Options" unique_id=195890749]
+[node name="Save" type="MenuButton" parent="Content/Top Bar/Options" unique_id=195890749 node_paths=PackedStringArray("saveDialog", "uploadDialog", "unsavedLabel")]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 tooltip_text = "Save Options
@@ -742,6 +740,10 @@ popup/item_3/id = 4
 popup/item_3/separator = true
 popup/item_4/text = "Upload to web"
 popup/item_4/id = 2
+script = ExtResource("31_d3xfs")
+saveDialog = NodePath("../../../../Save Dialog")
+uploadDialog = NodePath("../../../../Upload Confirmation")
+unsavedLabel = NodePath("../../Level Name/Unsaved Indicator")
 metadata/ui = "toggle"
 
 [node name="Play" type="Button" parent="Content/Top Bar/Options" unique_id=1261242300]
