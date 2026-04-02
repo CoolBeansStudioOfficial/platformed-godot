@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwxdsr6ws288l" path="res://Scripts/UI/Editor.cs" id="1_eiun3"]
 [ext_resource type="Script" uid="uid://bnpko3ocww3nn" path="res://Scripts/UI/Elements/TilesViewport.cs" id="1_fvgsq"]
+[ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/Tiles/16 Bit/ground.png" id="2_27ou3"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="2_45moc"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_cfu02"]
 [ext_resource type="Texture2D" uid="uid://biv4hw6x7j31u" path="res://Images/Vector/gradient background.svg" id="2_fvgsq"]
@@ -545,6 +546,31 @@ saveButton = NodePath("Content/Top Bar/Options/Save")
 saveDialog = NodePath("Save Dialog")
 uploadDialog = NodePath("Upload Confirmation")
 overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
+textures = Dictionary[int, Texture2D]({
+0: [0, Rect2(0, 0, 0, 0)],
+1: [ExtResource("2_27ou3"), Rect2(0, 0, 16, 16)],
+2: [ExtResource("9_swd7v"), Rect2(0, 0, 16, 16)],
+3: [ExtResource("10_dorju"), Rect2(0, 0, 16, 16)],
+4: [ExtResource("11_o3210"), Rect2(0, 0, 16, 16)],
+5: [ExtResource("12_hwn3q"), Rect2(0, 0, 16, 16)],
+6: [ExtResource("13_5pgwn"), Rect2(0, 0, 16, 16)],
+7: [ExtResource("14_wogks"), Rect2(0, 0, 16, 16)],
+8: [ExtResource("9_qdfva"), Rect2(0, 0, 16, 16)],
+9: [ExtResource("16_pijs4"), Rect2(0, 0, 16, 16)],
+10: [ExtResource("17_0nqbs"), Rect2(0, 0, 16, 16)],
+11: [ExtResource("11_2e3v0"), Rect2(0, 0, 16, 16)],
+13: [ExtResource("19_skcvm"), Rect2(0, 0, 16, 16)],
+14: [ExtResource("20_eqe5u"), Rect2(0, 0, 16, 16)],
+15: [ExtResource("21_yqw02"), Rect2(0, 0, 16, 16)],
+16: [ExtResource("22_t841b"), Rect2(0, 0, 16, 16)],
+17: [ExtResource("23_skcvm"), Rect2(0, 0, 16, 16)],
+18: [ExtResource("24_eqe5u"), Rect2(0, 0, 16, 16)],
+19: [ExtResource("25_yqw02"), Rect2(0, 0, 16, 16)],
+20: [ExtResource("26_t841b"), Rect2(0, 0, 16, 16)],
+21: [ExtResource("27_eqe5u"), Rect2(0, 0, 16, 16)],
+22: [ExtResource("28_t841b"), Rect2(0, 0, 16, 16)],
+23: [ExtResource("29_kvt7y"), Rect2(0, 0, 16, 16)]
+})
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1498817097]
 layout_mode = 1

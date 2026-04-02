@@ -13,11 +13,6 @@ public partial class BlockSelectButton : Button
     private void OnPressed()
     {
 		var texture = (StyleBoxTexture)GetThemeStylebox("normal");
-        UIManager.Instance.editor.SelectTile(new()
-		{
-			id = tileId,
-			texture = ((StyleBoxTexture)GetThemeStylebox("normal")).Texture,
-			region = ((StyleBoxTexture)GetThemeStylebox("normal")).RegionRect,
-        });
+        UIManager.Instance.editor.SelectTile(tileId);
     }
 }

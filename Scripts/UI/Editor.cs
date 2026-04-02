@@ -23,6 +23,10 @@ public partial class Editor : Control
     [Export] ConfirmationDialog uploadDialog;
     [Export] EditorOverlay overlay;
 
+    [ExportGroup("Block Textures")]
+    [Export] Godot.Collections.Dictionary<TileId, 
+        Godot.Collections.Array> textures;
+
     Level currentLevel;
 
     List<List<List<TileInfo>>> editHistory = [];
@@ -32,20 +36,13 @@ public partial class Editor : Control
 
     //place mode
     public bool eraserSelected = false;
-    TileSelection selectedTile;
+    TileId selectedTile;
 
     //edit mode
     bool startedSelection = false;
     bool startedDrag = false;
     List<TileInfo> dragInitial = [];
     EditSelection selection;
-
-    public struct TileSelection
-    {
-        public TileId id;
-        public Texture2D texture;
-        public Rect2 region;
-    }
 
     public struct EditSelection
     {
@@ -248,17 +245,19 @@ public partial class Editor : Control
                 Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
                 Vector2 boxSize = new(16, 16);
 
-                overlay.SetTexture(new()
-                {
-                    texture = selectedTile.texture,
+                overlay.SetTextures(
+                [
+                    new() {
+                    texture = (Texture2D)(GodotObject)textures[selectedTile][0],
                     rect = new Rect2(worldPosition.X - boxSize.X / 2, worldPosition.Y - boxSize.Y / 2, boxSize.X, boxSize.Y),
-                    region = selectedTile.region,
+                    region = (Rect2)textures[selectedTile][1],
                     color = Colors.White,
-                });
+                    }
+                ]);
             }
             else
             {
-                overlay.SetTexture(null);
+                overlay.SetTextures(null);
             }
 
             if (mouseDown)
@@ -303,7 +302,7 @@ public partial class Editor : Control
             else
             {
                 //remove any other spawn tiles
-                if (selectedTile.id == TileId.Spawn)
+                if (selectedTile == TileId.Spawn)
                 {
                     for (int y = 0; y < editHistory[currentEdit].Count; y++)
                     {
@@ -324,7 +323,7 @@ public partial class Editor : Control
                     };
                 }
 
-                SetTile(mouseCoords, selectedTile.id);
+                SetTile(mouseCoords, selectedTile);
             }
 
             overlay.SetOutline(null);
@@ -360,6 +359,26 @@ public partial class Editor : Control
                     if (startedDrag)
                     {
                         selection.Move(mouseCoords);
+
+                        //update overlay
+                        Vector2 overlaySize = new(16, 16);
+                        List<EditorOverlay.Outline?> movePreview = [];
+                        foreach (var tile in selection.tiles)
+                        {
+                            if (tile.id == TileId.Air) continue;
+
+                            Vector2 overlayPosition = tileMap.MapToLocal(tile.position);
+
+                            movePreview.Add(new()
+                            {
+                                texture = (Texture2D)(textures[tile.id][0]),
+                                rect = new Rect2(overlayPosition.X - overlaySize.X / 2, overlayPosition.Y - overlaySize.Y / 2, overlaySize.X, overlaySize.Y),
+                                region = (Rect2)textures[tile.id][1],
+                                color = Colors.White,
+                            });
+                        }
+
+                        overlay.SetTextures(movePreview);
                     }
                     else
                     {
@@ -468,12 +487,10 @@ public partial class Editor : Control
         //place mode
         if (mode == EditorMode.Place)
         {
-            selection = default;
             placeMode = true;
             flyoutOptions.Visible = true;
 
-            overlay.currentOutline = null;
-            overlay.QueueRedraw();
+            ResetSelection();
 
             AddEdit();
         }
@@ -484,6 +501,13 @@ public partial class Editor : Control
             eraserSelected = false;
             flyoutOptions.Visible = false;
         }
+    }
+
+    void ResetSelection()
+    {
+        selection = default;
+        overlay.currentOutlines[0] = null;
+        overlay.QueueRedraw();
     }
 
     void AddEdit()
@@ -515,6 +539,8 @@ public partial class Editor : Control
         redoButton.Disabled = false;
 
         unsavedLabel.Visible = true;
+
+        ResetSelection();
     }
 
     void RedoEdit()
@@ -535,7 +561,7 @@ public partial class Editor : Control
         currentEdit = 0;
     }
 
-    public void SelectTile(TileSelection newSelection)
+    public void SelectTile(TileId newSelection)
     {
         if (!placeMode) SetMode(EditorMode.Place);
 

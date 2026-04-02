@@ -1,34 +1,42 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class EditorOverlay : Control
 {
-    public Outline? currentOutline;
-    public Outline? currentTexture;
+    public List<Outline?> currentOutlines = [default, default, default];
+    public List<Outline?> currentTextures = [];
 
-    public void SetOutline(Outline? outline)
+    public void SetOutline(Outline? outline, int index = 0)
     {
-        currentOutline = outline;
+        currentOutlines[index] = outline;
         QueueRedraw();
     }
 
-    public void SetTexture(Outline? texture)
+    public void SetTextures(List<Outline?> textures)
     {
-        currentTexture = texture;
+        currentTextures = textures;
         QueueRedraw();
     }
 
     public override void _Draw()
     {
-        if (currentOutline.HasValue)
+        foreach (var outline in currentOutlines)
         {
-            DrawRect(currentOutline.Value.rect, currentOutline.Value.color, false, currentOutline.Value.width, true);
+            if (outline.HasValue)
+            {
+                DrawRect(outline.Value.rect, outline.Value.color, false, outline.Value.width, true);
+            }
         }
         
-        if (currentTexture.HasValue)
+        if (currentTextures is not null) foreach (var texture in currentTextures)
         {
-            DrawTextureRectRegion(currentTexture.Value.texture, currentTexture.Value.rect, currentTexture.Value.region, currentTexture.Value.color);
+            if (texture.HasValue)
+            {
+                DrawTextureRectRegion(texture.Value.texture, texture.Value.rect, texture.Value.region, texture.Value.color);
+            }
         }
+        
     }
 
     public struct Outline
