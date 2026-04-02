@@ -21,6 +21,8 @@ public partial class EditorContextMenu : Window
         copy.Pressed += () => OnOptionPressed(Option.Copy);
         cut.Pressed += () => OnOptionPressed(Option.Cut);
         paste.Pressed += () => OnOptionPressed(Option.Paste);
+        rotateLeft.Pressed += () => OnOptionPressed(Option.RotateLeft);
+        rotateRight.Pressed += () => OnOptionPressed(Option.RotateRight);
     }
 
     public enum Option

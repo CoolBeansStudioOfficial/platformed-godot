@@ -110,6 +110,7 @@ public partial class EditorSave : MenuButton
                 return;
             }
         }
+        currentLevel.Data.Layers[1].Name = "rotation";
 
         GameManager.Instance.UploadLevel(currentLevel);
     }

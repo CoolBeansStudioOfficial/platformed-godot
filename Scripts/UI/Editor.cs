@@ -199,12 +199,16 @@ public partial class Editor : Control
                     //if started selection, get blocks in selection and end it
                     if (startedSelection)
                     {
+                        //add tile data to selection
                         foreach (Vector2I cell in selection.GetCells())
                         {
                             if (!IsInGrid(cell)) continue;
                             TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
                             selection.tiles.Add(tile);
                         }
+
+                        //show context menu
+                        contextMenu.Popup();
 
                         startedSelection = false;
                     }
@@ -590,7 +594,25 @@ public partial class Editor : Control
 
     void OnContextMenuPressed()
     {
+        var option = contextMenu.selectedOption;
         GD.Print(contextMenu.selectedOption);
+
+        if (option == EditorContextMenu.Option.Fill)
+        {
+
+        }
+        else if (option == EditorContextMenu.Option.Copy)
+        {
+
+        }
+        else if (option == EditorContextMenu.Option.Cut)
+        {
+
+        }
+        else if (option == EditorContextMenu.Option.Paste)
+        {
+
+        }
     }
 
     public void ImportLevel(Level level)
