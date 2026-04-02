@@ -19,6 +19,7 @@ public partial class Editor : Control
     [Export] Button undoButton;
     [Export] Button redoButton;
     [Export] EditorOverlay overlay;
+    [Export] EditorContextMenu contextMenu;
 
     [ExportGroup("Block Textures")]
     [Export] Godot.Collections.Dictionary<TileId, Texture2D> textures;
@@ -117,6 +118,8 @@ public partial class Editor : Control
         playButton.Pressed += Play;
         undoButton.Pressed += Undo;
         redoButton.Pressed += Redo;
+
+        contextMenu.OptionPressed += OnContextMenuPressed; ;
 
         ResetEditHistory();
 
@@ -574,7 +577,7 @@ public partial class Editor : Control
     public void UpdateTiles()
     {
         editHistory[currentEdit] = LevelManager.Instance.UpdateAdjacencies(editHistory[currentEdit]);
-        
+
         //set cells according to stored tiles
         foreach (var row in editHistory[currentEdit])
         {
@@ -584,7 +587,11 @@ public partial class Editor : Control
             }
         }
     }
-    
+
+    void OnContextMenuPressed()
+    {
+        GD.Print(contextMenu.selectedOption);
+    }
 
     public void ImportLevel(Level level)
 	{

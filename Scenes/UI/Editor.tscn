@@ -49,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://c72rdejnnyphw" path="res://Images/Raster/Icons/Trigger.png" id="38_pjxyc"]
 [ext_resource type="Script" uid="uid://byvsis2o3ollx" path="res://Scripts/UI/Elements/EditorOverlay.cs" id="46_ps8e3"]
 [ext_resource type="Texture2D" uid="uid://datusitecxnki" path="res://Images/Raster/Icons/Rotate Left.png" id="48_n8pot"]
+[ext_resource type="Script" uid="uid://didooanhj4wla" path="res://Scripts/UI/Elements/EditorContextMenu.cs" id="49_chl6m"]
 [ext_resource type="Texture2D" uid="uid://sfealvwffa8p" path="res://Images/Raster/Icons/Rotate Right.png" id="49_s2w5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
@@ -534,7 +535,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2w5g"]
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -554,6 +555,7 @@ playButton = NodePath("Content/Top Bar/Options/Play")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
+contextMenu = NodePath("Context Menu")
 textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_27ou3"),
 2: ExtResource("9_swd7v"),
@@ -1245,17 +1247,23 @@ ok_button_text = "Upload"
 dialog_text = "Are you sure you want to publicly upload this level to your account?
 (You can edit it later in the web editor)"
 
-[node name="Context Menu" type="Window" parent="." unique_id=509309638]
+[node name="Context Menu" type="Window" parent="." unique_id=509309638 node_paths=PackedStringArray("fill", "copy", "cut", "paste", "rotateLeft", "rotateRight")]
 transparent_bg = true
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(250, 30)
-visible = false
 wrap_controls = true
 transient = true
 unresizable = true
 borderless = true
 transparent = true
+script = ExtResource("49_chl6m")
+fill = NodePath("Panel/HBoxContainer/Fill")
+copy = NodePath("Panel/HBoxContainer/Copy")
+cut = NodePath("Panel/HBoxContainer/Cut")
+paste = NodePath("Panel/HBoxContainer/Paste")
+rotateLeft = NodePath("Panel/HBoxContainer/Rotate Left")
+rotateRight = NodePath("Panel/HBoxContainer/Rotate Right")
 
 [node name="Panel" type="Panel" parent="Context Menu" unique_id=1665224823]
 anchors_preset = 15
