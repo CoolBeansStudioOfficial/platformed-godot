@@ -24,8 +24,8 @@ public partial class Editor : Control
     [Export] EditorOverlay overlay;
 
     [ExportGroup("Block Textures")]
-    [Export] Godot.Collections.Dictionary<TileId, 
-        Godot.Collections.Array> textures;
+    [Export] Godot.Collections.Dictionary<TileId, Texture2D> textures;
+    [Export] Rect2 textureRegion;
 
     Level currentLevel;
 
@@ -245,12 +245,14 @@ public partial class Editor : Control
                 Vector2 worldPosition = tileMap.MapToLocal(mouseCoords);
                 Vector2 boxSize = new(16, 16);
 
+                GD.Print(selectedTile);
+
                 overlay.SetTextures(
                 [
                     new() {
-                    texture = (Texture2D)(GodotObject)textures[selectedTile][0],
+                    texture = textures[selectedTile],
                     rect = new Rect2(worldPosition.X - boxSize.X / 2, worldPosition.Y - boxSize.Y / 2, boxSize.X, boxSize.Y),
-                    region = (Rect2)textures[selectedTile][1],
+                    region = textureRegion,
                     color = Colors.White,
                     }
                 ]);
@@ -371,9 +373,9 @@ public partial class Editor : Control
 
                             movePreview.Add(new()
                             {
-                                texture = (Texture2D)(textures[tile.id][0]),
+                                texture = textures[tile.id],
                                 rect = new Rect2(overlayPosition.X - overlaySize.X / 2, overlayPosition.Y - overlaySize.Y / 2, overlaySize.X, overlaySize.Y),
-                                region = (Rect2)textures[tile.id][1],
+                                region = textureRegion,
                                 color = Colors.White,
                             });
                         }
