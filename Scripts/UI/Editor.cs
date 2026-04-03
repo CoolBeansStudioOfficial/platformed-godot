@@ -411,7 +411,9 @@ public partial class Editor : Control
 
     void Paste(Vector2I position)
     {
-        copiedSelection.Value.Move(position);
+        var newSelection = copiedSelection.Value;
+        newSelection.Move(position);
+        copiedSelection = newSelection;
 
         //paste tiles to new position
         AddEdit();
