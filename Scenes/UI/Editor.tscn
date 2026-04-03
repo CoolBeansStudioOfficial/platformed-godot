@@ -543,6 +543,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eiun3")
+gridSize = Vector2i(100, 100)
 viewport = NodePath("Content/HBoxContainer/Tiles Viewport")
 tileMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Tiles")
 nameEdit = NodePath("Content/Top Bar/Level Name/Level Name")
