@@ -142,7 +142,7 @@ public partial class Editor : Control
                         }
 
                         //show context menu
-                        contextMenu.Popup();
+                        ContextPopup();
 
                         startedSelection = false;
                     }
@@ -380,7 +380,7 @@ public partial class Editor : Control
         {
             waitingForBlock = false;
             cancelButton.Visible = false;
-            contextMenu.Popup();
+            ContextPopup();
         }
     }
 
@@ -564,7 +564,7 @@ public partial class Editor : Control
             cancelButton.Visible = false;
             waitingForBlock = false;
 
-            contextMenu.Popup();
+            ContextPopup();
         }
         else
         {
@@ -618,6 +618,14 @@ public partial class Editor : Control
         {
             Paste(selection.GetCorner());
         }
+    }
+
+    void ContextPopup()
+    {
+        Vector2 size = selection.GetSize();
+        Vector2 position = tileMap.MapToLocal(selection.GetCenter() + new Vector2I(0, (int)(size.Y / 2) + 1));
+        Vector2 global = tileMap.ToGlobal(position);
+        contextMenu.Popup(new((int)global.X, (int)global.Y, 250, 30));
     }
 
     public void ImportLevel(Level level)
