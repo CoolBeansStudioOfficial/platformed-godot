@@ -535,7 +535,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2w5g"]
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "flyoutOptions", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,7 +548,6 @@ tileMap = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Tiles")
 nameEdit = NodePath("Content/Top Bar/Level Name/Level Name")
 unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
 backButton = NodePath("Content/Top Bar/Back")
-flyoutOptions = NodePath("Content/Top Bar/Flyout Options")
 confirmButton = NodePath("Content/Top Bar/Flyout Options/Confirm")
 cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
 playButton = NodePath("Content/Top Bar/Options/Play")
@@ -648,7 +647,6 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="Flyout Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=465115347]
-visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -664,6 +662,7 @@ theme_override_constants/separation = 12
 alignment = 1
 
 [node name="Confirm" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=1284301119]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 tooltip_text = "Confirm"
@@ -675,6 +674,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Cancel" type="Button" parent="Content/Top Bar/Flyout Options" unique_id=717220092]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 tooltip_text = "Cancel"
@@ -1252,6 +1252,7 @@ transparent_bg = true
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(250, 30)
+visible = false
 wrap_controls = true
 transient = true
 unresizable = true

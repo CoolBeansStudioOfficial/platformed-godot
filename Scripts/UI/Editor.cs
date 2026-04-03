@@ -12,7 +12,6 @@ public partial class Editor : Control
     [Export] LineEdit nameEdit;
     [Export] Label unsavedLabel;
     [Export] Button backButton;
-    [Export] HBoxContainer flyoutOptions;
     [Export] Button confirmButton;
     [Export] Button cancelButton;
     [Export] Button playButton;
@@ -39,6 +38,7 @@ public partial class Editor : Control
     //edit mode
     bool startedSelection = false;
     bool startedDrag = false;
+    bool waitingForBlock = false;
     List<TileInfo> dragInitial = [];
     EditSelection selection;
 
@@ -64,6 +64,16 @@ public partial class Editor : Control
             {
                 TileInfo tile = tiles[i];
                 tile.position += offset;
+                tiles[i] = tile;
+            }
+        }
+
+        public void Fill(TileId id)
+        {
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                TileInfo tile = tiles[i];
+                tile.id = id;
                 tiles[i] = tile;
             }
         }
@@ -441,7 +451,12 @@ public partial class Editor : Control
 
     void Cancel()
     {
-        if (placeMode) Undo();
+        if (placeMode && !waitingForBlock) Undo();
+        else if (waitingForBlock)
+        {
+            waitingForBlock = false;
+            cancelButton.Visible = false;
+        }
     }
 
     void Confirm()
@@ -484,7 +499,8 @@ public partial class Editor : Control
         if (mode == EditorMode.Place)
         {
             placeMode = true;
-            flyoutOptions.Visible = true;
+            confirmButton.Visible = true;
+            cancelButton.Visible = true;
 
             ResetSelection();
 
@@ -495,7 +511,8 @@ public partial class Editor : Control
         {
             placeMode = false;
             eraserSelected = false;
-            flyoutOptions.Visible = false;
+            confirmButton.Visible = false;
+            cancelButton.Visible = false;
         }
     }
 
@@ -562,11 +579,29 @@ public partial class Editor : Control
         return editHistory[currentEdit];
     }
 
-    public void SelectTile(TileId newSelection)
+    public void SelectTile(TileId id)
     {
-        if (!placeMode) SetMode(EditorMode.Place);
+        if (!placeMode && !waitingForBlock)
+        {
+            selectedTile = id;
+            SetMode(EditorMode.Place);
+        }
+        else if (waitingForBlock)
+        {
+            selection.Fill(id);
 
-        selectedTile = newSelection;
+            //changed tiles to selected tile
+            AddEdit();
+            foreach (TileInfo tile in selection.tiles)
+            {
+                if (tile.id == TileId.Air) continue;
+                SetTile(tile.position, tile.id, tile.rotation, false);
+            }
+            UpdateTiles();
+
+            cancelButton.Visible = false;
+            waitingForBlock = false;
+        }
     }
 
     public void SelectEraser(bool doSelect)
@@ -599,7 +634,9 @@ public partial class Editor : Control
 
         if (option == EditorContextMenu.Option.Fill)
         {
-
+            waitingForBlock = true;
+            cancelButton.Visible = true;
+            contextMenu.Hide();
         }
         else if (option == EditorContextMenu.Option.Copy)
         {
