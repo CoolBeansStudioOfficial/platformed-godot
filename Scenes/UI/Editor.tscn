@@ -1323,6 +1323,7 @@ metadata/ui = "toggle"
 [node name="Rotate Left" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=7149758]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
+tooltip_text = "Rotate Left"
 theme_override_fonts/font = ExtResource("2_cfu02")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
@@ -1334,6 +1335,7 @@ metadata/ui = "toggle"
 [node name="Rotate Right" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=72863838]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
+tooltip_text = "Rotate Right"
 theme_override_fonts/font = ExtResource("2_cfu02")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")

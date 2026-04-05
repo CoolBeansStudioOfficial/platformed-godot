@@ -166,7 +166,7 @@ public partial class Editor : Control
                         }
                         UpdateTiles();
 
-                        GD.Print("selection moved");
+                        ContextPopup();
                         startedDrag = false;
                     }
                 }
@@ -425,6 +425,26 @@ public partial class Editor : Control
         UpdateTiles();
     }
 
+    void Rotate(TileRotation direction)
+    {
+        if (direction == TileRotation.Left)
+        {
+            selection.Rotate(TileRotation.Left);
+        }
+        else if (direction == TileRotation.Right)
+        {
+            selection.Rotate(TileRotation.Right);
+        }
+
+        AddEdit();
+        foreach (TileInfo tile in selection.tiles)
+        {
+            if (tile.id == TileId.Air) continue;
+            SetTile(tile.position, tile.id, tile.rotation, false);
+        }
+        UpdateTiles();
+    }
+
     void SetTile(Vector2I position, TileId id, TileRotation rotation = TileRotation.Up, bool updateTiles = true)
     {
         //return if position is outside of set level size
@@ -617,6 +637,14 @@ public partial class Editor : Control
         else if (option == EditorContextMenu.Option.Paste)
         {
             Paste(selection.GetCorner());
+        }
+        else if (option == EditorContextMenu.Option.RotateLeft)
+        {
+            Rotate(TileRotation.Left);
+        }
+        else if (option == EditorContextMenu.Option.RotateRight)
+        {
+            Rotate(TileRotation.Right);
         }
     }
 

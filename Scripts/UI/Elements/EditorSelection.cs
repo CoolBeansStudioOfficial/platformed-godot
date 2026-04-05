@@ -42,6 +42,41 @@ public struct EditSelection
         }
     }
 
+    //only pass in left or right
+    public void Rotate(TileRotation direction)
+    {
+        if (direction == TileRotation.Left)
+        {
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                int rotation = (int)tiles[i].rotation;
+
+                if (rotation < 3) rotation++;
+                else rotation = 0;
+
+                TileInfo tile = tiles[i];
+                tile.rotation = (TileRotation)rotation;
+                tiles[i] = tile;
+                GD.Print($"rotated left: {tiles[i].rotation}");
+            }
+        }
+        else if (direction == TileRotation.Right)
+        {
+            for (int i = 0; i < tiles.Count; i++)
+            {
+                int rotation = (int)tiles[i].rotation;
+
+                if (rotation > 0) rotation--;
+                else rotation = 3;
+
+                TileInfo tile = tiles[i];
+                tile.rotation = (TileRotation)rotation;
+                tiles[i] = tile;
+                GD.Print($"rotated right: {tiles[i].rotation}");
+            }
+        }
+    }
+
     public bool IsInRect(Vector2I position)
     {
         Vector2 rangeX = new(Mathf.Min(start.X, end.X), Mathf.Max(start.X, end.X));
