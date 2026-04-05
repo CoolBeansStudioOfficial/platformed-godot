@@ -57,7 +57,6 @@ public struct EditSelection
                 TileInfo tile = tiles[i];
                 tile.rotation = (TileRotation)rotation;
                 tiles[i] = tile;
-                GD.Print($"rotated left: {tiles[i].rotation}");
             }
         }
         else if (direction == TileRotation.Right)
@@ -72,7 +71,6 @@ public struct EditSelection
                 TileInfo tile = tiles[i];
                 tile.rotation = (TileRotation)rotation;
                 tiles[i] = tile;
-                GD.Print($"rotated right: {tiles[i].rotation}");
             }
         }
     }

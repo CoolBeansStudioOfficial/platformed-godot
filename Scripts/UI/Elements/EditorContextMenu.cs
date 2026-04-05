@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class EditorContextMenu : Window
+public partial class EditorContextMenu : Panel
 {
     [Export] Button fill;
     [Export] Button copy;

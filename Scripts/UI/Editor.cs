@@ -653,7 +653,8 @@ public partial class Editor : Control
         Vector2 size = selection.GetSize();
         Vector2 position = tileMap.MapToLocal(selection.GetCenter() + new Vector2I(0, (int)(size.Y / 2) + 1));
         Vector2 global = tileMap.ToGlobal(position);
-        contextMenu.Popup(new((int)global.X, (int)global.Y, 250, 30));
+        contextMenu.Position = global;
+        contextMenu.Show();
     }
 
     public void ImportLevel(Level level)

@@ -190,6 +190,14 @@ corner_detail = 5
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
 texture = ExtResource("2_fvgsq")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sags"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2w5g"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbuae"]
 texture = ExtResource("3_38yy1")
 axis_stretch_horizontal = 1
@@ -527,14 +535,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sags"]
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2w5g"]
-
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
 layout_mode = 3
 anchors_preset = 15
@@ -555,7 +555,7 @@ playButton = NodePath("Content/Top Bar/Options/Play")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 overlay = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Overlay")
-contextMenu = NodePath("Context Menu")
+contextMenu = NodePath("Content/HBoxContainer/Tiles Viewport/Content/Context Menu")
 textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_27ou3"),
 2: ExtResource("9_swd7v"),
@@ -806,6 +806,95 @@ custom_minimum_size = Vector2(3000, 3000)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
+
+[node name="Context Menu" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1665224823 node_paths=PackedStringArray("fill", "copy", "cut", "paste", "rotateLeft", "rotateRight")]
+z_index = 8
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4sags")
+script = ExtResource("49_chl6m")
+fill = NodePath("HBoxContainer/Fill")
+copy = NodePath("HBoxContainer/Copy")
+cut = NodePath("HBoxContainer/Cut")
+paste = NodePath("HBoxContainer/Paste")
+rotateLeft = NodePath("HBoxContainer/Rotate Left")
+rotateRight = NodePath("HBoxContainer/Rotate Right")
+metadata/ui = "background_accent"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu" unique_id=977211259]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fill" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=1238151331]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+text = "Fill"
+metadata/ui = "toggle"
+
+[node name="Copy" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=307967505]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+text = "Copy"
+metadata/ui = "toggle"
+
+[node name="Cut" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=1533159703]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+text = "Cut"
+metadata/ui = "toggle"
+
+[node name="Paste" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=669979006]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+text = "Paste"
+metadata/ui = "toggle"
+
+[node name="Rotate Left" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=7149758]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+tooltip_text = "Rotate Left"
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+icon = ExtResource("48_n8pot")
+icon_alignment = 1
+expand_icon = true
+metadata/ui = "toggle"
+
+[node name="Rotate Right" type="Button" parent="Content/HBoxContainer/Tiles Viewport/Content/Context Menu/HBoxContainer" unique_id=72863838]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+tooltip_text = "Rotate Right"
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
+icon = ExtResource("49_s2w5g")
+icon_alignment = 1
+expand_icon = true
+metadata/ui = "toggle"
 
 [node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
 z_index = 1
@@ -1247,99 +1336,3 @@ force_native = true
 ok_button_text = "Upload"
 dialog_text = "Are you sure you want to publicly upload this level to your account?
 (You can edit it later in the web editor)"
-
-[node name="Context Menu" type="Window" parent="." unique_id=509309638 node_paths=PackedStringArray("fill", "copy", "cut", "paste", "rotateLeft", "rotateRight")]
-transparent_bg = true
-oversampling_override = 1.0
-initial_position = 2
-size = Vector2i(250, 30)
-visible = false
-wrap_controls = true
-transient = true
-unresizable = true
-borderless = true
-transparent = true
-script = ExtResource("49_chl6m")
-fill = NodePath("Panel/HBoxContainer/Fill")
-copy = NodePath("Panel/HBoxContainer/Copy")
-cut = NodePath("Panel/HBoxContainer/Cut")
-paste = NodePath("Panel/HBoxContainer/Paste")
-rotateLeft = NodePath("Panel/HBoxContainer/Rotate Left")
-rotateRight = NodePath("Panel/HBoxContainer/Rotate Right")
-
-[node name="Panel" type="Panel" parent="Context Menu" unique_id=1665224823]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4sags")
-metadata/ui = "background_accent"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Context Menu/Panel" unique_id=977211259]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fill" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=1238151331]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-text = "Fill"
-metadata/ui = "toggle"
-
-[node name="Copy" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=307967505]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-text = "Copy"
-metadata/ui = "toggle"
-
-[node name="Cut" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=1533159703]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-text = "Cut"
-metadata/ui = "toggle"
-
-[node name="Paste" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=669979006]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-text = "Paste"
-metadata/ui = "toggle"
-
-[node name="Rotate Left" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=7149758]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-tooltip_text = "Rotate Left"
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-icon = ExtResource("48_n8pot")
-icon_alignment = 1
-expand_icon = true
-metadata/ui = "toggle"
-
-[node name="Rotate Right" type="Button" parent="Context Menu/Panel/HBoxContainer" unique_id=72863838]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-tooltip_text = "Rotate Right"
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
-icon = ExtResource("49_s2w5g")
-icon_alignment = 1
-expand_icon = true
-metadata/ui = "toggle"
