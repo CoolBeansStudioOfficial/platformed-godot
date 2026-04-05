@@ -190,6 +190,11 @@ corner_detail = 5
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fvgsq"]
 texture = ExtResource("2_fvgsq")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbuae"]
+texture = ExtResource("3_38yy1")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sags"]
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -197,11 +202,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2w5g"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbuae"]
-texture = ExtResource("3_38yy1")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viewn"]
 
@@ -807,6 +807,33 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
+[node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("4_eiun3")
+
+[node name="Grid" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
+
+[node name="Overlay" type="Control" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=2011071763]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("46_ps8e3")
+
 [node name="Context Menu" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1665224823 node_paths=PackedStringArray("fill", "copy", "cut", "paste", "rotateLeft", "rotateRight")]
 z_index = 8
 custom_minimum_size = Vector2(250, 30)
@@ -895,33 +922,6 @@ icon = ExtResource("49_s2w5g")
 icon_alignment = 1
 expand_icon = true
 metadata/ui = "toggle"
-
-[node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=461421475]
-z_index = 1
-texture_filter = 1
-tile_set = ExtResource("4_eiun3")
-
-[node name="Grid" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1057792182]
-texture_repeat = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_vbuae")
-
-[node name="Overlay" type="Control" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=2011071763]
-z_index = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("46_ps8e3")
 
 [node name="Side Bar" type="HBoxContainer" parent="Content/HBoxContainer" unique_id=770017401 node_paths=PackedStringArray("sideBarBlocks", "eraserButton", "buttons")]
 layout_mode = 2

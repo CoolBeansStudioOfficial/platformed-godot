@@ -652,8 +652,7 @@ public partial class Editor : Control
     {
         Vector2 size = selection.GetSize();
         Vector2 position = tileMap.MapToLocal(selection.GetCenter() + new Vector2I(0, (int)(size.Y / 2) + 1));
-        Vector2 global = tileMap.ToGlobal(position);
-        contextMenu.Position = global;
+        contextMenu.Position = position;
         contextMenu.Show();
     }
 
