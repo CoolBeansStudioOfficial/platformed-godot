@@ -669,6 +669,8 @@ public partial class Editor : Control
         gridSize = new(level.Width, level.Height);
 
         selection = default;
+        overlay.SetOutline(null);
+        contextMenu.Hide();
 
         tileMap.Clear();
         foreach (var row in editHistory[currentEdit])

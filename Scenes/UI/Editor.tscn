@@ -835,6 +835,7 @@ mouse_filter = 2
 script = ExtResource("46_ps8e3")
 
 [node name="Context Menu" type="Panel" parent="Content/HBoxContainer/Tiles Viewport/Content" unique_id=1665224823 node_paths=PackedStringArray("fill", "copy", "cut", "paste", "rotateLeft", "rotateRight")]
+visible = false
 z_index = 8
 custom_minimum_size = Vector2(250, 30)
 layout_mode = 1

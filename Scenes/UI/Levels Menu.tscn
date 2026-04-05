@@ -522,6 +522,7 @@ offset_right = 640.0
 offset_bottom = 80.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qh20v")
+metadata/ui = "accent"
 
 [node name="Level Name Edit" type="LineEdit" parent="VBoxContainer/Level View/Level Image" unique_id=1584784133]
 layout_mode = 1
