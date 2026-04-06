@@ -15,10 +15,10 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k102b"]
@@ -113,7 +113,6 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_klcet")
 [node name="Editor" parent="UI/Window/Layout/Content" unique_id=1330040267 instance=ExtResource("3_6wurl")]
 visible = false
 layout_mode = 1
-gridSize = Vector2i(100, 100)
 
 [node name="Levels Menu" parent="UI/Window/Layout/Content" unique_id=555989692 instance=ExtResource("2_vhtc3")]
 layout_mode = 1

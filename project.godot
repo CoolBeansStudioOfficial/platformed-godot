@@ -38,6 +38,10 @@ project/assembly_name="platformed"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://vghpiutkhm7c"
+
 [input]
 
 jump={
