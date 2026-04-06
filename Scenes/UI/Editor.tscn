@@ -52,6 +52,10 @@
 [ext_resource type="Script" uid="uid://didooanhj4wla" path="res://Scripts/UI/Elements/EditorContextMenu.cs" id="49_chl6m"]
 [ext_resource type="Texture2D" uid="uid://sfealvwffa8p" path="res://Images/Raster/Icons/Rotate Right.png" id="49_s2w5g"]
 [ext_resource type="Texture2D" uid="uid://bdoofbbavtl6" path="res://Images/Raster/Icons/Trash.png" id="52_ro6dp"]
+[ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="52_viewn"]
+[ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="53_lpbup"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="55_lpbup"]
+[ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="56_4sags"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -535,6 +539,20 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk5qh"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgnpk"]
+texture = ExtResource("52_viewn")
+region_rect = Rect2(0, -13.29, 512, 512)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_788xa"]
+texture = ExtResource("52_viewn")
+region_rect = Rect2(0, 104.125, 512, 309.645)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
+texture = ExtResource("53_lpbup")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_immas"]
 corner_radius_top_left = 15
@@ -1351,7 +1369,6 @@ oversampling_override = 1.0
 title = "Edit Trigger"
 initial_position = 2
 size = Vector2i(1000, 1000)
-visible = false
 transient = true
 exclusive = true
 unresizable = true
@@ -1365,9 +1382,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lk5qh")
 metadata/ui = "background"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background" unique_id=405714392]
+[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background" unique_id=715181585]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1375,23 +1393,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer" unique_id=1911429012]
+[node name="ScrollContainer" type="ScrollContainer" parent="Trigger Edit/Background/VBoxContainer" unique_id=255718258]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=284232181]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=291609353]
+[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer" unique_id=405714392]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Execute" type="Control" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1823375121]
+[node name="HBoxContainer" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1911429012]
+layout_mode = 2
+
+[node name="Arrow" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1077019663]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=284232181]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mgnpk")
+
+[node name="Panel3" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=1446585627]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_788xa")
+
+[node name="Panel2" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=1444165663]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
+
+[node name="Commands" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=291609353]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Command" type="Control" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=1823375121]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer/VBoxContainer/Execute" unique_id=2043435467]
+[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command" unique_id=2043435467]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -1403,18 +1446,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_immas")
 metadata/ui = "background_accent"
 
-[node name="Button2" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer/VBoxContainer/Execute/Panel" unique_id=2038801699]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_right = 61.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "button"
-
-[node name="Button3" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer/VBoxContainer/Execute/Panel" unique_id=1763691586]
+[node name="Button3" type="Button" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel" unique_id=1763691586]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1430,3 +1462,57 @@ grow_vertical = 2
 icon = ExtResource("52_ro6dp")
 expand_icon = true
 metadata/ui = "toggle"
+
+[node name="OptionButton" type="OptionButton" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel" unique_id=519260243]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -25.0
+offset_right = 205.0
+offset_bottom = 25.0
+grow_vertical = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "Toggle Red and Blue Blocks"
+popup/item_0/id = 0
+popup/item_1/text = "Teleport Player"
+popup/item_1/id = 1
+popup/item_2/text = "Rotate Block"
+popup/item_2/id = 2
+popup/item_3/text = "Change Block"
+popup/item_3/id = 3
+popup/item_4/text = "Delay"
+popup/item_4/id = 4
+
+[node name="Add Command" type="Button" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=811468533]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Add Command"
+theme_override_fonts/font = ExtResource("55_lpbup")
+icon = ExtResource("56_4sags")
+icon_alignment = 1
+expand_icon = true
+metadata/ui = "toggle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer" unique_id=307384929]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=2067157534]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 20
+text = "Apply"
+metadata/ui = "button"
+
+[node name="Cancel" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=1069513670]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+metadata/ui = "button"
