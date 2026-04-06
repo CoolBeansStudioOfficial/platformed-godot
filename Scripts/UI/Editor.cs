@@ -89,7 +89,7 @@ public partial class Editor : Control
                 {
                     Data = [],
                     Name = "level",
-                    Type = "tileLayer"
+                    Type = "tilelayer"
                 }, new()
                 {
                     Data = [],
@@ -659,6 +659,12 @@ public partial class Editor : Control
     public void ImportLevel(Level level)
 	{
         currentLevel = level;
+        currentLevel.Data.Layers[0].Type = "tilelayer";
+        currentLevel.Data.XInertia = null;
+        currentLevel.Data.YInertia = null;
+        currentLevel.Data.JumpHeight = null;
+        currentLevel.Data.JumpWidth = null;
+
         nameEdit.Text = level.Name;
 
         ResetEditHistory();

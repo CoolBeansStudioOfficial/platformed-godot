@@ -132,16 +132,16 @@ public class Data
     public string WallJump { get; set; }
 
     [JsonPropertyName("xInertia")]
-    public double XInertia { get; set; }
+    public double? XInertia { get; set; }
 
     [JsonPropertyName("yInertia")]
-    public double YInertia { get; set; }
+    public double? YInertia { get; set; }
 
     [JsonPropertyName("jumpWidth")]
-    public double JumpWidth { get; set; }
+    public double? JumpWidth { get; set; }
 
     [JsonPropertyName("jumpHeight")]
-    public double JumpHeight { get; set; }
+    public double? JumpHeight { get; set; }
 
     [JsonPropertyName("tilesetPath")]
     public string TilesetPath { get; set; }
