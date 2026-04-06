@@ -51,33 +51,11 @@
 [ext_resource type="Texture2D" uid="uid://datusitecxnki" path="res://Images/Raster/Icons/Rotate Left.png" id="48_n8pot"]
 [ext_resource type="Script" uid="uid://didooanhj4wla" path="res://Scripts/UI/Elements/EditorContextMenu.cs" id="49_chl6m"]
 [ext_resource type="Texture2D" uid="uid://sfealvwffa8p" path="res://Images/Raster/Icons/Rotate Right.png" id="49_s2w5g"]
-[ext_resource type="Texture2D" uid="uid://bdoofbbavtl6" path="res://Images/Raster/Icons/Trash.png" id="52_ro6dp"]
 [ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="52_viewn"]
 [ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="53_lpbup"]
+[ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/TriggerCommand.tscn" id="54_4sags"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="55_lpbup"]
 [ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="56_4sags"]
-[ext_resource type="Texture2D" uid="uid://b7g6pexe5ml70" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/ground.png" id="56_qk65o"]
-[ext_resource type="Texture2D" uid="uid://ersqu6x7f018" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spikes.png" id="57_kng5f"]
-[ext_resource type="Texture2D" uid="uid://dl6mp0ufowu15" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/double-spikes.png" id="58_m0nqp"]
-[ext_resource type="Texture2D" uid="uid://dhhu1hmofsskl" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/checkpoint.png" id="59_02r1u"]
-[ext_resource type="Texture2D" uid="uid://edbu2fs6myrk" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spawn.png" id="60_gd8dv"]
-[ext_resource type="Texture2D" uid="uid://b3ux20d5ykgq2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/end.png" id="61_7ar22"]
-[ext_resource type="Texture2D" uid="uid://jxoidgpdwyd1" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/cactus.png" id="62_d8a4g"]
-[ext_resource type="Texture2D" uid="uid://dl30i7wn5ges7" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/crate.png" id="63_2t6k0"]
-[ext_resource type="Texture2D" uid="uid://bedyc07pghak8" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/bounce-pad.png" id="64_rt1qg"]
-[ext_resource type="Texture2D" uid="uid://c7k20c8j1j4dt" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/coin.png" id="65_66j20"]
-[ext_resource type="Texture2D" uid="uid://5ibi6ubfhwi2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/dissipation-block.png" id="66_71js7"]
-[ext_resource type="Texture2D" uid="uid://ofae06s4ajg6" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/red-block.png" id="67_f4ykv"]
-[ext_resource type="Texture2D" uid="uid://cevttex4kvku0" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/blue-block.png" id="68_ouln6"]
-[ext_resource type="Texture2D" uid="uid://dok57xfsv4c1q" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-one.png" id="69_8equq"]
-[ext_resource type="Texture2D" uid="uid://duj5ik27m06xc" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-two.png" id="70_ssr5y"]
-[ext_resource type="Texture2D" uid="uid://8a30ofjkftnn" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-three.png" id="71_fvs62"]
-[ext_resource type="Texture2D" uid="uid://bqgv47jxkk6jv" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-right.png" id="72_kref8"]
-[ext_resource type="Texture2D" uid="uid://y0pkgygcivy" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-left.png" id="73_pl5gb"]
-[ext_resource type="Texture2D" uid="uid://dgh7qph6dawol" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-up.png" id="74_mpjvr"]
-[ext_resource type="Texture2D" uid="uid://c574t8sfevoi4" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-down.png" id="75_yky5d"]
-[ext_resource type="Texture2D" uid="uid://cvw4vampj7i82" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-right.png" id="76_qx1lo"]
-[ext_resource type="Texture2D" uid="uid://dtietefklbjhd" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-left.png" id="77_yuod5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -575,12 +553,6 @@ region_rect = Rect2(0, 104.125, 512, 309.645)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
 texture = ExtResource("53_lpbup")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_immas"]
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
 
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
 layout_mode = 3
@@ -1452,183 +1424,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Command" type="Control" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=1823375121]
-custom_minimum_size = Vector2(0, 60)
+[node name="Command" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=957566761 node_paths=PackedStringArray("rotation") instance=ExtResource("54_4sags")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command" unique_id=2043435467]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_immas")
-metadata/ui = "background_accent"
-
-[node name="Button3" type="Button" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel" unique_id=1763691586]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -25.0
-offset_right = -6.0
-offset_bottom = 25.0
-grow_horizontal = 0
-grow_vertical = 2
-icon = ExtResource("52_ro6dp")
-expand_icon = true
-metadata/ui = "toggle"
-
-[node name="Options" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel" unique_id=1543712936]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -61.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Type" type="OptionButton" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options" unique_id=519260243]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("55_lpbup")
-selected = 0
-item_count = 5
-popup/item_0/text = "Toggle Red and Blue Blocks"
-popup/item_0/id = 0
-popup/item_1/text = "Teleport Player"
-popup/item_1/id = 1
-popup/item_2/text = "Rotate Block"
-popup/item_2/id = 2
-popup/item_3/text = "Change Block"
-popup/item_3/id = 3
-popup/item_4/text = "Delay"
-popup/item_4/id = 4
-metadata/ui = "button"
-
-[node name="Position" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options" unique_id=1708493770]
-layout_mode = 2
-
-[node name="X" type="Label" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options/Position" unique_id=2100749070]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_cfu02")
-text = "X"
-
-[node name="X Number" type="SpinBox" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options/Position" unique_id=1562742607]
-layout_mode = 2
-rounded = true
-metadata/ui = "button"
-
-[node name="Y" type="Label" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options/Position" unique_id=1913088326]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_cfu02")
-text = "Y"
-
-[node name="Y Number" type="SpinBox" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options/Position" unique_id=1879757837]
-layout_mode = 2
-rounded = true
-metadata/ui = "button"
-
-[node name="Rotation" type="OptionButton" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options" unique_id=1603186326]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("55_lpbup")
-selected = 0
-item_count = 4
-popup/item_0/text = "Up"
-popup/item_0/id = 0
-popup/item_1/text = "Left"
-popup/item_1/id = 1
-popup/item_2/text = "Down"
-popup/item_2/id = 2
-popup/item_3/text = "Right"
-popup/item_3/id = 3
-metadata/ui = "button"
-
-[node name="Tile ID" type="OptionButton" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands/Command/Panel/Options" unique_id=220660541]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("55_lpbup")
-selected = 0
-item_count = 24
-popup/item_0/text = "Air"
-popup/item_0/id = 0
-popup/item_1/text = "Ground"
-popup/item_1/icon = ExtResource("56_qk65o")
-popup/item_1/id = 1
-popup/item_2/text = "Spikes"
-popup/item_2/icon = ExtResource("57_kng5f")
-popup/item_2/id = 2
-popup/item_3/text = "Double Spikes"
-popup/item_3/icon = ExtResource("58_m0nqp")
-popup/item_3/id = 3
-popup/item_4/text = "Checkpoint"
-popup/item_4/icon = ExtResource("59_02r1u")
-popup/item_4/id = 4
-popup/item_5/text = "Spawn"
-popup/item_5/icon = ExtResource("60_gd8dv")
-popup/item_5/id = 5
-popup/item_6/text = "End"
-popup/item_6/icon = ExtResource("61_7ar22")
-popup/item_6/id = 6
-popup/item_7/text = "Cactus"
-popup/item_7/icon = ExtResource("62_d8a4g")
-popup/item_7/id = 7
-popup/item_8/text = "Crate"
-popup/item_8/icon = ExtResource("63_2t6k0")
-popup/item_8/id = 8
-popup/item_9/text = "Bounce Pad"
-popup/item_9/icon = ExtResource("64_rt1qg")
-popup/item_9/id = 9
-popup/item_10/text = "Coin"
-popup/item_10/icon = ExtResource("65_66j20")
-popup/item_10/id = 10
-popup/item_11/text = "Dissipation Block"
-popup/item_11/icon = ExtResource("66_71js7")
-popup/item_11/id = 11
-popup/item_12/text = "Enemy"
-popup/item_12/id = 12
-popup/item_13/text = "Red Toggle Block"
-popup/item_13/icon = ExtResource("67_f4ykv")
-popup/item_13/id = 13
-popup/item_14/text = "Blue Toggle Block"
-popup/item_14/icon = ExtResource("68_ouln6")
-popup/item_14/id = 14
-popup/item_15/text = "Trigger One"
-popup/item_15/icon = ExtResource("69_8equq")
-popup/item_15/id = 15
-popup/item_16/text = "Invisible Trigger"
-popup/item_16/icon = ExtResource("70_ssr5y")
-popup/item_16/id = 16
-popup/item_17/text = "Trigger Three"
-popup/item_17/icon = ExtResource("71_fvs62")
-popup/item_17/id = 17
-popup/item_18/text = "Sign Right"
-popup/item_18/icon = ExtResource("72_kref8")
-popup/item_18/id = 18
-popup/item_19/text = "Sign Left"
-popup/item_19/icon = ExtResource("73_pl5gb")
-popup/item_19/id = 19
-popup/item_20/text = "Sign Up"
-popup/item_20/icon = ExtResource("74_mpjvr")
-popup/item_20/id = 20
-popup/item_21/text = "Sign Down"
-popup/item_21/icon = ExtResource("75_yky5d")
-popup/item_21/id = 21
-popup/item_22/text = "Half Spikes Right"
-popup/item_22/icon = ExtResource("76_qx1lo")
-popup/item_22/id = 22
-popup/item_23/text = "Half Spikes Left"
-popup/item_23/icon = ExtResource("77_yuod5")
-popup/item_23/id = 23
-metadata/ui = "button"
+rotation = NodePath("Background/Options/Rotation")
 
 [node name="Add Command" type="Button" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=811468533]
 custom_minimum_size = Vector2(60, 60)

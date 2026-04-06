@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://b7y2b1uywfyhc"]
+
+[ext_resource type="Script" uid="uid://05bavjk6ctdy" path="res://Scripts/UI/Elements/TriggerCommand.cs" id="1_jcft4"]
+[ext_resource type="Texture2D" uid="uid://bdoofbbavtl6" path="res://Images/Raster/Icons/Trash.png" id="1_v2nic"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="2_jcft4"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="3_nex0l"]
+[ext_resource type="Texture2D" uid="uid://b7g6pexe5ml70" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/ground.png" id="4_bqt4t"]
+[ext_resource type="Texture2D" uid="uid://ersqu6x7f018" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spikes.png" id="5_krma5"]
+[ext_resource type="Texture2D" uid="uid://dl6mp0ufowu15" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/double-spikes.png" id="6_oh0kw"]
+[ext_resource type="Texture2D" uid="uid://dhhu1hmofsskl" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/checkpoint.png" id="7_o5syg"]
+[ext_resource type="Texture2D" uid="uid://edbu2fs6myrk" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spawn.png" id="8_rdnch"]
+[ext_resource type="Texture2D" uid="uid://b3ux20d5ykgq2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/end.png" id="9_hl5af"]
+[ext_resource type="Texture2D" uid="uid://jxoidgpdwyd1" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/cactus.png" id="10_8lf4s"]
+[ext_resource type="Texture2D" uid="uid://dl30i7wn5ges7" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/crate.png" id="11_544ro"]
+[ext_resource type="Texture2D" uid="uid://bedyc07pghak8" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/bounce-pad.png" id="12_ukm35"]
+[ext_resource type="Texture2D" uid="uid://c7k20c8j1j4dt" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/coin.png" id="13_v7uwu"]
+[ext_resource type="Texture2D" uid="uid://5ibi6ubfhwi2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/dissipation-block.png" id="14_dqncd"]
+[ext_resource type="Texture2D" uid="uid://ofae06s4ajg6" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/red-block.png" id="15_sud13"]
+[ext_resource type="Texture2D" uid="uid://cevttex4kvku0" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/blue-block.png" id="16_iquuh"]
+[ext_resource type="Texture2D" uid="uid://dok57xfsv4c1q" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-one.png" id="17_tglvt"]
+[ext_resource type="Texture2D" uid="uid://duj5ik27m06xc" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-two.png" id="18_dgm1w"]
+[ext_resource type="Texture2D" uid="uid://8a30ofjkftnn" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-three.png" id="19_fivg1"]
+[ext_resource type="Texture2D" uid="uid://bqgv47jxkk6jv" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-right.png" id="20_6p1le"]
+[ext_resource type="Texture2D" uid="uid://y0pkgygcivy" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-left.png" id="21_brv5a"]
+[ext_resource type="Texture2D" uid="uid://dgh7qph6dawol" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-up.png" id="22_bty3m"]
+[ext_resource type="Texture2D" uid="uid://c574t8sfevoi4" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-down.png" id="23_ghp2s"]
+[ext_resource type="Texture2D" uid="uid://cvw4vampj7i82" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-right.png" id="24_shf6d"]
+[ext_resource type="Texture2D" uid="uid://dtietefklbjhd" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-left.png" id="25_180ql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_immas"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Command" type="Control" unique_id=957566761 node_paths=PackedStringArray("position", "delay", "commandType", "positionX", "positionY", "rotation", "tileID", "milliseconds")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 3
+anchors_preset = 0
+rotation = Object(OptionButton,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"focus_behavior_recursive":0,"mouse_filter":0,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","theme_override_fonts/font":ExtResource("2_jcft4"),"disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":0,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"flat":false,"alignment":0,"text_overrun_behavior":0,"autowrap_mode":0,"autowrap_trim_flags":128,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","selected":0,"fit_to_longest_item":true,"allow_reselect":false,"item_count":4,"popup/item_0/text":"Up","popup/item_0/id":0,"popup/item_1/text":"Left","popup/item_1/id":1,"popup/item_2/text":"Down","popup/item_2/id":2,"popup/item_3/text":"Right","popup/item_3/id":3,"script":null,"metadata/ui":"button")
+
+mouse_filter = 2
+script = ExtResource("1_jcft4")
+position = NodePath("Background/Options/Position")
+delay = NodePath("Background/Options/Delay")
+commandType = NodePath("Background/Options/Type")
+positionX = NodePath("Background/Options/Position/X Number")
+positionY = NodePath("Background/Options/Position/Y Number")
+rotation = NodePath("Background/Options/Rotation")
+tileID = NodePath("Background/Options/Tile ID")
+milliseconds = NodePath("Background/Options/Delay/Milliseconds")
+
+[node name="Background" type="Panel" parent="." unique_id=289975522]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_immas")
+metadata/ui = "background_accent"
+
+[node name="Delete" type="Button" parent="Background" unique_id=1789548888]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -25.0
+offset_right = -6.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("1_v2nic")
+expand_icon = true
+metadata/ui = "toggle"
+
+[node name="Options" type="HBoxContainer" parent="Background" unique_id=402751389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -61.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Type" type="OptionButton" parent="Background/Options" unique_id=1866275177]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jcft4")
+selected = 0
+item_count = 5
+popup/item_0/text = "Toggle Red/Blue Blocks"
+popup/item_0/id = 0
+popup/item_1/text = "Teleport Player"
+popup/item_1/id = 1
+popup/item_2/text = "Rotate Block"
+popup/item_2/id = 2
+popup/item_3/text = "Change Block"
+popup/item_3/id = 3
+popup/item_4/text = "Delay"
+popup/item_4/id = 4
+metadata/ui = "button"
+
+[node name="Position" type="HBoxContainer" parent="Background/Options" unique_id=162962221]
+visible = false
+layout_mode = 2
+
+[node name="X" type="Label" parent="Background/Options/Position" unique_id=1030353771]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nex0l")
+text = "X"
+
+[node name="X Number" type="SpinBox" parent="Background/Options/Position" unique_id=993849011]
+layout_mode = 2
+rounded = true
+metadata/ui = "button"
+
+[node name="Y" type="Label" parent="Background/Options/Position" unique_id=997024920]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nex0l")
+text = "Y"
+
+[node name="Y Number" type="SpinBox" parent="Background/Options/Position" unique_id=756242666]
+layout_mode = 2
+rounded = true
+metadata/ui = "button"
+
+[node name="Rotation" type="OptionButton" parent="Background/Options" unique_id=1408638500]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jcft4")
+selected = 0
+item_count = 4
+popup/item_0/text = "Up"
+popup/item_0/id = 0
+popup/item_1/text = "Left"
+popup/item_1/id = 1
+popup/item_2/text = "Down"
+popup/item_2/id = 2
+popup/item_3/text = "Right"
+popup/item_3/id = 3
+metadata/ui = "button"
+
+[node name="Tile ID" type="OptionButton" parent="Background/Options" unique_id=1746182076]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jcft4")
+selected = 0
+item_count = 24
+popup/item_0/text = "Air"
+popup/item_0/id = 0
+popup/item_1/text = "Ground"
+popup/item_1/icon = ExtResource("4_bqt4t")
+popup/item_1/id = 1
+popup/item_2/text = "Spikes"
+popup/item_2/icon = ExtResource("5_krma5")
+popup/item_2/id = 2
+popup/item_3/text = "Double Spikes"
+popup/item_3/icon = ExtResource("6_oh0kw")
+popup/item_3/id = 3
+popup/item_4/text = "Checkpoint"
+popup/item_4/icon = ExtResource("7_o5syg")
+popup/item_4/id = 4
+popup/item_5/text = "Spawn"
+popup/item_5/icon = ExtResource("8_rdnch")
+popup/item_5/id = 5
+popup/item_6/text = "End"
+popup/item_6/icon = ExtResource("9_hl5af")
+popup/item_6/id = 6
+popup/item_7/text = "Cactus"
+popup/item_7/icon = ExtResource("10_8lf4s")
+popup/item_7/id = 7
+popup/item_8/text = "Crate"
+popup/item_8/icon = ExtResource("11_544ro")
+popup/item_8/id = 8
+popup/item_9/text = "Bounce Pad"
+popup/item_9/icon = ExtResource("12_ukm35")
+popup/item_9/id = 9
+popup/item_10/text = "Coin"
+popup/item_10/icon = ExtResource("13_v7uwu")
+popup/item_10/id = 10
+popup/item_11/text = "Dissipation Block"
+popup/item_11/icon = ExtResource("14_dqncd")
+popup/item_11/id = 11
+popup/item_12/text = "Enemy"
+popup/item_12/id = 12
+popup/item_13/text = "Red Toggle Block"
+popup/item_13/icon = ExtResource("15_sud13")
+popup/item_13/id = 13
+popup/item_14/text = "Blue Toggle Block"
+popup/item_14/icon = ExtResource("16_iquuh")
+popup/item_14/id = 14
+popup/item_15/text = "Trigger One"
+popup/item_15/icon = ExtResource("17_tglvt")
+popup/item_15/id = 15
+popup/item_16/text = "Invisible Trigger"
+popup/item_16/icon = ExtResource("18_dgm1w")
+popup/item_16/id = 16
+popup/item_17/text = "Trigger Three"
+popup/item_17/icon = ExtResource("19_fivg1")
+popup/item_17/id = 17
+popup/item_18/text = "Sign Right"
+popup/item_18/icon = ExtResource("20_6p1le")
+popup/item_18/id = 18
+popup/item_19/text = "Sign Left"
+popup/item_19/icon = ExtResource("21_brv5a")
+popup/item_19/id = 19
+popup/item_20/text = "Sign Up"
+popup/item_20/icon = ExtResource("22_bty3m")
+popup/item_20/id = 20
+popup/item_21/text = "Sign Down"
+popup/item_21/icon = ExtResource("23_ghp2s")
+popup/item_21/id = 21
+popup/item_22/text = "Half Spikes Right"
+popup/item_22/icon = ExtResource("24_shf6d")
+popup/item_22/id = 22
+popup/item_23/text = "Half Spikes Left"
+popup/item_23/icon = ExtResource("25_180ql")
+popup/item_23/id = 23
+metadata/ui = "button"
+
+[node name="Delay" type="HBoxContainer" parent="Background/Options" unique_id=2076797842]
+visible = false
+layout_mode = 2
+
+[node name="MS" type="Label" parent="Background/Options/Delay" unique_id=919898333]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nex0l")
+text = "ms"
+
+[node name="Milliseconds" type="SpinBox" parent="Background/Options/Delay" unique_id=1647672496]
+layout_mode = 2
+tooltip_text = "Delay in milliseconds
+(1000ms = 1 second)"
+rounded = true
+allow_greater = true
+metadata/ui = "button"
