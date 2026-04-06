@@ -33,7 +33,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Command" type="Control" unique_id=957566761 node_paths=PackedStringArray("position", "delay", "commandType", "positionX", "positionY", "rotation", "tileID", "milliseconds")]
+[node name="Command" type="Control" unique_id=957566761 node_paths=PackedStringArray("position", "delay", "commandType", "positionX", "positionY", "rotation", "tileID", "milliseconds", "delete")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 3
 anchors_preset = 0
@@ -49,6 +49,7 @@ positionY = NodePath("Background/Options/Position/Y Number")
 rotation = NodePath("Background/Options/Rotation")
 tileID = NodePath("Background/Options/Tile ID")
 milliseconds = NodePath("Background/Options/Delay/Milliseconds")
+delete = NodePath("Background/Delete")
 
 [node name="Background" type="Panel" parent="." unique_id=289975522]
 custom_minimum_size = Vector2(0, 60)

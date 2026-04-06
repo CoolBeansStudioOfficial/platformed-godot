@@ -14,13 +14,20 @@ public partial class TriggerCommand : Control
     [Export] OptionButton rotation;
     [Export] OptionButton tileID;
     [Export] SpinBox milliseconds;
+    [Export] Button delete;
 
     public Execute command = new();
 
     public override void _Ready()
 	{
         commandType.ItemSelected += CommandTypeSelected;
+        delete.Pressed += DeletePressed;
 	}
+
+    private void DeletePressed()
+    {
+        throw new NotImplementedException();
+    }
 
     private void CommandTypeSelected(long index)
     {

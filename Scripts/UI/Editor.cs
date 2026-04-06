@@ -229,32 +229,7 @@ public partial class Editor : Control
         if (placeMode)
         {
             if (eraserSelected) SetTile(mouseCoords, TileId.Air);
-            else
-            {
-                //remove any other spawn tiles
-                if (selectedTile == TileId.Spawn)
-                {
-                    for (int y = 0; y < editHistory[currentEdit].Count; y++)
-                    {
-                        for (int x = 0; x < editHistory[currentEdit][y].Count; x++)
-                        {
-                            if (editHistory[currentEdit][y][x].id == TileId.Spawn)
-                            {
-                                SetTile(new(x, y), TileId.Air);
-                            }
-                        }
-                    }
-
-                    //set level spawn
-                    currentLevel.Data.Spawn = new() 
-                    { 
-                        X = mouseCoords.X,
-                        Y = mouseCoords.Y,
-                    };
-                }
-
-                SetTile(mouseCoords, selectedTile);
-            }
+            else SetTile(mouseCoords, selectedTile);
 
             overlay.SetOutline(null);
         }
@@ -451,6 +426,27 @@ public partial class Editor : Control
         if (!IsInGrid(position)) return;
 
         if (id == TileId.Air) tileMap.SetCell(position);
+        //remove any other spawn tiles
+        else if (id == TileId.Spawn)
+        {
+            for (int y = 0; y < editHistory[currentEdit].Count; y++)
+            {
+                for (int x = 0; x < editHistory[currentEdit][y].Count; x++)
+                {
+                    if (editHistory[currentEdit][y][x].id == TileId.Spawn)
+                    {
+                        SetTile(new(x, y), TileId.Air);
+                    }
+                }
+            }
+
+            //set level spawn
+            currentLevel.Data.Spawn = new()
+            {
+                X = position.X,
+                Y = position.Y,
+            };
+        }
         else tileMap.SetCell(position, (int)id, Vector2I.Zero);
 
         TileInfo editedTile = editHistory[currentEdit][position.Y][position.X];

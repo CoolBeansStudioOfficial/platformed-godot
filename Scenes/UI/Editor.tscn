@@ -1369,7 +1369,6 @@ exclusive = true
 unresizable = true
 minimize_disabled = true
 maximize_disabled = true
-force_native = true
 
 [node name="Background" type="Panel" parent="Trigger Edit" unique_id=1885300007]
 anchors_preset = 15
