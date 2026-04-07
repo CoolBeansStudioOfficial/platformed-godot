@@ -536,7 +536,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu", "triggerEditor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,6 +557,7 @@ undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
 overlay = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Overlay")
 contextMenu = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Context Menu")
+triggerEditor = NodePath("Trigger Editor")
 textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_27ou3"),
 2: ExtResource("9_swd7v"),
@@ -1341,4 +1342,3 @@ dialog_text = "Are you sure you want to publicly upload this level to your accou
 (You can edit it later in the web editor)"
 
 [node name="Trigger Editor" parent="." unique_id=1595666596 instance=ExtResource("52_ro6dp")]
-visible = false

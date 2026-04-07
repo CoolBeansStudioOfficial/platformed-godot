@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bga21gn8vmc7i"]
 
 [ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="1_p7ms8"]
+[ext_resource type="Script" uid="uid://c02q3opgxauaf" path="res://Scripts/UI/Elements/TriggerEditor.cs" id="1_qusdy"]
 [ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="2_qusdy"]
 [ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/TriggerCommand.tscn" id="3_7rh8h"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="4_maj7l"]
@@ -26,12 +27,14 @@ oversampling_override = 1.0
 title = "Edit Trigger"
 initial_position = 2
 size = Vector2i(1000, 1000)
+visible = false
 transient = true
 exclusive = true
 unresizable = true
 minimize_disabled = true
 maximize_disabled = true
 force_native = true
+script = ExtResource("1_qusdy")
 
 [node name="Background" type="Panel" parent="." unique_id=804158574]
 anchors_preset = 15
@@ -87,6 +90,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Command" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=957566761 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
+layout_mode = 2
+rotation = NodePath("Background/Options/Rotation")
+
+[node name="Command2" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=596683420 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
+layout_mode = 2
+rotation = NodePath("Background/Options/Rotation")
+
+[node name="Command3" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=2063458691 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
+layout_mode = 2
+rotation = NodePath("Background/Options/Rotation")
+
+[node name="Command4" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=1961148712 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
+layout_mode = 2
+rotation = NodePath("Background/Options/Rotation")
+
+[node name="Command5" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=33101132 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
 layout_mode = 2
 rotation = NodePath("Background/Options/Rotation")
 

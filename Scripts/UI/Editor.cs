@@ -19,6 +19,7 @@ public partial class Editor : Control
     [Export] Button redoButton;
     [Export] EditorOverlay overlay;
     [Export] EditorContextMenu contextMenu;
+    [Export] TriggerEditor triggerEditor;
 
     [ExportGroup("Block Textures")]
     [Export] Godot.Collections.Dictionary<TileId, Texture2D> textures;
@@ -175,7 +176,8 @@ public partial class Editor : Control
             {
                 if (mb.Pressed)
                 {
-
+                    //triggerEditor.ForceNative = true;
+                    triggerEditor.Popup();
                 }
                 else
                 {
