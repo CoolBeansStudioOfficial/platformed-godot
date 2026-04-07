@@ -447,6 +447,34 @@ public partial class Editor : Control
                 Y = position.Y,
             };
         }
+        else if (id == TileId.TriggerOne || id == TileId.InvisibleTrigger || id == TileId.TriggerThree)
+        {
+            //create new trigger list if it's empty
+            if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
+
+            //delete any old triggers in the same position
+            for (int i = 0; i < currentLevel.Data.Triggers.Count; i++)
+            {
+                var trigger = currentLevel.Data.Triggers[i];
+
+                if (new Vector2I(trigger.X, trigger.Y) == position)
+                {
+                    currentLevel.Data.Triggers.RemoveAt(i);
+                }
+            }
+
+            currentLevel.Data.Triggers.Add(new()
+            {
+                X = position.X,
+                Y = position.Y,
+                Execute = [new()
+                    {
+                        Type = "toggleBlocks"
+                    }]
+            });
+
+            tileMap.SetCell(position, (int)id, Vector2I.Zero);
+        }
         else tileMap.SetCell(position, (int)id, Vector2I.Zero);
 
         TileInfo editedTile = editHistory[currentEdit][position.Y][position.X];
@@ -455,6 +483,11 @@ public partial class Editor : Control
         editHistory[currentEdit][position.Y][position.X] = editedTile;
 
         if (updateTiles) UpdateTiles();
+    }
+
+    void SetTrigger()
+    {
+
     }
 
     bool IsInGrid(Vector2I position)

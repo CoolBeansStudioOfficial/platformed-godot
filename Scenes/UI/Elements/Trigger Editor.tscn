@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bga21gn8vmc7i"]
+
+[ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="1_p7ms8"]
+[ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="2_qusdy"]
+[ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/TriggerCommand.tscn" id="3_7rh8h"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="4_maj7l"]
+[ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="5_1pn75"]
+[ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="6_gd4vh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk5qh"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgnpk"]
+texture = ExtResource("1_p7ms8")
+region_rect = Rect2(0, -13.29, 512, 512)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_788xa"]
+texture = ExtResource("1_p7ms8")
+region_rect = Rect2(0, 104.125, 512, 309.645)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
+texture = ExtResource("2_qusdy")
+
+[node name="Trigger Editor" type="Window" unique_id=1595666596]
+oversampling_override = 1.0
+title = "Edit Trigger"
+initial_position = 2
+size = Vector2i(1000, 1000)
+visible = false
+transient = true
+exclusive = true
+unresizable = true
+minimize_disabled = true
+maximize_disabled = true
+
+[node name="Background" type="Panel" parent="." unique_id=804158574]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lk5qh")
+metadata/ui = "background"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=975024726]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/VBoxContainer" unique_id=353009561]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer" unique_id=1562120791]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1105657516]
+layout_mode = 2
+
+[node name="Arrow" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1960964173]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=798981038]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mgnpk")
+
+[node name="Panel3" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=763733530]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_788xa")
+
+[node name="Panel2" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=2012247842]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
+
+[node name="Commands" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=541424262]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Command" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=957566761 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
+layout_mode = 2
+rotation = NodePath("Background/Options/Rotation")
+
+[node name="Add Command" type="Button" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=62405468]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Add Command"
+theme_override_fonts/font = ExtResource("4_maj7l")
+icon = ExtResource("5_1pn75")
+icon_alignment = 1
+expand_icon = true
+metadata/ui = "toggle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer" unique_id=559719675]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=304492905]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_gd4vh")
+theme_override_font_sizes/font_size = 20
+text = "Apply"
+metadata/ui = "button"
+
+[node name="Cancel" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=1525549172]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_gd4vh")
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+metadata/ui = "button"

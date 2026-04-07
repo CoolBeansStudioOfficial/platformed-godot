@@ -51,11 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://datusitecxnki" path="res://Images/Raster/Icons/Rotate Left.png" id="48_n8pot"]
 [ext_resource type="Script" uid="uid://didooanhj4wla" path="res://Scripts/UI/Elements/EditorContextMenu.cs" id="49_chl6m"]
 [ext_resource type="Texture2D" uid="uid://sfealvwffa8p" path="res://Images/Raster/Icons/Rotate Right.png" id="49_s2w5g"]
-[ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="52_viewn"]
-[ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="53_lpbup"]
-[ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/TriggerCommand.tscn" id="54_4sags"]
-[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="55_lpbup"]
-[ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="56_4sags"]
+[ext_resource type="PackedScene" uid="uid://bga21gn8vmc7i" path="res://Scenes/UI/Elements/Trigger Editor.tscn" id="52_ro6dp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -539,20 +535,6 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk5qh"]
-bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgnpk"]
-texture = ExtResource("52_viewn")
-region_rect = Rect2(0, -13.29, 512, 512)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_788xa"]
-texture = ExtResource("52_viewn")
-region_rect = Rect2(0, 104.125, 512, 309.645)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
-texture = ExtResource("53_lpbup")
 
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu")]
 layout_mode = 3
@@ -1358,102 +1340,4 @@ ok_button_text = "Upload"
 dialog_text = "Are you sure you want to publicly upload this level to your account?
 (You can edit it later in the web editor)"
 
-[node name="Trigger Edit" type="Window" parent="." unique_id=51419557]
-oversampling_override = 1.0
-title = "Edit Trigger"
-initial_position = 2
-size = Vector2i(1000, 1000)
-visible = false
-transient = true
-exclusive = true
-unresizable = true
-minimize_disabled = true
-maximize_disabled = true
-
-[node name="Background" type="Panel" parent="Trigger Edit" unique_id=1885300007]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lk5qh")
-metadata/ui = "background"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background" unique_id=715181585]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Trigger Edit/Background/VBoxContainer" unique_id=255718258]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer" unique_id=405714392]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1911429012]
-layout_mode = 2
-
-[node name="Arrow" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1077019663]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Panel" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=284232181]
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_mgnpk")
-
-[node name="Panel3" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=1446585627]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_788xa")
-
-[node name="Panel2" type="Panel" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=1444165663]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
-
-[node name="Commands" type="VBoxContainer" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=291609353]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Command" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=957566761 node_paths=PackedStringArray("rotation") instance=ExtResource("54_4sags")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
-
-[node name="Add Command" type="Button" parent="Trigger Edit/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=811468533]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-tooltip_text = "Add Command"
-theme_override_fonts/font = ExtResource("55_lpbup")
-icon = ExtResource("56_4sags")
-icon_alignment = 1
-expand_icon = true
-metadata/ui = "toggle"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Trigger Edit/Background/VBoxContainer" unique_id=307384929]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-
-[node name="Apply" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=2067157534]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 20
-text = "Apply"
-metadata/ui = "button"
-
-[node name="Cancel" type="Button" parent="Trigger Edit/Background/VBoxContainer/HBoxContainer" unique_id=1069513670]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_cfu02")
-theme_override_font_sizes/font_size = 20
-text = "Cancel"
-metadata/ui = "button"
+[node name="Trigger Editor" parent="." unique_id=1595666596 instance=ExtResource("52_ro6dp")]

@@ -87,9 +87,6 @@ public partial class PlayerMovement : CharacterBody2D
                                 canJumpFromLeft = true;
                                 break;
                             }
-                            else
-                            {
-                            }
                         }
                     }
                 }
@@ -102,7 +99,7 @@ public partial class PlayerMovement : CharacterBody2D
                         //if collision is with scene, skip invalid object check
                         if (wallCastRight.GetCollider(i) is not TileMapLayer)
                         {
-                            canJumpFromLeft = true;
+                            canJumpFromRight = true;
                             break;
                         }
 
