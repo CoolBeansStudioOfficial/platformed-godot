@@ -3,7 +3,10 @@ using System;
 
 public partial class TriggerEditor : Window
 {
-	// Called when the node enters the scene tree for the first time.
+    [Export] VBoxContainer commandContainer;
+
+    TriggerParams trigger;
+
 	public override void _Ready()
 	{
         CloseRequested += OnCloseRequested;
@@ -14,8 +17,10 @@ public partial class TriggerEditor : Window
         Hide();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
+    public void SetTrigger(TriggerParams newTrigger)
+    {
+        trigger = newTrigger;
+
+
+    }
 }

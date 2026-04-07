@@ -351,6 +351,7 @@ public partial class Editor : Control
         {
             if (IsTriggerID(editHistory[currentEdit][position.Y][position.X].id))
             {
+                triggerEditor.SetTrigger(GetTrigger(position));
                 triggerEditor.Popup();
             }
         }
@@ -473,21 +474,10 @@ public partial class Editor : Control
         }
         else if (IsTriggerID(id))
         {
-            //create new trigger list if it's empty
-            if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
-
             //delete any old triggers in the same position
-            for (int i = 0; i < currentLevel.Data.Triggers.Count; i++)
-            {
-                var trigger = currentLevel.Data.Triggers[i];
+            if (GetTrigger(position) is not null) RemoveTrigger(position);
 
-                if (new Vector2I(trigger.X, trigger.Y) == position)
-                {
-                    currentLevel.Data.Triggers.RemoveAt(i);
-                }
-            }
-
-            currentLevel.Data.Triggers.Add(new()
+            SetTrigger(new()
             {
                 X = position.X,
                 Y = position.Y,
@@ -522,6 +512,49 @@ public partial class Editor : Control
         if (id == TileId.InvisibleTrigger) return true;
         if (id == TileId.TriggerThree) return true;
         return false;
+    }
+
+    TriggerParams GetTrigger(Vector2I position)
+    {
+        if (currentLevel.Data.Triggers is null) return null;
+
+        for (int i = 0; i < currentLevel.Data.Triggers.Count; i++)
+        {
+            var trigger = currentLevel.Data.Triggers[i];
+
+            if (new Vector2I(trigger.X, trigger.Y) == position)
+            {
+                return trigger;
+            }
+        }
+
+        return null;
+    }
+
+    void SetTrigger(TriggerParams trigger)
+    {
+        //create new trigger list if it's empty
+        if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
+
+        //remove any old triggers that might be in the same position
+        RemoveTrigger(new(trigger.X, trigger.Y));
+
+        currentLevel.Data.Triggers.Add(trigger);
+    }
+
+    void RemoveTrigger(Vector2I position)
+    {
+        if (currentLevel.Data.Triggers is null) return;
+
+        for (int i = 0; i < currentLevel.Data.Triggers.Count; i++)
+        {
+            var trigger = currentLevel.Data.Triggers[i];
+
+            if (new Vector2I(trigger.X, trigger.Y) == position)
+            {
+                currentLevel.Data.Triggers.RemoveAt(i);
+            }
+        }
     }
 
     enum EditorMode
