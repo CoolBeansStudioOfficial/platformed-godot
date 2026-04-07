@@ -47,11 +47,32 @@
 [ext_resource type="Texture2D" uid="uid://bo2rfi640fm8w" path="res://Images/Raster/Icons/Erase.png" id="37_3p2xf"]
 [ext_resource type="Script" uid="uid://ctqthqd8c4px3" path="res://Scripts/UI/Elements/EraserButton.cs" id="38_6dj86"]
 [ext_resource type="Texture2D" uid="uid://c72rdejnnyphw" path="res://Images/Raster/Icons/Trigger.png" id="38_pjxyc"]
+[ext_resource type="Texture2D" uid="uid://bedyc07pghak8" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/bounce-pad.png" id="44_l7v5i"]
+[ext_resource type="Texture2D" uid="uid://5ibi6ubfhwi2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/dissipation-block.png" id="45_mgnpk"]
+[ext_resource type="Texture2D" uid="uid://jxoidgpdwyd1" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/cactus.png" id="46_788xa"]
 [ext_resource type="Script" uid="uid://byvsis2o3ollx" path="res://Scripts/UI/Elements/EditorOverlay.cs" id="46_ps8e3"]
+[ext_resource type="Texture2D" uid="uid://ersqu6x7f018" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spikes.png" id="47_wlvke"]
+[ext_resource type="Texture2D" uid="uid://dl6mp0ufowu15" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/double-spikes.png" id="48_86mo1"]
 [ext_resource type="Texture2D" uid="uid://datusitecxnki" path="res://Images/Raster/Icons/Rotate Left.png" id="48_n8pot"]
 [ext_resource type="Script" uid="uid://didooanhj4wla" path="res://Scripts/UI/Elements/EditorContextMenu.cs" id="49_chl6m"]
+[ext_resource type="Texture2D" uid="uid://dtietefklbjhd" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-left.png" id="49_qk65o"]
 [ext_resource type="Texture2D" uid="uid://sfealvwffa8p" path="res://Images/Raster/Icons/Rotate Right.png" id="49_s2w5g"]
+[ext_resource type="Texture2D" uid="uid://cvw4vampj7i82" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/half-double-spike-right.png" id="50_kng5f"]
+[ext_resource type="Texture2D" uid="uid://c7k20c8j1j4dt" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/coin.png" id="51_m0nqp"]
+[ext_resource type="Texture2D" uid="uid://dl30i7wn5ges7" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/crate.png" id="52_02r1u"]
 [ext_resource type="PackedScene" uid="uid://bga21gn8vmc7i" path="res://Scenes/UI/Elements/Trigger Editor.tscn" id="52_ro6dp"]
+[ext_resource type="Texture2D" uid="uid://bqgv47jxkk6jv" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-right.png" id="53_gd8dv"]
+[ext_resource type="Texture2D" uid="uid://y0pkgygcivy" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-left.png" id="54_7ar22"]
+[ext_resource type="Texture2D" uid="uid://dgh7qph6dawol" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-up.png" id="55_d8a4g"]
+[ext_resource type="Texture2D" uid="uid://c574t8sfevoi4" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/sign-down.png" id="56_2t6k0"]
+[ext_resource type="Texture2D" uid="uid://edbu2fs6myrk" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spawn.png" id="58_rt1qg"]
+[ext_resource type="Texture2D" uid="uid://dhhu1hmofsskl" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/checkpoint.png" id="59_66j20"]
+[ext_resource type="Texture2D" uid="uid://b3ux20d5ykgq2" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/end.png" id="60_71js7"]
+[ext_resource type="Texture2D" uid="uid://dok57xfsv4c1q" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-one.png" id="61_f4ykv"]
+[ext_resource type="Texture2D" uid="uid://duj5ik27m06xc" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-two.png" id="62_ouln6"]
+[ext_resource type="Texture2D" uid="uid://8a30ofjkftnn" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-three.png" id="63_8equq"]
+[ext_resource type="Texture2D" uid="uid://cevttex4kvku0" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/blue-block.png" id="64_ssr5y"]
+[ext_resource type="Texture2D" uid="uid://ofae06s4ajg6" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/red-block.png" id="65_fvs62"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -288,20 +309,6 @@ texture = ExtResource("10_dorju")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpokt"]
-texture = ExtResource("28_t841b")
-region_rect = Rect2(0, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilavr"]
-texture = ExtResource("28_t841b")
-region_rect = Rect2(0, 0, 16, 16)
-modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0g7n"]
-texture = ExtResource("28_t841b")
-region_rect = Rect2(0, 0, 16, 16)
-modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vs1f4"]
 texture = ExtResource("29_kvt7y")
 region_rect = Rect2(0, 0, 16, 16)
@@ -313,6 +320,20 @@ modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l7v5i"]
 texture = ExtResource("29_kvt7y")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpokt"]
+texture = ExtResource("28_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilavr"]
+texture = ExtResource("28_t841b")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.38857287, 0.38857287, 0.38857287, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p0g7n"]
+texture = ExtResource("28_t841b")
 region_rect = Rect2(0, 0, 16, 16)
 modulate_color = Color(0.735357, 0.735357, 0.735357, 1)
 
@@ -979,6 +1000,7 @@ tooltip_text = "Bounce Pad"
 theme_override_styles/normal = SubResource("StyleBoxTexture_3p2xf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_6dj86")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gbx3p")
+icon = ExtResource("44_l7v5i")
 tileId = 9
 
 [node name="Dissipation Block" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=1762339187 instance=ExtResource("8_aqfah")]
@@ -987,6 +1009,7 @@ tooltip_text = "Dissipation Block"
 theme_override_styles/normal = SubResource("StyleBoxTexture_etdxq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3vhy4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f28st")
+icon = ExtResource("45_mgnpk")
 tileId = 11
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Basic Terrain" unique_id=486506412]
@@ -1005,6 +1028,7 @@ tooltip_text = "Cactus"
 theme_override_styles/normal = SubResource("StyleBoxTexture_xgvkk")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ehlpm")
 theme_override_styles/hover = SubResource("StyleBoxTexture_j1kqi")
+icon = ExtResource("46_788xa")
 tileId = 7
 
 [node name="Spikes" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=896651421 instance=ExtResource("8_aqfah")]
@@ -1013,6 +1037,7 @@ tooltip_text = "Spikes"
 theme_override_styles/normal = SubResource("StyleBoxTexture_hwn3q")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0okdv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_sykhj")
+icon = ExtResource("47_wlvke")
 tileId = 2
 
 [node name="SpikesDouble" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=270541621 instance=ExtResource("8_aqfah")]
@@ -1021,15 +1046,8 @@ tooltip_text = "Double Spikes"
 theme_override_styles/normal = SubResource("StyleBoxTexture_5pgwn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wogks")
 theme_override_styles/hover = SubResource("StyleBoxTexture_pijs4")
+icon = ExtResource("48_86mo1")
 tileId = 3
-
-[node name="HalfSpikesRight" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=184281886 instance=ExtResource("8_aqfah")]
-layout_mode = 2
-tooltip_text = "Half Spikes Right"
-theme_override_styles/normal = SubResource("StyleBoxTexture_rpokt")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ilavr")
-theme_override_styles/hover = SubResource("StyleBoxTexture_p0g7n")
-tileId = 22
 
 [node name="HalfSpikesLeft" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=1841879040 instance=ExtResource("8_aqfah")]
 layout_mode = 2
@@ -1037,7 +1055,17 @@ tooltip_text = "Half Spikes Left"
 theme_override_styles/normal = SubResource("StyleBoxTexture_vs1f4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_oxsxq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l7v5i")
+icon = ExtResource("49_qk65o")
 tileId = 23
+
+[node name="HalfSpikesRight" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=184281886 instance=ExtResource("8_aqfah")]
+layout_mode = 2
+tooltip_text = "Half Spikes Right"
+theme_override_styles/normal = SubResource("StyleBoxTexture_rpokt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ilavr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_p0g7n")
+icon = ExtResource("50_kng5f")
+tileId = 22
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Hazards" unique_id=580416152]
 custom_minimum_size = Vector2(60, 5)
@@ -1056,6 +1084,7 @@ tooltip_text = "Coin"
 theme_override_styles/normal = SubResource("StyleBoxTexture_pjxyc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_a27t6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ijjhq")
+icon = ExtResource("51_m0nqp")
 tileId = 10
 
 [node name="Crate" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1603383150 instance=ExtResource("8_aqfah")]
@@ -1064,6 +1093,7 @@ tooltip_text = "Crate"
 theme_override_styles/normal = SubResource("StyleBoxTexture_ei811")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dorju")
 theme_override_styles/hover = SubResource("StyleBoxTexture_o3210")
+icon = ExtResource("52_02r1u")
 tileId = 8
 
 [node name="SignRight" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=996559731 instance=ExtResource("8_aqfah")]
@@ -1072,6 +1102,7 @@ tooltip_text = "Sign Right"
 theme_override_styles/normal = SubResource("StyleBoxTexture_4sags")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_immas")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lk5qh")
+icon = ExtResource("53_gd8dv")
 tileId = 18
 
 [node name="SignLeft" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=558636611 instance=ExtResource("8_aqfah")]
@@ -1080,6 +1111,7 @@ tooltip_text = "Sign Left"
 theme_override_styles/normal = SubResource("StyleBoxTexture_tgdat")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ouav8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lae7s")
+icon = ExtResource("54_7ar22")
 tileId = 19
 
 [node name="SignUp" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=939575702 instance=ExtResource("8_aqfah")]
@@ -1088,6 +1120,7 @@ tooltip_text = "Sign Up"
 theme_override_styles/normal = SubResource("StyleBoxTexture_vq1xv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_m7e5w")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w5wxy")
+icon = ExtResource("55_d8a4g")
 tileId = 20
 
 [node name="SignDown" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=1901528433 instance=ExtResource("8_aqfah")]
@@ -1096,6 +1129,7 @@ tooltip_text = "Sign Down"
 theme_override_styles/normal = SubResource("StyleBoxTexture_y4g32")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7gp2n")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lkf4y")
+icon = ExtResource("56_2t6k0")
 tileId = 21
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Decoration" unique_id=347948993]
@@ -1115,6 +1149,7 @@ tooltip_text = "Enemy"
 theme_override_styles/normal = SubResource("StyleBoxFlat_mwxjg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7unpn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yj855")
+icon = ExtResource("33_3p2xf")
 tileId = 12
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Interactable" unique_id=1002589132]
@@ -1134,6 +1169,7 @@ tooltip_text = "Spawn"
 theme_override_styles/normal = SubResource("StyleBoxTexture_yqw02")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_t841b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kvt7y")
+icon = ExtResource("58_rt1qg")
 tileId = 5
 
 [node name="Checkpoint" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=1667668126 instance=ExtResource("8_aqfah")]
@@ -1142,6 +1178,7 @@ tooltip_text = "Checkpoint"
 theme_override_styles/normal = SubResource("StyleBoxTexture_0nqbs")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_skcvm")
 theme_override_styles/hover = SubResource("StyleBoxTexture_eqe5u")
+icon = ExtResource("59_66j20")
 tileId = 4
 
 [node name="End" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=529785624 instance=ExtResource("8_aqfah")]
@@ -1150,6 +1187,7 @@ tooltip_text = "End"
 theme_override_styles/normal = SubResource("StyleBoxTexture_4cnwd")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vqn0s")
 theme_override_styles/hover = SubResource("StyleBoxTexture_x62ro")
+icon = ExtResource("60_71js7")
 tileId = 6
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Control Flags" unique_id=1090558249]
@@ -1168,6 +1206,7 @@ tooltip_text = "Trigger"
 theme_override_styles/normal = SubResource("StyleBoxTexture_ro6dp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_m8sup")
 theme_override_styles/hover = SubResource("StyleBoxTexture_viewn")
+icon = ExtResource("61_f4ykv")
 tileId = 15
 
 [node name="TriggerInvisible" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=995973916 instance=ExtResource("8_aqfah")]
@@ -1176,6 +1215,7 @@ tooltip_text = "Invisible Trigger"
 theme_override_styles/normal = SubResource("StyleBoxTexture_lpbup")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_lpbup")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lpbup")
+icon = ExtResource("62_ouln6")
 tileId = 16
 
 [node name="TriggerThree" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1941686431 instance=ExtResource("8_aqfah")]
@@ -1184,6 +1224,7 @@ tooltip_text = "Trigger (Alternate Style)"
 theme_override_styles/normal = SubResource("StyleBoxTexture_mwxjg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7unpn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yj855")
+icon = ExtResource("63_8equq")
 tileId = 17
 
 [node name="BlockBlue" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1561543149 instance=ExtResource("8_aqfah")]
@@ -1192,6 +1233,7 @@ tooltip_text = "Blue Toggle Block"
 theme_override_styles/normal = SubResource("StyleBoxTexture_ps8e3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_27ou3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_d3xfs")
+icon = ExtResource("64_ssr5y")
 tileId = 13
 
 [node name="BlockRed" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=1090562526 instance=ExtResource("8_aqfah")]
@@ -1200,6 +1242,7 @@ tooltip_text = "Red Toggle Block"
 theme_override_styles/normal = SubResource("StyleBoxTexture_n8pot")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxTexture_chl6m")
+icon = ExtResource("65_fvs62")
 tileId = 14
 
 [node name="Separator" type="Panel" parent="Content/HBoxContainer/Side Bar/Side Bar Blocks/ScrollContainer/Blocks/Triggers" unique_id=232306808]

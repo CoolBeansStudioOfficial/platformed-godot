@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmvwfjpmmvgyi"]
 
 [ext_resource type="Texture2D" uid="uid://d28og48vid1wc" path="res://Images/Raster/Tiles/16 Bit/ground.png" id="1_hyqdm"]
+[ext_resource type="Texture2D" uid="uid://b7g6pexe5ml70" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/ground.png" id="2_157gp"]
 [ext_resource type="Script" uid="uid://pqqo4sq0l8ud" path="res://Scripts/UI/Elements/BlockSelectButton.cs" id="2_e8gge"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swd7v"]
@@ -25,5 +26,8 @@ tooltip_text = "Ground"
 theme_override_styles/normal = SubResource("StyleBoxTexture_swd7v")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_aqfah")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qdfva")
+icon = ExtResource("2_157gp")
+expand_icon = true
 script = ExtResource("2_e8gge")
 tileId = 1
+metadata/ui = "toggle"

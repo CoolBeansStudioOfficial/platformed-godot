@@ -12,7 +12,6 @@ public partial class BlockSelectButton : Button
 
     private void OnPressed()
     {
-		var texture = (StyleBoxTexture)GetThemeStylebox("normal");
         UIManager.Instance.editor.SelectTile(tileId);
     }
 }

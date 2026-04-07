@@ -113,7 +113,7 @@ public partial class ThemeManager : Node
                 }
                 else if (style == "toggle")
                 {
-                    button.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+                    button.AddThemeStyleboxOverride("normal", CreateStyleboxEmpty(toggleStylebox));
 
                     Color toggleColor = accentColor;
                     toggleColor.A = 0.5f;
@@ -171,6 +171,17 @@ public partial class ThemeManager : Node
             ContentMarginLeft = box.ContentMarginLeft,
             ContentMarginRight = box.ContentMarginRight,
             ContentMarginTop = box.ContentMarginTop,
+        };
+    }
+
+    public StyleBoxEmpty CreateStyleboxEmpty(StyleBoxFlat box)
+    {
+        return new()
+        {
+            ContentMarginBottom = box.ContentMarginBottom,
+            ContentMarginLeft = box.ContentMarginLeft,
+            ContentMarginRight = box.ContentMarginRight,
+            ContentMarginTop = box.ContentMarginTop
         };
     }
 }

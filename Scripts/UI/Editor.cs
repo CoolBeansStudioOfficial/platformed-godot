@@ -176,8 +176,7 @@ public partial class Editor : Control
             {
                 if (mb.Pressed)
                 {
-                    //triggerEditor.ForceNative = true;
-                    triggerEditor.Popup();
+                    HandleRightClick(mouseCoords);
                 }
                 else
                 {
@@ -345,6 +344,18 @@ public partial class Editor : Control
         }
     }
 
+    void HandleRightClick(Vector2I position, bool drag = false)
+    {
+        //click
+        if (!drag)
+        {
+            if (IsTriggerID(editHistory[currentEdit][position.Y][position.X].id))
+            {
+                triggerEditor.Popup();
+            }
+        }
+    }
+
     void Undo()
     {
         if (currentEdit == 0) return;
@@ -460,7 +471,7 @@ public partial class Editor : Control
                 Y = position.Y,
             };
         }
-        else if (id == TileId.TriggerOne || id == TileId.InvisibleTrigger || id == TileId.TriggerThree)
+        else if (IsTriggerID(id))
         {
             //create new trigger list if it's empty
             if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
@@ -498,16 +509,19 @@ public partial class Editor : Control
         if (updateTiles) UpdateTiles();
     }
 
-    void SetTrigger()
-    {
-
-    }
-
     bool IsInGrid(Vector2I position)
     {
         if (position.X >= gridSize.X || position.Y >= gridSize.Y) return false;
         if (position.X < 0 || position.Y < 0) return false;
         return true;
+    }
+
+    bool IsTriggerID(TileId id)
+    {
+        if (id == TileId.TriggerOne) return true;
+        if (id == TileId.InvisibleTrigger) return true;
+        if (id == TileId.TriggerThree) return true;
+        return false;
     }
 
     enum EditorMode
