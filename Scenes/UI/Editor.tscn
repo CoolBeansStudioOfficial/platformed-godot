@@ -1341,3 +1341,4 @@ dialog_text = "Are you sure you want to publicly upload this level to your accou
 (You can edit it later in the web editor)"
 
 [node name="Trigger Editor" parent="." unique_id=1595666596 instance=ExtResource("52_ro6dp")]
+visible = false

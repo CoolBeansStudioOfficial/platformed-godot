@@ -171,6 +171,17 @@ public partial class Editor : Control
                     }
                 }
             }
+            else if (mb.ButtonIndex == MouseButton.Right)
+            {
+                if (mb.Pressed)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
         //mouse movement
         else if (@event is InputEventMouseMotion)
