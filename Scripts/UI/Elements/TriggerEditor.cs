@@ -23,7 +23,7 @@ public partial class TriggerEditor : Window
     public void SetTrigger(TriggerParams newTrigger)
     {
         //clear old commands
-        foreach (var command in commands)
+        if (commands.Count > 0) foreach (var command in commands)
         {
             command.QueueFree();
         }
