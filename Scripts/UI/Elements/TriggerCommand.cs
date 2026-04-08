@@ -15,6 +15,8 @@ public partial class TriggerCommand : Control
     [Export] OptionButton tileID;
     [Export] SpinBox milliseconds;
     [Export] Button delete;
+    [Export] Button moveUp;
+    [Export] Button moveDown;
 
     public Execute command = new();
     public TriggerEditor triggerEditor;
@@ -22,6 +24,8 @@ public partial class TriggerCommand : Control
     public override void _Ready()
 	{
         delete.Pressed += DeletePressed;
+        moveUp.Pressed += MoveUp;
+        moveDown.Pressed += MoveDown;
         commandType.ItemSelected += CommandTypeSelected;
         positionX.ValueChanged += PositionXChanged;
         positionY.ValueChanged += PositionYChanged;
@@ -37,6 +41,16 @@ public partial class TriggerCommand : Control
     void DeletePressed()
     {
         triggerEditor.RemoveCommand(this);
+    }
+
+    void MoveUp()
+    {
+        triggerEditor.MoveCommandBack(this);
+    }
+
+    void MoveDown()
+    {
+        triggerEditor.MoveCommandForward(this);
     }
 
     void CommandTypeSelected(long index)

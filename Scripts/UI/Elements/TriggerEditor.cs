@@ -93,6 +93,31 @@ public partial class TriggerEditor : Window
         commands.Add(command);
     }
 
+    public void MoveCommandForward(TriggerCommand command)
+    {
+        GD.Print("mvoe forward");
+        int index = commands.IndexOf(command);
+        commands.Remove(command);
+        commands.Insert(index + 1, command);
+        commandContainer.MoveChild(command, command.GetIndex() + 1);
+
+        trigger.Execute.Remove(command.command);
+        trigger.Execute.Insert(index + 1, command.command);
+
+    }
+
+    public void MoveCommandBack(TriggerCommand command)
+    {
+        GD.Print("mvoe back");
+        int index = commands.IndexOf(command);
+        commands.Remove(command);
+        commands.Insert(index - 1, command);
+        commandContainer.MoveChild(command, command.GetIndex() - 1);
+
+        trigger.Execute.Remove(command.command);
+        trigger.Execute.Insert(index - 1, command.command);
+    }
+
     public void RemoveCommand(TriggerCommand command)
     {
         trigger.Execute.Remove(command.command);
