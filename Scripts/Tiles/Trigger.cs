@@ -25,6 +25,7 @@ public partial class Trigger : Tile
     {
         foreach (var command in triggerParams.Execute)
         {
+            GD.Print(command.Type);
             if (command.Type == "toggleBlocks")
             {
                 LevelManager.Instance.redBlocksActive = !LevelManager.Instance.redBlocksActive;
@@ -64,6 +65,7 @@ public partial class Trigger : Tile
             }
             else if (command.Type == "delay")
             {
+                GD.Print(Convert.ToInt32(command.Time));
                 await Task.Delay(Convert.ToInt32(command.Time));
             }
         }

@@ -115,7 +115,7 @@ public partial class TriggerCommand : Control
 
     void MillisecondsChanged(double ms)
     {
-        command.Time = Convert.ToString((int)ms);
+        command.Time = Convert.ToString(ms);
     }
 
     public void SetCommand(Execute execute)
@@ -123,6 +123,7 @@ public partial class TriggerCommand : Control
         command = execute;
 
         //assign default values if null
+        if (command.Type == string.Empty) command.Type = "toggleBlocks";
         command.X ??= 0;
         command.Y ??= 0;
         command.Block ??= 0;
@@ -158,7 +159,7 @@ public partial class TriggerCommand : Control
         {
             CommandTypeSelected(4);
 
-            milliseconds.Value = Convert.ToInt32(command.Time);
+            milliseconds.Value = Convert.ToDouble(command.Time);
         }
     }
 }
