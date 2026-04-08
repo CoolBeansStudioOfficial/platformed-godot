@@ -116,6 +116,7 @@ layout_mode = 2
 [node name="Apply" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=304492905]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_gd4vh")
 theme_override_font_sizes/font_size = 20
 text = "Apply"
@@ -124,6 +125,7 @@ metadata/ui = "button"
 [node name="Close" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=1525549172]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_gd4vh")
 theme_override_font_sizes/font_size = 20
 text = "Close"

@@ -21,6 +21,7 @@ public partial class SettingsMenu : Control
     [Export] OptionButton styleOptions;
     [Export] Button saveTheme;
     [Export] Button loadTheme;
+    [Export] Slider audioVolume;
 
     [ExportGroup("Config")]
     [Export] TileSet[] playSets;
@@ -88,7 +89,8 @@ public partial class SettingsMenu : Control
             {
                 { "tile_style", 1 },
                 { "background_color", new Color("#222222") },
-                { "accent_color", new Color("#94daf2") }
+                { "accent_color", new Color("#94daf2") },
+                { "volume", 1d }
             });
         }
 
@@ -98,6 +100,7 @@ public partial class SettingsMenu : Control
         styleOptions.Selected = (int)settings["tile_style"];
         backgroundColor.Color = (Color)settings["background_color"];
         accentColor.Color = (Color)settings["accent_color"];
+        audioVolume.Value = (double)settings["volume"];
     }
 
     public void Update()
@@ -106,7 +109,7 @@ public partial class SettingsMenu : Control
         settings["tile_style"] = styleOptions.GetSelectedId();
         settings["background_color"] = backgroundColor.Color;
         settings["accent_color"] = accentColor.Color;
-
+        settings["volume"] = audioVolume.Value;
     }
 
     void Apply()
@@ -123,6 +126,9 @@ public partial class SettingsMenu : Control
         ThemeManager.Instance.backgroundColor = (Color)settings["background_color"];
         ThemeManager.Instance.accentColor = (Color)settings["accent_color"];
         ThemeManager.Instance.SetTheme();
+
+        SetVolume();
+        
     }
 
     //i only did this because it was giving an error when apply is called in ready
@@ -136,6 +142,19 @@ public partial class SettingsMenu : Control
         {
             await Task.Delay(1000);
             UIManager.Instance.editor.SetTileset(editorSets[(int)settings["tile_style"]]);
+        }
+    }
+
+    public async Task SetVolume()
+    {
+        try
+        {
+            AudioManager.Instance.SetVolume((double)settings["volume"]);
+        }
+        catch
+        {
+            await Task.Delay(1000);
+            AudioManager.Instance.SetVolume((double)settings["volume"]);
         }
     }
 

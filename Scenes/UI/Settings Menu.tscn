@@ -12,7 +12,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7h03"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
 
-[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "themeSaveDialog", "themeLoadDialog", "apply", "close", "ok", "backgroundColor", "accentColor", "styleOptions", "saveTheme", "loadTheme")]
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "themeSaveDialog", "themeLoadDialog", "apply", "close", "ok", "backgroundColor", "accentColor", "styleOptions", "saveTheme", "loadTheme", "audioVolume")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +31,7 @@ accentColor = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/
 styleOptions = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/Style Options")
 saveTheme = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/Save")
 loadTheme = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/Load")
+audioVolume = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume/Slider")
 playSets = Array[TileSet]([ExtResource("2_1vk5b"), ExtResource("3_q7h03")])
 editorSets = Array[TileSet]([ExtResource("4_6ly1g"), ExtResource("5_fy6my")])
 
@@ -155,13 +156,40 @@ popup/item_1/text = "16 Bit"
 popup/item_1/id = 1
 metadata/ui = "button"
 
-[node name="Audio" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings" unique_id=1488470327]
-visible = false
+[node name="Audio Settings" type="VBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=401399188]
+layout_mode = 2
+
+[node name="Audio" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings" unique_id=987917375]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_inooc")
-theme_override_font_sizes/font_size = 24
-text = "Audio
-"
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+vertical_alignment = 1
+
+[node name="Volume" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings" unique_id=742495349]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_q7h03")
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+
+[node name="Audio Volume" type="HBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings" unique_id=1783504376]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1482136578]
+layout_mode = 2
+text = "Mute"
+
+[node name="Slider" type="HSlider" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1741970886]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=520029124]
+layout_mode = 2
+text = "Max"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=969852215]
 layout_mode = 2
@@ -173,6 +201,7 @@ layout_mode = 2
 [node name="Apply" type="Button" parent="Background2/VBoxContainer/HBoxContainer" unique_id=1754315985]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_inooc")
 theme_override_font_sizes/font_size = 20
 text = "Apply"
@@ -181,6 +210,7 @@ metadata/ui = "button"
 [node name="Close" type="Button" parent="Background2/VBoxContainer/HBoxContainer" unique_id=450932949]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_inooc")
 theme_override_font_sizes/font_size = 20
 text = "Close"
@@ -189,6 +219,7 @@ metadata/ui = "button"
 [node name="OK" type="Button" parent="Background2/VBoxContainer/HBoxContainer" unique_id=795207273]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_inooc")
 theme_override_font_sizes/font_size = 20
 text = "OK"

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class AudioManager : Node
 {
 	List<AudioStreamPlayer> players = [];
+	public double volume = 1;
 
 	//singleton pringleton
 	public static AudioManager Instance { get; private set; }
@@ -33,11 +34,23 @@ public partial class AudioManager : Node
 		if (!playerFound)
 		{
 			AudioStreamPlayer player = new();
+			player.VolumeLinear = (float)volume;
 			AddChild(player);
 			player.Stream = stream;
 			player.Play();
 
 			players.Add(player);
+		}
+	}
+
+	public void SetVolume(double setVolume)
+	{
+		volume = setVolume;
+
+		if (players.Count == 0) return;
+		foreach (var player in players)
+		{
+			player.VolumeLinear = (float)volume;
 		}
 	}
 }
