@@ -123,11 +123,11 @@ public partial class TriggerCommand : Control
         command = execute;
 
         //assign default values if null
-        if (command.Type == string.Empty) command.Type = "toggleBlocks";
+        if (command.Type == string.Empty || command.Type is null) command.Type = "toggleBlocks";
         command.X ??= 0;
         command.Y ??= 0;
         command.Block ??= 0;
-        if (command.Time == string.Empty) command.Time = "0";
+        if (command.Time == string.Empty || command.Time is null) command.Time = "0";
 
         if (command.Type == "toggleBlocks")
         {

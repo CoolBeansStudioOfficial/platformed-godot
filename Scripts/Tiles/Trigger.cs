@@ -25,6 +25,7 @@ public partial class Trigger : Tile
     {
         foreach (var command in triggerParams.Execute)
         {
+            GD.Print(command.Type);
             if (command.Type == "toggleBlocks")
             {
                 LevelManager.Instance.redBlocksActive = !LevelManager.Instance.redBlocksActive;
