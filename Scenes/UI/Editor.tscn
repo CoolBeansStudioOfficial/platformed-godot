@@ -550,13 +550,6 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chl6m"]
-bg_color = Color(0.1254902, 0.11764706, 0.105882354, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu", "triggerEditor")]
 layout_mode = 3
 anchors_preset = 15
@@ -1355,16 +1348,12 @@ filters = PackedStringArray("*.json")
 use_native_dialog = true
 
 [node name="Level Settings" type="Window" parent="." unique_id=36208791]
-transparent_bg = true
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(1000, 800)
-visible = false
 transient = true
 exclusive = true
 unresizable = true
-borderless = true
-transparent = true
 force_native = true
 
 [node name="Settings Panel" type="Panel" parent="Level Settings" unique_id=496467010]
@@ -1373,7 +1362,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_chl6m")
+metadata/ui = "background"
 
 [node name="Upload Confirmation" type="ConfirmationDialog" parent="." unique_id=1373407094]
 oversampling_override = 1.0

@@ -95,8 +95,9 @@ public partial class TriggerEditor : Window
 
     public void MoveCommandForward(TriggerCommand command)
     {
-        GD.Print("mvoe forward");
         int index = commands.IndexOf(command);
+        if (index == commands.Count - 1) return;
+
         commands.Remove(command);
         commands.Insert(index + 1, command);
         commandContainer.MoveChild(command, command.GetIndex() + 1);
@@ -108,8 +109,9 @@ public partial class TriggerEditor : Window
 
     public void MoveCommandBack(TriggerCommand command)
     {
-        GD.Print("mvoe back");
         int index = commands.IndexOf(command);
+        if (index == 0) return;
+
         commands.Remove(command);
         commands.Insert(index - 1, command);
         commandContainer.MoveChild(command, command.GetIndex() - 1);
