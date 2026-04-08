@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 public partial class SettingsMenu : Control
@@ -8,6 +9,8 @@ public partial class SettingsMenu : Control
     [ExportGroup("Controls")]
     [Export] Window window;
     [Export] ConfirmationDialog unsavedDialog;
+    [Export] FileDialog themeSaveDialog;
+    [Export] FileDialog themeLoadDialog;
     [Export] Button apply;
     [Export] Button close;
     [Export] Button ok;
@@ -16,6 +19,8 @@ public partial class SettingsMenu : Control
     [Export] ColorPickerButton backgroundColor;
     [Export] ColorPickerButton accentColor;
     [Export] OptionButton styleOptions;
+    [Export] Button saveTheme;
+    [Export] Button loadTheme;
 
     [ExportGroup("Config")]
     [Export] TileSet[] playSets;
@@ -33,9 +38,44 @@ public partial class SettingsMenu : Control
         close.Pressed += Close;
         ok.Pressed += OK;
 
+        saveTheme.Pressed += OnThemeSavePressed;
+        themeSaveDialog.FileSelected += OnThemeSaved;
+        loadTheme.Pressed += OnThemeLoadPressed;
+        themeLoadDialog.FileSelected += OnThemeLoaded;
+
         GetSettings();
         Apply();
     }
+
+    void OnThemeSavePressed()
+    {
+        themeSaveDialog.PopupCentered();
+    }
+
+    void OnThemeLoadPressed()
+    {
+        themeLoadDialog.PopupCentered();
+    }
+
+    void OnThemeSaved(string path)
+    {
+        GameManager.Instance.preferences.SaveProperty<Theme>(new()
+        {
+            backgroundColor = backgroundColor.Color,
+            accentColor = accentColor.Color,
+        }, path);
+    }
+
+    async void OnThemeLoaded(string path)
+    {
+        GD.Print($"loading theme at {path}");
+
+        var theme = await GameManager.Instance.preferences.GetProperty<Theme>(path);
+
+        backgroundColor.Color = theme.backgroundColor;
+        accentColor.Color = theme.accentColor;
+    }
+
 
     void GetSettings()
     {

@@ -12,7 +12,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7h03"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
 
-[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "apply", "close", "ok", "backgroundColor", "accentColor", "styleOptions")]
+[node name="Settings Menu" type="Control" unique_id=2016157972 node_paths=PackedStringArray("unsavedDialog", "themeSaveDialog", "themeLoadDialog", "apply", "close", "ok", "backgroundColor", "accentColor", "styleOptions", "saveTheme", "loadTheme")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,12 +21,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdrfj")
 unsavedDialog = NodePath("ConfirmationDialog")
+themeSaveDialog = NodePath("Save Dialog")
+themeLoadDialog = NodePath("Load Dialog")
 apply = NodePath("Background2/VBoxContainer/HBoxContainer/Apply")
 close = NodePath("Background2/VBoxContainer/HBoxContainer/Close")
 ok = NodePath("Background2/VBoxContainer/HBoxContainer/OK")
 backgroundColor = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/VBoxContainer/Background Color")
 accentColor = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/VBoxContainer2/Accent Color")
 styleOptions = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/Style Options")
+saveTheme = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/Save")
+loadTheme = NodePath("Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer/Load")
 playSets = Array[TileSet]([ExtResource("2_1vk5b"), ExtResource("3_q7h03")])
 editorSets = Array[TileSet]([ExtResource("4_6ly1g"), ExtResource("5_fy6my")])
 
@@ -117,6 +121,20 @@ It is recommeneded to set it to a bright saturated color."
 theme_override_fonts/font = ExtResource("3_tkyaf")
 color = Color(0.5803922, 0.85490197, 0.9490196, 1)
 
+[node name="Save" type="Button" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer" unique_id=1135522849]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Save"
+metadata/ui = "button"
+
+[node name="Load" type="Button" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings/HBoxContainer" unique_id=1546113760]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Load"
+metadata/ui = "button"
+
 [node name="Style" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Graphics Settings" unique_id=1691613711]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_q7h03")
@@ -184,3 +202,23 @@ size = Vector2i(396, 100)
 ok_button_text = "Apply changes"
 dialog_text = "You have unsaved changes. Apply before closing?"
 cancel_button_text = "Close without saving"
+
+[node name="Save Dialog" type="FileDialog" parent="." unique_id=1384804666]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(1280, 720)
+force_native = true
+access = 2
+filters = PackedStringArray("*.theme")
+use_native_dialog = true
+
+[node name="Load Dialog" type="FileDialog" parent="." unique_id=941866825]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+size = Vector2i(1280, 720)
+force_native = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.theme")
+use_native_dialog = true

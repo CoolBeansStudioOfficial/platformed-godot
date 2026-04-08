@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection.Emit;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -55,7 +56,9 @@ public partial class Preferences : Node
             if (Path.GetExtension(path) != ".json") continue;
 
             //read and deserialize the level json
-            Level level = await JsonSerializer.DeserializeAsync<Level>(File.OpenRead(path));
+            var read = File.OpenRead(path);
+            Level level = await JsonSerializer.DeserializeAsync<Level>(read);
+            read.Close();
 
             levels.Add(level);
         }
@@ -97,5 +100,21 @@ public partial class Preferences : Node
             return config.GetValue("Preferences", key);
         }
         else return null;
+    }
+
+    public async Task SaveProperty<T>(T property, string path)
+    {
+        var stream = File.Create(path);
+        await JsonSerializer.SerializeAsync(stream, property);
+        await stream.DisposeAsync();
+    }
+
+    public async Task<T> GetProperty<T>(string path)
+    {
+        var read = File.OpenRead(path);
+        T property = await JsonSerializer.DeserializeAsync<T>(read);
+        read.Close();
+
+        return property;
     }
 }

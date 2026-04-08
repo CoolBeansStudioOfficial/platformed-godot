@@ -197,3 +197,12 @@ public partial class ThemeManager : Node
         };
     }
 }
+
+public class Theme
+{
+    [JsonPropertyName("backgroundColor")]
+    public Color backgroundColor { get; set; }
+
+    [JsonPropertyName("accentColor")]
+    public Color accentColor { get; set; }
+}
