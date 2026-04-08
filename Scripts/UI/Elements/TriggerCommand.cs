@@ -36,7 +36,7 @@ public partial class TriggerCommand : Control
 
     void DeletePressed()
     {
-        throw new NotImplementedException();
+        triggerEditor.RemoveCommand(this);
     }
 
     void CommandTypeSelected(long index)
@@ -160,18 +160,5 @@ public partial class TriggerCommand : Control
 
             milliseconds.Value = Convert.ToInt32(command.Time);
         }
-    }
-
-    public Execute GetExecute()
-    {
-        return new()
-        {
-            Type = command.Type,
-            X = (int)positionX.Value,
-            Y = (int)positionY.Value,
-            Block = tileID.Selected,
-            Rotation = rotation.Selected,
-            Time = Convert.ToString((int)milliseconds.Value)
-        };
     }
 }

@@ -22,7 +22,7 @@ region_rect = Rect2(0, 104.125, 512, 309.645)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
 texture = ExtResource("2_qusdy")
 
-[node name="Trigger Editor" type="Window" unique_id=1595666596 node_paths=PackedStringArray("commandContainer")]
+[node name="Trigger Editor" type="Window" unique_id=1595666596 node_paths=PackedStringArray("commandContainer", "apply", "close", "addCommand")]
 oversampling_override = 1.0
 title = "Edit Trigger"
 initial_position = 2
@@ -37,6 +37,9 @@ force_native = true
 script = ExtResource("1_qusdy")
 commandContainer = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands")
 commandScene = ExtResource("3_7rh8h")
+apply = NodePath("Background/VBoxContainer/HBoxContainer/Apply")
+close = NodePath("Background/VBoxContainer/HBoxContainer/Close")
+addCommand = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/Add Command")
 
 [node name="Background" type="Panel" parent="." unique_id=804158574]
 anchors_preset = 15
@@ -114,10 +117,10 @@ theme_override_font_sizes/font_size = 20
 text = "Apply"
 metadata/ui = "button"
 
-[node name="Cancel" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=1525549172]
+[node name="Close" type="Button" parent="Background/VBoxContainer/HBoxContainer" unique_id=1525549172]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("6_gd4vh")
 theme_override_font_sizes/font_size = 20
-text = "Cancel"
+text = "Close"
 metadata/ui = "button"

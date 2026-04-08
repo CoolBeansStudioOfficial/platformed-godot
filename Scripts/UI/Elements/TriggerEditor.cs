@@ -7,20 +7,45 @@ public partial class TriggerEditor : Window
     [Export] VBoxContainer commandContainer;
     [Export] PackedScene commandScene;
 
+    [ExportGroup("Buttons")]
+    [Export] Button apply;
+    [Export] Button close;
+    [Export] Button addCommand;
+
     TriggerParams trigger;
+    TriggerParams referenceTrigger;
     List<TriggerCommand> commands = [];
 
 	public override void _Ready()
 	{
         CloseRequested += OnCloseRequested;
+
+        apply.Pressed += ApplyPressed;
+        addCommand.Pressed += AddCommandPressed;
+        close.Pressed += OnCloseRequested;
 	}
 
-    private void OnCloseRequested()
+    void ApplyPressed()
+    {
+        //change reference trigger values to edited trigger values
+        referenceTrigger.Execute = trigger.Execute;
+        referenceTrigger.X = trigger.X;
+        referenceTrigger.Y = trigger.Y;
+
+        OnCloseRequested();
+    }
+
+    void AddCommandPressed()
+    {
+        AddCommand(new());
+    }
+
+    void OnCloseRequested()
     {
         Hide();
     }
 
-    public void SetTrigger(TriggerParams newTrigger)
+    public void SetTrigger(TriggerParams editorTrigger)
     {
         //clear old commands
         if (commands.Count > 0) foreach (var command in commands)
@@ -29,14 +54,49 @@ public partial class TriggerEditor : Window
         }
         commands.Clear();
 
-        trigger = newTrigger;
+        //save reference to trigger saved in editor
+        referenceTrigger = editorTrigger;
 
-        foreach (var execute in trigger.Execute)
+        //create copy of trigger
+        trigger = new()
         {
-            var command = commandScene.Instantiate() as TriggerCommand;
-            command.SetCommand(execute);
-            commandContainer.AddChild(command);
-            commands.Add(command);
+            Execute = [],
+            X = editorTrigger.X,
+            Y = editorTrigger.Y,
+        };
+
+        foreach (var execute in referenceTrigger.Execute)
+        {
+            AddCommand(execute);
         }
+    }
+    
+    void AddCommand(Execute execute)
+    {
+        //create new execute
+        Execute copy = new()
+        {
+            Type = execute.Type,
+            X = execute.X,
+            Y = execute.Y,
+            Block = execute.Block,
+            Rotation = execute.Rotation,
+            Time = execute.Time
+        };
+        trigger.Execute.Add(copy);
+
+        //create ui
+        var command = commandScene.Instantiate() as TriggerCommand;
+        command.SetCommand(copy);
+        command.triggerEditor = this;
+        commandContainer.AddChild(command);
+        commands.Add(command);
+    }
+
+    public void RemoveCommand(TriggerCommand command)
+    {
+        GD.Print(trigger.Execute.Remove(command.command));
+        commands.Remove(command);
+        command.QueueFree();
     }
 }
