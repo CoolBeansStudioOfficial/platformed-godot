@@ -23,6 +23,7 @@ public partial class PlayerMovement : CharacterBody2D
     float coyoteTimeRemaining = 0f;
     float jumpBufferTimeRemaining = 0f;
     bool usedJump = true;
+    public bool canWallJump = true;
     public float moveLock = 0f;
 	public bool bouncedSidewaysBySpring = false;
 
@@ -58,7 +59,7 @@ public partial class PlayerMovement : CharacterBody2D
 		{
             bool didJump = false;
 
-            if (!IsOnFloor())
+            if (!IsOnFloor() && canWallJump)
             {
                 wallCastLeft.ForceShapecastUpdate();
                 wallCastRight.ForceShapecastUpdate();

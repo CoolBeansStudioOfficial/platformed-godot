@@ -18,24 +18,24 @@ public partial class EditorSettings : Window
         CloseRequested += OnCloseRequested;
 
         resize.Pressed += OnResizePressed;
-        wallJumping.Pressed += OnWalljumpingPressed;
+        wallJumping.ItemSelected += OnWalljumpingPressed;
 	}
-
-    private void OnWalljumpingPressed()
-    {
-        throw new NotImplementedException();
-    }
 
     void OnCloseRequested()
     {
         Hide();
     }
 
-    
-
     void OnResizePressed()
     {
         editor.ChangeLevelSize(new((int)width.Value, (int)height.Value));
+    }
+
+    void OnWalljumpingPressed(long index)
+    {
+        if (index == 0) editor.currentLevel.Data.WallJump = "";
+        else if (index == 1) editor.currentLevel.Data.WallJump = "up";
+        else editor.currentLevel.Data.WallJump = "off";
     }
 
     public void ApplySettings(Level level)

@@ -1435,6 +1435,7 @@ text = "Width"
 [node name="Width" type="SpinBox" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer" unique_id=1388669204]
 layout_mode = 2
 min_value = 1.0
+max_value = 200.0
 value = 1.0
 rounded = true
 

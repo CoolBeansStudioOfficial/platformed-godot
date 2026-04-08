@@ -121,11 +121,15 @@ public partial class LevelManager : Node
         if (currentLevel.Data.WallJump == "off")
         {
             player.walljumpMoveLock = 0.25f;
+            player.canWallJump = true;
         }
         else if (currentLevel.Data.WallJump == "up")
         {
             player.walljumpMoveLock = 0.05f;
+            player.canWallJump = true;
         }
+        else player.canWallJump = false;
+
 
         isPlayerSpawned = true;
     }
