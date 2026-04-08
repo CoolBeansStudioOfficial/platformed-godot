@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="1_p7ms8"]
 [ext_resource type="Script" uid="uid://c02q3opgxauaf" path="res://Scripts/UI/Elements/TriggerEditor.cs" id="1_qusdy"]
 [ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="2_qusdy"]
-[ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/TriggerCommand.tscn" id="3_7rh8h"]
+[ext_resource type="PackedScene" uid="uid://b7y2b1uywfyhc" path="res://Scenes/UI/Elements/Trigger Command.tscn" id="3_7rh8h"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="4_maj7l"]
 [ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="5_1pn75"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="6_gd4vh"]
@@ -22,7 +22,7 @@ region_rect = Rect2(0, 104.125, 512, 309.645)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
 texture = ExtResource("2_qusdy")
 
-[node name="Trigger Editor" type="Window" unique_id=1595666596]
+[node name="Trigger Editor" type="Window" unique_id=1595666596 node_paths=PackedStringArray("commandContainer")]
 oversampling_override = 1.0
 title = "Edit Trigger"
 initial_position = 2
@@ -35,6 +35,8 @@ minimize_disabled = true
 maximize_disabled = true
 force_native = true
 script = ExtResource("1_qusdy")
+commandContainer = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands")
+commandScene = ExtResource("3_7rh8h")
 
 [node name="Background" type="Panel" parent="." unique_id=804158574]
 anchors_preset = 15
@@ -88,26 +90,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
 [node name="Commands" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=541424262]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Command" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=957566761 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
-
-[node name="Command2" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=596683420 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
-
-[node name="Command3" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=2063458691 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
-
-[node name="Command4" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=1961148712 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
-
-[node name="Command5" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Commands" unique_id=33101132 node_paths=PackedStringArray("rotation") instance=ExtResource("3_7rh8h")]
-layout_mode = 2
-rotation = NodePath("Background/Options/Rotation")
 
 [node name="Add Command" type="Button" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=62405468]
 custom_minimum_size = Vector2(60, 60)

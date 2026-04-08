@@ -66,6 +66,18 @@ public partial class ThemeManager : Node
         //apply theme
         foreach (var node in nodes)
         {
+            ApplyTheme(node);
+        }
+    }
+
+    public void ApplyTheme(Node startNode, bool recursive = false)
+    {
+        List<Node> applyNodes = [startNode];
+        if (recursive) applyNodes.AddRange(GetChildrenRecursive(startNode));
+
+        for (int i = 0; i < applyNodes.Count; i++)
+        {
+            var node = applyNodes[i];
             if (!node.HasMeta("ui")) continue;
 
             string style = (string)node.GetMeta("ui");
