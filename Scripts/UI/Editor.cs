@@ -225,11 +225,22 @@ public partial class Editor : Control
                 {
                     Play();
                 }
-
-                if (k.Keycode == Key.Z && k.IsCommandOrControlPressed())
+                else if (k.Keycode == Key.Z && k.IsCommandOrControlPressed())
                 {
                     if (k.ShiftPressed) Redo();
                     else Undo();
+                }
+                else if (k.Keycode == Key.X && k.IsCommandOrControlPressed())
+                {
+                    Copy(true);
+                }
+                else if (k.Keycode == Key.C && k.IsCommandOrControlPressed())
+                {
+                    Copy();
+                }
+                if (k.Keycode == Key.V && k.IsCommandOrControlPressed())
+                {
+                    Paste(selection.GetCorner());
                 }
             }
         }
@@ -411,6 +422,8 @@ public partial class Editor : Control
 
     void Paste(Vector2I position)
     {
+        if (copiedSelection is null) return;
+
         var newSelection = copiedSelection.Value;
         newSelection.Move(position);
         copiedSelection = newSelection;
