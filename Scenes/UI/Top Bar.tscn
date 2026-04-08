@@ -455,6 +455,7 @@ grow_vertical = 0
 [node name="Sign In" type="Button" parent="App Settings/Profile/Sign In/Sign In/Buttons" unique_id=215717748]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_swqkx")
 theme_override_font_sizes/font_size = 24
 text = "Sign In"
@@ -463,6 +464,7 @@ metadata/ui = "button"
 [node name="Close" type="Button" parent="App Settings/Profile/Sign In/Sign In/Buttons" unique_id=1084287015]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_swqkx")
 theme_override_font_sizes/font_size = 24
 text = "Close"
