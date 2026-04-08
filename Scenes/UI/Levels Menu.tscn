@@ -145,45 +145,45 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ss6"]
 bg_color = Color(0.7607843, 0.6039216, 0.38431373, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ytik"]
 bg_color = Color(0.28799507, 0.22204241, 0.12970868, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb41a"]
 bg_color = Color(0.5561477, 0.43863347, 0.27411345, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0v1i"]
 bg_color = Color(0.23921569, 0.3529412, 0.8117647, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghl26"]
 bg_color = Color(0.06870247, 0.11651814, 0.30942968, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ki7ki"]
 bg_color = Color(0.16541272, 0.2506106, 0.59433985, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmdl3"]
 bg_color = Color(1, 0.3811961, 0.31453565, 1)
@@ -670,20 +670,24 @@ visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = SubResource("Theme_vkhef")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")
 text = "Submit"
+metadata/ui = "button"
 
 [node name="Cancel Description" type="Button" parent="VBoxContainer/Level View/Details/HBoxContainer" unique_id=686480072]
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = SubResource("Theme_vkhef")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_o7poh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_04y1l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1kdtg")
 text = "Cancel"
+metadata/ui = "button"
 
 [node name="Description" type="TextEdit" parent="VBoxContainer/Level View/Details" unique_id=1158411841]
 custom_minimum_size = Vector2(0, 175)

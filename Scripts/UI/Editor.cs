@@ -776,8 +776,19 @@ public partial class Editor : Control
 
         gridSize = new(level.Width, level.Height);
 
+        //selection outline
         selection = default;
         overlay.SetOutline(null);
+
+        //world border outline
+        Vector2 boxSize = gridSize * 16;
+
+        overlay.SetOutline(new()
+        {
+            rect = new Rect2(0, 0, boxSize.X, boxSize.Y),
+            color = ThemeManager.Instance.CombineColors(new Color(0, 0, 0, 0), Colors.Red),
+            width = 1,
+        }, 1);
         contextMenu.Hide();
 
         tileMap.Clear();

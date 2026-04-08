@@ -1469,41 +1469,6 @@ theme_override_font_sizes/font_size = 24
 text = "Audio
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Settings Menu/Background" unique_id=1763348458]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -60.0
-offset_right = 318.0
-offset_bottom = -10.0
-grow_vertical = 0
-
-[node name="Apply" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=1321485023]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("74_wlvke")
-text = "Apply"
-metadata/ui = "button"
-
-[node name="Close" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=691585012]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("74_wlvke")
-text = "Close"
-metadata/ui = "button"
-
-[node name="OK" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=354860619]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("74_wlvke")
-text = "OK"
-metadata/ui = "button"
-
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Level Settings/Settings Menu" unique_id=1414757868]
 oversampling_override = 1.0
 title = "Unsaved Changes"

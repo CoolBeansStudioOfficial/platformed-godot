@@ -141,7 +141,7 @@ public partial class ThemeManager : Node
         }
     }
 
-    Color CombineColors(Color color1, Color color2, float weight = 0.5f)
+    public Color CombineColors(Color color1, Color color2, float weight = 0.5f)
     {
         return new()
         {
