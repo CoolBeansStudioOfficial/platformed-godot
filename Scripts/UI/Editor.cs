@@ -17,6 +17,8 @@ public partial class Editor : Control
     [Export] Button playButton;
     [Export] Button undoButton;
     [Export] Button redoButton;
+    [Export] Button settingsButton;
+    [Export] EditorSettings settings;
     [Export] EditorOverlay overlay;
     [Export] EditorContextMenu contextMenu;
     [Export] TriggerEditor triggerEditor;
@@ -53,6 +55,7 @@ public partial class Editor : Control
         playButton.Pressed += Play;
         undoButton.Pressed += Undo;
         redoButton.Pressed += Redo;
+        settingsButton.Pressed += OnSettingsPressed;
 
         contextMenu.OptionPressed += OnContextMenuPressed; ;
 
@@ -75,7 +78,7 @@ public partial class Editor : Control
         }
 
         //create default level
-        currentLevel = new()
+        ImportLevel(new()
         {
             Data = new()
             {
@@ -102,7 +105,7 @@ public partial class Editor : Control
             CreatedAt = DateTime.Now,
             Width = gridSize.X,
             Height = gridSize.Y,
-        };
+        });
     }
 
     public void SetTileset(TileSet tileset)
@@ -774,7 +777,7 @@ public partial class Editor : Control
 
         editHistory[currentEdit] = LevelManager.Instance.CreateTilemap(level);
 
-        LevelSizeChanged(new(level.Width, level.Height));
+        ChangeLevelSize(new(level.Width, level.Height));
 
         //selection outline
         selection = default;
@@ -783,28 +786,74 @@ public partial class Editor : Control
         contextMenu.Hide();
 
         tileMap.Clear();
-        foreach (var row in editHistory[currentEdit])
-        {
-            foreach (var tile in row)
-            {
-                tileMap.SetCell(tile.position, (int)tile.id, LevelManager.Instance.GetAtlasCoords(tile));
-            }
-        }
+        UpdateTiles();
     }
 
-    void LevelSizeChanged(Vector2I size)
+    public void ChangeLevelSize(Vector2I size)
     {
         gridSize = size;
+        currentLevel.Width = gridSize.X;
+        currentLevel.Height = gridSize.Y;
 
         //world border outline
         Vector2 boxSize = gridSize * 16;
-
         overlay.SetOutline(new()
         {
             rect = new Rect2(0, 0, boxSize.X, boxSize.Y),
             color = ThemeManager.Instance.CombineColors(new Color(0, 0, 0, 0), ThemeManager.Instance.backgroundColor),
             width = 1,
         }, 1);
+
+        //create new tilemap
+        List<List<TileInfo>> convert = [.. editHistory[currentEdit]];
+        ResetEditHistory();
+
+        List<List<TileInfo>> tiles = [];
+        for (int y = 0; y < gridSize.Y; y++)
+        {
+            List<TileInfo> add = [];
+
+            //y position is inside of existing size
+            if (y < convert.Count)
+            {
+                for (int x = 0; x < gridSize.X; x++)
+                {
+                    //x position is inside of existiong size
+                    if (x < convert[y].Count)
+                    {
+                        add.Add(convert[y][x]);
+                    }
+                    //x position is outside of existiong size
+                    else
+                    {
+                        add.Add(new()
+                        {
+                            id = TileId.Air,
+                            position = new(x, y)
+                        });
+                    }
+                }
+            }
+            //y position is outside of existing size
+            else
+            {
+                for (int x = 0; x < gridSize.X; x++)
+                {
+                    add.Add(new()
+                    {
+                        id = TileId.Air,
+                        position = new(x, y)
+                    });
+                }
+            }
+
+            tiles.Add(add);
+        }
+
+        editHistory[currentEdit] = tiles;
+
+        tileMap.Clear();
+        UpdateTiles();
     }
 
     void NameChanged(string newText)
@@ -825,5 +874,10 @@ public partial class Editor : Control
         GameManager.Instance.ReturnToLevelsMenu();
 
         //other editor exitng stuff can be handled here
+    }
+
+    void OnSettingsPressed()
+    {
+        settings.ApplySettings(currentLevel);
     }
 }

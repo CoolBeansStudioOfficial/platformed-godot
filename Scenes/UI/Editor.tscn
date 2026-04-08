@@ -73,10 +73,9 @@
 [ext_resource type="Texture2D" uid="uid://8a30ofjkftnn" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-three.png" id="63_8equq"]
 [ext_resource type="Texture2D" uid="uid://cevttex4kvku0" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/blue-block.png" id="64_ssr5y"]
 [ext_resource type="Texture2D" uid="uid://ofae06s4ajg6" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/red-block.png" id="65_fvs62"]
+[ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="73_788xa"]
+[ext_resource type="Script" uid="uid://lg1d2s2a14w3" path="res://Scripts/UI/Elements/EditorSettings.cs" id="73_wlvke"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="74_wlvke"]
-[ext_resource type="Texture2D" uid="uid://wm1prpipdyrj" path="res://Images/Raster/Icons/Arrow Top.png" id="75_02r1u"]
-[ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="76_gd8dv"]
-[ext_resource type="Texture2D" uid="uid://bk1av3vffxma3" path="res://Images/Raster/Icons/Plus.png" id="78_7ar22"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -557,18 +556,7 @@ corner_radius_bottom_left = 15
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk5qh"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgnpk"]
-texture = ExtResource("75_02r1u")
-region_rect = Rect2(0, -13.29, 512, 512)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_788xa"]
-texture = ExtResource("75_02r1u")
-region_rect = Rect2(0, 104.125, 512, 309.645)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlvke"]
-texture = ExtResource("76_gd8dv")
-
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu", "triggerEditor")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "settingsButton", "settings", "overlay", "contextMenu", "triggerEditor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -587,6 +575,8 @@ cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
 playButton = NodePath("Content/Top Bar/Options/Play")
 undoButton = NodePath("Content/Top Bar/Options/Undo")
 redoButton = NodePath("Content/Top Bar/Options/Redo")
+settingsButton = NodePath("Content/Top Bar/Options/Settings")
+settings = NodePath("Level Settings")
 overlay = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Overlay")
 contextMenu = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Context Menu")
 triggerEditor = NodePath("Trigger Editor")
@@ -1368,7 +1358,7 @@ access = 2
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
-[node name="Level Settings" type="Window" parent="." unique_id=1595666596]
+[node name="Level Settings" type="Window" parent="." unique_id=1595666596 node_paths=PackedStringArray("editor", "close", "width", "height", "resize", "wallJumping")]
 oversampling_override = 1.0
 title = "Edit Trigger"
 initial_position = 2
@@ -1380,6 +1370,13 @@ unresizable = true
 minimize_disabled = true
 maximize_disabled = true
 force_native = true
+script = ExtResource("73_wlvke")
+editor = NodePath("..")
+close = NodePath("Background/VBoxContainer/HBoxContainer/Close")
+width = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer/Width")
+height = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer2/Height")
+resize = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/Resize")
+wallJumping = NodePath("Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Wall Jumping/Wall Jumping")
 
 [node name="Background" type="Panel" parent="Level Settings" unique_id=804158574]
 anchors_preset = 15
@@ -1410,44 +1407,82 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1105657516]
+[node name="Level Settings" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=282170251]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Resize Level" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings" unique_id=1490182658]
 layout_mode = 2
 
-[node name="Arrow" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1960964173]
-custom_minimum_size = Vector2(40, 0)
+[node name="Resize" type="Label" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level" unique_id=1900665660]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_fonts/font = ExtResource("73_788xa")
+theme_override_font_sizes/font_size = 20
+text = "Resize Level"
 
-[node name="Panel" type="Panel" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=798981038]
-custom_minimum_size = Vector2(40, 20)
+[node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level" unique_id=763312400]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_mgnpk")
+size_flags_horizontal = 0
 
-[node name="Panel3" type="Panel" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=763733530]
-custom_minimum_size = Vector2(40, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer" unique_id=799371308]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_788xa")
 
-[node name="Panel2" type="Panel" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=2012247842]
-custom_minimum_size = Vector2(40, 40)
+[node name="Label" type="Label" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer" unique_id=936749950]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
-
-[node name="Commands" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=541424262]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Add Command" type="Button" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=62405468]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-tooltip_text = "Add Command"
 theme_override_fonts/font = ExtResource("74_wlvke")
-icon = ExtResource("78_7ar22")
-icon_alignment = 1
-expand_icon = true
-metadata/ui = "toggle"
+text = "Width"
+
+[node name="Width" type="SpinBox" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer" unique_id=1388669204]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer" unique_id=925872229]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer2" unique_id=548618488]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "Height"
+
+[node name="Height" type="SpinBox" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer/VBoxContainer2" unique_id=772016583]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="Resize" type="Button" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Resize Level/HBoxContainer" unique_id=1402429030]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Resize"
+metadata/ui = "button"
+
+[node name="Wall Jumping" type="VBoxContainer" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings" unique_id=1088340945]
+layout_mode = 2
+
+[node name="Walljumps" type="Label" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Wall Jumping" unique_id=301165585]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("73_788xa")
+theme_override_font_sizes/font_size = 20
+text = "Wall Jumping"
+
+[node name="Wall Jumping" type="OptionButton" parent="Level Settings/Background/VBoxContainer/ScrollContainer/VBoxContainer/Level Settings/Wall Jumping" unique_id=1374070305]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("74_wlvke")
+selected = 1
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Jump Up Walls"
+popup/item_1/id = 1
+popup/item_2/text = "Jump Off Walls"
+popup/item_2/id = 2
+metadata/ui = "button"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Background/VBoxContainer" unique_id=559719675]
 custom_minimum_size = Vector2(0, 60)
