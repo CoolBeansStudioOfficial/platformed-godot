@@ -73,6 +73,8 @@
 [ext_resource type="Texture2D" uid="uid://8a30ofjkftnn" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/trigger-three.png" id="63_8equq"]
 [ext_resource type="Texture2D" uid="uid://cevttex4kvku0" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/blue-block.png" id="64_ssr5y"]
 [ext_resource type="Texture2D" uid="uid://ofae06s4ajg6" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/red-block.png" id="65_fvs62"]
+[ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="73_788xa"]
+[ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="74_wlvke"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8sup"]
 
@@ -549,6 +551,8 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vk5b"]
 
 [node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "overlay", "contextMenu", "triggerEditor")]
 layout_mode = 3
@@ -1349,20 +1353,165 @@ use_native_dialog = true
 
 [node name="Level Settings" type="Window" parent="." unique_id=36208791]
 oversampling_override = 1.0
+title = "Level Settings"
 initial_position = 2
 size = Vector2i(1000, 800)
+visible = false
 transient = true
 exclusive = true
 unresizable = true
 force_native = true
 
-[node name="Settings Panel" type="Panel" parent="Level Settings" unique_id=496467010]
+[node name="Settings Menu" type="Control" parent="Level Settings" unique_id=2016157972]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="Panel" parent="Level Settings/Settings Menu" unique_id=1427619110]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vk5b")
 metadata/ui = "background"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Settings/Settings Menu/Background" unique_id=1862171430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Graphics" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=114212846]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 24
+text = "Graphics
+"
+
+[node name="Color Customization" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=463278779]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("73_788xa")
+text = "Color Customization"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=1072992103]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer" unique_id=2000553615]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1027647226]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "Background Color"
+
+[node name="Background Color" type="ColorPickerButton" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1878666882]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Background Color
+Set to #222222 by default.
+It is recommeneded to set it to a dark neutral color."
+theme_override_fonts/font = ExtResource("74_wlvke")
+color = Color(0.13333334, 0.13333334, 0.13333334, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer" unique_id=780583579]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=752313039]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "Accent Color"
+
+[node name="Accent Color" type="ColorPickerButton" parent="Level Settings/Settings Menu/Background/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=250419690]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Accent Color
+Set to #94daf2 by default.
+It is recommeneded to set it to a bright saturated color."
+theme_override_fonts/font = ExtResource("74_wlvke")
+color = Color(0.5803922, 0.85490197, 0.9490196, 1)
+
+[node name="Style" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=1691613711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("73_788xa")
+text = "Style"
+
+[node name="Style Options" type="OptionButton" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=1608893756]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("74_wlvke")
+selected = 1
+item_count = 2
+popup/item_0/text = "8 Bit"
+popup/item_0/id = 0
+popup/item_1/text = "16 Bit"
+popup/item_1/id = 1
+metadata/ui = "button"
+
+[node name="Audio" type="Label" parent="Level Settings/Settings Menu/Background/VBoxContainer" unique_id=1488470327]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cfu02")
+theme_override_font_sizes/font_size = 24
+text = "Audio
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level Settings/Settings Menu/Background" unique_id=1763348458]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -60.0
+offset_right = 318.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="Apply" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=1321485023]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "Apply"
+metadata/ui = "button"
+
+[node name="Close" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=691585012]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "Close"
+metadata/ui = "button"
+
+[node name="OK" type="Button" parent="Level Settings/Settings Menu/Background/HBoxContainer" unique_id=354860619]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("74_wlvke")
+text = "OK"
+metadata/ui = "button"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Level Settings/Settings Menu" unique_id=1414757868]
+oversampling_override = 1.0
+title = "Unsaved Changes"
+initial_position = 2
+size = Vector2i(396, 100)
+ok_button_text = "Apply changes"
+dialog_text = "You have unsaved changes. Apply before closing?"
+cancel_button_text = "Close without saving"
 
 [node name="Upload Confirmation" type="ConfirmationDialog" parent="." unique_id=1373407094]
 oversampling_override = 1.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://omf87qrormgm"
-path="res://.godot/imported/Arrow Up.png-d33d682116a9810bd9a5855ff6390d1b.ctex"
+uid="uid://dbwq2xkcasxsw"
+path="res://.godot/imported/Arrow Top Inverted.png-e51472c0b43d8d51938367d943420673.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Raster/Icons/Arrow Up.png"
-dest_files=["res://.godot/imported/Arrow Up.png-d33d682116a9810bd9a5855ff6390d1b.ctex"]
+source_file="res://Images/Raster/Icons/Arrow Top Inverted.png"
+dest_files=["res://.godot/imported/Arrow Top Inverted.png-e51472c0b43d8d51938367d943420673.ctex"]
 
 [params]
 

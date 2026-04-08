@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://05bavjk6ctdy" path="res://Scripts/UI/Elements/TriggerCommand.cs" id="1_pfvf5"]
 [ext_resource type="Texture2D" uid="uid://bdoofbbavtl6" path="res://Images/Raster/Icons/Trash.png" id="2_7800d"]
-[ext_resource type="Texture2D" uid="uid://dbwq2xkcasxsw" path="res://Images/Raster/Icons/Arrow Up.png" id="3_136m4"]
+[ext_resource type="Texture2D" uid="uid://omf87qrormgm" path="res://Images/Raster/Icons/Arrow Up.png" id="3_136m4"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_hj85s"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="4_136m4"]
-[ext_resource type="Texture2D" uid="uid://2jqxftxt3nu" path="res://Images/Raster/Icons/Arrow Bottom.png" id="4_adgjv"]
+[ext_resource type="Texture2D" uid="uid://bq0aeix3s6uvx" path="res://Images/Raster/Icons/Arrow Down.png" id="4_hj85s"]
 [ext_resource type="Texture2D" uid="uid://b7g6pexe5ml70" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/ground.png" id="5_adgjv"]
 [ext_resource type="Texture2D" uid="uid://ersqu6x7f018" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/spikes.png" id="6_3ho0r"]
 [ext_resource type="Texture2D" uid="uid://dl6mp0ufowu15" path="res://Images/Raster/Tiles/16 Bit/Thumbnail/double-spikes.png" id="7_0diev"]
@@ -113,7 +113,7 @@ metadata/ui = "button"
 [node name="Move Down" type="Button" parent="Background/Options/VBoxContainer" unique_id=237226713]
 layout_mode = 2
 size_flags_vertical = 3
-icon = ExtResource("4_adgjv")
+icon = ExtResource("4_hj85s")
 icon_alignment = 1
 expand_icon = true
 metadata/ui = "button"
