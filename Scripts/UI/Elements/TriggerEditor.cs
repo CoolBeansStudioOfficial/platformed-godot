@@ -95,6 +95,7 @@ public partial class TriggerEditor : Window
 
     public void RemoveCommand(TriggerCommand command)
     {
+        trigger.Execute.Remove(command.command);
         commands.Remove(command);
         command.QueueFree();
     }
