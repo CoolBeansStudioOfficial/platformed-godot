@@ -35,19 +35,29 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Command" type="Control" unique_id=957566761 node_paths=PackedStringArray("position", "delay", "commandType", "positionX", "positionY", "rotation", "tileID", "milliseconds", "delete", "moveUp", "moveDown")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj85s"]
+bg_color = Color(0.16924527, 0.16924533, 0.16924518, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Command" type="Control" unique_id=957566761 node_paths=PackedStringArray("position", "endPosition", "delay", "commandType", "positionX", "positionY", "endPositionX", "endPositionY", "rotation", "tileID", "milliseconds", "delete", "moveUp", "moveDown")]
 custom_minimum_size = Vector2(500, 60)
 layout_mode = 3
 anchors_preset = 0
-rotation = Object(OptionButton,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"focus_behavior_recursive":0,"mouse_filter":0,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","theme_override_colors/font_color":Color(0, 0, 0, 1),"theme_override_fonts/font":ExtResource("3_hj85s"),"disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":0,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"flat":false,"alignment":0,"text_overrun_behavior":0,"autowrap_mode":0,"autowrap_trim_flags":128,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","selected":0,"fit_to_longest_item":true,"allow_reselect":false,"item_count":4,"popup/item_0/text":"Up","popup/item_0/id":0,"popup/item_1/text":"Left","popup/item_1/id":1,"popup/item_2/text":"Down","popup/item_2/id":2,"popup/item_3/text":"Right","popup/item_3/id":3,"script":null,"metadata/ui":"button")
+rotation = Object(OptionButton,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":2,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"localize_numeral_system":true,"tooltip_text":"Rotation","tooltip_auto_translate_mode":0,"focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":2,"focus_behavior_recursive":0,"mouse_filter":0,"mouse_behavior_recursive":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"accessibility_name":"","accessibility_description":"","accessibility_live":0,"accessibility_controls_nodes":Array[NodePath]([]),"accessibility_described_by_nodes":Array[NodePath]([]),"accessibility_labeled_by_nodes":Array[NodePath]([]),"accessibility_flow_to_nodes":Array[NodePath]([]),"theme":null,"theme_type_variation":&"","theme_override_colors/font_color":Color(0, 0, 0, 1),"theme_override_fonts/font":ExtResource("3_hj85s"),"disabled":false,"toggle_mode":true,"button_pressed":false,"action_mode":0,"button_mask":1,"keep_pressed_outside":false,"button_group":null,"shortcut":null,"shortcut_feedback":true,"shortcut_in_tooltip":true,"flat":false,"alignment":0,"text_overrun_behavior":0,"autowrap_mode":0,"autowrap_trim_flags":128,"clip_text":false,"icon_alignment":0,"vertical_icon_alignment":1,"expand_icon":false,"text_direction":0,"language":"","selected":0,"fit_to_longest_item":true,"allow_reselect":false,"item_count":4,"popup/item_0/text":"Up","popup/item_0/id":0,"popup/item_1/text":"Left","popup/item_1/id":1,"popup/item_2/text":"Down","popup/item_2/id":2,"popup/item_3/text":"Right","popup/item_3/id":3,"script":null,"metadata/ui":"button")
 
 mouse_filter = 2
 script = ExtResource("1_pfvf5")
 position = NodePath("Background/Options/Position")
+endPosition = NodePath("Background/Options/End Position")
 delay = NodePath("Background/Options/Delay")
 commandType = NodePath("Background/Options/Type")
 positionX = NodePath("Background/Options/Position/X Number")
 positionY = NodePath("Background/Options/Position/Y Number")
+endPositionX = NodePath("Background/Options/End Position/X Number")
+endPositionY = NodePath("Background/Options/End Position/Y Number")
 rotation = NodePath("Background/Options/Rotation")
 tileID = NodePath("Background/Options/Tile ID")
 milliseconds = NodePath("Background/Options/Delay/Milliseconds")
@@ -105,6 +115,7 @@ theme_override_constants/separation = 2
 [node name="Move Up" type="Button" parent="Background/Options/VBoxContainer" unique_id=1279999874]
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "Move Command Up"
 icon = ExtResource("3_136m4")
 icon_alignment = 1
 expand_icon = true
@@ -113,6 +124,7 @@ metadata/ui = "button"
 [node name="Move Down" type="Button" parent="Background/Options/VBoxContainer" unique_id=237226713]
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "Move Command Down"
 icon = ExtResource("4_hj85s")
 icon_alignment = 1
 expand_icon = true
@@ -120,10 +132,11 @@ metadata/ui = "button"
 
 [node name="Type" type="OptionButton" parent="Background/Options" unique_id=1866275177]
 layout_mode = 2
+tooltip_text = "Command Type"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hj85s")
 selected = 0
-item_count = 5
+item_count = 6
 popup/item_0/text = "Toggle Red/Blue Blocks"
 popup/item_0/id = 0
 popup/item_1/text = "Teleport Player"
@@ -134,6 +147,8 @@ popup/item_3/text = "Change Block"
 popup/item_3/id = 3
 popup/item_4/text = "Delay"
 popup/item_4/id = 4
+popup/item_5/text = "Fill Area"
+popup/item_5/id = 5
 metadata/ui = "button"
 
 [node name="Position" type="HBoxContainer" parent="Background/Options" unique_id=162962221]
@@ -147,6 +162,7 @@ text = "X"
 
 [node name="X Number" type="SpinBox" parent="Background/Options/Position" unique_id=993849011]
 layout_mode = 2
+tooltip_text = "X Position"
 rounded = true
 metadata/ui = "button"
 
@@ -157,12 +173,46 @@ text = "Y"
 
 [node name="Y Number" type="SpinBox" parent="Background/Options/Position" unique_id=756242666]
 layout_mode = 2
+tooltip_text = "Y Position"
+rounded = true
+metadata/ui = "button"
+
+[node name="End Position" type="HBoxContainer" parent="Background/Options" unique_id=1755901290]
+visible = false
+layout_mode = 2
+
+[node name="Divider" type="Panel" parent="Background/Options/End Position" unique_id=1545231405]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hj85s")
+metadata/ui = "background"
+
+[node name="X" type="Label" parent="Background/Options/End Position" unique_id=2009425703]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_136m4")
+text = "X"
+
+[node name="X Number" type="SpinBox" parent="Background/Options/End Position" unique_id=1069399631]
+layout_mode = 2
+tooltip_text = "End X Position"
+rounded = true
+metadata/ui = "button"
+
+[node name="Y" type="Label" parent="Background/Options/End Position" unique_id=921239732]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_136m4")
+text = "Y"
+
+[node name="Y Number" type="SpinBox" parent="Background/Options/End Position" unique_id=803128192]
+layout_mode = 2
+tooltip_text = "End Y Position"
 rounded = true
 metadata/ui = "button"
 
 [node name="Rotation" type="OptionButton" parent="Background/Options" unique_id=1408638500]
 visible = false
 layout_mode = 2
+tooltip_text = "Rotation"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hj85s")
 selected = 0
@@ -180,6 +230,7 @@ metadata/ui = "button"
 [node name="Tile ID" type="OptionButton" parent="Background/Options" unique_id=1746182076]
 visible = false
 layout_mode = 2
+tooltip_text = "Block"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_hj85s")
 selected = 0

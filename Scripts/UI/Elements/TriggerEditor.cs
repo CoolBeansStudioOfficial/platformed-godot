@@ -78,7 +78,11 @@ public partial class TriggerEditor : Window
         {
             Type = execute.Type,
             X = execute.X,
+            StartX = execute.StartX,
+            EndX = execute.EndX,
             Y = execute.Y,
+            StartY = execute.StartY,
+            EndY = execute.EndY,
             Block = execute.Block,
             Rotation = execute.Rotation,
             Time = execute.Time

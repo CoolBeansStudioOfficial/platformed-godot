@@ -81,17 +81,20 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=798981038]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
+tooltip_text = "Commands execute from top to bottom"
 theme_override_styles/panel = SubResource("StyleBoxTexture_mgnpk")
 
 [node name="Panel3" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=763733530]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_vertical = 3
+tooltip_text = "Commands execute from top to bottom"
 theme_override_styles/panel = SubResource("StyleBoxTexture_788xa")
 
 [node name="Panel2" type="Panel" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/Arrow" unique_id=2012247842]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+tooltip_text = "Commands execute from top to bottom"
 theme_override_styles/panel = SubResource("StyleBoxTexture_wlvke")
 
 [node name="Commands" type="VBoxContainer" parent="Background/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=541424262]
