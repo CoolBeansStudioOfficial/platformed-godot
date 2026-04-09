@@ -230,9 +230,11 @@ oversampling_override = 1.0
 title = "Unsaved Changes"
 initial_position = 2
 size = Vector2i(396, 100)
+force_native = true
 ok_button_text = "Apply changes"
 dialog_text = "You have unsaved changes. Apply before closing?"
 cancel_button_text = "Close without saving"
+metadata/ui = "background"
 
 [node name="Save Dialog" type="FileDialog" parent="." unique_id=1384804666]
 oversampling_override = 1.0
@@ -242,6 +244,7 @@ force_native = true
 access = 2
 filters = PackedStringArray("*.theme")
 use_native_dialog = true
+metadata/ui = "background"
 
 [node name="Load Dialog" type="FileDialog" parent="." unique_id=941866825]
 oversampling_override = 1.0
@@ -253,3 +256,4 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.theme")
 use_native_dialog = true
+metadata/ui = "background"

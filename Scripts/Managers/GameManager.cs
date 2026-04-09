@@ -140,8 +140,8 @@ public partial class GameManager : Node
 
         var response = await client.SendAsync(message);
 
-        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level uploaded successfully");
-        else UIManager.Instance.PopupNotification("Level uploaded failed. If you are connected to the internet, the servers may be down.");
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level uploaded successfully", "Success");
+        else UIManager.Instance.PopupNotification("Level uploaded failed. If you are connected to the internet, the servers may be down.", "Upload Failed");
     }
 
     public async Task EditLevel(Level level, int id)
@@ -161,8 +161,8 @@ public partial class GameManager : Node
 
         var response = await client.SendAsync(message);
 
-        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level updated successfully");
-        else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.");
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level updated successfully", "Success");
+        else UIManager.Instance.PopupNotification("Level update failed. If you are connected to the internet, the servers may be down.", "Update Failed");
     }
 
     public async Task EditLevelDetails(LevelDetails details)
@@ -175,8 +175,8 @@ public partial class GameManager : Node
 
         var response = await client.SendAsync(message);
 
-        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level details updated successfully");
-        else UIManager.Instance.PopupNotification("Details update failed. If you are connected to the internet, the servers may be down.");
+        if (response.IsSuccessStatusCode) UIManager.Instance.PopupNotification("Level details updated successfully", "Success");
+        else UIManager.Instance.PopupNotification("Details update failed. If you are connected to the internet, the servers may be down.", "Update Failed");
     }
 
     public async Task<bool> DeleteLevel(int id)
@@ -200,12 +200,12 @@ public partial class GameManager : Node
 
         if (response.IsSuccessStatusCode)
         {
-            UIManager.Instance.PopupNotification("Level deleted successfully");
+            UIManager.Instance.PopupNotification("Level deleted successfully", "Success");
             return true;
         }
         else
         {
-            UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.");
+            UIManager.Instance.PopupNotification("Level deletion failed. If you are connected to the internet, the servers may be down.", "Deletion Failed");
             return false;
         }
 

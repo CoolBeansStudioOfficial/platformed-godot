@@ -1360,7 +1360,7 @@ use_native_dialog = true
 
 [node name="Level Settings" type="Window" parent="." unique_id=1595666596 node_paths=PackedStringArray("editor", "close", "width", "height", "resize", "wallJumping")]
 oversampling_override = 1.0
-title = "Edit Trigger"
+title = "Level Settings"
 initial_position = 2
 size = Vector2i(1000, 1000)
 visible = false
@@ -1492,6 +1492,7 @@ layout_mode = 2
 [node name="Close" type="Button" parent="Level Settings/Background/VBoxContainer/HBoxContainer" unique_id=1525549172]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_cfu02")
 theme_override_font_sizes/font_size = 20
 text = "Close"
@@ -1506,5 +1507,6 @@ force_native = true
 ok_button_text = "Upload"
 dialog_text = "Are you sure you want to publicly upload this level to your account?
 (You can edit it later in the web editor)"
+metadata/ui = "background"
 
 [node name="Trigger Editor" parent="." unique_id=1190719423 instance=ExtResource("52_ro6dp")]

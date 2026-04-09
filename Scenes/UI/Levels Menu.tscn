@@ -900,3 +900,4 @@ force_native = true
 ok_button_text = "Delete"
 dialog_text = "Are you sure you want to delete this level? 
 This action is irreversible; there is no way to recover a level after it is deleted."
+metadata/ui = "background"

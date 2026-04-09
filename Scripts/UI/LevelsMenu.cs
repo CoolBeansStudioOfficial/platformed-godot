@@ -219,7 +219,7 @@ public partial class LevelsMenu : Control
         }
         else
         {
-            UIManager.Instance.PopupNotification("No levels folder set.\nPlease set one to download levels.", "Error");
+            UIManager.Instance.PopupNotification("No levels folder set.\nPlease set one to download levels.", "Download Failed");
         }
 
     }
@@ -260,7 +260,7 @@ public partial class LevelsMenu : Control
         else if (newText == string.Empty)
         {
             levelNameEdit.Text = selectedLevel.Name;
-            UIManager.Instance.PopupNotification("You cannot submit an empty level name.");
+            UIManager.Instance.PopupNotification("You cannot submit an empty level name.", "Error");
         }
         else
         {
@@ -293,7 +293,7 @@ public partial class LevelsMenu : Control
         else if (levelDescriptionEdit.Text == string.Empty)
         {
             levelDescriptionEdit.Text = selectedLevel.Description;
-            UIManager.Instance.PopupNotification("You cannot submit an empty description.");
+            UIManager.Instance.PopupNotification("You cannot submit an empty description.", "Error");
         }
         else
         {

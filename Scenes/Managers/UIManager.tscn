@@ -69,6 +69,8 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81co4"]
+
 [node name="UIManager" type="Node" unique_id=1530785123 node_paths=PackedStringArray("editor", "returnToEditorButton", "levelsMenu", "pauseMenu", "settingsMenu", "notification")]
 script = ExtResource("1_x176k")
 editor = NodePath("UI/Window/Layout/Content/Editor")
@@ -80,7 +82,7 @@ notification = NodePath("Notification")
 
 [node name="Theme Manager" type="Node" parent="." unique_id=1644022867 node_paths=PackedStringArray("UINodes")]
 script = ExtResource("2_407tw")
-UINodes = [NodePath("../UI"), NodePath("../Settings")]
+UINodes = [NodePath("../UI"), NodePath("../Settings"), NodePath("../Notification")]
 backgroundColor = Color(0.13333334, 0.13333334, 0.13333334, 1)
 accentColor = Color(0.5823133, 0.85650784, 0.94708174, 1)
 buttonStylebox = SubResource("StyleBoxFlat_n6i5l")
@@ -151,7 +153,9 @@ initial_position = 2
 size = Vector2i(323, 100)
 unresizable = true
 force_native = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_81co4")
 dialog_text = "You are being notified about something"
+metadata/ui = "background"
 
 [node name="Settings" type="Window" parent="." unique_id=554453960]
 oversampling_override = 1.0

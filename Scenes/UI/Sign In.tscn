@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bysbtfwwnlfum"]
 
-[ext_resource type="Theme" uid="uid://cgupe3ntmkv8k" path="res://Themes/Default.tres" id="1_xyhr6"]
 [ext_resource type="FontFile" uid="uid://01f8jcogsxqk" path="res://Fonts/Fredoka/Fredoka-Bold.ttf" id="2_f4myd"]
 [ext_resource type="FontFile" uid="uid://vghpiutkhm7c" path="res://Fonts/Fredoka/Fredoka-Regular.ttf" id="3_7e3b8"]
 
@@ -10,8 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_xyhr6")
-theme_type_variation = &"Background"
+metadata/ui = "background"
 
 [node name="Title" type="Label" parent="." unique_id=1303102532]
 layout_mode = 1

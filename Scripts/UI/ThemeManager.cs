@@ -112,6 +112,34 @@ public partial class ThemeManager : Node
                     panel.AddThemeStyleboxOverride("panel", stylebox);
                 }
             }
+            else if (node is Window window)
+            {
+                var stylebox = (StyleBoxFlat)window.GetThemeStylebox("panel");
+
+                if (style == "background")
+                {
+                    //keep things like rounded edges intact
+                    stylebox.BgColor = backgroundColor;
+                    window.AddThemeStyleboxOverride("panel", stylebox);
+                }
+                else if (style == "background_accent")
+                {
+                    //keep things like rounded edges intact
+                    stylebox.BgColor = backgroundAccent;
+                    window.AddThemeStyleboxOverride("panel", stylebox);
+                }
+                else if (style == "background_game")
+                {
+                    stylebox.BgColor = backgroundGame;
+                    window.AddThemeStyleboxOverride("panel", stylebox);
+                }
+                else if (style == "accent")
+                {
+                    //keep things like rounded edges intact
+                    stylebox.BgColor = accentColor;
+                    window.AddThemeStyleboxOverride("panel", stylebox);
+                }
+            }
             else if (node is Button button)
             {
                 if (style == "button")
