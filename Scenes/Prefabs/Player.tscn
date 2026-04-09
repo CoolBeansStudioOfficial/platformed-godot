@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://rbncvfmpr4ee" path="res://Audio/Randomizers/Jump.tres" id="2_2ortc"]
 [ext_resource type="Texture2D" uid="uid://c1hye35mqwu4d" path="res://Images/Raster/Tiles/16 Bit/player.png" id="2_gntrk"]
 [ext_resource type="Script" uid="uid://c1340uxm4mlnc" path="res://Scripts/Player/PlayerAnimation.cs" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://d4swocckup8r" path="res://Scripts/Player/PlayerBackground.cs" id="5_imvdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(10, 12)
@@ -44,13 +45,14 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=748346715]
+[node name="Background" type="Panel" parent="Camera2D" unique_id=1782075644]
 z_index = -1
-offset_left = -2022.0
-offset_top = -1078.0
-offset_right = 1878.0
-offset_bottom = 1061.0
-color = Color(0.7607843, 0.6039216, 0.38431373, 1)
+offset_left = -2031.0
+offset_top = -1091.0
+offset_right = 1896.0
+offset_bottom = 1066.0
+script = ExtResource("5_imvdw")
+metadata/ui = "background_accent"
 
 [node name="Walljump Cast Left" type="ShapeCast2D" parent="." unique_id=953680652]
 position = Vector2(0, 2)
