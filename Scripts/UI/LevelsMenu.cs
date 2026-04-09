@@ -18,6 +18,7 @@ public partial class LevelsMenu : Control
     [Export] Button playButton;
     [Export] Button remixButton;
     [Export] Button deleteButton;
+    [Export] Button downloadButton;
     [Export] ConfirmationDialog deleteConfirmation;
     [Export] Button webButton;
     [Export] Button descriptionSubmitButton;
@@ -48,6 +49,7 @@ public partial class LevelsMenu : Control
         playButton.Pressed += OnPlayButtonPressed;
         remixButton.Pressed += OnRemixButtonPressed;
         deleteButton.Pressed += OnDeleteButtonPressed;
+        downloadButton.Pressed += OnDownloadButtonPressed;
         deleteConfirmation.Confirmed += OnDeleteConfirmed;
         webButton.Pressed += OnWebButtonPressed;
         levelNameEdit.TextSubmitted += OnLevelNameChanged;
@@ -156,25 +158,23 @@ public partial class LevelsMenu : Control
             playBar.Value = percentage;
         }
 
-        webButton.Visible = false;
-        deleteButton.Visible = false;
+        webButton.Text = "View In Explorer";
+        downloadButton.Visible = false;
 
-        if (level.Tags is not null)
+        if (level.Tags is not null) foreach (var tag in level.Tags)
         {
-            foreach (var tag in level.Tags)
+            if (tag is string t) if (t == "online")
             {
-                if (tag is string t) if (t == "online")
+                downloadButton.Visible = true;
+                deleteButton.Visible = false;
+                webButton.Text = "View On Web";
+
+                //if level is owned by player
+                if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.preferences.GetPreference("user_id"))
                 {
-                    webButton.Visible = true;
-
-                    //if level is owned by player
-                    if (GameManager.Instance.IsLoggedIn()) if (level.Owner == (int)GameManager.Instance.preferences.GetPreference("user_id"))
-                    {
-                        deleteButton.Visible = true;
-
-                        levelNameEdit.Editable = true;
-                        levelDescriptionEdit.Editable = true;
-                    }
+                    levelNameEdit.Editable = true;
+                    levelDescriptionEdit.Editable = true;
+                    deleteButton.Visible = true;
                 }
             }
         }
@@ -208,16 +208,50 @@ public partial class LevelsMenu : Control
         deleteConfirmation.PopupCentered();
     }
 
+    void OnDownloadButtonPressed()
+    {
+        if (GameManager.Instance.preferences.IsLevelsFolderSet())
+        {
+            GameManager.Instance.preferences.SaveLevelAsFile(selectedLevel,
+                $"{GameManager.Instance.preferences.GetLevelsFolder()}/{selectedLevel.Name}.json");
+
+            UIManager.Instance.PopupNotification("Level downloaded successfully", "Success");
+        }
+        else
+        {
+            UIManager.Instance.PopupNotification("No levels folder set.\nPlease set one to download levels.", "Error");
+        }
+
+    }
+
     async void OnDeleteConfirmed()
     {
-        bool success = await GameManager.Instance.DeleteLevel(selectedLevel.Id);
+        if (selectedLevel.Tags is not null) foreach (var tag in selectedLevel.Tags)
+        {
+            if (tag is string t) if (t == "online")
+            {
+                bool success = await GameManager.Instance.DeleteLevel(selectedLevel.Id);
+                if (success) GameManager.Instance.ReturnToLevelsMenu(true);
+                return;
+            }
+        }
 
-        if (success) GameManager.Instance.ReturnToLevelsMenu(true);
+        GameManager.Instance.preferences.DeleteLevel(selectedLevel.LocalPath);
+        GameManager.Instance.ReturnToLevelsMenu(true);
     }
 
     void OnWebButtonPressed()
     {
-        OS.ShellOpen($"https://platformed.jmeow.net/level/{selectedLevel.Id}");
+        if (selectedLevel.Tags is not null) foreach (var tag in selectedLevel.Tags)
+        {
+            if (tag is string t) if (t == "online")
+            {
+                OS.ShellOpen($"https://platformed.jmeow.net/level/{selectedLevel.Id}");
+                return;
+            }
+        }
+
+        OS.ShellShowInFileManager(selectedLevel.LocalPath);
     }
 
     void OnLevelNameChanged(string newText)

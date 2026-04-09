@@ -59,6 +59,7 @@ public partial class Preferences : Node
             Level level = await JsonSerializer.DeserializeAsync<Level>(read);
             read.Close();
 
+            level.LocalPath = path;
             levels.Add(level);
         }
 
@@ -70,8 +71,11 @@ public partial class Preferences : Node
         var stream = File.Create(path);
         await JsonSerializer.SerializeAsync(stream, level);
         await stream.DisposeAsync();
+    }
 
-
+    public void DeleteLevel(string path)
+    {
+        File.Delete(path);
     }
 
     public void SetPreference(string key, Variant value)

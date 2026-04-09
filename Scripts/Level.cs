@@ -70,6 +70,8 @@ public class Level
 
     [JsonPropertyName("owned")]
     public bool Owned { get; set; }
+
+    public string LocalPath { get; set; }
 }
 
 public class LevelUpdate

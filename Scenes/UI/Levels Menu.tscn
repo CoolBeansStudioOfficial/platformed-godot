@@ -227,6 +227,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijx0f"]
+bg_color = Color(1.973361e-06, 0.73267734, 0.4144442, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hymkg"]
 bg_color = Color(0.14509805, 0.13333334, 0.11764706, 1)
 
@@ -301,7 +308,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "deleteConfirmation", "webButton", "descriptionSubmitButton", "descriptionCancelButton", "levelNameEdit", "levelCreator", "levelDescriptionEdit", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
+[node name="Levels Menu" type="Control" unique_id=555989692 node_paths=PackedStringArray("fileDialog", "addLevelsFolderButton", "levelsList", "levelView", "searchBar", "searchBarText", "backButton", "playButton", "remixButton", "deleteButton", "downloadButton", "deleteConfirmation", "webButton", "descriptionSubmitButton", "descriptionCancelButton", "levelNameEdit", "levelCreator", "levelDescriptionEdit", "ratingCount", "ratingPercentagePositive", "ratingPercentageNegative", "ratingBar", "playCount", "playDNFPercentage", "playFinishPercentage", "playBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -316,11 +323,12 @@ levelView = NodePath("VBoxContainer/Level View")
 searchBar = NodePath("VBoxContainer/Search Bar")
 searchBarText = NodePath("VBoxContainer/Search Bar/Search Box/RichTextLabel")
 backButton = NodePath("VBoxContainer/Level View/Back")
-playButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Play")
-remixButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer/Remix")
-deleteButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/Delete")
+playButton = NodePath("VBoxContainer/Level View/Level Image/VBoxContainer/Main Options/Play")
+remixButton = NodePath("VBoxContainer/Level View/Level Image/VBoxContainer/Main Options/Remix")
+deleteButton = NodePath("VBoxContainer/Level View/Level Image/VBoxContainer/Online/Delete")
+downloadButton = NodePath("VBoxContainer/Level View/Level Image/VBoxContainer/Save/Download")
 deleteConfirmation = NodePath("ConfirmationDialog")
-webButton = NodePath("VBoxContainer/Level View/Level Image/HBoxContainer2/View On Web")
+webButton = NodePath("VBoxContainer/Level View/Level Image/VBoxContainer/Online/View On Web")
 descriptionSubmitButton = NodePath("VBoxContainer/Level View/Details/HBoxContainer/Submit Description")
 descriptionCancelButton = NodePath("VBoxContainer/Level View/Details/HBoxContainer/Cancel Description")
 levelNameEdit = NodePath("VBoxContainer/Level View/Level Image/Level Name Edit")
@@ -566,19 +574,24 @@ text = "Creator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1930980704]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1730171404]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 159.0
-offset_bottom = 209.0
+offset_bottom = 368.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="Play" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer" unique_id=1463225008]
+[node name="Main Options" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image/VBoxContainer" unique_id=1930980704]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="VBoxContainer/Level View/Level Image/VBoxContainer/Main Options" unique_id=1463225008]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -591,7 +604,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wb41a")
 text = "Play"
 metadata/ui = "button"
 
-[node name="Remix" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer" unique_id=1225201191]
+[node name="Remix" type="Button" parent="VBoxContainer/Level View/Level Image/VBoxContainer/Main Options" unique_id=1225201191]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -603,20 +616,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ki7ki")
 text = "Remix"
 metadata/ui = "button"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image" unique_id=1546063072]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 230.0
-offset_bottom = 280.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Online" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image/VBoxContainer" unique_id=1546063072]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Delete" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer2" unique_id=1294952517]
-visible = false
+[node name="Delete" type="Button" parent="VBoxContainer/Level View/Level Image/VBoxContainer/Online" unique_id=1294952517]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -627,8 +632,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_141j1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r0b4a")
 text = "Delete"
 
-[node name="View On Web" type="Button" parent="VBoxContainer/Level View/Level Image/HBoxContainer2" unique_id=889790051]
-visible = false
+[node name="View On Web" type="Button" parent="VBoxContainer/Level View/Level Image/VBoxContainer/Online" unique_id=889790051]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -638,6 +642,23 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vy1gy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vn0xr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hfs72")
 text = "View On Web"
+
+[node name="Save" type="HBoxContainer" parent="VBoxContainer/Level View/Level Image/VBoxContainer" unique_id=193678318]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Download" type="Button" parent="VBoxContainer/Level View/Level Image/VBoxContainer/Save" unique_id=1191399015]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eotax")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ijx0f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_141j1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r0b4a")
+text = "Download"
+metadata/ui = "button"
 
 [node name="Details" type="VBoxContainer" parent="VBoxContainer/Level View" unique_id=1391702312]
 layout_mode = 1
