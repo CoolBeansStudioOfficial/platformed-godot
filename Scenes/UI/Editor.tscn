@@ -786,7 +786,7 @@ metadata/ui = "toggle"
 [node name="Play" type="Button" parent="Content/Top Bar/Options" unique_id=1261242300]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-tooltip_text = "Play
+tooltip_text = "Play Level
 (Ctrl+Space)"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
@@ -800,7 +800,7 @@ metadata/ui = "toggle"
 [node name="Settings" type="Button" parent="Content/Top Bar/Options" unique_id=253857849]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-tooltip_text = "Settings"
+tooltip_text = "Level Settings"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7unpn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_s2w5g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ro6dp")
@@ -835,7 +835,7 @@ content = NodePath("Content")
 scaleItems = [NodePath("Content/Tiles"), NodePath("Content/Grid"), NodePath("Content/Overlay")]
 
 [node name="Content" type="Panel" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport" unique_id=762280860]
-custom_minimum_size = Vector2(3000, 3000)
+custom_minimum_size = Vector2(4000, 4000)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
