@@ -17,7 +17,15 @@ public partial class SignInWindow : Window
         signInButton.Pressed += OnSignInPressed;
         closeButton.Pressed += OnClosePressed;
         CloseRequested += OnClosePressed;
+
+        usernameEdit.TextSubmitted += _ => FocusPassword();
+        passwordEdit.TextSubmitted += _ => OnSignInPressed();
 	}
+
+    void FocusPassword()
+    {
+        passwordEdit.GrabFocus();
+    }
 
     async void OnSignInPressed()
     {
