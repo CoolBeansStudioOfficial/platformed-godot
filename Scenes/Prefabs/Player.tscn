@@ -52,7 +52,7 @@ offset_top = -1091.0
 offset_right = 1896.0
 offset_bottom = 1066.0
 script = ExtResource("5_imvdw")
-metadata/ui = "background_accent"
+metadata/ui = "background_game"
 
 [node name="Walljump Cast Left" type="ShapeCast2D" parent="." unique_id=953680652]
 position = Vector2(0, 2)

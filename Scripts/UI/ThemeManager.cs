@@ -18,6 +18,7 @@ public partial class ThemeManager : Node
 
     List<Node> nodes = [];
     public Color backgroundAccent;
+    public Color backgroundGame;
 
     public static ThemeManager Instance { get; private set; }
     public override void _Ready()
@@ -62,6 +63,7 @@ public partial class ThemeManager : Node
 	{
         //calculate secondary pallete
         backgroundAccent = CombineColors(backgroundColor, accentColor, 0.15f);
+        backgroundGame = CombineColors(accentColor, new("#C7C7C7"));
 
         //apply theme
         foreach (var node in nodes)
@@ -96,6 +98,11 @@ public partial class ThemeManager : Node
                 {
                     //keep things like rounded edges intact
                     stylebox.BgColor = backgroundAccent;
+                    panel.AddThemeStyleboxOverride("panel", stylebox);
+                }
+                else if (style == "background_game")
+                {
+                    stylebox.BgColor = backgroundGame;
                     panel.AddThemeStyleboxOverride("panel", stylebox);
                 }
                 else if (style == "accent")
