@@ -126,6 +126,12 @@ public partial class TriggerEditor : Window
 
     public void RemoveCommand(TriggerCommand command)
     {
+        if (trigger.Execute.Count <= 1)
+        {
+            UIManager.Instance.PopupNotification("A trigger must have at least one command.", "Error");
+            return;
+        }
+
         trigger.Execute.Remove(command.command);
         commands.Remove(command);
         command.QueueFree();

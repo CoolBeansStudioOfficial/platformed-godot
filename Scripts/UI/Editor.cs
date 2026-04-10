@@ -39,6 +39,7 @@ public partial class Editor : Control
     TileId selectedTile;
 
     //edit mode
+    int triggerId = 0;
     bool startedSelection = false;
     bool startedDrag = false;
     bool waitingForBlock = false;
@@ -166,6 +167,12 @@ public partial class Editor : Control
                         foreach (TileInfo tile in selection.tiles)
                         {
                             if (tile.id == TileId.Air) continue;
+
+                            if (IsTriggerID(tile.id))
+                            {
+                                MoveTrigger(tile.triggerId.Value, tile.position);
+                            }
+                            
                             SetTile(tile.position, tile.id, tile.rotation, false);
                         }
                         UpdateTiles();
@@ -254,8 +261,26 @@ public partial class Editor : Control
         //place mode
         if (placeMode)
         {
-            if (eraserSelected) SetTile(mouseCoords, TileId.Air);
-            else SetTile(mouseCoords, selectedTile);
+            if (eraserSelected)
+            {
+                SetTile(mouseCoords, TileId.Air);
+                return;
+            }
+
+            if (IsTriggerID(selectedTile))
+            {
+                CreateTrigger(new()
+                {
+                    X = mouseCoords.X,
+                    Y = mouseCoords.Y,
+                    Execute = [new()
+                    {
+                        Type = "toggleBlocks"
+                    }]
+                });
+            }
+            
+            SetTile(mouseCoords, selectedTile);
 
             overlay.SetOutline(null);
         }
@@ -488,23 +513,6 @@ public partial class Editor : Control
                 Y = position.Y,
             };
         }
-        else if (IsTriggerID(id))
-        {
-            //delete any old triggers in the same position
-            if (GetTrigger(position) is not null) RemoveTrigger(position);
-
-            SetTrigger(new()
-            {
-                X = position.X,
-                Y = position.Y,
-                Execute = [new()
-                    {
-                        Type = "toggleBlocks"
-                    }]
-            });
-
-            tileMap.SetCell(position, (int)id, Vector2I.Zero);
-        }
         else tileMap.SetCell(position, (int)id, Vector2I.Zero);
 
         TileInfo editedTile = editHistory[currentEdit][position.Y][position.X];
@@ -530,6 +538,7 @@ public partial class Editor : Control
         return false;
     }
 
+    //returns the first trigger found with matching position
     TriggerParams GetTrigger(Vector2I position)
     {
         if (currentLevel.Data.Triggers is null) return null;
@@ -547,17 +556,43 @@ public partial class Editor : Control
         return null;
     }
 
-    void SetTrigger(TriggerParams trigger)
+    //get specific trigger by id
+    TriggerParams GetTrigger(int id)
     {
+        if (currentLevel.Data.Triggers is null) return null;
+
+        foreach (var trigger in currentLevel.Data.Triggers)
+        {
+            if (trigger.id == id) return trigger;
+        }
+
+        return null;
+    }
+
+    void CreateTrigger(TriggerParams trigger)
+    {
+        //iterate trigger id
+        triggerId++;
+        trigger.id = triggerId;
+
         //create new trigger list if it's empty
         if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
 
         //remove any old triggers that might be in the same position
-        RemoveTrigger(new(trigger.X, trigger.Y));
+        RemoveTrigger(new Vector2I(trigger.X, trigger.Y));
 
         currentLevel.Data.Triggers.Add(trigger);
     }
 
+    void MoveTrigger(int id, Vector2I position)
+    {
+        var trigger = GetTrigger(id);
+
+        trigger.X = position.X;
+        trigger.Y = position.Y;
+    }
+
+    //remove first trigger found at position
     void RemoveTrigger(Vector2I position)
     {
         if (currentLevel.Data.Triggers is null) return;
@@ -569,6 +604,23 @@ public partial class Editor : Control
             if (new Vector2I(trigger.X, trigger.Y) == position)
             {
                 currentLevel.Data.Triggers.RemoveAt(i);
+            }
+        }
+    }
+
+    //remove specific trigger by id
+    void RemoveTrigger(int id)
+    {
+        if (currentLevel.Data.Triggers is null) return;
+
+        foreach (var trigger in currentLevel.Data.Triggers)
+        {
+            if (trigger.id == id)
+            {
+
+
+                currentLevel.Data.Triggers.Remove(trigger);
+                break;
             }
         }
     }
@@ -778,6 +830,17 @@ public partial class Editor : Control
         editHistory[currentEdit] = LevelManager.Instance.CreateTilemap(level);
 
         ChangeLevelSize(new(level.Width, level.Height));
+
+        //assign ids to imported triggers
+        if (currentLevel.Data.Triggers is not null) foreach (var trigger in currentLevel.Data.Triggers)
+        {
+            triggerId++;
+            trigger.id = triggerId;
+
+            var newTrigger = editHistory[currentEdit][trigger.Y][trigger.X];
+            newTrigger.triggerId = triggerId;
+            editHistory[currentEdit][trigger.Y][trigger.X] = newTrigger;
+        }
 
         //selection outline
         selection = default;

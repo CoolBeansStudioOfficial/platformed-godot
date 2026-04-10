@@ -183,6 +183,8 @@ public class TriggerParams
 
     [JsonPropertyName("execute")]
     public List<Execute> Execute { get; set; }
+
+    public int? id { get; set; }
 }
 
 public class Execute
