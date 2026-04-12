@@ -9,6 +9,7 @@ public partial class TilesViewport : ScrollContainer
     [Export] float zoomSpeed;
     [Export] Control content;
     [Export] Node[] scaleItems;
+    [Export] Node[] relativeItems;
 
     public Vector2 viewportSize;
 
@@ -90,6 +91,12 @@ public partial class TilesViewport : ScrollContainer
         {
             if (node is Node2D n) n.Scale = newZoom;
             else if (node is Control c) c.Scale = newZoom;
+        }
+
+        foreach (var node in relativeItems)
+        {
+            if (node is Node2D n) n.Scale = Vector2.One / newZoom;
+            else if (node is Control c) c.Scale = Vector2.One / newZoom;
         }
     }
 }
