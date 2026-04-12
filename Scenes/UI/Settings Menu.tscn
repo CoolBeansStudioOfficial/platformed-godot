@@ -8,6 +8,9 @@
 [ext_resource type="TileSet" uid="uid://bhy6co17x4llf" path="res://Tilesets/8BitEditor.tres" id="4_6ly1g"]
 [ext_resource type="TileSet" uid="uid://0hopm4cgilpq" path="res://Tilesets/16BitEditor.tres" id="5_fy6my"]
 [ext_resource type="FontFile" uid="uid://kqw7u7qttq3x" path="res://Fonts/Fredoka/Fredoka-Medium.ttf" id="7_q7h03"]
+[ext_resource type="Texture2D" uid="uid://blfvy175gd20i" path="res://Images/Raster/Icons/Volume Mute.png" id="9_fy6my"]
+[ext_resource type="Script" uid="uid://cx03miv3pwp1g" path="res://Scripts/UI/Elements/SliderValueButton.cs" id="10_xorcq"]
+[ext_resource type="Texture2D" uid="uid://bt5rv7g6jav3t" path="res://Images/Raster/Icons/Volume Full.png" id="11_xorcq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7h03"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
@@ -176,20 +179,34 @@ text = "Volume"
 [node name="Audio Volume" type="HBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings" unique_id=1783504376]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1482136578]
+[node name="Volume Mute" type="Button" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1951417731 node_paths=PackedStringArray("slider")]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-text = "Mute"
+tooltip_text = "Mute Volume"
+icon = ExtResource("9_fy6my")
+expand_icon = true
+script = ExtResource("10_xorcq")
+slider = NodePath("../Slider")
+metadata/ui = "button"
 
 [node name="Slider" type="HSlider" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1741970886]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.0
 ticks_on_borders = true
 
-[node name="Label2" type="Label" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=520029124]
+[node name="Volume Full" type="Button" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer/Audio Settings/Audio Volume" unique_id=1583509681 node_paths=PackedStringArray("slider")]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-text = "Max"
+tooltip_text = "Max Volume"
+icon = ExtResource("11_xorcq")
+expand_icon = true
+script = ExtResource("10_xorcq")
+slider = NodePath("../Slider")
+mode = 1
+metadata/ui = "button"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=969852215]
 layout_mode = 2

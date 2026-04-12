@@ -741,6 +741,8 @@ layout_mode = 2
 [node name="Zoom Out" type="Button" parent="Content/Top Bar/Options/Zoom/HBoxContainer" unique_id=1496932366]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Zoom Out
+(Ctrl + Scroll Down)"
 icon = ExtResource("28_qk65o")
 expand_icon = true
 metadata/ui = "toggle"
@@ -757,6 +759,8 @@ value = 1.0
 [node name="Zoom In" type="Button" parent="Content/Top Bar/Options/Zoom/HBoxContainer" unique_id=1748299234]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Zoom In
+(Ctrl + Scroll Up)"
 icon = ExtResource("29_kng5f")
 expand_icon = true
 metadata/ui = "toggle"
