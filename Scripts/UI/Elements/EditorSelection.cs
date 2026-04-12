@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class EditorSelection : Node
 {
@@ -12,6 +13,8 @@ public struct EditSelection
     public Vector2I end;
     public Vector2I dragPosition;
     public List<TileInfo> tiles;
+    //trigger stored position and current position in selection
+    public Dictionary<Vector2I, Vector2I> triggers;
 
     //move selection to point relative to drag position
     public void Move(Vector2I position)
@@ -29,6 +32,12 @@ public struct EditSelection
             TileInfo tile = tiles[i];
             tile.position += offset;
             tiles[i] = tile;
+        }
+
+        //offset trigger positions
+        for (int i = 0; i < triggers.Count; i++)
+        {
+            triggers[triggers.Keys.ToList()[i]] += offset;
         }
     }
 

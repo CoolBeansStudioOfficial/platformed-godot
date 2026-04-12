@@ -39,7 +39,6 @@ public partial class Editor : Control
     TileId selectedTile;
 
     //edit mode
-    int triggerId = 0;
     bool startedSelection = false;
     bool startedDrag = false;
     bool waitingForBlock = false;
@@ -144,6 +143,11 @@ public partial class Editor : Control
                             if (!IsInGrid(cell)) continue;
                             TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
                             selection.tiles.Add(tile);
+
+                            if (IsTriggerID(tile.id))
+                            {
+                                selection.triggers.Add(tile.position, tile.position);
+                            }
                         }
 
                         //show context menu
@@ -167,14 +171,19 @@ public partial class Editor : Control
                         foreach (TileInfo tile in selection.tiles)
                         {
                             if (tile.id == TileId.Air) continue;
-
-                            if (IsTriggerID(tile.id))
-                            {
-                                MoveTrigger(tile.triggerId.Value, tile.position);
-                            }
                             
                             SetTile(tile.position, tile.id, tile.rotation, false);
                         }
+
+                        //update moved trigger positions
+                        Dictionary<Vector2I, Vector2I> moved = [];
+                        foreach (var trigger in selection.triggers)
+                        {
+                            MoveTrigger(trigger.Key, trigger.Value);
+                            moved.Add(trigger.Value, trigger.Value);
+                        }
+                        selection.triggers = moved;
+
                         UpdateTiles();
 
                         ContextPopup();
@@ -297,7 +306,8 @@ public partial class Editor : Control
                     {
                         start = mouseCoords,
                         end = mouseCoords,
-                        tiles = []
+                        tiles = [],
+                         triggers = []
                     };
 
                     startedSelection = true;
@@ -556,25 +566,8 @@ public partial class Editor : Control
         return null;
     }
 
-    //get specific trigger by id
-    TriggerParams GetTrigger(int id)
-    {
-        if (currentLevel.Data.Triggers is null) return null;
-
-        foreach (var trigger in currentLevel.Data.Triggers)
-        {
-            if (trigger.id == id) return trigger;
-        }
-
-        return null;
-    }
-
     void CreateTrigger(TriggerParams trigger)
     {
-        //iterate trigger id
-        triggerId++;
-        trigger.id = triggerId;
-
         //create new trigger list if it's empty
         if (currentLevel.Data.Triggers is null) currentLevel.Data.Triggers = [];
 
@@ -584,9 +577,12 @@ public partial class Editor : Control
         currentLevel.Data.Triggers.Add(trigger);
     }
 
-    void MoveTrigger(int id, Vector2I position)
+    void MoveTrigger(Vector2I current, Vector2I position)
     {
-        var trigger = GetTrigger(id);
+        //remove any old triggers that might be in the same position
+        RemoveTrigger(position);
+
+        var trigger = GetTrigger(current);
 
         trigger.X = position.X;
         trigger.Y = position.Y;
@@ -604,23 +600,6 @@ public partial class Editor : Control
             if (new Vector2I(trigger.X, trigger.Y) == position)
             {
                 currentLevel.Data.Triggers.RemoveAt(i);
-            }
-        }
-    }
-
-    //remove specific trigger by id
-    void RemoveTrigger(int id)
-    {
-        if (currentLevel.Data.Triggers is null) return;
-
-        foreach (var trigger in currentLevel.Data.Triggers)
-        {
-            if (trigger.id == id)
-            {
-
-
-                currentLevel.Data.Triggers.Remove(trigger);
-                break;
             }
         }
     }
@@ -830,17 +809,6 @@ public partial class Editor : Control
         editHistory[currentEdit] = LevelManager.Instance.CreateTilemap(level);
 
         ChangeLevelSize(new(level.Width, level.Height));
-
-        //assign ids to imported triggers
-        if (currentLevel.Data.Triggers is not null) foreach (var trigger in currentLevel.Data.Triggers)
-        {
-            triggerId++;
-            trigger.id = triggerId;
-
-            var newTrigger = editHistory[currentEdit][trigger.Y][trigger.X];
-            newTrigger.triggerId = triggerId;
-            editHistory[currentEdit][trigger.Y][trigger.X] = newTrigger;
-        }
 
         //selection outline
         selection = default;

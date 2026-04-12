@@ -6,7 +6,6 @@ public struct TileInfo
 	public Vector2I position;
 	public TileRotation rotation;
     public TileId id;
-    public int? triggerId;
 
     public bool tileAbove;
     public bool tileBelow;
