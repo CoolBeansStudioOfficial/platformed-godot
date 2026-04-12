@@ -168,7 +168,6 @@ public partial class TriggerCommand : Control
     public void SetCommand(Execute execute)
     {
         command = execute;
-        GD.Print($"start: ({command.StartX}, {command.StartY}) end: ({command.EndX}, {command.EndY})");
 
         //assign default values if null
         if (command.Type == string.Empty || command.Type is null) command.Type = "toggleBlocks";

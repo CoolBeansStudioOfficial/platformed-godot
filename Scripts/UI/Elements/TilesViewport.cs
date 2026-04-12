@@ -11,12 +11,44 @@ public partial class TilesViewport : ScrollContainer
     [Export] Node[] scaleItems;
     [Export] Node[] relativeItems;
 
+    [ExportGroup("UI")]
+    [Export] Slider zoomSlider;
+    [Export] Button zoomOut;
+    [Export] Button zoomIn;
+
     public Vector2 viewportSize;
 
     public float zoom = 1f;
     //number of inputs each action has been performed for
     public bool middleDragging = false;
     Vector2 lastMousePosition = Vector2.Zero;
+    bool sliderHeld = false;
+
+    public override void _Ready()
+    {
+        zoomSlider.DragStarted += OnSliderDragged;
+        zoomSlider.ValueChanged += OnSliderValueChanged;
+        zoomSlider.DragEnded += OnSliderRelease;
+
+        zoomOut.Pressed += () => Zoom(-zoomSpeed * 4, new(960, 540));
+        zoomIn.Pressed += () => Zoom(zoomSpeed * 4, new(960, 540));
+    }
+
+
+    void OnSliderDragged()
+    {
+        sliderHeld = true;
+    }
+
+    void OnSliderValueChanged(double value)
+    {
+        if (sliderHeld) Zoom((float)zoomSlider.Value - zoom, new(960, 540));
+    }
+
+    void OnSliderRelease(bool valueChanged)
+    {
+        sliderHeld = false;
+    }
 
     public override void _GuiInput(InputEvent @event)
     {
@@ -67,6 +99,8 @@ public partial class TilesViewport : ScrollContainer
         float previousZoom = zoom;
         zoom += amount;
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
+
+        zoomSlider.Value = zoom;
 
         Vector2 scroll = new(ScrollHorizontal, ScrollVertical);
 

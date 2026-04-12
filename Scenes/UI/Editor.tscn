@@ -35,7 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://chto12wwhqmng" path="res://Images/Raster/Tiles/16 Bit/sign-left.png" id="25_yqw02"]
 [ext_resource type="Texture2D" uid="uid://c1w6k800yl878" path="res://Images/Raster/Tiles/16 Bit/sign-up.png" id="26_t841b"]
 [ext_resource type="Texture2D" uid="uid://bgut8fi544erb" path="res://Images/Raster/Tiles/16 Bit/sign-down.png" id="27_eqe5u"]
+[ext_resource type="Texture2D" uid="uid://c7cxwbyjt4if6" path="res://Images/Raster/Icons/Zoom Out.png" id="28_qk65o"]
 [ext_resource type="Texture2D" uid="uid://vw1wu14orqnj" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-right.png" id="28_t841b"]
+[ext_resource type="Texture2D" uid="uid://pv2psk7p0h46" path="res://Images/Raster/Icons/Zoom In.png" id="29_kng5f"]
 [ext_resource type="Texture2D" uid="uid://5pf7gbm7aauk" path="res://Images/Raster/Tiles/16 Bit/half-double-spike-left.png" id="29_kvt7y"]
 [ext_resource type="PackedScene" uid="uid://cmi06n2qygfbl" path="res://Scenes/UI/Elements/Editor Category Toggle.tscn" id="30_kvt7y"]
 [ext_resource type="Script" uid="uid://c1hhr65kr0dhh" path="res://Scripts/UI/Elements/EditorSave.cs" id="31_d3xfs"]
@@ -721,6 +723,43 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 2
+metadata/ui = "background_accent"
+
+[node name="Zoom" type="VBoxContainer" parent="Content/Top Bar/Options" unique_id=379069680]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Content/Top Bar/Options/Zoom" unique_id=2015776610]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cfu02")
+text = "Zoom"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Top Bar/Options/Zoom" unique_id=1115267510]
+layout_mode = 2
+
+[node name="Zoom Out" type="Button" parent="Content/Top Bar/Options/Zoom/HBoxContainer" unique_id=1496932366]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("28_qk65o")
+expand_icon = true
+metadata/ui = "toggle"
+
+[node name="HSlider" type="HSlider" parent="Content/Top Bar/Options/Zoom/HBoxContainer" unique_id=815836850]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 5.0
+step = 0.0
+value = 1.0
+
+[node name="Zoom In" type="Button" parent="Content/Top Bar/Options/Zoom/HBoxContainer" unique_id=1748299234]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("29_kng5f")
+expand_icon = true
+metadata/ui = "toggle"
 
 [node name="Undo" type="Button" parent="Content/Top Bar/Options" unique_id=1778315685]
 custom_minimum_size = Vector2(64, 0)
@@ -819,7 +858,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Tiles Viewport" type="ScrollContainer" parent="Content/HBoxContainer/Editor Viewport" unique_id=880828721 node_paths=PackedStringArray("content", "scaleItems", "relativeItems")]
+[node name="Tiles Viewport" type="ScrollContainer" parent="Content/HBoxContainer/Editor Viewport" unique_id=880828721 node_paths=PackedStringArray("content", "scaleItems", "relativeItems", "zoomSlider", "zoomOut", "zoomIn")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -830,11 +869,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_fvgsq")
 minZoom = 1.0
-maxZoom = 4.0
-zoomSpeed = 0.04
+maxZoom = 5.0
+zoomSpeed = 0.06
 content = NodePath("Content")
 scaleItems = [NodePath("Content/Tiles"), NodePath("Content/Grid"), NodePath("Content/Overlay")]
 relativeItems = [NodePath("Content/Tiles/Context Menu")]
+zoomSlider = NodePath("../../../Top Bar/Options/Zoom/HBoxContainer/HSlider")
+zoomOut = NodePath("../../../Top Bar/Options/Zoom/HBoxContainer/Zoom Out")
+zoomIn = NodePath("../../../Top Bar/Options/Zoom/HBoxContainer/Zoom In")
 
 [node name="Content" type="Panel" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport" unique_id=762280860]
 custom_minimum_size = Vector2(4000, 4000)
@@ -910,6 +952,12 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s2w5g")
 text = "Paste"
 metadata/ui = "toggle"
+
+[node name="Divider" type="Panel" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Tiles/Context Menu/HBoxContainer" unique_id=924024355]
+custom_minimum_size = Vector2(2, 20)
+layout_mode = 2
+size_flags_vertical = 4
+metadata/ui = "background"
 
 [node name="Rotate Left" type="Button" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Tiles/Context Menu/HBoxContainer" unique_id=7149758]
 custom_minimum_size = Vector2(30, 0)
