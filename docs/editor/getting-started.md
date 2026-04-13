@@ -12,47 +12,47 @@ The Platformed app implements a robust, beginner-friendly level editor.
 
 ## The Interface
 
-<details>
-	<summary><b>Top Bar</b></summary>
-	<details>
-		<summary>Level Name</summary>
-		The name of the level you are editing is displayed on the very left of the top bar. 
-		<img width="1601" height="166" alt="Level Name" src="https://github.com/user-attachments/assets/a8733a7f-2667-41d3-82c4-cac64917889b" />
-		You can click on the name to edit it.
-		<div />
-		<img src="https://github.com/user-attachments/assets/8a0ad64c-5833-453c-bc7d-7cff5c1ab934" />
-	</details>
-	<details>
-		<summary>Zoom Controls</summary>
-	</details>
-	<details>
-		<summary>Undo/Redo</summary>
-	</details>
-	<details>
-		<summary>Save Options</summary>
-	</details>
-	<details>
-		<summary>Play Level</summary>
-	</details>
-	<details>
-		<summary>Level Settings</summary>
-	</details>
-</details>
+### Top Bar
 
-<details>
-	<summary><b>Side Bar</b></summary>
-	<details>
-		<summary>Blocks</summary>
-	</details>
-	<details>
-		<summary>Category Toggles</summary>
-	</details>
-	<details>
-		<summary>Eraser</summary>
-	</details>
-</details>
+#### Level Name
+
+The name of the level you are editing is displayed on the very left of the top bar. 
+
+You can click on the name to edit it.
+
+![GIF](https://github.com/user-attachments/assets/8a0ad64c-5833-453c-bc7d-7cff5c1ab934)
+
+#### Zoom Control
+
+The zoom controls are located closest to the center of the top bar. The controls provide two methods for adjusting how zoomed in your view of the level is.
+
+Increase/decrease zoom buttons
+
+**GIF HERE**
+
+Drag slider to zoom
+
+**GIF HERE**
+
+**Note:** You can also adjust your zoom level with the scroll wheel by holding `Ctrl`.
+
+#### Undo/Redo
+
+
+
+#### Save Options
+
+#### Play Level
+
+#### Level Settings
 
 ### Side Bar
+
+#### Blocks
+
+#### Category Toggles
+
+#### Eraser
 
 ### Context Menu
 
