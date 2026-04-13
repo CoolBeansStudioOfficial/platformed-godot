@@ -889,7 +889,8 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fvgsq")
 
 [node name="Tiles" type="TileMapLayer" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content" unique_id=461421475]
-z_index = 1
+z_index = 2
+z_as_relative = false
 texture_filter = 1
 tile_set = ExtResource("4_eiun3")
 
