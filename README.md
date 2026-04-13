@@ -7,7 +7,7 @@
 The Platformed desktop app boasts full feature parity with its web counterpart. It also adds exclusive quality-of-life features and improvements.
 
 | Feature      | Desktop | Web     |
-| :---        |   ---    |       ---     |
+| :---        |   :---:    |       :---:     |
 | Browse public levels      | ✅️       | ✅️   |
 | Play any level   | ✅️        | ✅️      |
 | Level editor   | ✅️        | ✅️      |
