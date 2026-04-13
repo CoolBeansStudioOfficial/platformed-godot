@@ -16,8 +16,11 @@ The Platformed app implements a robust, beginner-friendly level editor.
 	<summary><b>Top Bar</b></summary>
 	<details>
 		<summary>Level Name</summary>
-		The name of the level you are editing is displayed on the very left of the top bar. You can click on the name to edit it.
-		<img src="https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69f90cb65e48.gif"></img>
+		The name of the level you are editing is displayed on the very left of the top bar. 
+		<img width="1601" height="166" alt="Level Name" src="https://github.com/user-attachments/assets/a8733a7f-2667-41d3-82c4-cac64917889b" />
+		You can click on the name to edit it.
+		<div />
+		<img src="https://github.com/user-attachments/assets/8a0ad64c-5833-453c-bc7d-7cff5c1ab934" />
 	</details>
 	<details>
 		<summary>Zoom Controls</summary>
