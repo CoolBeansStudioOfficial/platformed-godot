@@ -18,7 +18,7 @@ The Platformed app implements a robust, beginner-friendly level editor.
 
 The name of the level you are editing is displayed on the very left of the top bar. 
 
-You can click on the name to edit it.
+You can click on the name to edit it:
 
 ![GIF](https://github.com/user-attachments/assets/8a0ad64c-5833-453c-bc7d-7cff5c1ab934)
 
@@ -26,13 +26,13 @@ You can click on the name to edit it.
 
 The zoom controls are located closest to the center of the top bar. The controls provide two methods for adjusting how zoomed in your view of the level is.
 
-Increase/decrease zoom buttons
+Increase/decrease zoom buttons:
 
-**GIF HERE**
+![zoom-click](https://github.com/user-attachments/assets/4168f3b8-5d77-4eae-8c27-4e43ea2302aa)
 
-Drag slider to zoom
+Drag slider to zoom:
 
-**GIF HERE**
+![zoom-drag](https://github.com/user-attachments/assets/cc2ba1f8-7411-42ef-b2ce-1486a85f4082)
 
 **Note:** You can also adjust your zoom level with the scroll wheel by holding `Ctrl`.
 
