@@ -883,6 +883,7 @@ zoomOut = NodePath("../../../Top Bar/Options/Zoom/HBoxContainer/Zoom Out")
 zoomIn = NodePath("../../../Top Bar/Options/Zoom/HBoxContainer/Zoom In")
 
 [node name="Content" type="Panel" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport" unique_id=762280860]
+z_as_relative = false
 custom_minimum_size = Vector2(4000, 4000)
 layout_mode = 2
 mouse_filter = 1
@@ -989,6 +990,8 @@ expand_icon = true
 metadata/ui = "toggle"
 
 [node name="Grid" type="Panel" parent="Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content" unique_id=1057792182]
+z_index = 1
+z_as_relative = false
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
