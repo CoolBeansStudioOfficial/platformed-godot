@@ -8,7 +8,8 @@
 
 The Platformed app implements a robust, beginner-friendly level editor. 
 
-**Note:** If you are already familiar with the web editor, be aware that the app has significant changes compared to it. These changes were made in the interest of making level editing more intuitive for new users.
+> [!TIP]
+> If you are already familiar with the web editor, be aware that the app has significant changes compared to it. These changes were made in the interest of making level editing more intuitive for new users.
 
 ## The Interface
 
@@ -34,7 +35,8 @@ Drag slider to zoom:
 
 ![zoom-drag](https://github.com/user-attachments/assets/cc2ba1f8-7411-42ef-b2ce-1486a85f4082)
 
-**Note:** You can also adjust your zoom level with the scroll wheel by holding `Ctrl`.
+> [!TIP]
+> You can also adjust your zoom level with the scroll wheel by holding `Ctrl`.
 
 #### Undo/Redo
 
