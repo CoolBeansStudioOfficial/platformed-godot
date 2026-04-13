@@ -4,7 +4,7 @@
 
 ## Features
 
-The Platformed desktop app boasts full feature parity with its web counterpart. It also adds exclusive quality-of-life features and improvements.
+The Platformed app boasts full feature parity with its web counterpart. It also adds exclusive quality-of-life features and improvements.
 
 | Feature      | Desktop | Web     |
 | :---        |   :---:    |       :---:     |
@@ -34,10 +34,6 @@ The Platformed desktop app boasts full feature parity with its web counterpart. 
 ### Editor
 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot)
-
-[Placing Blocks](https://github.com/CoolBeansStudioOfficial/platformed-godot)
-
-[Moving Blocks](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
 [Using Triggers](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
