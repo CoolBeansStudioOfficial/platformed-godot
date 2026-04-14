@@ -87,7 +87,7 @@ By clicking the level settings button in the very right of the top bar, you can 
 
 You can resize your level up to a maximum of 200 x 100 blocks.
 
-**GIF HERE**
+![resize](https://github.com/user-attachments/assets/1769322c-97c2-4318-b741-711d145325ab)
 
 > [!CAUTION]
 > If you resize a level to be smaller, any blocks outside of the new size will be lost.
@@ -96,7 +96,7 @@ You can resize your level up to a maximum of 200 x 100 blocks.
 
 You can choose the way in which you want the player be able to wall jump. Your options are no wall jumps, wall jumps that allow you to scale walls, and wall jumps that only allow you to jump directly off of walls.
 
-**GIF HERE**
+![walljump](https://github.com/user-attachments/assets/c3977d5b-718d-4f09-979a-405ec0c013a0)
 
 ### Side Bar
 
