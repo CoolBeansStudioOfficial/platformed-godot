@@ -124,6 +124,8 @@ Deletion can be confirmed/cancelled in the same way an edit can.
 
 Blocks are grouped into categories that can be enabled/disabled. This allows you to customize what blocks you want to see at any given time.
 
+![category-toggles](https://github.com/user-attachments/assets/79f1a220-13f5-4d7e-bf36-d242f7259faf)
+
 **GIF HERE**
 
 > [!TIP]
