@@ -8,7 +8,7 @@
 
 The Platformed app implements a robust, beginner-friendly level editor. 
 
-> [!TIP]
+> [!IMPORTANT]
 > If you are already familiar with the web editor, be aware that the app has significant changes compared to it. These changes were made in the interest of making level editing more intuitive for new users.
 
 ## The Interface
@@ -40,11 +40,44 @@ Drag slider to zoom:
 
 #### Undo/Redo
 
+The undo and redo buttons are located immediately to the right of the zoom controls. They allow you to move back and forth in the chain of edits you have made to your level.
 
+The buttons will grey out when you reach their respective ends of the chain.
+
+**GIF HERE**
+
+> [!TIP]
+> You can also use `Ctrl + Z` for undo and `Ctrl + Shift + Z` for redo.
 
 #### Save Options
 
+The save options button is located inbetween the redo and play buttons. Upon pressing it, you will be presented with three options for how you want to save your level.
+
+**GIF HERE**
+
+##### Save to levels folder:
+
+This option will save your level as a .json file to the folder you have set as your levels folder. This method will fail if no levels folder has been set.
+
+> [!TIP]
+> You can also save in this manner by pressing `Ctrl + S`
+
+##### Save as:
+
+This option will save your level as a .json file to any location you choose. You may also change the filename during the selection.
+
+##### Upload to web:
+
+This option will upload your level **PUBLICLY** to the Platformed website. Uploading only works if you are signed in.
+
 #### Play Level
+
+The play button is the second rightmost button, inbetween the save options and level settings buttons. Pressing it puts you into play mode, allowing you to test your level without saving it.
+
+**GIF HERE**
+
+> [!WARNING]
+> If the player's spawn point is not set with a spawn flag, they will spawn in the top left corner by default.
 
 #### Level Settings
 
