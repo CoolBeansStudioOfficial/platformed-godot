@@ -122,7 +122,7 @@ Deletion can be confirmed/cancelled in the same way an edit can.
 
 ## Category Toggles
 
-Blocks are grouped into categories that can be enabled and disabled
+Blocks are grouped into categories that can be enabled and disabled. This allows you to customize what blocks you do or don't want to see at any given time.
 
 
 ## Moving Blocks
