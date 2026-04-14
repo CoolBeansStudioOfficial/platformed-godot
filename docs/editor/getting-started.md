@@ -118,7 +118,7 @@ The eraser button puts you into place mode, but your click will delete blocks in
 
 Deletion can be confirmed/cancelled in the same way an edit can.
 
-**GIF HERE**
+![erase](https://github.com/user-attachments/assets/944180e9-8e9e-4e48-89cc-8e6d7cdad9f0)
 
 ## Category Toggles
 
