@@ -21,22 +21,16 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 
 ## Documentation
 
-### Level Browser
+### Play
 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
 [Level Viewer](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
-[Edit Uploaded Level](https://github.com/CoolBeansStudioOfficial/platformed-godot)
-
-[Edit Local Level](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[In-Game Controls](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
 ### Editor
 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
 
 [Using Triggers](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/triggers.md)
-
-[Change Level Settings](https://github.com/CoolBeansStudioOfficial/platformed-godot)
-
-[Upload a Level](https://github.com/CoolBeansStudioOfficial/platformed-godot)
