@@ -102,11 +102,11 @@ You can choose the way in which you want the player be able to wall jump. Your o
 
 Clicking on a block will make two buttons appear in the top bar, indicating that you have switched to place mode.
 
-**GIF HERE**
+![place-mode-switch](https://github.com/user-attachments/assets/cf925500-4bfc-4a24-a9a4-27035f116ff7)
 
 Once you are in place mode, you can click any position to place the block you have selected there. You can switch between any block while in place mode.
 
-**GIF HERE**
+![placing-blocks](https://github.com/user-attachments/assets/37a6b6d2-b164-42c8-959a-fa3449a75fdb)
 
 ## Category Toggles
 
