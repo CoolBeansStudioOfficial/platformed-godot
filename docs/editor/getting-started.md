@@ -152,9 +152,9 @@ You can also move blocks with the context menu or keyboard shortcuts.
 
 |       | Context Menu | Shortcut     |
 | :---        |   :---:    |       :---:     |
-| Cut      | ✅️       | `Ctrl + X`   |
-| Copy      | ✅️       | `Ctrl + C`   |
-| Paste      | ✅️       | `Ctrl + V`   |
+| Cut      | ![cut](https://github.com/user-attachments/assets/73452a21-bdcf-4b52-958e-eae9f03292b9)       | `Ctrl + X`   |
+| Copy      | ![copy](https://github.com/user-attachments/assets/acfc9f13-664a-4131-8789-9be6ee108aac)       | `Ctrl + C`   |
+| Paste      | ![paste](https://github.com/user-attachments/assets/b3c9d70f-c5f8-44c8-81bf-4249206178f7)       | `Ctrl + V`   |
 
 
 
