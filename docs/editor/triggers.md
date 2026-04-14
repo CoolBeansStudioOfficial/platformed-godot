@@ -82,4 +82,4 @@ The **fill area** command will replace all the blocks from start position `X, Y`
 
 ---
 
-[Return to Main Page →](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[Return to Docs →](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)

@@ -25,8 +25,6 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
-[Level Viewer](https://github.com/CoolBeansStudioOfficial/platformed-godot)
-
 [In-Game Controls](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
 ### Editor

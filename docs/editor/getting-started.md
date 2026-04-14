@@ -1,6 +1,6 @@
-[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
 
-**Getting Started**
+**Getting Started: Editor**
 
 ---
 
