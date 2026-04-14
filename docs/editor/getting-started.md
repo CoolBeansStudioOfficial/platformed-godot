@@ -133,6 +133,9 @@ Blocks are grouped into categories that can be enabled/disabled. This allows you
 
 There are multiple methods you can use to move and duplicate groups of blocks.
 
+> [!IMPORTANT]
+> Remember to confirm any unsaved edits to exit place mode first.
+
 ### Using the mouse
 
 Click and drag to select all of the blocks in an area.
@@ -144,6 +147,14 @@ Once you have made your selection, you can drag it to where you want to move it.
 ![selection-move](https://github.com/user-attachments/assets/4d46dcac-af5c-4e21-a717-2103b79e27a6)
 
 ### Cut/Copy/Paste
+
+You can also move blocks with the context menu or keyboard shortcuts.
+
+|       | Context Menu | Shortcut     |
+| :---        |   :---:    |       :---:     |
+| Cut      | ✅️       | `Ctrl + X`   |
+| Copy      | ✅️       | `Ctrl + C`   |
+| Paste      | ✅️       | `Ctrl + V`   |
 
 
 
