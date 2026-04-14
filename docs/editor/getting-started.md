@@ -114,6 +114,12 @@ When you are finished placing blocks, you can either click the green confirm but
 
 ## Eraser
 
+The eraser button puts you into place mode, but your click will delete blocks instead of adding them. The eraser can also be toggled while already in place mode to change an edit without confirming it.
+
+Deletion can be confirmed/cancelled in the same way an edit can.
+
+**GIF HERE**
+
 ## Category Toggles
 
 Blocks are grouped into categories that can be enabled and disabled
