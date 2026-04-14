@@ -74,7 +74,7 @@ This option will upload your level **PUBLICLY** to the Platformed website. Uploa
 
 The play button is the second rightmost button, inbetween the save options and level settings buttons. Pressing it puts you into play mode, allowing you to test your level without saving it.
 
-**GIF HERE**
+![play-button](https://github.com/user-attachments/assets/4ea35d72-ce57-4cb3-8ec2-17baeb574dbe)
 
 > [!WARNING]
 > If the player's spawn point is not set with a spawn flag, they will spawn in the top left corner by default.
