@@ -1,6 +1,6 @@
-[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
 
-**Getting Started**
+**Using Triggers**
 
 ---
 
@@ -105,8 +105,6 @@ Clicking on a block will make two buttons appear in the top bar, indicating that
 **GIF HERE**
 
 Once you are in place mode, you can click any position to place the block you have selected there. You can switch between any block while in place mode.
-
-**GIF HERE**
 
 ## Category Toggles
 

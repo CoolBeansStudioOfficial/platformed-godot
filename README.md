@@ -33,9 +33,9 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 
 ### Editor
 
-[Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
 
-[Using Triggers](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[Using Triggers](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/triggers.md)
 
 [Change Level Settings](https://github.com/CoolBeansStudioOfficial/platformed-godot)
 
