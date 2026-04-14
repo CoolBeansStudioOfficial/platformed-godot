@@ -81,6 +81,23 @@ The play button is the second rightmost button, inbetween the save options and l
 
 #### Level Settings
 
+By clicking the level settings button in the very right of the top bar, you can change the configuration of your level in multiple ways.
+
+##### Resize Level
+
+You can resize your level up to a maximum of 200 x 100 blocks.
+
+**GIF HERE**
+
+> [!CAUTION]
+> If you resize a level to be smaller, any blocks outside of the new size will be lost.
+
+##### Wall Jumping
+
+You can choose the way in which you want the player be able to wall jump. Your options are no wall jumps, wall jumps that allow you to scale walls, and wall jumps that only allow you to jump directly off of walls.
+
+**GIF HERE**
+
 ### Side Bar
 
 #### Blocks
