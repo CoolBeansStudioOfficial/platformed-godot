@@ -10,4 +10,4 @@
 
 ---
 
-[Return to Home →](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[Return to Main Page →](https://github.com/CoolBeansStudioOfficial/platformed-godot)
