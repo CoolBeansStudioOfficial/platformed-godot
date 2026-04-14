@@ -33,8 +33,6 @@ Click the bin icon on a command to remove it.
 
 Click the apply button to save the changes you have made, or click the close button to discard them.
 
-**GIF HERE**
-
 
 ## Command Types
 
