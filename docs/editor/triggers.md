@@ -17,11 +17,28 @@ A trigger is an intangible block that executes commands when the player passes t
 
 # Commands
 
-There are several different types of commands that a trigger can be populated with.
+## Editing Commands
 
+Right click a trigger to open it in the trigger editor.
+
+**GIF HERE**
+
+Click the `+` icon to add a new command.
+
+**GIF HERE**
+
+Click the bin icon on a command to remove it.
+
+**GIF HERE**
+
+Click the apply button to save the changes you have made, or click the close button to discard them.
+
+**GIF HERE**
 
 
 ## Command Types
+
+There are several different types of commands that a trigger can be populated with.
 
 
 ### Toggle Red/Blue Blocks
@@ -64,9 +81,6 @@ The **fill area** command will replace all the blocks from start position `X, Y`
 
 ![fill](https://github.com/user-attachments/assets/0e687dd8-4bbf-4157-b159-13f0f0168afc)
 
-## Adding Commands
-
-To add a command to a trigger
 
 ---
 
