@@ -12,7 +12,7 @@ A trigger is an intangible block that executes commands when the player passes t
 
 |   Trigger One    | Invisible Trigger | Trigger Three     |
 | :---:        |   :---:    |       :---:     |
-| image      | image      | image   |
+| ![one](https://github.com/user-attachments/assets/39fea129-97ac-47fd-a930-2573d007b4c9) | ![two](https://github.com/user-attachments/assets/b59687ca-9117-4b11-9588-e2342ac36283) | ![three](https://github.com/user-attachments/assets/ee45f986-e983-4541-a147-498029101a10) |
 
 
 # Commands
