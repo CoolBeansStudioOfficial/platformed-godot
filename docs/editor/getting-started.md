@@ -126,8 +126,6 @@ Blocks are grouped into categories that can be enabled/disabled. This allows you
 
 ![category-toggles](https://github.com/user-attachments/assets/79f1a220-13f5-4d7e-bf36-d242f7259faf)
 
-**GIF HERE**
-
 > [!TIP]
 > You can disable every category to collapse the side bar and get a bit more viewport space.
 
@@ -146,6 +144,8 @@ Once you have made your selection, you can drag it to where you want to move it.
 **GIF HERE**
 
 ### Cut/Copy/Paste
+
+
 
 ---
 
