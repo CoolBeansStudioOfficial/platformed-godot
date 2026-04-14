@@ -122,8 +122,12 @@ Deletion can be confirmed/cancelled in the same way an edit can.
 
 ## Category Toggles
 
-Blocks are grouped into categories that can be enabled and disabled. This allows you to customize what blocks you do or don't want to see at any given time.
+Blocks are grouped into categories that can be enabled/disabled. This allows you to customize what blocks you want to see at any given time.
 
+**GIF HERE**
+
+> [!TIP]
+> You can disable every category to collapse the side bar and get a bit more viewport space.
 
 ## Moving Blocks
 
