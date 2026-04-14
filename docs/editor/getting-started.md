@@ -108,11 +108,16 @@ Once you are in place mode, you can click any position to place the block you ha
 
 ![placing-blocks](https://github.com/user-attachments/assets/37a6b6d2-b164-42c8-959a-fa3449a75fdb)
 
+When you are finished placing blocks, you can either click the green confirm button to keep the blocks you have placed **OR** the red cancel button to revert your changes.
+
+**GIF HERE**
+
+## Eraser
+
 ## Category Toggles
 
 Blocks are grouped into categories that can be enabled and disabled
 
-## Eraser
 
 ## Moving Blocks
 
