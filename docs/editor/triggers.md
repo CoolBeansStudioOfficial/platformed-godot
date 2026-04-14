@@ -21,15 +21,15 @@ A trigger is an intangible block that executes commands when the player passes t
 
 Right click a trigger to open it in the trigger editor.
 
-**GIF HERE**
+![open-trigger-editor](https://github.com/user-attachments/assets/3f3efb74-d198-4573-8d8f-ab25845a6291)
 
 Click the `+` icon to add a new command.
 
-**GIF HERE**
+![add-command](https://github.com/user-attachments/assets/8ef6091a-6f6e-4c88-bb66-213055b8bc94)
 
 Click the bin icon on a command to remove it.
 
-**GIF HERE**
+![delete-command](https://github.com/user-attachments/assets/e30c4147-5526-4620-8da4-8898a1105409)
 
 Click the apply button to save the changes you have made, or click the close button to discard them.
 
