@@ -110,7 +110,7 @@ Once you are in place mode, you can click any position to place the block you ha
 
 When you are finished placing blocks, you can either click the green confirm button to keep the blocks you have placed **OR** the red cancel button to revert your changes.
 
-**GIF HERE**
+![confirm-and-cancel](https://github.com/user-attachments/assets/f9dd4c16-bcc8-4957-b6bf-060edfc328d4)
 
 ## Eraser
 
