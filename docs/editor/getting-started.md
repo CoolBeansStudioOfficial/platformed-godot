@@ -44,7 +44,7 @@ The undo and redo buttons are located immediately to the right of the zoom contr
 
 The buttons will grey out when you reach their respective ends of the chain.
 
-**GIF HERE**
+![undo-redo](https://github.com/user-attachments/assets/52b730b6-4eaa-4db1-a8e4-f438f0f20f82)
 
 > [!TIP]
 > You can also use `Ctrl + Z` for undo and `Ctrl + Shift + Z` for redo.
@@ -53,7 +53,7 @@ The buttons will grey out when you reach their respective ends of the chain.
 
 The save options button is located inbetween the redo and play buttons. Upon pressing it, you will be presented with three options for how you want to save your level.
 
-**GIF HERE**
+![save-options](https://github.com/user-attachments/assets/5c2fe46e-5ce1-4fb4-af71-133c3cd1202d)
 
 ##### Save to levels folder:
 
