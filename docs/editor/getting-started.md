@@ -137,11 +137,11 @@ There are multiple methods you can use to move and duplicate groups of blocks.
 
 Click and drag to select all of the blocks in an area.
 
-**GIF HERE**
+![selection-create](https://github.com/user-attachments/assets/8b99927b-657c-4bc0-8eba-fb2bf1bab87a)
 
 Once you have made your selection, you can drag it to where you want to move it.
 
-**GIF HERE**
+![selection-move](https://github.com/user-attachments/assets/4d46dcac-af5c-4e21-a717-2103b79e27a6)
 
 ### Cut/Copy/Paste
 
