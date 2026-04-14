@@ -79,7 +79,9 @@ The play button is the second rightmost button, inbetween the save options and l
 
 ## Level Settings
 
-By clicking the level settings button in the very right of the top bar, you can change the configuration of your level in multiple ways.
+By clicking the level settings button in the very right of the top bar, you can change the configuration of your level.
+
+![level-settings](https://github.com/user-attachments/assets/f011b09b-0539-4890-bb56-bcdcae1daf41)
 
 ### Resize Level
 
