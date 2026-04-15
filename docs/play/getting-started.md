@@ -1,4 +1,4 @@
-[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
+[← Return to Docs](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
 
 **Getting Started: Play**
 

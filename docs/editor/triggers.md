@@ -1,5 +1,7 @@
 [← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
 
+[← Return to Docs](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
+
 **Using Triggers**
 
 ---

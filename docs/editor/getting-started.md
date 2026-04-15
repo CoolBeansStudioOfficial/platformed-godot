@@ -1,4 +1,6 @@
-[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
+[← Previous](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/my-levels.md)
+
+[← Return to Docs](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
 
 **Getting Started: Editor**
 
