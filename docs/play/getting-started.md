@@ -31,19 +31,25 @@ You will also be shown the user approval rating and completion percentage of the
 
 In Platformed, you control the player character.
 
-IMAGE
+![player](https://github.com/user-attachments/assets/3d193ce9-f9cf-4a52-8eb7-fdadac978409)
+
+## Move
 
 Move left and right with `A`/`D` or with the `←`/`→` arrow keys.
 
-GIF
+![move](https://github.com/user-attachments/assets/b7f9a5e8-792d-4511-b432-d72f519f13a6)
+
+## Jump
 
 Jump with `Space` or the `↑` arrow key.
 
-GIF
+![jump](https://github.com/user-attachments/assets/11cf6560-4f2e-434e-8e1a-f0d3eade4671)
+
+## Wall Jump
 
 If the level you are playing has enabled it, you can press jump while touching a wall to jump off of it
 
-GIF
+![walljump](https://github.com/user-attachments/assets/b5cd1066-1c54-41ce-b663-b5af607d24f6)
 
 # Settings
 
