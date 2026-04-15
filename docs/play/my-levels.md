@@ -26,7 +26,6 @@ To show your local levels, you will need to choose a levels folder. This will al
 
 ![set-levels-folder](https://github.com/user-attachments/assets/9b5a437e-4b1f-4c24-983a-b685a62eb01a)
 
-
 ---
 
-[Return to Docs →](https://github.com/CoolBeansStudioOfficial/platformed-godot#documentation)
+[Return to Docs →](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/editor/getting-started.md)
