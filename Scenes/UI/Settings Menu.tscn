@@ -68,6 +68,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="LinkButton" type="LinkButton" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1341643270]
+layout_mode = 2
+text = "Need help?"
+uri = "https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/getting-started.md"
+
 [node name="Graphics Settings" type="VBoxContainer" parent="Background2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1862171430]
 layout_mode = 2
 
