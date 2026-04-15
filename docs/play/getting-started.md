@@ -63,17 +63,17 @@ The Platformed app implements a fully customizable theme system that allows you 
 
 A theme consists of a background color and an accent color.
 
-IMAGE
+![themecreator](https://github.com/user-attachments/assets/eea84aed-4511-419e-b796-27fd760a567e)
 
 ## Style
 
 The style option allows you to change the way the game world looks, including in the editor.
 
-IMAGE
+![style](https://github.com/user-attachments/assets/89e0c270-d87e-438d-9ddf-229d2a457d71)
 
 |   8 Bit    | 16 Bit |
 | :---:        |   :---:    |
-|   IMAGE    |    IMAGE    |
+|   ![8bit](https://github.com/user-attachments/assets/a7d25947-d0f4-4f4e-8da6-2c24fa08e4da) |    ![16bit](https://github.com/user-attachments/assets/4769be14-af96-48b3-bc60-874a9e4a5e23) |
 
 ## Audio
 
