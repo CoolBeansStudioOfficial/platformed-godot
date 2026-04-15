@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://d4vgewlv3nlb" path="res://Scripts/UI/Elements/LevelsList.cs" id="5_0kyo8"]
 [ext_resource type="Texture2D" uid="uid://b41k6wgpfrvpj" path="res://Images/Vector/search.svg" id="6_ki7ki"]
 [ext_resource type="Texture2D" uid="uid://bq06eydlgajoy" path="res://Images/Vector/arrow.svg" id="7_nrx0y"]
+[ext_resource type="Texture2D" uid="uid://caari0h1uoxkp" path="res://Images/Raster/Icons/throbber.png" id="8_1n1uh"]
+[ext_resource type="Script" uid="uid://bdmqmesoq3lsh" path="res://Scripts/UI/Elements/Throbber.cs" id="9_krmfw"]
 [ext_resource type="Texture2D" uid="uid://bswijcxctt03b" path="res://Images/Vector/dislike.svg" id="9_wb41a"]
 [ext_resource type="Texture2D" uid="uid://cgv1ujj0w020h" path="res://Images/Vector/like.svg" id="10_l0v1i"]
 [ext_resource type="Texture2D" uid="uid://b0jq6bxbm5kk2" path="res://Images/Vector/DNF.svg" id="11_ghl26"]
@@ -106,6 +108,9 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sich"]
+texture = ExtResource("8_1n1uh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1x40"]
 
@@ -474,13 +479,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2s4xu")
 text = "Set Levels Folder"
 metadata/ui = "button"
 
-[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "noLevelsLabel", "searchBox", "searchButton")]
+[node name="Levels List" type="ScrollContainer" parent="VBoxContainer" unique_id=350309315 node_paths=PackedStringArray("levelsContainer", "noLevelsLabel", "throbber", "searchBox", "searchButton")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("5_0kyo8")
 levelPreview = ExtResource("2_o2yn0")
 levelsContainer = NodePath("Levels Container")
 noLevelsLabel = NodePath("Levels Container/No Levels Found")
+throbber = NodePath("Levels Container/Throbber")
 searchBox = NodePath("../Search Bar/Search Box/Search/LineEdit")
 searchButton = NodePath("../Search Bar/Search Box/Search/LineEdit/Button")
 
@@ -498,6 +504,15 @@ theme_override_colors/font_color = Color(0.60662574, 0.60662585, 0.6066258, 1)
 theme_override_fonts/font = ExtResource("2_eotax")
 text = "No levels found"
 horizontal_alignment = 1
+
+[node name="Throbber" type="Panel" parent="VBoxContainer/Levels List/Levels Container" unique_id=766313833]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8sich")
+script = ExtResource("9_krmfw")
+rotateSpeed = 300.0
 
 [node name="Level View" type="Panel" parent="VBoxContainer" unique_id=2005307311]
 visible = false

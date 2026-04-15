@@ -7,6 +7,7 @@ public partial class LevelsList : ScrollContainer
     [Export] PackedScene levelPreview;
     [Export] FlowContainer levelsContainer;
     [Export] Label noLevelsLabel;
+    [Export] Control throbber;
 
     [Export] LineEdit searchBox;
     [Export] Button searchButton;
@@ -77,12 +78,21 @@ public partial class LevelsList : ScrollContainer
         previews.Clear();
     }
 
+    public void ShowThrobber()
+    {
+        throbber.Visible = true;
+    }
+
     public override void _Process(double delta)
     {
         noLevelsLabel.Visible = true;
         foreach (LevelPreview preview in previews)
         {
-            if (preview.Visible) noLevelsLabel.Visible = false;
+            if (preview.Visible)
+            {
+                throbber.Visible = false;
+                noLevelsLabel.Visible = false;
+            }
         }
     }
 }

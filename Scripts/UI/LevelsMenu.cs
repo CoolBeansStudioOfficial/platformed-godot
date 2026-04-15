@@ -66,6 +66,7 @@ public partial class LevelsMenu : Control
         addLevelsFolderButton.Visible = false;
 
         //load explore levels
+        levelsList.ShowThrobber();
         levelsList.ClearLevels();
         var levels = (await GameManager.Instance.BrowseLevelsFromAPI()).Levels;
         //mark online levels
@@ -84,6 +85,7 @@ public partial class LevelsMenu : Control
         addLevelsFolderButton.Visible = true;
 
         //load my levels
+        if (GameManager.Instance.IsLoggedIn()) levelsList.ShowThrobber();
         levelsList.ClearLevels();
         var myLevels = await GameManager.Instance.GetMyLevelsFromAPI();
 
