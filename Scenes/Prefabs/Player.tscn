@@ -9,6 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e80uo"]
 size = Vector2(10, 12)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imvdw"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpjcp"]
 size = Vector2(1, 12)
 
@@ -45,12 +47,13 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="Background" type="Panel" parent="Camera2D" unique_id=1782075644]
+[node name="Player Background" type="Panel" parent="Camera2D" unique_id=1782075644]
 z_index = -1
 offset_left = -2031.0
 offset_top = -1091.0
 offset_right = 1896.0
 offset_bottom = 1066.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_imvdw")
 script = ExtResource("5_imvdw")
 metadata/ui = "background_game"
 
