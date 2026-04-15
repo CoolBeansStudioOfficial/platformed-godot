@@ -28,4 +28,4 @@ To show your local levels, you will need to choose a levels folder. This will al
 
 ---
 
-[Return to Docs →](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
+[Next →](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
