@@ -9,9 +9,9 @@
 Thanks for downloading the Platformed app! Here are the basic steps to get playing.
 
 > [!IMPORTANT]
-> If you are on Windows, you may get a screen like this:
+> If you are on Windows, you may get a screen like this when you open the app for the first time:
 >
-> **IMAGE**
+> <img width="200" height="200" alt="windows smartscreen" src="https://github.com/user-attachments/assets/18b1be2e-af3c-4fa5-a853-f27372a61717" />
 >
 > If that happens, click `More info` and then click `Run anyway`.
 
