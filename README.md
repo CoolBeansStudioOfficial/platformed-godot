@@ -25,7 +25,7 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/getting-started.md)
 
-
+[Account & My Levels](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/my-levels.md)
 
 ### Editor
 

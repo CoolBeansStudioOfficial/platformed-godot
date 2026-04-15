@@ -6,6 +6,12 @@
 
 # Account
 
+Signing into your Platformed account enables you to upload levels and see/edit your already uploaded levels.
+
+To sign in, press the account button located next to the settings button in the top-right corner. Then, select the sign in option.
+
+GIF HERE
+
 
 
 # My Levels
