@@ -23,9 +23,9 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 
 ### Play
 
-[Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+[Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/getting-started.md)
 
-[In-Game Controls](https://github.com/CoolBeansStudioOfficial/platformed-godot)
+
 
 ### Editor
 

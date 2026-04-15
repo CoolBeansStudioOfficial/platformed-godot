@@ -65,6 +65,14 @@ A theme consists of a background color and an accent color.
 
 ![themecreator](https://github.com/user-attachments/assets/eea84aed-4511-419e-b796-27fd760a567e)
 
+### Saving Themes
+
+Pressing the save button will prompt you to enter a name and select a location to save your theme as a `.theme` file.
+
+### Loading Themes
+
+Pressing the load button will prompt you to select a `.theme` file to use.
+
 ## Style
 
 The style option allows you to change the way the game world looks, including in the editor.
@@ -83,4 +91,4 @@ The volume option adjusts the loudness of sound effects in the game.
 
 ---
 
-[Next →](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/controls.md)
+[Next →](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/play/my-levels.md)
