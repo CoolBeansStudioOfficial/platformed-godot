@@ -12,7 +12,9 @@ To sign in, press the account button located next to the settings button in the 
 
 GIF HERE
 
+When the sign in button is pressed, the sign in window appears. Once you enter your account details and confirm, you will be signed in!
 
+GIF HERE
 
 # My Levels
 
