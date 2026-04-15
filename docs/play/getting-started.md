@@ -79,7 +79,7 @@ The style option allows you to change the way the game world looks, including in
 
 The volume option adjusts the loudness of sound effects in the game.
 
-IMAGE
+![volume](https://github.com/user-attachments/assets/c68f0fee-47ac-43be-88b6-4ea7eb191c8b)
 
 ---
 
