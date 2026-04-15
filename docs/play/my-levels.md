@@ -19,7 +19,13 @@ When the sign in button is pressed, the sign in window appears. Once you enter y
 
 # My Levels
 
+The My Levels tab shows you the levels you have saved locally in your designated levels folder. In addition, it shows the levels you have uploaded to the Platformed website if you are signed in.
 
+IMAGE
+
+To show your local levels, you will need to choose a levels folder. This will also be the default location where levels you create in the editor will be saved.
+
+IMAGE
 
 ---
 
