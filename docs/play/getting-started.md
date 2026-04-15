@@ -55,11 +55,13 @@ If the level you are playing has enabled it, you can press jump while touching a
 
 The settings menu is opened by pressing the cogs icon in the top-right corner of the app.
 
-GIF
+![open-settings](https://github.com/user-attachments/assets/927cf853-51b0-4200-b074-e6295b60684e)
 
 ## Theme
 
 The Platformed app implements a fully customizable theme system that allows you to create and share your own themes.
+
+![themes](https://github.com/user-attachments/assets/691d7794-8e9a-4d22-bc64-2a2e217e3490)
 
 A theme consists of a background color and an accent color.
 
