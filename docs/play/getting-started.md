@@ -6,7 +6,14 @@
 
 # Introduction
 
-Thanks for downloading the Platformed app!
+Thanks for downloading the Platformed app! Here are the basic steps to get playing.
+
+> [!IMPORTANT]
+> If you are on Windows, you may get a screen like this:
+>
+> **IMAGE**
+>
+> If that happens, click `More info` and then click `Run anyway`.
 
 When you open the app, you will immediately be presented with the Explore tab. The Explore tab shows levels uploaded by other users.
 
