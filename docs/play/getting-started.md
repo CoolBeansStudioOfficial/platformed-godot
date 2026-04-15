@@ -53,7 +53,33 @@ If the level you are playing has enabled it, you can press jump while touching a
 
 # Settings
 
+The settings menu is opened by pressing the cogs icon in the top-right corner of the app.
 
+GIF
+
+## Theme
+
+The Platformed app implements a fully customizable theme system that allows you to create and share your own themes.
+
+A theme consists of a background color and an accent color.
+
+IMAGE
+
+## Style
+
+The style option allows you to change the way the game world looks, including in the editor.
+
+IMAGE
+
+|   8 Bit    | 16 Bit |
+| :---:        |   :---:    |
+|   IMAGE    |    IMAGE    |
+
+## Audio
+
+The volume option adjusts the loudness of sound effects in the game.
+
+IMAGE
 
 ---
 
