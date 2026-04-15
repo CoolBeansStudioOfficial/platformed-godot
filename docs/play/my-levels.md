@@ -10,11 +10,12 @@ Signing into your Platformed account enables you to upload levels and see/edit y
 
 To sign in, press the account button located next to the settings button in the top-right corner. Then, select the sign in option.
 
-GIF HERE
+![sign in](https://github.com/user-attachments/assets/332d2364-a5de-45c1-945b-3c332ef4b8b6)
 
 When the sign in button is pressed, the sign in window appears. Once you enter your account details and confirm, you will be signed in!
 
-GIF HERE
+![signin window](https://github.com/user-attachments/assets/b84f3cff-7139-4319-9885-d9bcbe9aea24)
+
 
 # My Levels
 
