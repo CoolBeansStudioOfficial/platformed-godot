@@ -10,7 +10,7 @@ Thanks for downloading the Platformed app!
 
 When you open the app, you will immediately be presented with the Explore tab. The Explore tab shows levels uploaded by other users.
 
-**IMAGE HERE**
+![explore](https://github.com/user-attachments/assets/90335e57-13e1-44e5-a3a8-0ee0b612a763)
 
 Clicking on a level will take you to its level page. Here, you can choose to play a level, remix it, or view its web version. 
 
