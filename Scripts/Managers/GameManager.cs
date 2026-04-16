@@ -53,6 +53,9 @@ public partial class GameManager : Node
 
     public async Task RemixLevel(Level level)
     {
+        //remove existing level id
+        level.Id = -1;
+
         UIManager.Instance.editor.ImportLevel(level);
 
         UIManager.Instance.editor.Visible = true;

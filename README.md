@@ -32,3 +32,33 @@ The Platformed app boasts full feature parity with its web counterpart. It also 
 [Getting Started](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/getting-started.md)
 
 [Using Triggers](https://github.com/CoolBeansStudioOfficial/platformed-godot/blob/main/docs/editor/triggers.md)
+
+## Optimization
+
+Making a desktop app for Platformed would be pretty pointless if it didn't perform any better than the web version, so I put a lot of effort into optimization.
+
+### Play Mode
+
+During early development, each individual block was its own node. This was inefficient because it resulted in thousands of instances, all with C# scripts attatched.
+
+Levels with a particularly large number of blocks (like Level 2) took as long as 8 seconds to load.
+
+Video
+
+To remedy this, I was able to take advantage of Godot 4's TileMapLayer system to spawn most blocks in as pre-defined tiles that do not require their own node instances.
+
+As a result, level generation is now instant.
+
+Video
+
+Blocks that needed to be intangible but still detect collisions (i.e. triggers) unfortunately still had to be their own nodes.
+
+### Edit Mode
+
+While play mode's initial performance was acceptable apart from loading, edit mode was not at all so.
+
+Video
+
+Luckily, I was able to apply the same optimization to the editor with a few extra performance savings. All tiles that normally rely upon being scenes in play mode are able to be spawned as pre-defined tiles, and the collision layer is omitted to skip physics calculations completely.
+
+Video
