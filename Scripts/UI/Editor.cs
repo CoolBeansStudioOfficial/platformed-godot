@@ -43,7 +43,7 @@ public partial class Editor : Control
     bool startedDrag = false;
     bool waitingForBlock = false;
     List<TileInfo> dragInitial = [];
-    EditSelection selection;
+    EditSelection? selection;
     EditSelection? copiedSelection;
 
     public override void _Ready()
@@ -138,15 +138,15 @@ public partial class Editor : Control
                     if (startedSelection)
                     {
                         //add tile data to selection
-                        foreach (Vector2I cell in selection.GetCells())
+                        foreach (Vector2I cell in selection.Value.GetCells())
                         {
                             if (!IsInGrid(cell)) continue;
                             TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
-                            selection.tiles.Add(tile);
+                            selection.Value.tiles.Add(tile);
 
                             if (IsTriggerID(tile.id))
                             {
-                                selection.triggers.Add(tile.position, tile.position);
+                                selection.Value.triggers.Add(tile.position, tile.position);
                             }
                         }
 
@@ -168,7 +168,7 @@ public partial class Editor : Control
                         }
 
                         //add tiles to new position
-                        foreach (TileInfo tile in selection.tiles)
+                        foreach (TileInfo tile in selection.Value.tiles)
                         {
                             if (tile.id == TileId.Air) continue;
                             
@@ -177,12 +177,15 @@ public partial class Editor : Control
 
                         //update moved trigger positions
                         Dictionary<Vector2I, Vector2I> moved = [];
-                        foreach (var trigger in selection.triggers)
+                        foreach (var trigger in selection.Value.triggers)
                         {
                             MoveTrigger(trigger.Key, trigger.Value);
                             moved.Add(trigger.Value, trigger.Value);
                         }
-                        selection.triggers = moved;
+
+                        var edit = selection.Value;
+                        edit.triggers = moved;
+                        selection = edit;
 
                         UpdateTiles();
 
@@ -259,7 +262,7 @@ public partial class Editor : Control
                 }
                 if (k.Keycode == Key.V && k.IsCommandOrControlPressed())
                 {
-                    Paste(selection.GetCorner());
+                    if (selection.HasValue) Paste(selection.Value.GetCorner());
                 }
             }
         }
@@ -300,17 +303,24 @@ public partial class Editor : Control
             if (!drag)
             {
                 //if selection has not been started, start new selection
-                if (!startedSelection && !selection.IsInRect(mouseCoords))
+                if (!startedSelection)
                 {
-                    selection = new()
-                    {
-                        start = mouseCoords,
-                        end = mouseCoords,
-                        tiles = [],
-                         triggers = []
-                    };
+                    bool createSelection = false;
+                    if (selection.HasValue) if (!selection.Value.IsInRect(mouseCoords)) createSelection = true;
+                    if (!selection.HasValue) createSelection = true;
 
-                    startedSelection = true;
+                    if (createSelection)
+                    {
+                        selection = new()
+                        {
+                            start = mouseCoords,
+                            end = mouseCoords,
+                            tiles = [],
+                            triggers = []
+                        };
+
+                        startedSelection = true;
+                    }
                 }
             }
             //drag
@@ -318,18 +328,22 @@ public partial class Editor : Control
             {
                 if (startedSelection)
                 {
-                    selection.end = mouseCoords;
+                    var edit = selection.Value;
+                    edit.end = mouseCoords;
+                    selection = edit;
                 }
                 else
                 {
                     if (startedDrag)
                     {
-                        selection.Move(mouseCoords);
+                        var edit = selection.Value;
+                        edit.Move(mouseCoords);
+                        selection = edit;
 
                         //update overlay
                         Vector2 overlaySize = new(16, 16);
                         List<EditorOverlay.Outline?> movePreview = [];
-                        foreach (var tile in selection.tiles)
+                        foreach (var tile in selection.Value.tiles)
                         {
                             if (tile.id == TileId.Air) continue;
 
@@ -349,47 +363,54 @@ public partial class Editor : Control
                     else
                     {
                         //if the mouse is inside of selection box, drag selection
-                        if (selection.IsInRect(mouseCoords))
+                        if (selection.HasValue)
                         {
-                            selection.dragPosition = mouseCoords;
-
-                            dragInitial.Clear();
-                            foreach (Vector2I cell in selection.GetCells())
+                            if (selection.Value.IsInRect(mouseCoords))
                             {
-                                if (!IsInGrid(cell)) continue;
-                                TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
-                                dragInitial.Add(tile);
-                            }
+                                var edit = selection.Value;
+                                edit.dragPosition = mouseCoords;
+                                selection = edit;
 
-                            startedDrag = true;
+                                dragInitial.Clear();
+                                foreach (Vector2I cell in selection.Value.GetCells())
+                                {
+                                    if (!IsInGrid(cell)) continue;
+                                    TileInfo tile = editHistory[currentEdit][cell.Y][cell.X];
+                                    dragInitial.Add(tile);
+                                }
+
+                                startedDrag = true;
+                            }
                         }
                     }
                 }
             }
 
-            Vector2 worldPosition = tileMap.MapToLocal(selection.GetCenter());
-
-            //if selection width is even, move the box to the right by half a tile
-            if ((int)selection.GetSize().X % 2 == 0 && (int)selection.GetSize().X > 1)
+            if (selection.HasValue)
             {
-                worldPosition.X += 8f;
+                Vector2 worldPosition = tileMap.MapToLocal(selection.Value.GetCenter());
+
+                //if selection width is even, move the box to the right by half a tile
+                if ((int)selection.Value.GetSize().X % 2 == 0 && (int)selection.Value.GetSize().X > 1)
+                {
+                    worldPosition.X += 8f;
+                }
+
+                //if selection height is even, move the box to the down by half a tile
+                if ((int)selection.Value.GetSize().Y % 2 == 0 && (int)selection.Value.GetSize().Y > 1)
+                {
+                    worldPosition.Y += 8f;
+                }
+
+                Vector2 boxSize = selection.Value.GetSize() * 16;
+
+                overlay.SetOutline(new()
+                {
+                    rect = new Rect2(worldPosition.X - (boxSize.X / 2), worldPosition.Y - (boxSize.Y / 2), boxSize.X, boxSize.Y),
+                    color = Colors.Orange,
+                    width = 1,
+                });
             }
-
-            //if selection height is even, move the box to the down by half a tile
-            if ((int)selection.GetSize().Y % 2 == 0 && (int)selection.GetSize().Y > 1)
-            {
-                worldPosition.Y += 8f;
-            }
-
-            Vector2 boxSize = selection.GetSize() * 16;
-
-            overlay.SetOutline(new()
-            {
-                rect = new Rect2(worldPosition.X - (boxSize.X / 2), worldPosition.Y - (boxSize.Y / 2), boxSize.X, boxSize.Y),
-                color = Colors.Orange,
-                width = 1,
-            });
-
         }
     }
 
@@ -440,8 +461,10 @@ public partial class Editor : Control
 
     void Copy(bool cut = false)
     {
-        var newSelection = selection;
-        newSelection.dragPosition = selection.GetCorner();
+        if (!selection.HasValue) return;
+
+        var newSelection = selection.Value;
+        newSelection.dragPosition = selection.Value.GetCorner();
         copiedSelection = newSelection;
 
         if (cut)
@@ -449,7 +472,7 @@ public partial class Editor : Control
             AddEdit();
 
             //cut tiles from previous position
-            foreach (TileInfo tile in selection.tiles)
+            foreach (TileInfo tile in selection.Value.tiles)
             {
                 if (tile.id == TileId.Air) continue;
                 SetTile(tile.position, TileId.Air, tile.rotation, false);
@@ -478,17 +501,19 @@ public partial class Editor : Control
 
     void Rotate(TileRotation direction)
     {
+        if (!selection.HasValue) return;
+
         if (direction == TileRotation.Left)
         {
-            selection.Rotate(TileRotation.Left);
+            selection.Value.Rotate(TileRotation.Left);
         }
         else if (direction == TileRotation.Right)
         {
-            selection.Rotate(TileRotation.Right);
+            selection.Value.Rotate(TileRotation.Right);
         }
 
         AddEdit();
-        foreach (TileInfo tile in selection.tiles)
+        foreach (TileInfo tile in selection.Value.tiles)
         {
             if (tile.id == TileId.Air) continue;
             SetTile(tile.position, tile.id, tile.rotation, false);
@@ -636,7 +661,7 @@ public partial class Editor : Control
 
     void ResetSelection()
     {
-        selection = default;
+        selection = null;
         overlay.currentOutlines[0] = null;
         overlay.QueueRedraw();
     }
@@ -706,11 +731,11 @@ public partial class Editor : Control
         }
         else if (waitingForBlock)
         {
-            selection.Fill(id);
+            selection.Value.Fill(id);
 
             //changed tiles to selected tile
             AddEdit();
-            foreach (TileInfo tile in selection.tiles)
+            foreach (TileInfo tile in selection.Value.tiles)
             {
                 if (tile.id == TileId.Air) continue;
                 SetTile(tile.position, tile.id, tile.rotation, false);
@@ -772,7 +797,7 @@ public partial class Editor : Control
         }
         else if (option == EditorContextMenu.Option.Paste)
         {
-            Paste(selection.GetCorner());
+            Paste(selection.Value.GetCorner());
         }
         else if (option == EditorContextMenu.Option.RotateLeft)
         {
@@ -786,8 +811,8 @@ public partial class Editor : Control
 
     void ContextPopup()
     {
-        Vector2 size = selection.GetSize();
-        Vector2 position = tileMap.MapToLocal(selection.GetCenter() + new Vector2I(0, (int)(size.Y / 2) + 1));
+        Vector2 size = selection.Value.GetSize();
+        Vector2 position = tileMap.MapToLocal(selection.Value.GetCenter() + new Vector2I(0, (int)(size.Y / 2) + 1));
         contextMenu.Position = position;
         contextMenu.Show();
     }
@@ -811,7 +836,7 @@ public partial class Editor : Control
         ChangeLevelSize(new(level.Width, level.Height));
 
         //selection outline
-        selection = default;
+        selection = null;
         overlay.SetOutline(null);
 
         contextMenu.Hide();
