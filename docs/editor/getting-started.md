@@ -104,7 +104,7 @@ You can choose the way in which you want the player be able to wall jump. Your o
 
 The new level button will clear the current level you are working on and start a new one.
 
-IMAGE
+![new-level](https://github.com/user-attachments/assets/45ac3f31-9b7a-4f3d-9727-ac539bb72d6f)
 
 > [!CAUTION]
 > Any unsaved changes to the current level will be lost, including the level itself if it has not been saved.
