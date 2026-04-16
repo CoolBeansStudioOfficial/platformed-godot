@@ -100,6 +100,15 @@ You can choose the way in which you want the player be able to wall jump. Your o
 
 ![walljump](https://github.com/user-attachments/assets/c3977d5b-718d-4f09-979a-405ec0c013a0)
 
+## New Level
+
+The new level button will clear the current level you are working on and start a new one.
+
+IMAGE
+
+> [!CAUTION]
+> Any unsaved changes to the current level will be lost, including the level itself if it has not been saved.
+
 # Side Bar
 
 ## Blocks
