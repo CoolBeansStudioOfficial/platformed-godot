@@ -43,13 +43,13 @@ During early development, each individual block was its own node. This was ineff
 
 Levels with a particularly large number of blocks (like Level 2) took as long as 8 seconds to load.
 
-Video
+https://github.com/user-attachments/assets/97ccdd66-58ae-40c8-990e-9d8e2869d5ef
 
 To remedy this, I was able to take advantage of Godot 4's TileMapLayer system to spawn most blocks in as pre-defined tiles that do not require their own node instances.
 
 As a result, level generation is now instant.
 
-Video
+https://github.com/user-attachments/assets/036fdff7-355c-4a16-a461-1c7890059857
 
 Blocks that needed to be intangible but still detect collisions (i.e. triggers) unfortunately still had to be their own nodes.
 
@@ -57,8 +57,10 @@ Blocks that needed to be intangible but still detect collisions (i.e. triggers) 
 
 While play mode's initial performance was acceptable apart from loading, edit mode was not at all so.
 
-Video
+https://github.com/user-attachments/assets/c9960bb5-0970-4b5f-88df-5c743a2b36a6
 
-Luckily, I was able to apply the same optimization to the editor with a few extra performance savings. All tiles that normally rely upon being scenes in play mode are able to be spawned as pre-defined tiles, and the collision layer is omitted to skip physics calculations completely.
+Luckily, I was able to apply the same optimization to the editor with a few extra performance savings. All tiles that normally rely upon being scenes in play mode are able to be spawned as pre-defined tiles, and the collision layer is omitted to skip physics calculations entirely.
 
-Video
+Now, huge amounts of different blocks can all be mass edited smoothly
+
+https://github.com/user-attachments/assets/e3337e16-b0b2-4110-83da-d9248300f2a0
