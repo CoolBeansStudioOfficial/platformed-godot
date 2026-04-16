@@ -11,6 +11,7 @@ public partial class Editor : Control
     [ExportGroup("UI")]
     [Export] LineEdit nameEdit;
     [Export] Label unsavedLabel;
+    [Export] Button newLevelButton;
     [Export] Button backButton;
     [Export] Button confirmButton;
     [Export] Button cancelButton;
@@ -22,6 +23,7 @@ public partial class Editor : Control
     [Export] EditorOverlay overlay;
     [Export] EditorContextMenu contextMenu;
     [Export] TriggerEditor triggerEditor;
+    [Export] ConfirmationDialog newLevelDialog;
 
     [ExportGroup("Block Textures")]
     [Export] Godot.Collections.Dictionary<TileId, Texture2D> textures;
@@ -49,6 +51,7 @@ public partial class Editor : Control
     public override void _Ready()
     {
         backButton.Pressed += OnBackButtonPressed;
+        newLevelButton.Pressed += OnNewLevelPressed;
         nameEdit.TextChanged += NameChanged;
         confirmButton.Pressed += Confirm;
         cancelButton.Pressed += Cancel;
@@ -57,7 +60,8 @@ public partial class Editor : Control
         redoButton.Pressed += Redo;
         settingsButton.Pressed += OnSettingsPressed;
 
-        contextMenu.OptionPressed += OnContextMenuPressed; ;
+        contextMenu.OptionPressed += OnContextMenuPressed;
+        newLevelDialog.Confirmed += OnNewLevelConfirmed;
 
         ResetEditHistory();
 
@@ -78,7 +82,12 @@ public partial class Editor : Control
         }
 
         //create default level
-        ImportLevel(new()
+        ImportLevel(CreateLevel());
+    }
+
+    public Level CreateLevel()
+    {
+        return new()
         {
             Data = new()
             {
@@ -105,7 +114,7 @@ public partial class Editor : Control
             CreatedAt = DateTime.Now,
             Width = gridSize.X,
             Height = gridSize.Y,
-        });
+        };
     }
 
     public void SetTileset(TileSet tileset)
@@ -930,6 +939,16 @@ public partial class Editor : Control
         GameManager.Instance.ReturnToLevelsMenu();
 
         //other editor exitng stuff can be handled here
+    }
+
+    void OnNewLevelPressed()
+    {
+        newLevelDialog.PopupCentered();
+    }
+
+    void OnNewLevelConfirmed()
+    {
+        ImportLevel(CreateLevel());
     }
 
     void OnSettingsPressed()

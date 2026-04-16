@@ -558,7 +558,7 @@ corner_radius_bottom_left = 15
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk5qh"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
 
-[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "settingsButton", "settings", "overlay", "contextMenu", "triggerEditor")]
+[node name="Editor" type="Control" unique_id=1330040267 node_paths=PackedStringArray("viewport", "tileMap", "nameEdit", "unsavedLabel", "newLevelButton", "backButton", "confirmButton", "cancelButton", "playButton", "undoButton", "redoButton", "settingsButton", "settings", "overlay", "contextMenu", "triggerEditor", "newLevelDialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -571,6 +571,7 @@ viewport = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport")
 tileMap = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Tiles")
 nameEdit = NodePath("Content/Top Bar/Level Name/Level Name")
 unsavedLabel = NodePath("Content/Top Bar/Level Name/Unsaved Indicator")
+newLevelButton = NodePath("Content/Top Bar/Level Name/New Level")
 backButton = NodePath("Content/Top Bar/Back")
 confirmButton = NodePath("Content/Top Bar/Flyout Options/Confirm")
 cancelButton = NodePath("Content/Top Bar/Flyout Options/Cancel")
@@ -582,6 +583,7 @@ settings = NodePath("Level Settings")
 overlay = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Overlay")
 contextMenu = NodePath("Content/HBoxContainer/Editor Viewport/Tiles Viewport/Content/Tiles/Context Menu")
 triggerEditor = NodePath("Trigger Editor")
+newLevelDialog = NodePath("New Level Confirmation")
 textures = Dictionary[int, Texture2D]({
 1: ExtResource("2_27ou3"),
 2: ExtResource("9_swd7v"),
@@ -672,6 +674,15 @@ theme_override_font_sizes/font_size = 24
 text = "*"
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="New Level" type="Button" parent="Content/Top Bar/Level Name" unique_id=173292005]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Clear the currently open level and start a new one"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "New Level"
+metadata/ui = "button"
 
 [node name="Flyout Options" type="HBoxContainer" parent="Content/Top Bar" unique_id=465115347]
 layout_mode = 1
@@ -1560,5 +1571,14 @@ ok_button_text = "Upload"
 dialog_text = "Are you sure you want to publicly upload this level to your account?
 (You can edit it later in the web editor)"
 metadata/ui = "background"
+
+[node name="New Level Confirmation" type="ConfirmationDialog" parent="." unique_id=399129146]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(458, 100)
+unresizable = true
+force_native = true
+dialog_text = "Are you sure you want to start a new level?
+Any unsaved changes to the currently open level will be LOST."
 
 [node name="Trigger Editor" parent="." unique_id=1190719423 instance=ExtResource("52_ro6dp")]
