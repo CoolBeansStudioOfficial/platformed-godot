@@ -68,7 +68,9 @@ public partial class LevelsMenu : Control
         //load explore levels
         levelsList.ShowThrobber();
         levelsList.ClearLevels();
+        GD.Print("getting levels");
         var levels = (await GameManager.Instance.BrowseLevelsFromAPI()).Levels;
+        
         //mark online levels
         for (int i = 0; i < levels.Count; i++)
         {

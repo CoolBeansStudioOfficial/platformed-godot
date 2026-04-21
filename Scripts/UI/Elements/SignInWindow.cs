@@ -11,12 +11,15 @@ public partial class SignInWindow : Window
     [Export] Label errorText;
     [Export] Button signInButton;
     [Export] Button closeButton;
+    [Export] Button createAccount;
 
     public override void _Ready()
 	{
         signInButton.Pressed += OnSignInPressed;
         closeButton.Pressed += OnClosePressed;
         CloseRequested += OnClosePressed;
+
+        createAccount.Pressed += OnCreateAccount;
 
         usernameEdit.TextSubmitted += _ => FocusPassword();
         passwordEdit.TextSubmitted += _ => OnSignInPressed();
@@ -42,10 +45,38 @@ public partial class SignInWindow : Window
             profileMenu.SetLoginState(true);
             Hide();
         }
-        else errorText.Visible = true;
+        else
+        {
+            errorText.Text = "Username or password incorrect";
+            errorText.Visible = true;
+        }
+
     }
 
-    private void OnClosePressed()
+    async void OnCreateAccount()
+    {
+        errorText.Visible = false;
+
+        bool success = await GameManager.Instance.Register(new()
+        {
+            Username = usernameEdit.Text,
+            Password = passwordEdit.Text,
+        });
+
+        if (success)
+        {
+            profileMenu.SetLoginState(true);
+            Hide();
+        }
+        else
+        {
+            errorText.Text = "Failed to create account";
+            errorText.Visible = true;
+        }
+    }
+
+
+    void OnClosePressed()
     {
         Hide();
     }

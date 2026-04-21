@@ -339,7 +339,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_1dj3h")
 
-[node name="Sign In" type="Window" parent="App Settings/Profile" unique_id=788876782 node_paths=PackedStringArray("profileMenu", "usernameEdit", "passwordEdit", "errorText", "signInButton", "closeButton")]
+[node name="Sign In" type="Window" parent="App Settings/Profile" unique_id=788876782 node_paths=PackedStringArray("profileMenu", "usernameEdit", "passwordEdit", "errorText", "signInButton", "closeButton", "createAccount")]
 oversampling_override = 1.0
 title = "Sign In"
 initial_position = 2
@@ -357,6 +357,7 @@ passwordEdit = NodePath("Sign In/Input Fields/Password")
 errorText = NodePath("Sign In/Error Text")
 signInButton = NodePath("Sign In/Buttons/Sign In")
 closeButton = NodePath("Sign In/Buttons/Close")
+createAccount = NodePath("Sign In/Input Fields/Create Account")
 
 [node name="Sign In" type="Panel" parent="App Settings/Profile/Sign In" unique_id=1864225525]
 anchors_preset = 15
@@ -432,12 +433,11 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter password..."
 secret = true
 
-[node name="LinkButton" type="LinkButton" parent="App Settings/Profile/Sign In/Sign In/Input Fields" unique_id=439251008]
+[node name="Create Account" type="Button" parent="App Settings/Profile/Sign In/Sign In/Input Fields" unique_id=159537509]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_4vp1j")
-theme_override_font_sizes/font_size = 16
+size_flags_horizontal = 0
 text = "Create Account"
-uri = "https://platformed.jmeow.net/register"
+metadata/ui = "button"
 
 [node name="Buttons" type="HBoxContainer" parent="App Settings/Profile/Sign In/Sign In" unique_id=401547731]
 layout_mode = 1

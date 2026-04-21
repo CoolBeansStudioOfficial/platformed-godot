@@ -271,6 +271,33 @@ public partial class GameManager : Node
         else return false;
     }
 
+    public async Task<bool> Register(LoginCredentials credentials)
+    {
+        var headers = new StringContent(JsonSerializer.Serialize(credentials));
+        var response = await client.PostAsync("https://platformed.jmeow.net/api/register", headers);
+
+        if (response.IsSuccessStatusCode)
+        {
+            //save user credentials
+            preferences.SetPreference("username", credentials.Username);
+
+            var cookies = GetCookies(response);
+            foreach (Cookie cookie in cookies)
+            {
+                if (cookie.Name == "token") preferences.SetPreference("token", cookie.Value);
+                if (cookie.Name == "session-id") preferences.SetPreference("session_id", cookie.Value);
+            }
+
+            preferences.SetPreference("logged_in", true);
+
+            Me me = await GetMe();
+            if (me is not null) preferences.SetPreference("user_id", me.UserId);
+
+            return true;
+        }
+        else return false;
+    }
+
     public void Logout()
     {
         preferences.SetPreference("username", default);
