@@ -436,6 +436,7 @@ secret = true
 [node name="Create Account" type="Button" parent="App Settings/Profile/Sign In/Sign In/Input Fields" unique_id=159537509]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Create Account"
 metadata/ui = "button"
 

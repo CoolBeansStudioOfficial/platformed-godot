@@ -68,9 +68,10 @@ public partial class LevelsMenu : Control
         //load explore levels
         levelsList.ShowThrobber();
         levelsList.ClearLevels();
-        GD.Print("getting levels");
-        var levels = (await GameManager.Instance.BrowseLevelsFromAPI()).Levels;
         
+        var levels = (await GameManager.Instance.BrowseLevelsFromAPI()).Levels;
+        if (levels.Count == 0) GD.Print("levels is empty");
+
         //mark online levels
         for (int i = 0; i < levels.Count; i++)
         {
@@ -137,9 +138,9 @@ public partial class LevelsMenu : Control
         levelDescriptionEdit.Editable = false;
 
         ratingCount.Text = $"{level.Approvals + level.Disapprovals} ratings";
-        ratingPercentageNegative.Text = $"{100 - level.ApprovalPercentage}%";
-        ratingPercentagePositive.Text = $"{level.ApprovalPercentage}%";
-        ratingBar.Value = level.ApprovalPercentage;
+        ratingPercentageNegative.Text = $"{100 - Convert.ToInt32(level.ApprovalPercentage)}%";
+        ratingPercentagePositive.Text = $"{Convert.ToInt32(level.ApprovalPercentage)}%";
+        ratingBar.Value = Convert.ToInt32(level.ApprovalPercentage);
 
         playCount.Text = $"{level.TotalPlays.ToString()} plays";
         if (level.FinishedPlays == 0)

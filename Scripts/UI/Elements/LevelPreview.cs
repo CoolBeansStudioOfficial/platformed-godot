@@ -26,7 +26,7 @@ public partial class LevelPreview : Panel
 
         levelName.Text = level.Name;
         creator.Text = level.Username;
-        likePercentage.Text = $"{level.ApprovalPercentage}%";
+        likePercentage.Text = $"{Convert.ToInt32(level.ApprovalPercentage)}%";
         int percentage = 0;
         if (level.TotalPlays != 0)
         {

@@ -123,6 +123,7 @@ public partial class GameManager : Node
         {
             //send request to server for level data
             var response = await client.GetAsync($"https://platformed.jmeow.net/api/browse");
+            GD.Print("level fetch status: " + response.StatusCode);
             if (!response.IsSuccessStatusCode) return null;
             //parse json
             return await JsonSerializer.DeserializeAsync<LevelList>(await response.Content.ReadAsStreamAsync());

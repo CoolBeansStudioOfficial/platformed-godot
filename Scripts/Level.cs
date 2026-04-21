@@ -27,7 +27,7 @@ public class Level
     public string Name { get; set; }
 
     [JsonPropertyName("created_at")]
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     [JsonPropertyName("width")]
     public int Width { get; set; }
@@ -37,9 +37,6 @@ public class Level
 
     [JsonPropertyName("owner")]
     public int Owner { get; set; }
-
-    [JsonPropertyName("username")]
-    public string Username { get; set; }
 
     [JsonPropertyName("tags")]
     public List<object> Tags { get; set; }
@@ -54,7 +51,7 @@ public class Level
     public int Disapprovals { get; set; }
 
     [JsonPropertyName("approval_percentage")]
-    public int ApprovalPercentage { get; set; }
+    public double ApprovalPercentage { get; set; }
 
     [JsonPropertyName("total_plays")]
     public int TotalPlays { get; set; }
@@ -68,8 +65,8 @@ public class Level
     [JsonPropertyName("level_style")]
     public string LevelStyle { get; set; }
 
-    [JsonPropertyName("owned")]
-    public bool Owned { get; set; }
+    [JsonPropertyName("username")]
+    public string Username { get; set; }
 
     public string LocalPath { get; set; }
 }
@@ -113,16 +110,16 @@ public class LevelDelete
 public class Data
 {
     [JsonPropertyName("zoom")]
-    public int Zoom { get; set; }
+    public int? Zoom { get; set; }
 
     [JsonPropertyName("spawn")]
     public Spawn Spawn { get; set; }
 
     [JsonPropertyName("width")]
-    public int Width { get; set; }
+    public int? Width { get; set; }
 
     [JsonPropertyName("height")]
-    public int Height { get; set; }
+    public int? Height { get; set; }
 
     [JsonPropertyName("layers")]
     public List<Layer> Layers { get; set; }
@@ -140,7 +137,7 @@ public class Data
     public double? YInertia { get; set; }
 
     [JsonPropertyName("jumpWidth")]
-    public double? JumpWidth { get; set; }
+    public int? JumpWidth { get; set; }
 
     [JsonPropertyName("jumpHeight")]
     public double? JumpHeight { get; set; }
@@ -149,7 +146,13 @@ public class Data
     public string TilesetPath { get; set; }
 
     [JsonPropertyName("bouncePadHeight")]
-    public double BouncePadHeight { get; set; }
+    public int? BouncePadHeight { get; set; }
+
+    [JsonPropertyName("physicsVersion")]
+    public int? PhysicsVersion { get; set; }
+
+    [JsonPropertyName("requireCoins")]
+    public bool? RequireCoins { get; set; }
 }
 
 public class Layer
@@ -183,6 +186,9 @@ public class TriggerParams
 
     [JsonPropertyName("execute")]
     public List<Execute> Execute { get; set; }
+
+    [JsonPropertyName("color")]
+    public string Color { get; set; }
 }
 
 public class Execute
@@ -199,20 +205,26 @@ public class Execute
     [JsonPropertyName("block")]
     public int? Block { get; set; }
 
-    [JsonPropertyName("beforeRotation")]
+    [JsonPropertyName("rotation")]
     public int? Rotation { get; set; }
 
-    [JsonPropertyName("startX")]
-    public int? StartX { get; set; }
+    [JsonPropertyName("beforeRotation")]
+    public int? BeforeRotation { get; set; }
 
-    [JsonPropertyName("startY")]
-    public int? StartY { get; set; }
+    [JsonPropertyName("instant")]
+    public bool? Instant { get; set; }
 
     [JsonPropertyName("endX")]
     public int? EndX { get; set; }
 
     [JsonPropertyName("endY")]
     public int? EndY { get; set; }
+
+    [JsonPropertyName("startX")]
+    public int? StartX { get; set; }
+
+    [JsonPropertyName("startY")]
+    public int? StartY { get; set; }
 
     [JsonPropertyName("time")]
     public string Time { get; set; }
