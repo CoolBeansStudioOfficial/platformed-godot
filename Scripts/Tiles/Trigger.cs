@@ -44,7 +44,12 @@ public partial class Trigger : Tile
             }
             else if (command.Type == "rotate")
             {
-                LevelManager.Instance.RotateTile(new(command.X.Value, command.Y.Value), (TileRotation)command.Rotation.Value);
+                //handle tim's convoluted rotation storage
+                int rotation;
+                if (command.Rotation.HasValue) rotation = command.Rotation.Value;
+                else rotation = command.BeforeRotation.Value;
+
+                LevelManager.Instance.RotateTile(new(command.X.Value, command.Y.Value), (TileRotation)rotation);
             }
             else if (command.Type == "fill")
             {
