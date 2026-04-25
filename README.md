@@ -2,6 +2,8 @@
 
 #### A native desktop app made in Godot for [Platformed](https://platformed.jmeow.net) that lets you play, create, and upload levels via its API.
 
+![**DOWNLOAD**](https://github.com/CoolBeansStudioOfficial/platformed-godot/releases/latest)
+
 ## Features
 
 The Platformed app boasts full feature parity with its web counterpart. It also adds exclusive quality-of-life features and improvements.
