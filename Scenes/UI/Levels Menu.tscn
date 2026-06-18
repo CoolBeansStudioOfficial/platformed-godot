@@ -733,6 +733,8 @@ theme_override_fonts/font = ExtResource("2_eotax")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_86vii")
 placeholder_text = "Description is empty..."
 editable = false
+wrap_mode = 1
+scroll_fit_content_width = true
 
 [node name="Rating" type="Panel" parent="VBoxContainer/Level View/Details" unique_id=1396048154]
 custom_minimum_size = Vector2(0, 125)
